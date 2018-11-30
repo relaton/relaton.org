@@ -1,0 +1,98 @@
+title: Relaton
+description: The interoperable data model for citations
+# The above two are used by jekyll-seo-tag for things such as
+# `<title>` and `<meta>` tags, as well as elsewhere by the theme.
+
+url: https://relaton.com/
+
+algolia_search:
+  api_key: '31ca4bad475130bdaee582a0b9f40806'
+  index_name: 'metanorma'
+
+tagline: >-
+  Bibliographic information repository
+
+
+pitch: >-
+  The interoperable data model for citations based on ISO 690
+
+author: "Ribose Inc."
+
+authors:
+  - name: Ribose Inc.
+    email: open.source@ribose.com
+
+contact_email: open.source@ribose.com
+
+theme: jekyll-theme-open-project
+
+parent_hub:
+  git_repo_url: https://github.com/riboseinc/open.ribose.com
+  home_url: https://open.ribose.com/
+
+social:
+  links:
+    - https://twitter.com/RiboseUS
+    - https://github.com/riboseinc/metanorma
+
+legal:
+  name: Ribose Group Inc.
+  tos_link: https://www.ribose.com/tos
+  privacy_policy_link: https://www.ribose.com/privacy
+
+home_calls_to_action:
+  - { url: "/overview/getting-started/", title: "Get Started" }
+  - { url: "/samples/", title: "Samples" }
+
+permalink: /blog/:month-:day-:year/:title/
+
+collections:
+  samples:
+    output: true
+    permalink: /samples/:path/
+
+defaults:
+  - scope:
+      path: _samples
+      type: samples
+    values:
+      layout: spec-sample
+
+  # Theme defaults.
+  # MUST be duplicated from theme’s _config.yml
+  # (does not get inherited, unlike the collections hash)
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: _posts
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: _software
+      type: software
+    values:
+      layout: product
+  - scope:
+      path: _specs
+      type: specs
+    values:
+      layout: spec
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+tag_namespaces:
+  software:
+    writtenin: "Written in"
+    bindingsfor: "Bindings for"
+    user: "Target user"
+    interface: "Interface"
+  specs:
+    audience: "Audience"
+    completion_status: "Status"
+
+#refresh_remote_data: 'always'

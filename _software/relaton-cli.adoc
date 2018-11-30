@@ -1,0 +1,11 @@
+---
+title: relaton-cli
+repo_url: https://github.com/riboseinc/relaton-cli
+description: Command-line tools for building Metanorma sources.
+docs:
+  git_repo_url: https://github.com/riboseinc/relaton-cli
+  git_repo_subtree: docs
+tags: ["writtenin:Ruby", "interface:CLI"]
+---
+
+The command-line tool for using Relaton.
