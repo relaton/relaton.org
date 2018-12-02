@@ -109,7 +109,7 @@ PLATFORMS
 
 DEPENDENCIES
   git
-  html-proofer (= 3.9.2)
+  html-proofer
   jekyll (~> 3.8.5)
   jekyll-asciidoc
   jekyll-data
@@ -121,4 +121,4 @@ DEPENDENCIES
   tzinfo-data
 
 BUNDLED WITH
-   1.16.2
+   1.17.1
