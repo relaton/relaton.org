@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem "jekyll", "~> 3.8.5"
 
-gem "jekyll-theme-open-project", "~> 1.1.25"
+gem "jekyll-theme-open-project", "~> 1.2.3"
 
 group :jekyll_plugins do
   gem "jekyll-seo-tag"
@@ -10,7 +10,7 @@ group :jekyll_plugins do
   gem "jekyll-data"
   gem "jekyll-asciidoc"
   gem "git"
-  gem "jekyll-theme-open-project-helpers", "~> 1.1.25"
+  gem "jekyll-theme-open-project-helpers", "~> 1.2.3"
 end
 
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
