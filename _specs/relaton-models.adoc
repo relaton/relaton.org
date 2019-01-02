@@ -14,39 +14,39 @@ navigation:
   - title: Model diagrams
     items:
     - title: "Bibliographic item"
-      path: "RelBib_BibliographicItem"
+      path: RelBib_BibliographicItem/
       description: ""
       ignore_missing: yes
     - title: "Citation"
-      path: "RelBib_Citation"
+      path: RelBib_Citation/
       description: ""
       ignore_missing: yes
     - title: "Contribution"
-      path: "RelBib_Contribution"
+      path: RelBib_Contribution/
       description: ""
       ignore_missing: yes
     - title: "Contributor"
-      path: "RelBib_Contributor"
+      path: RelBib_Contributor/
       description: ""
       ignore_missing: yes
     - title: "Date"
-      path: "RelBib_Date"
+      path: RelBib_Date/
       description: ""
       ignore_missing: yes
     - title: "Document relations"
-      path: "RelBib_DocumentRelation"
+      path: RelBib_DocumentRelation/
       description: ""
       ignore_missing: yes
     - title: "Series"
-      path: "RelBib_Series"
+      path: RelBib_Series/
       description: ""
       ignore_missing: yes
     - title: "Data types"
-      path: "RelBib_DataTypes"
+      path: RelBib_DataTypes/
       description: ""
       ignore_missing: yes
     - title: "Collection"
-      path: "RelBib_Collection"
+      path: RelBib_Collection/
       description: ""
       ignore_missing: yes
 ---
