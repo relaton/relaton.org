@@ -1,0 +1,55 @@
+---
+title: Relaton models
+description: Bibliographic data models for Relaton.
+source_url: https://github.com/riboseinc/relaton-models
+
+spec_source:
+  git_repo_url: https://github.com/riboseinc/relaton-models
+  git_repo_subtree: images
+  build:
+    engine: png_diagrams
+
+navigation:
+  items:
+  - title: Model diagrams
+    items:
+    - title: "Bibliographic item"
+      path: "RelBib_BibliographicItem"
+      description: ""
+      ignore_missing: yes
+    - title: "Citation"
+      path: "RelBib_Citation"
+      description: ""
+      ignore_missing: yes
+    - title: "Contribution"
+      path: "RelBib_Contribution"
+      description: ""
+      ignore_missing: yes
+    - title: "Contributor"
+      path: "RelBib_Contributor"
+      description: ""
+      ignore_missing: yes
+    - title: "Date"
+      path: "RelBib_Date"
+      description: ""
+      ignore_missing: yes
+    - title: "Document relations"
+      path: "RelBib_DocumentRelation"
+      description: ""
+      ignore_missing: yes
+    - title: "Series"
+      path: "RelBib_Series"
+      description: ""
+      ignore_missing: yes
+    - title: "Data types"
+      path: "RelBib_DataTypes"
+      description: ""
+      ignore_missing: yes
+    - title: "Collection"
+      path: "RelBib_Collection"
+      description: ""
+      ignore_missing: yes
+---
+
+Metanorma RSD is a set of data models for Ribose Specification Documents.
+The RSD format is an instance of the Metanorma IsoDoc model.
