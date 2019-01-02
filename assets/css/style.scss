@@ -1,0 +1,10 @@
+---
+---
+@import 'jekyll-theme-open-project';
+
+body.layout--home > .underlay > .hero .illustration {
+  bottom: -100px !important;
+  svg {
+    height: 200px;
+  }
+}
