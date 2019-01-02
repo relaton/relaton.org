@@ -94,5 +94,3 @@ tag_namespaces:
   specs:
     audience: "Audience"
     completion_status: "Status"
-
-#refresh_remote_data: 'always'
