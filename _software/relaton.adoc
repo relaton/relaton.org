@@ -1,0 +1,15 @@
+---
+title: Relaton
+repo_url: https://github.com/riboseinc/relaton
+description: Gem for importing and caching bibliographic references to technical standards.
+docs:
+  git_repo_url: https://github.com/riboseinc/relaton
+  git_repo_subtree: docs
+tags: ["writtenin:Ruby"]
+---
+
+The Relaton gem obtains authoritative bibliographic entries for technical standards
+from online sources and expresses them in a consistent format,
+which can be used in document authoring.
+
+It is the underlying bibliographic tool for the link:https://www.metanorma.com/[Metanorma] toolset.
