@@ -1,5 +1,5 @@
 ---
-title: relaton-cli
+title: Relaton CLI
 repo_url: https://github.com/riboseinc/relaton-cli
 description: Command-line tools for building Relaton sources
 docs:
