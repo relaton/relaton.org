@@ -42,7 +42,7 @@ legal:
 
 home_calls_to_action:
   - { url: "/software/relaton/docs/README/", title: "Using the gem" }
-  - { url: "/software/relaton-cli/docs/README/", title: "Using the CLI" }
+  #- { url: "/software/relaton-cli/docs/README/", title: "Using the CLI" }
 
 permalink: /blog/:month-:day-:year/:title/
 
