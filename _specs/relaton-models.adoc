@@ -1,7 +1,11 @@
 ---
 title: Relaton models
 description: Bibliographic data models for Relaton.
-source_url: https://github.com/riboseinc/relaton-models
+
+external_links:
+  - url: https://github.com/riboseinc/relaton-models
+
+feature_with_priority: 1
 
 spec_source:
   git_repo_url: https://github.com/riboseinc/relaton-models
@@ -11,8 +15,6 @@ spec_source:
 
 navigation:
   items:
-  - title: Model diagrams
-    items:
     - title: "Bibliographic item"
       path: RelBib_BibliographicItem/
       description: ""

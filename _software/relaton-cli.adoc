@@ -2,10 +2,16 @@
 title: Relaton CLI
 description: Command-line tools for building Relaton sources.
 repo_url: https://github.com/riboseinc/relaton-cli
-docs:
+
+external_links:
+  - url: https://github.com/riboseinc/relaton-cli
+
+docs_source:
   git_repo_url: https://github.com/riboseinc/relaton-cli
   git_repo_subtree: docs
+
 tags: ["writtenin:Ruby", "interface:CLI"]
+feature_with_priority: 2
 ---
 
 The command-line tool for using Relaton.

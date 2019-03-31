@@ -1,9 +1,14 @@
 ---
 ---
+
+$primary-color: darken(#3bb78f, 5);
+$accent-color: darken(#0bab64, 5);
+
 @import 'jekyll-theme-open-project';
 
 body.layout--home > .underlay > .hero .illustration {
   bottom: -100px !important;
+
   svg {
     height: 200px;
   }
