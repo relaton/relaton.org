@@ -6,7 +6,7 @@ repo_url: https://github.com/riboseinc/relaton-cli
 external_links:
   - url: https://github.com/riboseinc/relaton-cli
 
-docs_source:
+docs:
   git_repo_url: https://github.com/riboseinc/relaton-cli
   git_repo_subtree: docs
 

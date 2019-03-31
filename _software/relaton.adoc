@@ -7,7 +7,7 @@ repo_url: https://github.com/metanorma/relaton
 external_links:
   - url: https://github.com/metanorma/relaton
 
-docs_source:
+docs:
   git_repo_url: https://github.com/metanorma/relaton
   git_repo_subtree: docs
 
