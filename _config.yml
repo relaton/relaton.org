@@ -4,6 +4,7 @@ description: The interoperable data model for citations
 # `<title>` and `<meta>` tags, as well as elsewhere by the theme.
 
 url: https://relaton.com
+github_repo_url: https://github.com/metanorma/relaton.com
 
 algolia_search:
   api_key: '31ca4bad475130bdaee582a0b9f40806'
