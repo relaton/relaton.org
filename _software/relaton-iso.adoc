@@ -1,0 +1,15 @@
+---
+title: RelatonIso
+description: Retrieves ISO Standards for bibliographic use using the BibliographicItem model.
+repo_url: https://github.com/relaton/relaton-iso
+
+external_links:
+  - url: https://github.com/relaton/relaton-iso
+
+tags: ["writtenin:Ruby"]
+
+feature_with_priority: 2
+---
+
+You can use it to retrieve metadata of ISO Standards from https://www.iso.org
+and access that metadata through the `IsoBibliographicItem` object.
