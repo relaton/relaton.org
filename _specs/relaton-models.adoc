@@ -19,6 +19,10 @@ navigation:
       path: RelBib_BibliographicItem/
       description: ""
       ignore_missing: yes
+    - title: "Bibliographic item type"
+      path: RelBib_BibItemType/
+      description: ""
+      ignore_missing: yes
     - title: "Citation"
       path: RelBib_Citation/
       description: ""
