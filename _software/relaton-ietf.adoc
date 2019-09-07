@@ -1,0 +1,14 @@
+---
+title: RelatonIetf
+description: Ruby gem that retrieves IETF RFC standards
+repo_url: https://github.com/relaton/relaton-ietf
+
+external_links:
+  - url: https://github.com/relaton/relaton-ietf
+
+docs:
+  git_repo_url: https://github.com/relaton/relaton-cli
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby"]
+---
