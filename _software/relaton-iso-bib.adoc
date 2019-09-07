@@ -1,0 +1,10 @@
+---
+title: RelatonIsoBib
+description: Ruby gem that implements the IsoBibliographicItem model.
+repo_url: https://github.com/relaton/relaton-iso-bib
+
+external_links:
+  - url: https://github.com/relaton/relaton-iso-bib
+
+tags: ["writtenin:Ruby"]
+---
