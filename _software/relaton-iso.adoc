@@ -6,7 +6,7 @@ repo_url: https://github.com/relaton/relaton-iso
 external_links:
   - url: https://github.com/relaton/relaton-iso
 
-tags: ["writtenin:Ruby"]
+tags: ["writtenin:Ruby", "user:ISO"]
 
 feature_with_priority: 2
 ---
