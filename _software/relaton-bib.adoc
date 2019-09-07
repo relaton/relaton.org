@@ -1,0 +1,10 @@
+---
+title: RelatonBib
+description: Ruby gem that implements the BibliographicItem model.
+repo_url: https://github.com/relaton/relaton-bib
+
+external_links:
+  - url: https://github.com/relaton/relaton-bib
+
+tags: ["writtenin:Ruby"]
+---
