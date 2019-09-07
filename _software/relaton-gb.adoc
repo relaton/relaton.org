@@ -1,0 +1,10 @@
+---
+title: RelatonGb
+description: Ruby gem that searches and fetches Chinese GB standards.
+repo_url: https://github.com/relaton/relaton-gb
+
+external_links:
+  - url: https://github.com/relaton/relaton-gb
+
+tags: ["writtenin:Ruby"]
+---
