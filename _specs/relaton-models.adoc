@@ -51,6 +51,10 @@ navigation:
       path: RelBib_Collection/
       description: ""
       ignore_missing: yes
+    - title: "Keyword"
+      path: RelBib_Keyword/
+      description: ""
+      ignore_missing: yes
 ---
 
 These bibliographic models are developed to consolidate and standardize
