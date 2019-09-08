@@ -23,7 +23,7 @@ and adding a new type is as easy as inserting an item into that YAML array.
 
 Array item format is described below:
 
-```
+```yaml
 relaton:
   supported_bibliographies:
   - id: iso
