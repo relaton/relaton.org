@@ -1,15 +1,38 @@
 ---
 ---
 
-$primary-color: darken(#3bb78f, 5);
-$accent-color: darken(#0bab64, 5);
+$primary-color: #233329;
+$accent-color: #63d471;
 
 @import 'jekyll-theme-open-project';
 
-body.layout--home > .underlay > .hero .illustration {
-  bottom: -100px !important;
+body.layout--home > .underlay > .hero {
+  .illustration {
+    bottom: -100px !important;
 
-  svg {
-    height: 200px;
+    svg {
+      height: 200px;
+    }
+  }
+
+  > .text {
+    > .title {
+      font-weight: normal;
+    }
+  }
+}
+
+body.layout--home {
+  > main .custom-intro .summary {
+    ul.supported-bibliographies {
+      li {
+        .label {
+          margin-right: 1en;
+        }
+        .source, .gem {
+          white-space: nowrap;
+        }
+      }
+    }
   }
 }

@@ -11,11 +11,38 @@ algolia_search:
   index_name: 'metanorma'
 
 tagline: >-
-  Bibliographic information repository
+  Interoperable data&nbsp;model for&nbsp;citations
+  based&nbsp;on&nbsp;ISO&nbsp;690
 
+landing_priority: [custom_intro, blog, specs, software]
 
-pitch: >-
-  The interoperable data model for citations based on ISO 690
+relaton:
+  supported_bibliographies:
+    - id: iso
+      label: ISO
+      gem: relaton-iso
+      sources:
+        - { url: "https://iso.org/", label: "ISO.org website" }
+    - id: iec
+      label: IEC
+      gem: relaton-iec
+      sources:
+        - { url: "https://iec.ch/", label: "IEC.ch website" }
+    - id: gb
+      label: GB (Chinese national standards)
+      gem: relaton-gb
+      sources:
+        - { label: "GB websites" }
+    - id: ietf
+      label: IETF (Internet Drafts, RFCs)
+      gem: relaton-ietf
+      sources:
+        - { url: "http://xml2rfc.tools.ietf.org/" }
+    - id: nist
+      label: NIST
+      gem: relaton-nist
+      sources:
+        - { url: "https://nist.gov", label: "NIST.gov website" }
 
 author: "Ribose Inc."
 

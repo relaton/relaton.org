@@ -1,0 +1,43 @@
+<section class="summary">
+  <p>
+    Relaton ecosystem includes a&nbsp;reference Ruby implementation
+    of&nbsp;its data&nbsp;model specification,
+    and&nbsp;is currently capable of&nbsp;importing the&nbsp;following bibliographic&nbsp;entries:
+  </p>
+
+  <ul class="supported-bibliographies">
+    {% for bib in site.relaton.supported_bibliographies %}
+      <li>
+        {% assign num_sources = bib.sources | size %}
+
+        <strong class="label">{{ bib.label }}</strong>{% if num_sources > 0 or bib.gem %}, {% endif %}
+
+        {% if num_sources > 0 %}
+          <span class"sources">
+            {% comment %}
+              Funky markup indentation
+              works around unwanted whitespace introducing awkward linebreak{% endcomment %}
+            through&nbsp;{%- for src in bib.sources -%}<span class="source"
+              >{%- if src.url -%}<a href="{{ src.url }}"
+                >{%- endif -%}{{ src.label | default: src.url }}
+                {% if src.url %}</a>{% endif %} 
+              </span>
+            {% endfor %}
+          </span>
+        {% endif %}
+
+        {% if bib.gem %}
+          <span class="gem">
+            via&nbsp;the <a href="/software/{{ bib.gem }}/">{{ bib.gem }}</a>&nbsp;gem
+          </span>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+
+  <div class="cta">
+    <a class="button" href="https://github.com/relaton/relaton/">
+      See gem README
+    </a>
+  </div>
+</section>
