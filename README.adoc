@@ -13,6 +13,35 @@ created with the Open Project Jekyll theme.
 Refer to their respective docs for details.
 
 
+== Content management
+
+=== Adding new bibliography type
+
+Supported bibliography types are configured in the main `_config.yml`
+under `relaton.supported_bibliographies`,
+and adding a new type is as easy as inserting an item into that YAML array.
+
+Array item format is described below:
+
+```
+relaton:
+  supported_bibliographies:
+  - id: iso
+    # This must be CSS class name compliant, no spaces or non-ASCII characters
+
+    label: ISO
+    # Human-readable label, usually organization or standard type
+
+    gem: relaton-iso
+    # Name of the corresponding Ruby gem, exactly as listed under `_software/{gem name}.adoc`
+
+    sources:
+      - { url: "https://iso.org/", label: "ISO.org website" }
+    # List of sources used by the gem for fetching bibliographies.
+    # `url` and `label` are optional, but at least one of those must be present for each source
+```
+
+
 == Development
 
 === Getting started
