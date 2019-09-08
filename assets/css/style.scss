@@ -32,6 +32,15 @@ body.layout--home {
         .source, .gem {
           white-space: nowrap;
         }
+        .source {
+          &:after {
+            content: ", ";
+          }
+
+          &:last-child:after {
+            content: unset;
+          }
+        }
       }
     }
   }

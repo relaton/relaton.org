@@ -20,7 +20,7 @@
             through&nbsp;{%- for src in bib.sources -%}<span class="source"
               >{%- if src.url -%}<a href="{{ src.url }}"
                 >{%- endif -%}{{ src.label | default: src.url }}
-                {% if src.url %}</a>{% endif %} 
+                {%- if src.url -%}</a>{%- endif -%}
               </span>
             {% endfor %}
           </span>
