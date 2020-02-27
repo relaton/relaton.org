@@ -1,0 +1,130 @@
+---
+title: Relaton
+description: Gem for importing and caching bibliographic references to technical standards.
+
+external_links:
+  - url: https://github.com/relaton/relaton/tree/master/docs
+---
+== Scope
+
+The Relaton gem obtains authoritative bibliographic entries for technical standards from online sources, and expresses them in a consistent format, which can be used in document authoring. (It is the underlying bibliographic tool for the https://github.com/metanorma/metanorma[Metanorma] toolset.)
+
+The gem also caches entries it has retrieved, so that subsequent iterations do not need to go back online to retrieve the same entries. The gem uses two caches: a global cache (for all bibliographic entries retrieved by the user), and a local cache (intended to store references specific to the current document being processed.)
+
+Entries are retrieved and stored in the https://github.com/relaton/relaton-models[Relaton bibliographic model], which is an expression of ISO 690. The subset of the model used and serialised for Relaton is defined in the https://github.com/relaton/relaton-bib[relaton-bib] and https://github.com/relaton/relaton-iso-bib[relaton-iso-bib] gems.
+
+Entries are serialised to and from an internal data model, and multiple formats are intended to be supported. Currently only https://github.com/relaton/relaton-models/blob/master/grammars/biblio.rnc[Relaton XML] is supported.
+
+Relaton imports bibliographic entries from:
+
+* ISO through the iso.org website, via the https://github.com/relaton/relaton-iso[relaton-iso] gem
+* IEC through the iec.ch website, via the https://github.com/relaton/relaton-iec[relaton-iec] gem
+* GB (Chinese national standards) through the GB websites, via the https://github.com/relaton/relaton-gb[relaton-gb] gem
+* IETF standards (Internet Drafts, RFC) through the http://xml2rfc.tools.ietf.org website, via the https://github.com/relaton/relaton-ietf[relaton-ietf] gem
+* NIST standards through the nist.gov website, via the https://github.com/relaton/relaton-nist[relaotn-nist] gem
+
+The identifiers for which bibliographic entries are to be retrieved need to indicate which standards body they belong to. To do so, this gem adopts the convention of bracketing identifiers, and preceding them with a code that indicates the standards body:
+
+* If the standards body is the national standards body, the wrapper uses the ISO country code. So `CN(GM/T 0009-2012)` is Chinese sector standard GM/T 0009-2012.
+* Otherwise, the wrappers uses the agreed abbreviation of the standards body. So `IETF(I-D.ribose-asciirfc-08)` identifies `I-D.ribose-asciirfc` as an Internet Engineering Task Force identifier.
+* Some prefixes to identifiers indicate the standards body they belong to unambiguously; e.g. `ISO` followed by slash or space. The scope wrapper is not required for those prefixes: `ISO(ISO 639-1)` can be recognised as just `ISO 639-1`.
+
+The gem can be extended to use other standards-specific gems. Standards-specific gems like isobib register themselves against Relaton using `Relaton::Registry.instance.register`, which takes as an argument a subclass of `Relaton::Processor` defined in the gem; see isobib/lib/relaton for an example. The processor within the standards-specific gem needs to define
+
+* `@short`, the name of the gem
+* `@prefix`, the regex which scopes the identifier, and constrains it to belong to a particular standards class.
+* `@defaultprefix`, the identifier prefixes which can be recognised without a scope wrapper.
+* `@idtype`, the type assigned to document identifiers for the standard class.
+* `get(code, date, opts)`, which takes a standards code, a year, and a hash of options, and returns an iso-bib-item bibliographic entry
+** `date == nil`: an ISO reference is treated as a generic reference to the latest available version of the reference. The latest
+version retrieved has its date of publicatipn stripped. The dated reference is retained as an `instanceOf` relation to the reference.
+e.g. `get("ISO 19115-1", nil)` is transformed from a reference to `ISO 19115-1:2014` (the latest available online) to an undated reference
+to `ISO 19115-1`.
+** `opts[:keep_date] == true`: undoes the behaviour of `date == nil`: the most recent dated instance of the reference is retrieved.
+e.g.  `get("ISO 19115-1", nil, keep_date: true)` returns a reference to `ISO 19115-1:2014`
+** `opts[:all_parts] == true`: an ISO reference for a specific document part is transformed into a reference to all parts of the document
+(which does not have a distinct web page). The reference to the specific document part is retained as a `partOf` relation to the reference.
+e.g. `get("ISO 19115-1", "2014", all_parts: true)` is transformed into a reference to `ISO 19115 (all parts)`.
+
+== Behaviours
+
+* If an entry is defined in both the local and the global cache, the local cache entry is used.
+* If an ISO entry has no date, the latest version available for the entry is retrieved.
+* If a cached ISO entry has no date, and was last retrieved more than 60 days ago, the gem fetches it again, in case there is a newer edition of the standard available.
+* Entries are always saved to the cache with a scope-wrapped identifier; e.g. under `ISO(ISO 639-1)`, and not `ISO 639-1`.
+* Note that the gem does not currently support the totality of the Relaton model; it will only support the information available in the source websites. We do not expect to support cartographic information, for example.
+* Document identifiers are returned with a scope indication (`@idtype`); for example, `<docidentifier type="IETF">RFC 8000</docidentifier>`. It is up to the client whether to render this with the scope indication (_IETF RFC 8000_) or without (_RFC 8000_).
+
+== Usage
+
+[source,ruby]
+----
+require "relaton"
+=> true
+
+# Do not cache any entries retrieved
+db = Relaton::Db.new(nil, nil)
+[relaton] Info: detecting backends:
+[relaton] processor "relaton_iec" registered
+[relaton] processor "relaton_iso" registered
+[relaton] processor "relaton_ietf" registered
+[relaton] processor "relaton_gb" registered
+[relaton] processor "relaton_nist" registered
+=> #<Relaton::Db:0x007fb1d2a75fe0
+...
+
+# Use only the global cache for any entries retrieved
+db = Relaton::Db.new("globalcache", nil)
+[relaton] Info: detecting backends:
+=> #<Relaton::Db:0x007fb1d2856fc0
+...
+
+# Use both a local and a global cache
+db = Relaton::Db.new("globalcache", "localcache")
+[relaton] Info: detecting backends:
+=> #<Relaton::Db:0x007fb1d0ab9328
+...
+
+x = db.fetch("IEEE 19011")
+IEEE 19011 does not have a recognised prefix: IEC, ISO, IETF, CN, NIST
+=> nil
+
+x = db.fetch("ISO 19011")
+fetching ISO 19011...
+=> #<RelatonIsoBib::IsoBibliographicItem:0x007fb1d0ab2f00
+...
+
+x = db.fetch("ISO 19011", "2011")
+fetching ISO 19011...
+=> #<RelatonIsoBib::IsoBibliographicItem:0x007fb1d2593068
+...
+
+x = db.fetch("ISO 19011", "2011", allparts: true)
+=> #<RelatonIsoBib::IsoBibliographicItem:0x007fb1d0ae8bf0
+...
+
+db.docid_type("CN(GB/T 1.1)")
+=> ["Chinese Standard", "GB/T 1.1"]
+
+x.to_xml
+=> "<bibitem id="ISO19011-2011">...."
+
+db.to_xml
+=> "<?xml version\"1.0" encoding="UTF-8"?><documents><bibdata>...."
+
+x.to_xml
+=> "<bibitem id="ISO19011-2011">..."
+
+x.to_xml
+=> "<bibdata>..."
+
+db.load_entry("ISO(ISO 19011)")
+=> "<bibdata>..."
+
+db.save_entry("ISO(ISO 19011)", nil)
+=> nil
+
+db.load_entry("ISO(ISO 19011)")
+=> nil
+
+----
