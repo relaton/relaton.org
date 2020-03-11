@@ -1,28 +1,30 @@
 ---
 title: Relaton YAML
-description: Structure for encoding bibitem as YAML objects.
+description: Structure for encoding `bibitem` as YAML objects.
 
 external_links:
   - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc
 ---
-== YAML
+== Relaton YAML
 
-The following structure is in place for encoding bibitem as YAML objects, and is also used to represent bibliographic entries in Metanorma Asciidoctor. The structure has not yet been generalised to bibdata/ext, the flavour-specific extensions of relaton.
+The following structure is in place for encoding `bibitem` as YAML objects. The structure has not yet been generalised to `bibdata/ext`, the flavour-specific extensions of Relaton.
+
+NOTE: Relaton YAML can be used to represent bibliographic entries in Metanorma.
 
 If an element in Relaton XML has attributes, the content of the element is represented in YAML
 with a `content` key:
 
 [source,xml]
-....
+----
 <title type="main">Geographic information</title>
-....
+----
 
 [source,yaml]
-....
+----
 title:
   type: main
   content: Geographic information
-....
+----
 
 Any elements with a cardinality of many can be represented as arrays, but
 they can also be populated by a hash or single element. For example,
@@ -30,7 +32,7 @@ a Relaton title can have multiple titles, and multiple scripts; so
 the following are equivalent:
 
 [source,yaml]
-....
+----
 title:
   - type: main
     content: Geographic information
@@ -40,15 +42,15 @@ title:
 script:
   - Latn
 script: Latn
-....
+----
 
-In YAML, "on" is a reserved word, and thus cannot be used as a key. "value" is used as a synonym for
-"on" in dates.
+In YAML, `on` is a reserved word, and thus cannot be used as a key.
+`value` is used as a synonym for `on` in dates.
 
 The structure below is given in YAML format:
 
 [source,yaml]
-....
+----
 # bibliographic item anchor, used to crossreference within document
 id: ISO/TC211
 # date record was created
@@ -121,11 +123,11 @@ abstract:
 # Initials, forename, additions, prefixes are arrays.
 # Name field values are either strings, or hashes, with content and language and script attributes.
 # The language and script attribute can also be given on the name.
-# Contacts are an array, containing either addresses, or other fields. 
-# Addresses are identified as hashes containing a city attribute; they can also contain a street 
+# Contacts are an array, containing either addresses, or other fields.
+# Addresses are identified as hashes containing a city attribute; they can also contain a street
 # (which is an array), a postcode, a state, and a country. The other contact fields
 # are phones, emails, uris; they contain a type giving the field name, and a value.
-# Affiliations are an array, and they contains an organization, and an optional description. 
+# Affiliations are an array, and they contains an organization, and an optional description.
 # The affiliation description can be a single string, or a hash of content, language, script, and format.
 contributor:
   - organization:
@@ -133,7 +135,7 @@ contributor:
       url: www.iso.org
       abbreviation: ISO
       subdivision: division
-    role: 
+    role:
       type: publisher
       description: Publisher role
   - person:
@@ -145,7 +147,7 @@ contributor:
         - organization:
             name: IETF
             abbreviation: IETF
-             identifier:      
+             identifier:
                - type: uri
                  id: www.ietf.org
           description: Affiliation description
@@ -184,7 +186,7 @@ contributor:
       identifier:
         - type: uri
           id: www.person.com
-    role: 
+    role:
       author
 # copyright consists of an owner (a hash containing the fields of an organisation),
 # a "from" date, and an optional "to" date
@@ -223,7 +225,7 @@ relation:
 # an abbreviation, a from, a to, a number, and a partnumber.
 # The series title, like the titles of bibliographic items, contains a type,
 # content, and optional language, script, and format attributes.
-# The abbreviation and formattedref are either a string, 
+# The abbreviation and formattedref are either a string,
 # or a hash containing content, language, and script.
 series:
   - type: main
@@ -244,7 +246,7 @@ series:
     number: serie1234
     partnumber: part5678
   - type: alt
-    formattedref: 
+    formattedref:
       content: serieref
       language: en
       script: Latn
@@ -272,30 +274,48 @@ validity:
   begins: 2010-10-10 12:21
   ends: 2011-02-03 18:30
   revision: 2011-03-04 09:00
-....
+----
 
-== Metanorma structure (AsciiBib): nested definition list
 
-The Metanorma Asciidoctor representation of the Relaton hash structure
-in a bibliography
-is as a definition list of element name and element contents,
-with nested definition lists for nested structures. If a nested
+== AsciiBib
+
+=== General
+
+AsciiBib provides an AsciiDoc-like syntax for entering a Relaton
+bibliographic entry based on the Relaton data model
+(similarly, to Relaton YAML).
+
+There are two syntaxes for entering in AsciiBib:
+
+* Nested definition lists
+* Path style definition lists
+
+AsciiBib is very useful when needing to define bibliographic items
+inside an AsciiDoc structure, such as within Metanorma AsciiDoc.
+
+=== Nested definition list syntax
+
+This form of AsciiBib utilizes a definition list of element name and element contents,
+with nested definition lists for nested structures.
+
+If a nested
 definition is given for an element, the element itself has a blank definition.
 
-As with the YAML representation, if an element in Relaton XML has attributes, 
+As with the YAML representation, if an element in Relaton XML has attributes,
 the content of the element is represented in YAML with a `content` key:
 
 [source,xml]
-....
+----
 <title type="main">Geographic information</title>
-....
+----
 
 [source,asciidoc]
-....
+----
 title::
   type::: main
   content::: Geographic information
-....
+----
+
 
 Likewise, as with the YAML representation,
 Repeating elements in a hash can be realised as ordered or unordered lists.
@@ -307,9 +327,9 @@ language::
   . fr
 ----
 
-Metanorma Asciidoctor also supports representing repeating elements
+Metanorma AsciiDoc also supports representing repeating elements
 by repeating the key for that entry. This will almost always be more
-straightforward to use in Asciidoctor:
+straightforward to use in AsciiDoc:
 
 [source,asciidoc]
 ----
@@ -317,19 +337,19 @@ language:: en
 language:: fr
 ----
 
-Each Relaton entry in a bibliography is represented in Metanorma Asciidoctor
+Each Relaton entry in a bibliography is represented in Metanorma AsciiDoc
 through a subclause with option attribute `[%bibitem]`. Any title given to the
 subclause is treated as the title for the bibliographic entry, with language `en`,
-script `Latn`, format `text/plain`, and type `main`. 
+script `Latn`, format `text/plain`, and type `main`.
 
-So the following is a very simple reference in Metanorma Asciidoctor:
+So the following is a very simple reference in Metanorma AsciiDoc:
 
 [source,asciidoc]
 ----
 [%bibitem]
 === Rubber latex -- Sampling
 id:: iso123
-docid:: 
+docid::
   type::: ISO
   id::: ISO 123
 docid::
@@ -358,7 +378,7 @@ content::: Latex de caoutchouc -- Échantillonnage
 Note the use of `content` as a key to represent the contents of the `title` tag.
 
 The anchor crossreference for the bibliographic entry may be encoded as either the
-`id` entry in the definition list, or as the normal Asciidoctor anchor on the
+`id` entry in the definition list, or as the normal AsciiDoc anchor on the
 subclause, which takes priority:
 
 [source,asciidoc]
@@ -366,7 +386,7 @@ subclause, which takes priority:
 [[iso123]]
 [%bibitem]
 === Rubber latex -- Sampling
-docid:: 
+docid::
   type::: ISO
   id::: ISO 123
 type:: standard
@@ -379,7 +399,7 @@ Repeating elements in a hash can be realised as ordered or unordered lists.
 [[iso123]]
 [%bibitem]
 === Rubber latex -- Sampling
-docid:: 
+docid::
   type::: ISO
   id::: ISO 123
 language::
@@ -387,23 +407,23 @@ language::
   . fr
 ----
 
-Metanorma Asciidoctor also supports representing repeating elements  
+Metanorma AsciiDoc also supports representing repeating elements
 by repeating the key for that entry. This will almost always be more
-straightforward to use in Asciidoctor:
+straightforward to use in AsciiDoc:
 
 [source,asciidoc]
 ----
 [[iso123]]
 [%bibitem]
 === Rubber latex -- Sampling
-docid:: 
+docid::
   type::: ISO
   id::: ISO 123
 language:: en
 language:: fr
 ----
 
-Asciidoctor does not recognise definition lists more than four levels
+AsciiDoc does not recognise definition lists more than four levels
 deep. If deeper nesting is needed, you will need to attach a new definition
 list with a list continuation, with the definition list depth reset back to one:
 
@@ -412,7 +432,7 @@ list with a list continuation, with the definition list depth reset back to one:
 [[iso123]]
 [%bibitem]
 === Rubber latex -- Sampling
-docid:: 
+docid::
   type::: ISO
   id::: ISO 123
 type:: standard
@@ -431,25 +451,25 @@ completename::
 (This is very awkward, and <<JSONPath>> provides a workaround.)
 
 The most heavily nested parts of a Relaton entry are the contributors,
-series, and relations. 
+series, and relations.
 Each of these can be marked up as subclauses within the entry, with the clause
 titles "contributor", "series", and "relation". Each subclause contains
 a new definition list, with its definition list reset to zero depth;
 the subclauses can be repeated for multiple instances of the same subentity.
 
-AsciiBib citations can be combined with other Asciidoctor citations in the
-same Metanorma document; but any Asciidoctor citations need be precede
+AsciiBib citations can be combined with other AsciiDoc citations in the
+same Metanorma document; but any AsciiDoc citations need be precede
 AsciiBib citations. Each AsciiBib citations constitutes a subclause of its own,
 and Metanorma will (unsuccessfully) attempt to incorporate any trailing material
-in the subclause, including  Asciidoctor citations, into the current AsciiBib
+in the subclause, including  AsciiDoc citations, into the current AsciiBib
 citation.
 
-The following is Metanorma Asciidoctor markup corresponding to the YAML
+The following is Metanorma AsciiDoc markup corresponding to the YAML
 given above:
 
 
 [source,asciidoc]
-....
+----
 [[ISO/TC211]]
 [%bibitem]
 === {blank}
@@ -550,7 +570,7 @@ organization::
   url::: www.iso.org
   abbreviation::: ISO
   subdivision::: division
-role:: 
+role::
   type::: publisher
   description::: Publisher role
 
@@ -657,23 +677,27 @@ formattedref::
   content::: serieref
   language::: en
   script::: Latn
-....
+----
 
 [[JSONPath]]
-== JSON Path style definition lists
+=== Path style definition lists
 
-The foregoing structure requires frequent breakouts into open blocks, to deal
-with the limitation on Asciidoctor nested definition lists. An alternative is to
-represent the nested structure of Relaton records in a simple, one-level definition list, 
-and to use the key for each key-value pair to represent the hierarchical nesting of entries, 
-as a dot-delimited path of keys. For example,
+The nested definition list syntax requires frequent breakouts into open blocks, to deal
+with the limitation on AsciiDoc nested definition lists.
+
+Similar to JSON data access, AsciiBib offers the "`Path style definition list`" syntax to
+represent the nested structure of Relaton records in a simple, one-level definition list,
+and to use the key for each key-value pair to represent the hierarchical nesting of entries,
+as a dot-delimited path of keys.
+
+For example,
 
 [source,asciidoc]
 ----
 [%bibitem]
 === Rubber latex -- Sampling
 id:: iso123
-docid:: 
+docid::
   type::: ISO
   id::: ISO 123
 ----
@@ -696,7 +720,7 @@ Whenever part of the key is repeated between entries, the entries are assumed to
 [%bibitem]
 === Rubber latex -- Sampling
 id:: iso123
-docid:: 
+docid::
   type::: ISO
   id::: ISO 123
 docid::
@@ -757,11 +781,11 @@ contributor.person.contact.type:: phone
 contributor.person.contact.value:: 223322
 ----
 
-The following is Metanorma Asciidoctor markup corresponding to the YAML
+The following is Metanorma AsciiDoc markup corresponding to the YAML
 given above, using JSON Path style definition lists instead of nested definition lists:
 
 [source,asciidoc]
-....
+----
 [[ISO/TC211]]
 [%bibitem]
 === {blank}
