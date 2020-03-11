@@ -3,8 +3,8 @@ description: The interoperable data model for citations
 # The above two are used by jekyll-seo-tag for things such as
 # `<title>` and `<meta>` tags, as well as elsewhere by the theme.
 
-url: https://relaton.com
-github_repo_url: https://github.com/metanorma/relaton.com
+url: https://www.relaton.com
+github_repo_url: https://github.com/relaton/relaton.com
 
 algolia_search:
   api_key: '31ca4bad475130bdaee582a0b9f40806'
@@ -22,27 +22,42 @@ relaton:
       label: ISO
       gem: relaton-iso
       sources:
-        - { url: "https://iso.org/", label: "ISO.org website" }
+        - { url: "https://www.iso.org/", label: "International Organization for Standardization" }
     - id: iec
       label: IEC
       gem: relaton-iec
       sources:
-        - { url: "https://iec.ch/", label: "IEC.ch website" }
-    - id: gb
-      label: GB (Chinese national standards)
-      gem: relaton-gb
+        - { url: "https://www.iec.ch/", label: "International Electrotechnical Commission" }
+    - id: itu
+      label: ITU
+      gem: relaton-itu
       sources:
-        - { label: "GB websites" }
+        - { url: "https://www.itu.int/", label: "International Telecommunication Union" }
     - id: ietf
       label: IETF (Internet Drafts, RFCs)
       gem: relaton-ietf
       sources:
-        - { url: "http://xml2rfc.tools.ietf.org/" }
+        - { url: "http://xml2rfc.tools.ietf.org/", label: "IETF XML2RFC" }
     - id: nist
       label: NIST
       gem: relaton-nist
       sources:
         - { url: "https://nist.gov", label: "NIST.gov website" }
+    - id: ogc
+      label: OGC
+      gem: relaton-ogc
+      sources:
+        - { url: "https://www.ogc.org/", label: "Open Geospatial Consortium" }
+    - id: iev
+      label: IEC Electropedia (IEV)
+      gem: relaton-iev
+      sources:
+        - { url: "https://www.electropedia.org/", label: "IEC Electropedia" }
+    - id: gb
+      label: GB (Chinese national standards)
+      gem: relaton-gb
+      sources:
+        - { label: "GB websites" }
 
 author: "Ribose Inc."
 
@@ -61,7 +76,7 @@ parent_hub:
 social:
   links:
     - https://twitter.com/RiboseUS
-    - https://github.com/riboseinc/relaton
+    - https://github.com/relaton/relaton
 
 legal:
   name: Ribose Group Inc.
