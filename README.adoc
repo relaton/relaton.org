@@ -1,6 +1,5 @@
 = Relaton Open Project Site
 
-
 == Introduction
 
 This is the Relaton project site,
@@ -23,7 +22,8 @@ and adding a new type is as easy as inserting an item into that YAML array.
 
 Array item format is described below:
 
-```yaml
+[source,yaml]
+----
 relaton:
   supported_bibliographies:
   - id: iso
@@ -39,7 +39,7 @@ relaton:
       - { url: "https://iso.org/", label: "ISO.org website" }
     # List of sources used by the gem for fetching bibliographies.
     # `url` and `label` are optional, but at least one of those must be present for each source
-```
+----
 
 
 == Development
