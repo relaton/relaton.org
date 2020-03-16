@@ -50,17 +50,16 @@ EXAMPLE:
 
 [source,asciidoc]
 ----
-[[iso123]]
+[[ISO-19115-1]]
 [%bibitem]
-== Rubber latex -- Sampling
+== {blank}
 docid::
   type::: ISO
-  id::: ISO 123
+  id::: 19115-1
 language::
   . en
   . fr
 ----
-
 
 AsciiBib also supports representing repeating elements
 by repeating the key for that entry. This will almost always be more
@@ -76,12 +75,12 @@ EXAMPLE:
 
 [source,asciidoc]
 ----
-[[iso123]]
+[[ISO-19115-1]]
 [%bibitem]
-== Rubber latex -- Sampling
+== {blank}
 docid::
   type::: ISO
-  id::: ISO 123
+  id::: 19115-1
 language:: en
 language:: fr
 ----
@@ -98,14 +97,14 @@ So the following is a very simple reference in Metanorma AsciiDoc:
 [source,asciidoc]
 ----
 [%bibitem]
-== Rubber latex -- Sampling
-id:: iso123
+== {blank}
+id:: iso19115-3
 docid::
   type::: ISO
-  id::: ISO 123
+  id::: 19115-3
 docid::
-  type::: ABC
-  id::: 32784
+  type::: ISO
+  id::: TC211
 type:: standard
 ----
 
@@ -124,13 +123,13 @@ content body:
 ----
 [%bibitem]
 == {blank}
-id:: iso123
+id:: iso19115-3
 title::
   language::: fr
   script::: Latn
   format::: text/plain
-  type::: alt
-  content::: Latex de caoutchouc -- Échantillonnage
+  type::: main
+  content::: Information géographique
 ----
 
 Note the use of `content` as a key to represent the contents under the `title` tag.
@@ -144,12 +143,12 @@ subclause, which takes priority:
 
 [source,asciidoc]
 ----
-[[iso123]]
+[[ISO-19115-3]]
 [%bibitem]
-== Rubber latex -- Sampling
+== {blank}
 docid::
   type::: ISO
-  id::: ISO 123
+  id::: 19115-3
 type:: standard
 ----
 
@@ -167,12 +166,12 @@ list with a list continuation, with the definition list depth reset back to one:
 
 [source,asciidoc]
 ----
-[[iso123]]
+[[ISO-19115-3]]
 [%bibitem]
-== Rubber latex -- Sampling
+== {blank}
 docid::
   type::: ISO
-  id::: ISO 123
+  id::: 19115-3
 type:: standard
 contributor::
   role::: author
@@ -231,9 +230,7 @@ docid::
   type::: ISO
   id::: 19115-3
 edition:: 1
-language::
-  . en
-  . fr
+language:: en
 script:: Latn
 version::
   revision_date::: 2019-04-01
@@ -243,16 +240,15 @@ biblionote::
   content:::
 +
 --
-Mark set a major league
-home run record in 1998.
+Paper format is not available for this standard. Only PDF.
 --
 docstatus::
-  stage::: stage
-  substage::: substage
+  stage::: 90
+  substage::: 90.92
   iteration::: iteration
 date::
   type::: issued
-  value::: 2014
+  value::: 2016
 date::
   type::: published
   from::: 2016-06
@@ -264,25 +260,21 @@ abstract::
   content:::
 +
 --
-ISO/TS 19115-3:2016 defines an integrated XML implementation of ...
+ISO/TS 19115-3:2016 defines an integrated XML implementation of ISO 19115‑1, ISO 19115‑2, and concepts from ISO/TS 19139 by defining the following artefacts ...
 --
-abstract::
-  content::: ...
-  language::: fr
-  script::: Latn
 copyright::
    owner:::
      name:::: International Organization for Standardization
      abbreviation:::: ISO
      url:::: www.iso.org
-   from::: 2014
+   from::: 2016
    to::: 2020
 link::
   type::: src
-  content::: https://www.iso.org/standard/53798.html
+  content::: https://www.iso.org/standard/32579.html
 link::
   type::: obp
-  content::: https://www.iso.org/obp/ui/#!iso:std:53798:en
+  content::: https://www.iso.org/obp/ui/#iso:std:iso:ts:19115:-3:ed-1:v1:en
 
 
 === Contributor
