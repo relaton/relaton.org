@@ -1,0 +1,121 @@
+---
+title: Relaton specification: Title
+description: Categories of title in Relaton
+---
+
+[[title]]
+== Title
+
+=== General
+
+* Source: ISO 690, Clause 4.2
+* Serialisation: `bibitem/title`
+
+[[alt-title]]
+=== Alternative titles
+
+A resource can have multiple titles, including alternative titles
+and subtitles. Titles are
+classified through `title@type`; the grammar is open-ended as to title types,
+but we recommend using "alternative", "subtitle",
+"unofficial" (i.e.
+a title that has become prevalent but has never been the official/intended title
+of the resource),
+"original" (including the source language title of a translated resource),
+and "main" (for the proper title or titles of the resource). If a title type is
+not given, it is assumed to be a main title.
+
+"Untitled" can be treated as a main title.
+
+====
+Lemuel Gulliver [pseud. of Jonathan Swift].
+_Travels into Several Remote Nations of the World. In Four Parts_
+[Gulliver's Travels]. London: Benj. Motte, 1798.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title type="original">Travels into Several Remote Nations of the World. In Four Parts</title>
+  <title type="unofficial">Gulliver's Travels</title>
+  <date type="published"><from>1726</from><to>1727</to></date>
+  <contributor>
+    <role type="author"/>
+    <person><name><completename>Lemuel Gulliver</completename></name></person>
+    <note>pseud. of Jonathan Swift</note>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <person><name><completename>Benj. Motte</completename></name></person>
+  </contributor>
+  <place>London</place>
+</bibitem>
+--
+====
+
+====
+Sun Tzu.
+_The Art of War_ [孫子兵法]. Translated by Samuel B. Griffith.
+Oxford: Oxford University Press, 1963.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title type="original" lang="zh" script="Hant">孫子兵法</title>
+  <title type="main">The Art of War</title>
+  <date type="published"><on>1963</on></date>
+  <contributor>
+    <role type="author"/>
+    <person><name><completename>Sun Tzu</completename></name></person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person><name><completename>Samuel B. Griffith</completename></name></person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization><name>Oxford University Press</name></organization>
+  </contributor>
+  <place>Oxford</place>
+</bibitem>
+--
+====
+
+====
+Sigur Rós.
+Untitled [Vaka]. In: _( )_ [compact disc]. Track 1.
+Mosfellsbær: Sundlaugin, 2002.
+
+[source,xml]
+--
+<bibitem type="music">
+  <title>Untitled</title>
+  <title type="unofficial">Vaka</title>
+  <date type="published"><on>2002</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <organization><name>Sigur Rós</name></organization>
+  </contributor>
+  <medium>
+    <form>compact disc</form>
+  </medium>
+  <relation type="includedIn">
+    <bibitem>
+      <title>( )</title>
+      <contributor>
+        <role type="author">composer</role>
+        <organization><name>Sigur Rós</name></organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization><name>Sundlaugin</name></organization>
+      </contributor>
+      <place>Mosfellsbær, Iceland</place>
+    </bibitem>
+  </relation>
+  <extent type="track">
+    <referenceFrom>1</referenceFrom>
+  </extent>
+</bibitem>
+--
+====
+

@@ -1,0 +1,169 @@
+---
+title: Relaton specification: Locations
+description: Access locations and online locations in Relaton
+---
+
+[[location]]
+== Location
+
+* Source: ISO 690, Clause 4.10, ISO 690, Clause 5.10
+* Serialisation: `bibitem/accessLocation`, `bibitem/uri`
+
+Unpublished items with a limited number of copies that are held at a repository
+should be referenced through `bibitem/accessLocation`,
+which gives the repository that the cited copy is held in, and the
+locator used by the repository.
+The repository and locator are not differentiated, and are treated as a single
+string. The `bibitem/accessLocation` element is also used for online locations
+of digital resources, where a single URL (`bibitem/uri`) is not sufficient, 
+and either a navigation path, or an in-document object identifier is used.
+
+An archival URI can be differentiated from an original URI for a resource,
+through using "archival" as the `uri/@type`. Alternatively, the archival copy
+and the original copy may be treated as related items (through an "instance"
+relation), although that is typically not necessary.
+
+Persistent identifiers and other identifiers expressed as actionable URIs
+should still be represented as `bibitem/docidentifier` rather than `bibitem/uri`,
+so long as they are managed in a distinct namespace. That applies to such
+identifiers as DOI, ARK, Handle, ISSN, etc.
+
+====
+P.Vind.Tand.25a = HGV P.Vindob. Tandem 25 a = Trismegistos 26540. At: P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.
+
+(Highly abbreviated format, using conventions familiar to papyrologists)
+
+[source,xml]
+--
+<bibitem type="booklet">
+  <title>[Untitled]</title>
+  <uri>http://papyri.info/hgv/26540/</uri>
+  <uri>http://aquila.zaw.uni-heidelberg.de/hgv/26540</uri>
+  <uri>https://www.trismegistos.org/text/26540</uri>
+  <docidentifier type="papyri.info">P.Vind.Tand.25a</docidentifier>
+  <docidentifier type="HGV">P.Vindob. Tandem 25 a</docidentifier>
+  <docidentifier type="Trismegistos">26540</docidentifier>
+  <accessLocation>P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.</accessLocation>
+</bibitem>
+--
+
+(More elaborated form)
+[source,xml]
+--
+<bibitem type="booklet">
+  <title>[Untitled]</title>
+  <uri>http://papyri.info/hgv/26540/</uri>
+  <uri>http://aquila.zaw.uni-heidelberg.de/hgv/26540</uri>
+  <uri>https://www.trismegistos.org/text/26540</uri>
+  <docidentifier type="papyri.info">P.Vind.Tand.25a</docidentifier>
+  <docidentifier type="HGV">P.Vindob. Tandem 25 a</docidentifier>
+  <docidentifier type="Trismegistos">26540</docidentifier>
+  <relation type="includedIn">
+    <bibItem>
+        <title>Fünfunddreißig Wiener Papyri (P. Vindob. Tandem)</title>
+        <date type="published">1976</date>
+        <contributor>
+          <role type="editor"/>
+          <person><name><completeName>Pieter Johannes Sijpesteijn</completeName></name></person>
+        </contributor>
+        <contributor>
+          <role type="editor"/>
+          <person><name><completeName>Klaas Anthony Worp</completeName></name></person>
+        </contributor>
+        <contributor>
+          <role type="publisher"/>
+          <organization><name>Terra</name></organization>
+        </contributor>
+        <series>
+          <title>Studia Amstelodamensia ad epigraphicam, ius antiquum et papyrologicam pertinentia</title>
+          <number>6</number>
+        </series>
+    </bibItem>
+  </relation>
+  <extent type="part">
+    <referenceFrom>25a</referenceFrom>
+  </extent>
+  <accessLocation>National Library of Vienna. P.Vindob.Gr. Inv. Nr. 12424 + 24718 + 28384.</accessLocation>
+</bibitem>
+--
+====
+
+// TODO: The document relation is actually "publishedIn", but I think that's overkill.
+
+
+====
+Australian Government Bureau of Meteorology. _Latest Weather Observations for Dumont D'Urville_. http://www.bom.gov.au. Path: Antarctica: Antarctic Observations: Latest observations: Dumont D'Urville: JavaScript Object Notation format (JSON) in row-major order. Viewed 2018-03-10.
+
+[source,xml]
+--
+<bibitem type="dataset">
+  <title>Latest Weather Observations for Dumont D'Urville</title>
+  <uri>http://www.bom.gov.au/fwo/IDT60803/IDT60803.89642.json</uri>
+  <date type="accessed"><on>2018-03-10</on></date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Australian Government</name>
+      <subdivision>Bureau of Meteorology</subdivision>
+    </organization>
+  </contributor>
+  <accessLocation>http://www.bom.gov.au. Path: Antarctica: Antarctic Observations: Latest observations: Dumont D'Urville: JavaScript Object Notation format (JSON) in row-major order</accessLocation>
+</bibitem>
+--
+====
+
+====
+British Library Web site February 1997 [online]. archive.org [distributor]. Available from: https://web.archive.org/web/19970218190613/http://www.bl.uk/. [archived 1997-02-18] [viewed 2019-02-28]. 
+
+[source,xml]
+--
+<bibitem type="website">
+  <title>British Library Web site February 1997</title>
+  <date type="copied">1997-02-18</date>
+  <date type="accessed">2019-02-28</date>
+  <uri type="original">http://www.bl.uk/</uri>
+  <uri type="archival">https://web.archive.org/web/19970218190613/http://www.bl.uk/</uri>
+  <contributor>
+    <role type="author"/>
+    <organization>
+      <name>British Library</name>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="distributor"/>
+    <organization>
+      <name>archive.org</name>
+    </organization>
+  </contributor>
+</bibitem>
+--
+
+[source,xml]
+--
+<bibitem type="website">
+  <title>British Library Web site February 1997</title>
+  <uri type="original">http://www.bl.uk/</uri>
+  <contributor>
+    <role type="author"/>
+    <organization>
+      <name>British Library</name>
+    </organization> 
+  </contributor>
+  <relation type="instance">
+    <bibitem type="website">
+      <uri type="archival">https://web.archive.org/web/19970218190613/http://www.bl.uk/</uri>
+      <date type="copied">1997-02-18</date>
+      <date type="accessed">2019-02-28</date>
+      <contributor>
+        <role type="distributor">web archive</role>
+        <organization>
+          <name>archive.org</name>
+        </organization>
+      </contributor>
+    </bibitem>
+  </relation>
+</bibitem>
+--
+
+====
+
