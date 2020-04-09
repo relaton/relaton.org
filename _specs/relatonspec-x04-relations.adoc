@@ -1,0 +1,412 @@
+---
+title: Relaton specification: Relations
+description: Categories of document relations in Relaton
+---
+
+[[docrelations]]
+== Document relations
+
+=== General
+
+* Source: ISO 690, Clause 4.3
+* Serialisation: `bibitem/relation`
+
+The model allows for various relations between bibliographic items, with one
+related item embedded within the other.
+
+=== Relation types
+
+`bibitem/relation/@type` gives the base class of the relation between two bibliographic items.
+
+The base class of relation types is taken from ISO 690, and represents
+generic bibliographical requirements, particularly inclusion in a host item (<<host-item>>:
+includedIn, includes) and translation (<<translation>>: translatedFrom, hasTranslation).
+The class has been expanded substantially to deal with the requirements of standards
+documents:
+
+Generic Relations:
+
+translatedFrom:: document A is a translation of document B
+hasTranslation:: document A has a translation as document B
+includedIn:: document A is included in document B, through a well-defined relation outlined in <<host-item>>, and with distinct metadata
+includes:: document A includes document B, through a well-defined relation outlined in <<host-item>>, and with distinct metadata
+hasPart:: document A includes document B, with no distinct metadata
+partOf:: document A is included in document B, with no distinct metadata
+complements:: document A is a complement or supplement of document B
+derivedFrom:: document A is derived from document B
+instance:: document A is an instance of document B (e.g. an edition, a format, a single copy)
+instanceOf:: document A has as an instance document B (e.g. an edition, a format, a single copy)
+hasDraft:: document A has as a draft document B
+draftOf:: document A is a draft of document B
+updates:: document A updates document B
+updatedBy:: document A is updated by document B
+related:: document A is related to document B in an otherwise unspecified fashion
+describes:: document A describes document B
+describedBy:: document A is described by document B
+
+Standards Relations:
+
+obsoletes:: document A supersedes document B, and renders it obsolete
+obsoletedBy:: document A is superseded by document B, and is rendered obsolete
+supersedes:: document A supersedes document B, but is not rendered obsolete
+supersededBy:: document A is superseded by document B, but is not rendered obsolete
+adoptedFrom:: document A is adopted by a standards organisation from document B by a different organisation
+identical:: document A is adopted from document B, without any change
+equivalent:: document A is adopted from document B, without any significant textual change
+nonequivalent:: document A is adopted from document B, and has been altered textually significantly
+merges:: document A results from a merger of earlier documents B1, B2, B3...
+splits:: document A is split off from earlier document B
+corrects:: document A updates document B, and the change does not affect the intended meaning
+correctedBy:: document A is updated by document B, and the change does not affect the intended meaning
+amends:: document A updates document B, and the change is a minor change to the intended meaning
+amendedBy:: document A is updated by document B, and the change is a minor change to the intended meaning
+revised:: document A updates document B, and the change is a major change to the intended meaning
+revisedBy:: document A is updated by document B, and the change is a major change to the intended meaning
+
+The foregoing list is a basic, parsimonious list of relations. Idiosyncratic refinements to the relation between
+two items can be expressed through `bibitem/relation/description`, with the understanding that the relation
+described in that element is a subset of the relation named in `bibitem/relation/@type`.
+
+=== Localities
+
+The relation between two bibliographic items may not apply to either the first ("source") item,
+or the second ("target") item, in their entirety. For that reason, the relation may also specify
+one more more localities in the target item (`localityStack`), and one or more localities in the
+source item (`sourceLocalityStack`), as constraining the relation. 
+
+For example, the following expresses that Chapter 3 of the first edition of _Telescopy_ has been superseded
+by Chapters 4 and 7 of the second edition.
+
+[source,xml]
+----
+<bibitem type="book">
+  <title>Telescopy</title>
+  <edition>1</edition>
+  <relation type="obsoletedBy">
+    <bibitem type="book">
+      <title>Telescopy</title>
+      <edition>2</edition>
+    </bibitem>
+    <sourceLocalityStack>
+      <sourceLocality type="chapter"><referenceFrom>3</referenceFrom></sourceLocality>
+    </sourceLocalityStack>
+    <LocalityStack>
+      <locality type="chapter"><referenceFrom>4</referenceFrom></locality>
+      <locality type="chapter"><referenceFrom>7</referenceFrom></locality>
+    </LocalityStack>
+  </relation>
+</bibitem>
+----
+
+
+[[host-item]]
+=== Host Item
+
+Of the bibliographic types identified in <<bibtype>>, "incollection",
+"inproceedings", and "inbook" are all inherently related to a host item. Other types
+also potentially involve
+relations with host items; for example, the relation between a record track and
+a record, or a broadcast segment and a broadcast show. The relation between host
+item and contained item is modelled through "includedIn".
+
+The relation between any two items optionally includes a locality element, which indicates
+which part of the first item is related to the second. (For example, which part
+of the first item is superseded by the second.) The locality in the
+relation element can be used with "includedIn" relations, to indicate the extent
+of the
+contained item within the host item; but for consistency, it is preferable to
+use the `extent` element in the contained item, which has the same meaning.
+
+The expected relations between host and contained items are as follows:
+
+|===
+|Host |Contained
+
+|book, booklet, manual, techreport|incollection (if has its own title—autonomous item), inbook (if it does not have its
+own title—e.g. numbered chapter, page span)
+|journal |article
+|proceedings, conference |inproceedings
+|thesis, standard, patent |inbook
+|map |map
+|electronic resource |electronic resource
+|broadcast |broadcast
+|music |music
+|graphic work|graphic work
+|film |film
+|video |video
+|===
+
+In general: text-based resources have components that can be considered a different kind of
+resource; components of non-textual resources are considered to be of the same
+type as their host.
+
+====
+Ramsey, J. K., & McGrew, W. C. (2005). Object play in great apes: Studies in nature and captivity.
+In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and humans_
+(pp. 89-112). New York, NY: Guilford Press.
+
+[source,xml]
+--
+<bibitem type="incollection">
+  <title>Object play in great apes: Studies in nature and captivity</title>
+  <date type="published"><on>2005</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Ramsey</surname>
+        <initials>J. K.</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>McGrew</surname>
+        <initials>W. C.</initials>
+      </name>
+    </person>
+  </contributor>
+  <relation type="includedIn">
+    <bibitem>
+      <title>The nature of play: Great apes and humans</title>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Pellegrini</surname>
+            <initials>A. D.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Smith</surname>
+            <initials>P. K.</initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>Guilford Press</name>
+        </organization>
+      </contributor>
+      <place>New York, NY</place>
+    </bibitem>
+  </relation>
+  <extent type="page">
+    <referenceFrom>89</referenceFrom>
+    <referenceTo>112</referenceTo>
+  </extent>
+</bibitem>
+--
+====
+
+====
+Sigur Rós.
+Untitled [Vaka]. In: _( )_ [compact disc]. Track 1.
+Mosfellsbær: Sundlaugin, 2002.
+
+[source,xml]
+--
+<bibitem type="music">
+  <title>Untitled</title>
+  <title type="unofficial">Vaka</title>
+  <date type="published"><on>2002</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <organization><name>Sigur Rós</name></organization>
+  </contributor>
+  <medium>
+    <form>compact disc</form>
+  </medium>
+  <relation type="includedIn">
+    <bibitem>
+      <title>( )</title>
+      <contributor>
+        <role type="author">composer</role>
+        <organization><name>Sigur Rós</name></organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization><name>Sundlaugin</name></organization>
+      </contributor>
+      <place>Mosfellsbær, Iceland</place>
+    </bibitem>
+  </relation>
+  <extent type="track">
+    <referenceFrom>1</referenceFrom>
+  </extent>
+</bibitem>
+--
+====
+
+[[translation]]
+=== Translation
+
+Translations are items derived from an item in a different language. Typically
+in bibliographies, the details of the source item are not provided for a
+translation, outside of the original author, and possibly the date of
+publication and the source language title of the original title. If the
+information about the source item is limited to these, no relation need be
+invoked in the title: the source title can be modelled as an original title
+variant (<<alt-title>>); the author differentiated from the translator as
+creators (<<creator-selection>>); and the date of authorship differentiated
+from the date of translation (<<date>>: `date[@type = "created"]` vs
+`date[@type = "adapted"]`).
+
+However, if any further details of the source item need to be provided (e.g.
+source language: <<iso690,clause 4.11>>), they should be modelled through an
+overt relationship between the source item and the translation.
+
+====
+PRUS, Bolesław. 1912 [1895–1896]. _La Faraono_ [Faraon]. Translated
+by Kabe (pseud. of Kazimierz BEIN). 2nd revised edition.
+Paris: Hachette.
+
+Single work representation:
+[source,xml]
+--
+<bibitem type="book">
+  <title lang="eo">La Faraono</title>
+  <title type="original" lang="pl">Faraon</title>
+  <date type="created"><from>1895</from><to>1896</to></date>
+  <date type="adapted"><on>1907</on></date>
+  <date type="published"><on>1912</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Prus</surname>
+        <forename>Bolesław</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <completename>Kabe</completename>
+        <note>pseud. of Kazimierz Bein</note>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Hachette</name>
+    </organization>
+  </contributor>
+  <edition>2nd revised edition</edition>
+  <language>eo</language>
+  <place>Paris</place>
+</bibitem>
+
+Related work representation:
+[source,xml]
+--
+<bibitem type="book">
+  <title lang="eo">La Faraono</title>
+  <date type="adapted"><on>1907</on></date>
+  <date type="published"><on>1912</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Prus</surname>
+        <forename>Bolesław</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <completename>Kabe</completename>
+        <note>pseud. of Kazimierz Bein</note>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Hachette</name>
+    </organization>
+  </contributor>
+  <edition>2nd revised edition</edition>
+  <language>eo</language>
+  <relation type="translatedFrom">
+    <title type="original" lang="pl">Faraon</title>
+    <date type="created"><from>1894</from><to>1895</to></date>
+    <date type="published"><from>1895</from><to>1896</to></date>
+    <contributor>
+     <role type="author"/>
+     <person>
+       <name>
+         <surname>Prus</surname>
+         <forename>Bolesław</forename>
+       </name>
+     </person>
+    </contributor>
+    <contributor>
+      <role type="publisher"/>
+      <organization>
+        <name>Tygodnik Ilustrowany</name>
+      </organization>
+    </contributor>
+    <language>pl</language>
+    <place>Warsaw</place>
+  </relation>
+  <place>Paris</place>
+</bibitem>
+--
+====
+
+====
+Demosthenes. _Speeches 50-59_. Translated from the Greek by
+Victor BERS. Austin: University of Texas Press, 2003.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Speeches 50-59</title>
+  <date type="published"><on>2003</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename>Demosthenes</completename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <surname>Bers</surname>
+        <initials>Victor</initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>University of Texas Press</name>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <relation type="translatedFrom">
+    <bibitem>
+      <title>Speeches 50-59</title>
+      <language>grc</language>
+    </bibitem>
+  </relation>
+  <place>Austin</place>
+</bibitem>
+--
+====
+

@@ -1,0 +1,92 @@
+---
+title: Relaton specification: Citation Model
+description: Citation model for Relaton
+---
+
+== Citation Model
+
+A citation in Relaton consists of the following components:
+
+* An identifier `bibitemid` for the cited source. This identifier corresponds to the identifier (`id`) of
+a Relaton record describing the cited source.
+* An optional date, in ISO 8601 format. This date is not intended for disambiguation, since `bibitemid`
+already identifies the source unambiguously; it is added for ease of processing, in case author-date
+citations cannot straightforwardly extract the date from the bibliographic source.
+* A specification of the locality or localities in the source being cited.
+
+A locality is a hierarchical specification of a location in a source. It is specified as a sequence
+of named components of the source, each hierarchically refining its precedessor, from greater to smaller:
+
+* `type` is the component of the source being specified; in the Relaton grammar, there is a sequence of
+predefined types, and a user-specified type can be added with the prefix `locality:`. The predefined types are:
+
+** whole (i.e. entire document)
+** section
+** clause
+** part
+** paragraph
+** chapter
+** page
+** table
+** annex
+** figure
+** note
+** list
+** example
+** volume
+** issue
+** time
+
+* `referenceFrom` specifies the instance of the source component being cited; or, if a range of components is being
+cited, the beginning of the range.
+* `referenceTo` specified the end of the range, if a range of components is being cited. A range is only expected as the last (most granular) element in a hierarchical sequence of components.
+
+So for example, the hierarchical specification "Part IV, Chapter 3, Paragraphs 22-24" is cited as:
+
+[source,xml]
+----
+<locality type="part"><referenceFrom>IV</referenceFrom></locality>
+<locality type="chapter"><referenceFrom>3</referenceFrom></locality>
+<locality type="paragraph">
+  <referenceFrom>22</referenceFrom>
+  <referenceTo>22</referenceTo>
+</locality>
+----
+
+NOTE: if the type of the component is `whole`, no `referenceFrom` or `referenceTo` is given.
+
+=== Discontinuous citations
+
+If two localities occurs in sequence, and have the same type, then they are interpreted as being a discontinuous repference. So "pp. 32, 57, 99" can be specified as:
+
+[source,xml]
+----
+<locality type="page"><referenceFrom>32</referenceFrom></locality>
+<locality type="page"><referenceFrom>57</referenceFrom></locality>
+<locality type="page"><referenceFrom>99</referenceFrom></locality>
+----
+
+Alternatively, a sequence of discontinuous references can be specified through the `localityStack` element.
+Each `localityStack` consists of a hierarchical sequence of `locality` elements, as above; a sequence of
+`locality` elements can thus be treated as a single `localityStack`, with the `localityStack` wrapper left out.
+
+So for example, the hierarchical specification "Part IV, Chapter 3, Paragraphs 22-24; Part VII, Chapter 2, Paragraph 130" is cited as:
+
+[source,xml]
+----
+<localityStack>
+  <locality type="part"><referenceFrom>IV</referenceFrom></locality>
+  <locality type="chapter"><referenceFrom>3</referenceFrom></locality>
+  <locality type="paragraph">
+    <referenceFrom>22</referenceFrom>
+    <referenceTo>22</referenceTo>
+  </locality>
+</localityStack>
+<localityStack>
+  <locality type="part"><referenceFrom>VII</referenceFrom></locality>
+  <locality type="chapter"><referenceFrom>2</referenceFrom></locality>
+  <locality type="chapter"><referenceFrom>130</referenceFrom></locality>
+</localityStack>
+----
+
+
