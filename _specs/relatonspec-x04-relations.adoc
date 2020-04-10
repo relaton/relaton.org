@@ -48,24 +48,33 @@ Standards Relations:
 
 obsoletes:: document A supersedes document B, and renders it obsolete
 obsoletedBy:: document A is superseded by document B, and is rendered obsolete
-supersedes:: document A supersedes document B, but is not rendered obsolete
-supersededBy:: document A is superseded by document B, but is not rendered obsolete
-adoptedFrom:: document A is adopted by a standards organisation from document B by a different organisation
-identical:: document A is adopted from document B, without any change
-equivalent:: document A is adopted from document B, without any significant textual change
-nonequivalent:: document A is adopted from document B, and has been altered textually significantly
 merges:: document A results from a merger of earlier documents B1, B2, B3...
 splits:: document A is split off from earlier document B
-corrects:: document A updates document B, and the change does not affect the intended meaning
-correctedBy:: document A is updated by document B, and the change does not affect the intended meaning
-amends:: document A updates document B, and the change is a minor change to the intended meaning
-amendedBy:: document A is updated by document B, and the change is a minor change to the intended meaning
-revised:: document A updates document B, and the change is a major change to the intended meaning
-revisedBy:: document A is updated by document B, and the change is a major change to the intended meaning
 
 The foregoing list is a basic, parsimonious list of relations. Idiosyncratic refinements to the relation between
 two items can be expressed through `bibitem/relation/description`, with the understanding that the relation
 described in that element is a subset of the relation named in `bibitem/relation/@type`.
+
+The following relations are treated as refinements:
+
+* obsoletes/obsoletedBy
+
+supersedes::: document A supersedes document B, but is not rendered obsolete
+supersededBy::: document A is superseded by document B, but is not rendered obsolete
+corrects::: document A updates document B, and the change does not affect the intended meaning
+correctedBy::: document A is updated by document B, and the change does not affect the intended meaning
+amends::: document A updates document B, and the change is a minor change to the intended meaning
+amendedBy::: document A is updated by document B, and the change is a minor change to the intended meaning
+revises::: document A updates document B, and the change is a major change to the intended meaning
+revisedBy::: document A is updated by document B, and the change is a major change to the intended meaning
+
+* derivedFrom
+
+adoptedFrom::: document A is adopted by a standards organisation from document B by a different organisation
+identical::: document A is adopted from document B, without any change
+equivalent::: document A is adopted from document B, without any significant textual change
+nonequivalent::: document A is adopted from document B, and has been altered textually significantly
+
 
 === Localities
 
