@@ -1,5 +1,5 @@
 ---
-title: Relaton specification: Production
+title: Relaton specification -- Production
 description: Categories of place and date of publication and publisher in Relaton
 ---
 

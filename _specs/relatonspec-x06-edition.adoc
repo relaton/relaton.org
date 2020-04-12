@@ -1,5 +1,5 @@
 ---
-title: Relaton specification: Edition
+title: Relaton specification -- Edition
 description: Categories of editions in Relaton
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Relaton specification: Numeration and Pagination
+title: Relaton specification -- Numeration and Pagination
 description: Numeration and pagination in Relaton
 ---
 

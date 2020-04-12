@@ -1,5 +1,5 @@
 ---
-title: Relaton specification: Series
+title: Relaton specification -- Series
 description: Series in Relaton
 ---
 

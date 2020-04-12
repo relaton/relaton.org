@@ -1,5 +1,5 @@
 ---
-title: Relaton specification: Citation Model
+title: Relaton specification -- Citation Model
 description: Citation model for Relaton
 ---
 
