@@ -1,5 +1,5 @@
 ---
-title: Relaton specification: Relations
+title: Relaton specification -- Relations
 description: Categories of document relations in Relaton
 ---
 
@@ -24,7 +24,7 @@ includedIn, includes) and translation (<<translation>>: translatedFrom, hasTrans
 The class has been expanded substantially to deal with the requirements of standards
 documents:
 
-Generic Relations:
+Generic relations:
 
 translatedFrom:: document A is a translation of document B
 hasTranslation:: document A has a translation as document B
@@ -44,10 +44,10 @@ related:: document A is related to document B in an otherwise unspecified fashio
 describes:: document A describes document B
 describedBy:: document A is described by document B
 
-Standards Relations:
+Standardization relations:
 
-obsoletes:: document A supersedes document B, and renders it obsolete
-obsoletedBy:: document A is superseded by document B, and is rendered obsolete
+obsoletes:: document A renders document B obsolete
+obsoletedBy:: document A is obsoleted by document B
 merges:: document A results from a merger of earlier documents B1, B2, B3...
 splits:: document A is split off from earlier document B
 
@@ -57,10 +57,10 @@ described in that element is a subset of the relation named in `bibitem/relation
 
 The following relations are treated as refinements:
 
-* obsoletes/obsoletedBy
+* obsoletes/obsoletedBy:
 
-supersedes::: document A supersedes document B, but is not rendered obsolete
-supersededBy::: document A is superseded by document B, but is not rendered obsolete
+supersedes::: document A supersedes document B
+supersededBy::: document A is superseded by document B
 corrects::: document A updates document B, and the change does not affect the intended meaning
 correctedBy::: document A is updated by document B, and the change does not affect the intended meaning
 amends::: document A updates document B, and the change is a minor change to the intended meaning
@@ -68,7 +68,7 @@ amendedBy::: document A is updated by document B, and the change is a minor chan
 revises::: document A updates document B, and the change is a major change to the intended meaning
 revisedBy::: document A is updated by document B, and the change is a major change to the intended meaning
 
-* derivedFrom
+* derivedFrom:
 
 adoptedFrom::: document A is adopted by a standards organisation from document B by a different organisation
 identical::: document A is adopted from document B, without any change
@@ -81,7 +81,7 @@ nonequivalent::: document A is adopted from document B, and has been altered tex
 The relation between two bibliographic items may not apply to either the first ("source") item,
 or the second ("target") item, in their entirety. For that reason, the relation may also specify
 one more more localities in the target item (`localityStack`), and one or more localities in the
-source item (`sourceLocalityStack`), as constraining the relation. 
+source item (`sourceLocalityStack`), as constraining the relation.
 
 For example, the following expresses that Chapter 3 of the first edition of _Telescopy_ has been superseded
 by Chapters 4 and 7 of the second edition.
@@ -131,18 +131,41 @@ The expected relations between host and contained items are as follows:
 |===
 |Host |Contained
 
-|book, booklet, manual, techreport|incollection (if has its own title—autonomous item), inbook (if it does not have its
-own title—e.g. numbered chapter, page span)
-|journal |article
-|proceedings, conference |inproceedings
-|thesis, standard, patent |inbook
-|map |map
-|electronic resource |electronic resource
-|broadcast |broadcast
-|music |music
-|graphic work|graphic work
-|film |film
-|video |video
+|book, booklet, manual, techreport
+|
+incollection (if has its own title—autonomous item);
+inbook (if it does not have its own title, e.g. numbered chapter, page span)
+
+|journal
+|article
+
+|proceedings, conference
+|inproceedings
+
+|thesis, standard, patent
+|inbook
+
+|map
+|map
+
+|electronic resource
+|electronic resource
+
+|broadcast
+|broadcast
+
+|music
+|music
+
+|graphic work
+|graphic work
+
+|film
+|film
+
+|video
+|video
+
 |===
 
 In general: text-based resources have components that can be considered a different kind of

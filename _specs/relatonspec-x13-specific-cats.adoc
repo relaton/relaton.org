@@ -1,5 +1,5 @@
 ---
-title: Relaton specification: Specific categories
+title: Relaton specification -- Specific categories
 description: Conventions specific to bibliographis categories in Relaton
 ---
 

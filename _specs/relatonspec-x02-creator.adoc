@@ -1,5 +1,5 @@
 ---
-title: Relaton specification: Creator
+title: Relaton specification -- Creator
 description: Categories of creator in Relaton
 ---
 

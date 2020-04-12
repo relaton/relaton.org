@@ -1,5 +1,5 @@
 ---
-title: Relaton specification: Identifiers
+title: Relaton specification -- Identifiers
 description: Identifiers in Relaton
 ---
 
