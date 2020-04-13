@@ -57,7 +57,7 @@ Mosfellsbær: Sundlaugin, 2002.
   <medium>
     <form>compact disc</form>
   </medium>
-  <relation type="includedIn">
+  <relation type="partOf">
     <bibitem>
       <title>( )</title>
       <contributor>
