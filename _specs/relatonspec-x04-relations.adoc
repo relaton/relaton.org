@@ -80,7 +80,7 @@ FRBR uses Revision to refer to the updating of the content of a source Expressio
 Revision includes not only an author updating the content of their own work, but a third party updating that content, often after the author has deceased (indicated bibliographically as "Revised by") It also includes a scholar reconstructing the author's text on the basis of available evidence, including previous editions where available (indicated bibliographically as "Edited by"; hence we can distinguish Cox's, Edmond's, Lobel & Page's and Voigt's editions of Sappho, all done in the 20th century). Annotation is most commonly seen in the contxt of such scholarly editions, so `annotationOf` should be reserved for cases where the Expression does not provide its own version of the textual content of the Work it is annotating. This is somewhat rare, and FRBR does not model annotations as distinct from revisions.
 
 draftOf:: document B is an unpublished revision of document A, which precedes its publication; it may also be the first, unpublished expression of document A. Document A may be a Work or an Expression (e.g. a draft may be specific to an edition or translation) (_hasDraft_)
-hasEdition:: document B is a published revision of document A, or the first published Expression of document A. A is a Work, or else A is an Expression with the same language, instrumentation, and substantially the same extent as B (i.e. translations, arrangements, abridgements, annotations can have editions; editions cannot have editions). (_editionOf_)
+editionOf:: document B is a published revision of document A, or the first published Expression of document A. A is a Work, or else A is an Expression with the same language, instrumentation, and substantially the same extent as B (i.e. translations, arrangements, abridgements, annotations can have editions; editions cannot have editions). (_hasEdition_)
 updates::: document B is an edition of the same Work as document A, and is subsequent to document A; A is an Expression (_updatedBy_)
 
 NOTE: Documents often have notions of corrections and other minor adjustments to content, which are not modelled bibliographically as distinct editions. This distinction or lack of distinction is captured in Relaton through the `edition` element; the `hasEdition` relation still applies to such minor variants of the text, whether they are considered distinct editions or not.
@@ -90,7 +90,7 @@ NOTE: Documents often have notions of corrections and other minor adjustments to
 In the following, the two related items belong to distinct works, but the creation of B is determined in some way by A.
 
 derivedFrom:: document A is derived from document B; includes classes not otherwise specified, such as parodies (_derives_)
-describedBy::: document A is described by document B (_describes_)
+describes::: document A is a description of document B (_describedBy_)
 hasSuccessor::: document A is succeeded by document B in a sequence; includes sequels, and continuations of journals (_successorOf_)
 adaptedFrom::: document A is a reworking of document B to make it suitable for a different audience (FRBR Adaptation: includes paraphrase, free translation, musical variations) or medium (FRBR Transformation: includes dramatisation, novelisation, versification, screenplay) (_hasAdaptation_)
 adoptedFrom::: document A is adopted by a standards organisation from document B by a different organisation. (These are potentially the same content, but they have institutional authorship and application; this kind of appropriation of text is not characteristic of literary works.) (_adoptedAs_)
@@ -110,6 +110,7 @@ ____
 related:: document A is related to document B in an otherwise unspecified fashion
 complements:: document A is a complement or supplement of document B (e.g. concordance, teacher's guide, gloss, addendum, appendix, libretto, incidental music) (_complementOf_)
 supersedes::: document A supersedes document B, being applicable or valid in more or newer domains than document B (the two documents are not necessarily versions of the same Work) (_supersededBy_)
+cites:: document A cites document B (_isCitedIn_)
 
 The following relations are treated as refinements, and are expressed in `bibitem/relation/description`. 
 The refinements a relation type can undergo are open-ended, and this list may be expanded in the future to encourage
@@ -135,6 +136,47 @@ nonequivalent::: document A is adopted from document B, and has been altered tex
 
 facsimile::: document A is a reproduction of two-dimensional document B (e.g. book, manuscript), which prioritises visual accuracy
 replica::: document A is a reproduction of three-dimensional or pictorial document B (e.g. sculpture, oil painting), which prioritises visual and tactile accuracy
+
+==== Comparison with other bibliographic relations lists
+
+The Relaton relations are compared with those in FRBR, http://id.loc.gov/ontologies/bibframe-category.html[BIBFRAME], https://www.dublincore.org/specifications/bibo/bibo/bibo.rdf.xml[BIBO],
+and https://www.dublincore.org/specifications/dublin-core/dcmi-terms/[Dublin Core]. (The directionality of corresponding relations is ignored.)
+
+|===
+|Relaton |FRBR |BIBFRAME |DC
+
+|includes         |hasPart (independent)                                     |partOf, hasSeries, hasSubseries                   |                                                                           |hasPart
+|hasPart          |hasPart (dependent)                                       |partOf                                            |                                                                           |hasPart
+|splits           |is a reconfiguration of (Item only)                       |splitInto, separatedFrom
+|merges           |is a reconfiguration of (Item only)                       |mergerOf, absorbed
+|instanceOf       |is exemplified by, is embodied in, is realised through
+|exemplarOf       |is exemplified by                                         |itemOf
+|manifestationOf  |is embodied in                                            |instanceOf                                        |                                                                           |hasFormat
+|reproductionOf   |is a reproduction of, is an alternate to                  |reproductionOf                                    |reproducedIn
+|reprintOf        |is a reproduction of
+|expressionOf     |is realised through                                       |expressionOf                                      |                                                                           |hasVersion
+|expressionOf (as catchall)  |                                               |                                                  |transcriptOf
+|translatedFrom   |is a translation of                                       |translationOf                                     |translationOf
+|arrangementOf    |is an arrangement of
+|abridgementOf    |is an abridgement of
+|annotationOf
+|draftOf          |is a revision of
+|editionOf        |is a revision of
+|updates          |is a revision of
+|derivedFrom      |                                                          |derivativeOf, originalVersion                     |                                                                           |source
+|derivedFrom (as catchall) |is a summary of, is an imitation of              |                                                  
+|describedBy      |                                                          |                                                  |annotates                                                                  |description, abstract, tableOfContents
+|hasSuccessor     |is a successor to                                         |precededBy, continues, continuesInPart
+|adaptedFrom      |is an adaptation of, is a transformation of
+|adoptedFrom
+|reviewOf         |                                                          |                                                  |reviewOf
+|commentaryOf
+|related          |                                                          |relatedTo                                         |                                                                           |relation
+|related (as catchall)          |                                            |dataSource                                        |                                                                           |conformsTo
+|complements      |complements, supplements                                  |accompanies, supplementTo, indexOf, findingAidOf  |                                                                           |requires
+|supersedes       |                                                          |replacementOf                                     |affirmedBy (legal), reversedBy (legal), subsequentLegalDecision (legal)    |replaces
+|cites                                                                       |references                                        |cites                                                                      |references
+|===
 
 === Localities
 
