@@ -149,10 +149,10 @@ and https://www.dublincore.org/specifications/dublin-core/dcmi-terms/[Dublin Cor
 |hasPart          |hasPart (dependent)                                       |partOf                                            |                                                                           |hasPart
 |splits           |is a reconfiguration of (Item only)                       |*splitInto, separatedFrom* | |
 |merges           |is a reconfiguration of (Item only)                       |*mergerOf, absorbed* | |
-|instanceOf       |is exemplified by, is embodied in, is realised through | | | 
+|instanceOf       | | |
 |exemplarOf       |is exemplified by                                         |itemOf | | 
 |manifestationOf  |is embodied in                                            |instanceOf                                        |                                                                           |hasFormat
-|reproductionOf   |is a reproduction of, is an alternate to                  |reproductionOf                                    |reproducedIn |
+|reproductionOf   |*is a reproduction of, is an alternate to*                |reproductionOf                                    |reproducedIn |
 |reprintOf        |is a reproduction of | | | 
 |expressionOf     |is realised through                                       |expressionOf                                      |                                                                           |hasVersion
 |expressionOf (as catchall)  |                                               |                                                  |*transcriptOf* |
