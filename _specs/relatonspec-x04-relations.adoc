@@ -94,7 +94,6 @@ describedBy::: document A is described by document B (_describes_)
 hasSuccessor::: document A is succeeded by document B in a sequence; includes sequels, and continuations of journals (_successorOf_)
 adaptedFrom::: document A is a reworking of document B to make it suitable for a different audience (FRBR Adaptation: includes paraphrase, free translation, musical variations) or medium (FRBR Transformation: includes dramatisation, novelisation, versification, screenplay) (_hasAdaptation_)
 adoptedFrom::: document A is adopted by a standards organisation from document B by a different organisation. (These are potentially the same content, but they have institutional authorship and application; this kind of appropriation of text is not characteristic of literary works.) (_adoptedAs_)
-a
 reviewOf::: document A is a review of document B (_hasReview_)
 commentaryOf::: document A is a commentary on document B, but does not include substantial text from document B, unlike an annotation. (This distinction is a judgement call; commentaries and annotations are not discussed in FRBR, but see immediately below) (_hasCommentary_)
 
