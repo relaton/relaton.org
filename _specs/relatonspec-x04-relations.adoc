@@ -143,7 +143,7 @@ The Relaton relations are compared with those in FRBR, http://id.loc.gov/ontolog
 and https://www.dublincore.org/specifications/dublin-core/dcmi-terms/[Dublin Core]. (The directionality of corresponding relations is ignored.)
 
 |===
-|Relaton |FRBR |BIBFRAME |DC
+|Relaton |FRBR |BIBFRAME |BIBO |DC
 
 |includes         |hasPart (independent)                                     |partOf, hasSeries, hasSubseries                   |                                                                           |hasPart
 |hasPart          |hasPart (dependent)                                       |partOf                                            |                                                                           |hasPart
