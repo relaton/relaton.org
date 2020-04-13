@@ -366,7 +366,7 @@ from the date of translation (<<date>>: `date[@type = "created"]` vs
 `date[@type = "adapted"]`).
 
 However, if any further details of the source item need to be provided (e.g.
-source language: <<iso690,clause 4.11>>), they should be modelled through an
+source language: ISO 690, Clause 4.11), they should be modelled through an
 overt relationship between the source item and the translation.
 
 ====
