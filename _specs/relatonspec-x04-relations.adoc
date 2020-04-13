@@ -70,8 +70,8 @@ reprintOf:::: document B is a reproduction of document A, involving a new publis
 expressionOf:: document B is an Expression of document A (_hasExpression_)
 translatedFrom::: document B is an Expression of document A in a different language than the source Expression of A (translation). This includes dubbed and subtitled versions of a film. (_hasTranslation_)
 arrangementOf::: document B is an Expression of musical work A for different instruments or voices than the source Expression of A (arrangement). This includes adding parts or an accompaniment (_hasArrangement_)
-abridgementOf:: document B is an Expression of document A that is significantly shortened in extent relative to the source Expression of A (abridgement) (_hasAbridgement_)
-annotationOf:: document B is an Expression of document A that incorporates added explanatory notes not present in the source Expression of A (annotation). The annotation still substantially includes the original text of document A (_hasAnnotation_)
+abridgementOf::: document B is an Expression of document A that is significantly shortened in extent relative to the source Expression of A (abridgement) (_hasAbridgement_)
+annotationOf::: document B is an Expression of document A that incorporates added explanatory notes not present in the source Expression of A (annotation). The annotation still substantially includes the original text of document A (_hasAnnotation_)
 
 ===== Revision relations
 
