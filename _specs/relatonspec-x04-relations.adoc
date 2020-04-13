@@ -175,7 +175,7 @@ and https://www.dublincore.org/specifications/dublin-core/dcmi-terms/[Dublin Cor
 |related (as catchall)          |                                            |*dataSource*                                      |                                                                           |*conformsTo*
 |complements      |*complements, supplements*                                |*accompanies, supplementTo, indexOf, findingAidOf*   |                                                                        |requires
 |supersedes       |                                                          |replacementOf                                     |*affirmedBy (legal), reversedBy (legal), subsequentLegalDecision (legal)*  |replaces
-|cites                                                                       |references                                        |cites                                                                      |references
+|cites            |                                                           |references                                        |cites                                                                      |references
 |===
 
 === Localities
