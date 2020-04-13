@@ -411,6 +411,7 @@ Single work representation:
   <language>eo</language>
   <place>Paris</place>
 </bibitem>
+--
 
 Related work representation:
 [source,xml]
