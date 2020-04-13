@@ -147,30 +147,30 @@ and https://www.dublincore.org/specifications/dublin-core/dcmi-terms/[Dublin Cor
 
 |includes         |hasPart (independent)                                     |partOf, hasSeries, hasSubseries                   |                                                                           |hasPart
 |hasPart          |hasPart (dependent)                                       |partOf                                            |                                                                           |hasPart
-|splits           |is a reconfiguration of (Item only)                       |splitInto, separatedFrom
-|merges           |is a reconfiguration of (Item only)                       |mergerOf, absorbed
-|instanceOf       |is exemplified by, is embodied in, is realised through
-|exemplarOf       |is exemplified by                                         |itemOf
+|splits           |is a reconfiguration of (Item only)                       |splitInto, separatedFrom | |
+|merges           |is a reconfiguration of (Item only)                       |mergerOf, absorbed | |
+|instanceOf       |is exemplified by, is embodied in, is realised through | | | 
+|exemplarOf       |is exemplified by                                         |itemOf | | 
 |manifestationOf  |is embodied in                                            |instanceOf                                        |                                                                           |hasFormat
 |reproductionOf   |is a reproduction of, is an alternate to                  |reproductionOf                                    |reproducedIn
-|reprintOf        |is a reproduction of
+|reprintOf        |is a reproduction of | | | 
 |expressionOf     |is realised through                                       |expressionOf                                      |                                                                           |hasVersion
-|expressionOf (as catchall)  |                                               |                                                  |transcriptOf
-|translatedFrom   |is a translation of                                       |translationOf                                     |translationOf
-|arrangementOf    |is an arrangement of
-|abridgementOf    |is an abridgement of
-|annotationOf
-|draftOf          |is a revision of
-|editionOf        |is a revision of
-|updates          |is a revision of
+|expressionOf (as catchall)  |                                               |                                                  |transcriptOf |
+|translatedFrom   |is a translation of                                       |translationOf                                     |translationOf |
+|arrangementOf    |is an arrangement of | | |
+|abridgementOf    |is an abridgement of | |  |
+|annotationOf | | |  |
+|draftOf          |is a revision of | |  |
+|editionOf        |is a revision of | |  |
+|updates          |is a revision of | |  |
 |derivedFrom      |                                                          |derivativeOf, originalVersion                     |                                                                           |source
-|derivedFrom (as catchall) |is a summary of, is an imitation of              |                                                  
+|derivedFrom (as catchall) |is a summary of, is an imitation of              |                                                  | |
 |describedBy      |                                                          |                                                  |annotates                                                                  |description, abstract, tableOfContents
-|hasSuccessor     |is a successor to                                         |precededBy, continues, continuesInPart
-|adaptedFrom      |is an adaptation of, is a transformation of
-|adoptedFrom
-|reviewOf         |                                                          |                                                  |reviewOf
-|commentaryOf
+|hasSuccessor     |is a successor to                                         |precededBy, continues, continuesInPart | | 
+|adaptedFrom      |is an adaptation of, is a transformation of | | |
+|adoptedFrom | | | |
+|reviewOf         |                                                          |                                                  |reviewOf | 
+|commentaryOf | | |  |
 |related          |                                                          |relatedTo                                         |                                                                           |relation
 |related (as catchall)          |                                            |dataSource                                        |                                                                           |conformsTo
 |complements      |complements, supplements                                  |accompanies, supplementTo, indexOf, findingAidOf  |                                                                           |requires
