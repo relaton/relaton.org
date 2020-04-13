@@ -134,7 +134,7 @@ nonequivalent::: document A is adopted from document B, and has been altered tex
 * reproductionOf/hasReproduction
 
 facsimile::: document A is a reproduction of two-dimensional document B (e.g. book, manuscript), which prioritises visual accuracy
-replica::: document A is a reproduction of three-dimensional or pictorialdocument B (e.g. sculpture, oil painting), which prioritises visual and tactile accuracy
+replica::: document A is a reproduction of three-dimensional or pictorial document B (e.g. sculpture, oil painting), which prioritises visual and tactile accuracy
 
 === Localities
 
