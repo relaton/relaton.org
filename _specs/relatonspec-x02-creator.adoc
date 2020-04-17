@@ -264,7 +264,7 @@ observed; e.g. "James CLARK, John COWAN, MURATA Makoto".
 If there are multiple contributors named in a role, all contributors are
 expected to be represented in the bibliographic entry.
 This reflects practice in electronic bibliographic tools, and renderers
-may choose to truncate contributors with "et al." beyond a certain cuttoff point..
+may choose to truncate contributors with "et al." beyond a certain cuttoff point.
 If this information is not available, a dummy contributor can be
 named with "et al." as their `completename`, but this is not preferred.
 
