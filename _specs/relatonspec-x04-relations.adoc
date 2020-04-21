@@ -90,6 +90,7 @@ In the following, the two related items belong to distinct works, but the creati
 
 derivedFrom:: document A is derived from document B; includes classes not otherwise specified, such as parodies (_derives_)
 describes::: document A is a description of document B (_describedBy_)
+catalogues::: document A is a catalogue including a description of document B (_cataloguedBy_)
 hasSuccessor::: document A is succeeded by document B in a sequence; includes sequels, and continuations of journals (_successorOf_)
 adaptedFrom::: document A is a reworking of document B to make it suitable for a different audience (FRBR Adaptation: includes paraphrase, free translation, musical variations) or medium (FRBR Transformation: includes dramatisation, novelisation, versification, screenplay) (_hasAdaptation_)
 adoptedFrom::: document A is adopted by a standards organisation from document B by a different organisation. (These are potentially the same content, but they have institutional authorship and application; this kind of appropriation of text is not characteristic of literary works.) (_adoptedAs_)
@@ -108,7 +109,7 @@ ____
 
 related:: document A is related to document B in an otherwise unspecified fashion
 complements:: document A is a complement or supplement of document B (e.g. concordance, teacher's guide, gloss, addendum, appendix, libretto, incidental music) (_complementOf_)
-supersedes::: document A supersedes document B, being applicable or valid in more or newer domains than document B (the two documents are not necessarily Expressions of the same Work) (_supersededBy_)
+obsoletes::: document A supersedes document B, being applicable or valid in more or newer domains than document B (the two documents are not necessarily Expressions of the same Work) (_obsoletedBy_)
 cites:: document A cites document B (_isCitedIn_)
 
 The following relations are treated as refinements, and are expressed in `bibitem/relation/description`. 
@@ -120,10 +121,6 @@ interoperability.
 corrects::: document A updates document B, and the change does not affect the intended meaning (_correctedBy_)
 amends::: document A updates document B, and the change is a minor change to the intended meaning (_amendedBy_)
 revises::: document A updates document B, and the change is a major change to the intended meaning (_revisedBy_)
-
-* supersedes/supersededBy ***
-
-obsoletes::: document A renders document B obsolete (_obsoletedBy_)
 
 * adoptedFrom/adoptedAs ***
 
