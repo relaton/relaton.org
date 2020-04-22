@@ -14,10 +14,10 @@ description: Categories of place and date of publication and publisher in Relato
 
 === Place
 
-Strictly speaking the place of production 
+Strictly speaking the place of production
 is an attribute of the publisher, and it can in fact be modelled as
-`bibitem/contributor[role@type = "publisher"]/organization/address/city`. 
-However, it is modelled as a top-level attribute of the bibliographic item 
+`bibitem/contributor[role@type = "publisher"]/organization/address/city`.
+However, it is modelled as a top-level attribute of the bibliographic item
 to allow the place to be extracted by consumers of the serialisation more readily,
 to allow multiple locations to be associated with the publisher, and to allow
 only one of the places of the publisher to be associated with the production of the item.
@@ -77,7 +77,7 @@ Of the classes of creator that can be used as the publisher,
 `bibitem/contributor/role@type = "publisher"`;
 "distributor or issuing body" and "sponsoring body" have
 `bibitem/contributor/role@type = "distributor"`.
-ISO 690, Clause 4.6 allows that distributors, issuers and sponsors 
+ISO 690, Clause 4.6 allows that distributors, issuers and sponsors
 can be named in addition to publishers.
 
 Any restrictions on access to a resource imposed by an online host
@@ -99,7 +99,7 @@ dates often contain information that cannot be restricted to an ISO 8601 date
 approximate date or no date.) For that reason, the
 model allows dates to be expressed in text instead of as an ISO 8601 date
 (`date/on@text`, `date/from@text`, `date/to@text`), or as well as an ISO 8601
-date if a Gregorian date is still applicable. 
+date if a Gregorian date is still applicable.
 If the textual value of a date is a date range, and ISO 8601
 dates are still to be provided for the start and end of the date range, then
 the textual value is repeated for `date/from@text` and `date/to@text`.
@@ -235,13 +235,13 @@ Michaelmas term (Oxford), 2002
 ==== Date types
 
 Dates are associated with specific phases of the production of a bibliographic
-item, and those phases  are named through `date@type`.
+item, and those phases are named through `date@type`.
 The default type used in bibliography
-is the date of publication (`date[@type = "published"]`), but the "created",
-"updated", "unchanged", and "copied" dates in particular
+is the date of publication (`date[@type = "published"]`), but the "`created`",
+"`updated`", "`unchanged`", and "`copied`" dates in particular
 are often given where they differ from the date of publication.
 The date of transmission is used instead of the date of publication
-for a broadcast. 
+for a broadcast.
 
 The repertoire of date types is expanded to deal with the particular requirements
 of standards:
@@ -261,7 +261,7 @@ are not published.)
 transmitted:: Date a resource was broadcast.
 copied:: Date a resource was physically copied, or recreated without any substantial
 change in content (allowing for change in medium).
-adapted:: Date a resource was adapted for a new purpose or audience, with some change 
+adapted:: Date a resource was adapted for a new purpose or audience, with some change
 in content (includes translation).
 
 Standards bibliographic dates:
@@ -272,7 +272,7 @@ confirmed:: Date a standard is renewed to take effect.
 issued:: Date a standard is authorised for publication.
 
 The date of publication is taken to be the date when the current version of the resource
-was published, unless a separate "unchanged", "updated" or "copied" date is given; 
+was published, unless a separate "`unchanged`", "`updated`" or "`copied`" date is given;
 in that case, the date of publication is assumed to be the date of initial publication.
 
 The date of creation is taken to apply to the work instantiated by the resource,
