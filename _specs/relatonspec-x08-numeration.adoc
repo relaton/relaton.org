@@ -16,12 +16,12 @@ and optionally a locality range endpoint (`bibitem/extent/referenceTo`).
 The `extent` gives the part of the host item being cited, if this is a
 contained item (link:relatonspec-x04-relations#host-item["host item"]),
 such as a journal article or book chapter
-(e.g. "pp. 25-45"). 
+(e.g. "`pp. 25-45`").
 
 If the item is not a component of another item, then the extent gives the
-locality value for the entire work (e.g. page count: "[7 pp.]"). This is expressed
+locality value for the entire work (e.g. page count: "`[7 pp.]`"). This is expressed
 by giving an empty `bibitem/extent/referenceFrom`, and populating
-only `bibitem/extent/referenceTo` ("[7 pp.]" = pp. 1-7).
+only `bibitem/extent/referenceTo` ("`[7 pp.]`" = pp. 1-7).
 
 If a locality is labelled conventionally with a range, but is in fact a single
 item (as often occurs with volumes and issues; e.g. issue 18–19 is in fact a
@@ -31,18 +31,18 @@ However the rendering of the item will typically not be any different.
 
 A part of a contained item may be cited, and this has posed difficulty for
 some citation schemes (e.g. citing a page within a journal article, which itself
-covers a page range: "Dedes, D. 1993. Ποίηματα του Μαυλανά Ρουμή [Poems by 
-Mevlana Rumi]. _Ta Istorika_ 10.18-19: 3-22. pp. 7-19".) However, the model
+covers a page range: "`Dedes, D. 1993. Ποίηματα του Μαυλανά Ρουμή [Poems by
+Mevlana Rumi]. _Ta Istorika_ 10.18-19: 3-22. pp. 7-19`".) However, the model
 copes with this by separating the extent of a citation (link:relatonspec-a02-citation[Citation Model])
 from the extent of a bibliograhic item, and the extent of a contained item
-from the extent of a host item. In this instance, "pp. 7-19" would be treated
+from the extent of a host item. In this instance, "`pp. 7-19`" would be treated
 normally as part of the citation, not part of the bibliographic item.
 
 A hierarchical locality is expressed by repeating the extent element
 with the different applicable locality types; these should be given in
 hierarchical order. However localities in an extent
-may be complimentary instead (e.g. "xiii+179 pp" for prefatory and main
-pagination; "114pp + 3 plates" for plates outside the main page numeration).
+may be complimentary instead (e.g. "`xiii+179 pp`" for prefatory and main
+pagination; "`114pp + 3 plates`" for plates outside the main page numeration).
 
 Discontinuous ranges are modelled by repeating the extent element for the same locality type.
 
@@ -257,7 +257,7 @@ Reno: University of Nevada. [114 pp, 3 plates]
 ====
 
 ====
-Brown, P. L. (1999, September 5). Tiffany glass and other tales from the crypt. 
+Brown, P. L. (1999, September 5). Tiffany glass and other tales from the crypt.
 _The New York Times_, pp. 1, 5.
 
 [source,xml]

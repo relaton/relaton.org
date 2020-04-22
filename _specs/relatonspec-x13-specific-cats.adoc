@@ -10,18 +10,19 @@ description: Conventions specific to bibliographis categories in Relaton
 
 * Source: ISO 690, Clause 5.3
 
-System requirements are modelled as a note, prefixed with "System requirements:".
-(Note that detailed system requirements are
-less commonly expressed now for software than they were in the 1990s and 2000s.)
+System requirements are modelled as a note, prefixed with "`System requirements`:".
+
+NOTE: Detailed system requirements are
+less commonly expressed now for software than they were in the 1990s and 2000s.
 
 URLs should not be broken at the end of a line: that
 is a rendering requirement, not an information modelling requirement.
 
-As discussed in link:relatonspec-x01-bibtype[Categories of information resource], 
-where possible, a more specific category 
+As discussed in link:relatonspec-x01-bibtype[Categories of information resource],
+where possible, a more specific category
 should be used than "electronic resource",
 which is properly a description of a medium and not a resource type; monographs and
-journals are now routinely published online. 
+journals are now routinely published online.
 
 The specific type of electronic resource, if not covered by `bibitem/@type` (e.g.
 "book", "dataset"), should be given as `medium/genre`.
@@ -31,7 +32,7 @@ Ubisoft. _Far Cry 5_ [computer game]. 2018. Viewed: 2018-05-10.
 System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
 (minimum); Intel Core i7-4770 @ 3.4 GHz | AMD Ryzen 5 1600 @ 3.2 GHz or equivalent (recommended).
 RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
-VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum); 
+VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum);
 NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).
 
 [source,xml]
@@ -58,7 +59,7 @@ NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)
   <note>System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
 (minimum); Intel Core i7-4770 @ 3.4 GHz | AMD Ryzen 5 1600 @ 3.2 GHz or equivalent (recommended).
 RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
-VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum); 
+VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum);
 NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).</note>
 </bibitem>
 --
@@ -77,8 +78,8 @@ Details of the creator's role are given in `bibitem/contributor/role`.
 
 
 ====
-Berner, L.T., P.S.A. Beck, M.M. Loranty, H.D. Alexander, M.C. Mack, and S.J. Goetz.  
-_Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007_. 
+Berner, L.T., P.S.A. Beck, M.M. Loranty, H.D. Alexander, M.C. Mack, and S.J. Goetz.
+_Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007_.
 ORNL DAAC, Oak Ridge, Tennessee, USA. 2016. http://dx.doi.org/10.3334/ORNLDAAC/1321
 
 [source,xml]
@@ -141,16 +142,16 @@ Fire Scar Mapping: Landsat 7 ETM+, Landsat 5 TM, Landsat 1–3 MSS</note>
 
 
 If a single contributor is to be singled out as the creator of a resource, they
-are assigned the `bibitem/contributor/role@type` of "author".
+are assigned the `bibitem/contributor/role@type` of "`author`".
 Otherwise, if the
 resource is treated as a collaborative effort, the various contributors should
-be listed with `bibitem/contributor/role@type` of "performer", with their
+be listed with `bibitem/contributor/role@type` of "`performer`", with their
 contributions differentiated in the `bibitem/contributor/role`.
 
 Programmes within a series have the series modelled as a `bibitem/series`.
 The title of the series is modelled as `bibitem/series/title`, and the title
 of the episode as `bibitem/title`. The transmitting organisation and channel
-are modelled as a contributor of type "distributor".
+are modelled as a contributor of type "`distributor`".
 
 If an audiovisual resource is a contained item, the `bibitem/extent` gives
 its location within the host item; this is typically a timestamp for visual
@@ -273,7 +274,7 @@ Librettists and composers are both contributors of role type "author"; the role
 of composer and librettist needs to be differentiated in the contributor
 role for proper rendering.
 
-The type "music" covers both music scores and music recordings, as is done
+The type "`music`" covers both music scores and music recordings, as is done
 in ISO 690. The two are differentiated in `medium`; following
 the practice in ISO 690, `medium/content` "notated music" is used
 for music scores, while `medium/carrier` is used for recordings
@@ -366,7 +367,7 @@ Marin Alsop (Conductor). Colorado Symphony Orchestra. [Audio CD].
 Patents are encoded similarly to contributions within a serial
 (ISO 690, Clause 5.2), with the series designation for the
 patent preceded by the country name or code. The date of application
-is encoded as a date of type "issued".
+is encoded as a date of type "`issued`".
 
 
 ====
@@ -445,7 +446,7 @@ HICKS, H. D. _Correspondence from Henry Davies Hicks to the Annapolis County ele
 The organisation publishing or producing the dataset is modelled as a publisher;
 the organisation hosting the dataset in a repository is modelled as a distributor.
 Data compilers, editors, investigators, and data managers are all modelled as editors.
-Timestamps are modelled as extents; queries wherever possible should be preented as URIs.
+Timestamps are modelled as extents; queries wherever possible should be entered as URIs.
 Where that is not possible, the description of the necessary query to access the
 required data subset should be presented as an `accessLocation`.
 
@@ -539,7 +540,7 @@ LEUPRECHT [et al.]. tas_CNRM-CERFACS-CNRM-CM5_RCP4.5_r1i1p1_CLMcom-CCLM4-8-17, [
 
 * Source:  ISO 690, Clause 5.12
 
-Social media items are typically items of `bibitem/@type` "webresource", 
+Social media items are typically items of `bibitem/@type` `webresource`,
 although they may not always have an associated exposed URI (particularly
 for social media accessed primarily via phone app, rather than web browser).
 As with ISO 690, a distinction is made between items publicly available
@@ -555,7 +556,7 @@ The particular form of social media communication (e.g. blog post, forum post, t
 message) should be given through `medium/genre`.
 At a lower priority, the service name or type should be encoded as `medium/form`, since it relates
 to how the content is to be accessed by an intermediary app. (For example, a tweet
-is not just accessed by a web browser, as a web resouurce; it is accessed and rendered
+is not just accessed by a web browser, as a web resource; it is accessed and rendered
 by a web browser in the context of Twitter.)
 
 

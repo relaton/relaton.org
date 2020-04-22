@@ -15,30 +15,31 @@ citations cannot straightforwardly extract the date from the bibliographic sourc
 * A specification of the locality or localities in the source being cited.
 
 A locality is a hierarchical specification of a location in a source. It is specified as a sequence
-of named components of the source, each hierarchically refining its precedessor, from greater to smaller:
+of named components of the source, each hierarchically refining its predecessor, from greater to smaller:
 
 * `type` is the component of the source being specified; in the Relaton grammar, there is a sequence of
 predefined types, and a user-specified type can be added with the prefix `locality:`. The predefined types are:
 
-** whole (i.e. entire document)
-** section
-** clause
-** part
-** paragraph
-** chapter
-** page
-** table
-** annex
-** figure
-** note
-** list
-** example
-** volume
-** issue
-** time
+** `whole` (i.e. entire document)
+** `section`
+** `clause`
+** `part`
+** `paragraph`
+** `chapter`
+** `page`
+** `table`
+** `annex`
+** `figure`
+** `note`
+** `list`
+** `example`
+** `volume`
+** `issue`
+** `time`
 
 * `referenceFrom` specifies the instance of the source component being cited; or, if a range of components is being
 cited, the beginning of the range.
+
 * `referenceTo` specified the end of the range, if a range of components is being cited. A range is only expected as the last (most granular) element in a hierarchical sequence of components.
 
 So for example, the hierarchical specification "Part IV, Chapter 3, Paragraphs 22-24" is cited as:
@@ -57,7 +58,7 @@ NOTE: if the type of the component is `whole`, no `referenceFrom` or `referenceT
 
 === Discontinuous citations
 
-If two localities occurs in sequence, and have the same type, then they are interpreted as being a discontinuous repference. So "pp. 32, 57, 99" can be specified as:
+If two localities occurs in sequence, and have the same type, then they are interpreted as being a discontinuous reference. So "`pp. 32, 57, 99`" can be specified as:
 
 [source,xml]
 ----
@@ -70,7 +71,7 @@ Alternatively, a sequence of discontinuous references can be specified through t
 Each `localityStack` consists of a hierarchical sequence of `locality` elements, as above; a sequence of
 `locality` elements can thus be treated as a single `localityStack`, with the `localityStack` wrapper left out.
 
-So for example, the hierarchical specification "Part IV, Chapter 3, Paragraphs 22-24; Part VII, Chapter 2, Paragraph 130" is cited as:
+So for example, the hierarchical specification "`Part IV, Chapter 3, Paragraphs 22-24; Part VII, Chapter 2, Paragraph 130`" is cited as:
 
 [source,xml]
 ----

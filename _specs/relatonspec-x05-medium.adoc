@@ -25,7 +25,7 @@ allows, there may be instances where the medium descriptions need to be
 discursive.
 
 ISO 690 suggests specifying detailed information about the type of electronic
-information resource (e.g. "statistical dataset"), which cannot be represented
+information resource (e.g. "`statistical dataset`"), which cannot be represented
 in the type of bibliographic item (`bibitem/@type`), and is likely to be to specific
 for the RDA triple of content, carrier and form. The `medium/genre` element is intended
 to convey this kind of information, and can be used more generally as a well-recognised

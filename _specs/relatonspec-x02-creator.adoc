@@ -40,13 +40,13 @@ as engraver or photographer.
 For derivative works, the creator and title of the original resource can be mentioned
 as a bibliographic note (`bibitem/note`); however best practice is to treat the
 original resource as a distinct related bibliographic item, related through the
-"derivedFrom" relation (See link:relatonspec-x04-relations[Document Relations]). Likewise, different originators of different
+`derivedFrom` relation (See link:relatonspec-x04-relations[Document Relations]). Likewise, different originators of different
 editions should be modelled by modelling the editions as distinct related items,
 each with its own distinct editor as contributor. (For example, the later edition given
 as the main item, and the earlier edition related through a "updatedBy" relation.)
 
 NOTE: Although both composer and librettist are included as authors under
-ISO 690, Clause 4.1, 
+ISO 690, Clause 4.1,
 the two roles are clearly differentiated in ISO 690, Clause 5.7, with the
 composer given priority over the librettist.
 
@@ -259,14 +259,14 @@ Names may be modelled either broken up into their constituent components
 The latter is useful if
 (contrary to the recommendation of ISO 690, Clause 4.1)
 language-specific conventions for ordering of name components are to be
-observed; e.g. "James CLARK, John COWAN, MURATA Makoto".
+observed; e.g. "`James CLARK, John COWAN, MURATA Makoto`".
 
 If there are multiple contributors named in a role, all contributors are
 expected to be represented in the bibliographic entry.
 This reflects practice in electronic bibliographic tools, and renderers
-may choose to truncate contributors with "et al." beyond a certain cuttoff point.
+may choose to truncate contributors with "`et al.`" beyond a certain cutoff point.
 If this information is not available, a dummy contributor can be
-named with "et al." as their `completename`, but this is not preferred.
+named with "`et al.`" as their `completename`, but this is not preferred.
 
 The `initials` component is used if all forenames are replaced by initials.
 If only the middle name is replaced by an initial, it is still treated as a
@@ -436,8 +436,8 @@ TWAIN, Mark [pseud. of Samuel Langhorne CLEMENS]
 
 === Anonymous and Varii
 
-Descriptors of authors, such as "Anon" or
-"Various Authors", should be given as `completename`
+Descriptors of authors, such as "`Anon`" or
+"`Various Authors`", should be given as `completename`
 elements. The model does not standardise the designations of
 authors. As with pseudonyms, the real name of the creator if known can be
 modelled as a note, or as a name variant.

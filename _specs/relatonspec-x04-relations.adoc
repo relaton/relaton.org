@@ -18,10 +18,10 @@ related item embedded within the other.
 
 `bibitem/relation/@type` gives the base class of the relation between two bibliographic items.
 
-The base class of relation types is taken from ISO 690 and 
-link:https://www.ifla.org/publications/functional-requirements-for-bibliographic-records[Functional Requirements for Bibliographic Records] (FRBR), and represents 
+The base class of relation types is taken from ISO 690 and
+link:https://www.ifla.org/publications/functional-requirements-for-bibliographic-records[Functional Requirements for Bibliographic Records] (FRBR), and represents
 generic bibliographical requirements, particularly inclusion in a host item (<<host-item>>:
-includedIn, includes) and translation (<<translation>>: translatedFrom, hasTranslation).
+`includedIn`, `includes`) and translation (<<translation>>: `translatedFrom`, `hasTranslation`).
 The class has been expanded substantially to deal with the requirements of standards
 documents.
 
@@ -43,10 +43,10 @@ All relations in the following are given with their inverse in italics and brack
 
 ==== Part-Whole relations
 
-includes:: document A includes document B, through a well-defined relation outlined in <<host-item>>, 
+includes:: document A includes document B, through a well-defined relation outlined in <<host-item>>,
 and with distinct metadata (including authorship) and bibliographic record (e.g. Chapter in Edited Work, Illustration) (_includedIn_)
 hasPart:: document A includes document B, with no distinct metadata (other than extent) or bibliographic record,
-and all items in document B 
+and all items in document B
 share the same authorship or corporate authorship (e.g. Chapter, Section, Part, Volume, Issue, Track) (_partOf_)
 merges:: document A results from a merger of earlier documents B1, B2, B3... (_mergedInto_)
 splits:: document A1, A2, A3... is split off from earlier documents B (_splitInto_)
@@ -112,7 +112,7 @@ complements:: document A is a complement or supplement of document B (e.g. conco
 obsoletes::: document A supersedes document B, being applicable or valid in more or newer domains than document B (the two documents are not necessarily Expressions of the same Work) (_obsoletedBy_)
 cites:: document A cites document B (_isCitedIn_)
 
-The following relations are treated as refinements, and are expressed in `bibitem/relation/description`. 
+The following relations are treated as refinements, and are expressed in `bibitem/relation/description`.
 The refinements a relation type can undergo are open-ended, and this list may be expanded in the future to encourage
 interoperability.
 
@@ -146,10 +146,10 @@ and https://www.dublincore.org/specifications/dublin-core/dcmi-terms/[Dublin Cor
 |splits           |is a reconfiguration of (Item only)                       |*splitInto, separatedFrom* | |
 |merges           |is a reconfiguration of (Item only)                       |*mergerOf, absorbed* | |
 |instanceOf       | | | |
-|exemplarOf       |is exemplified by                                         |itemOf | | 
+|exemplarOf       |is exemplified by                                         |itemOf | |
 |manifestationOf  |is embodied in                                            |instanceOf                                        |                                                                           |hasFormat
 |reproductionOf   |*is a reproduction of, is an alternate to*                |reproductionOf                                    |reproducedIn |
-|reprintOf        |is a reproduction of | | | 
+|reprintOf        |is a reproduction of | | |
 |expressionOf     |is realised through                                       |expressionOf                                      |                                                                           |hasVersion
 |expressionOf (as catchall)  |                                               |                                                  |*transcriptOf* |
 |translatedFrom   |is a translation of                                       |translationOf                                     |translationOf |
@@ -162,10 +162,10 @@ and https://www.dublincore.org/specifications/dublin-core/dcmi-terms/[Dublin Cor
 |derivedFrom      |                                                          |*derivativeOf, originalVersion*                   |                                                                           |source
 |derivedFrom (as catchall) |*is a summary of, is an imitation of*            |                                                  | |
 |describedBy      |                                                          |                                                  |annotates                                                                  |*description, abstract, tableOfContents*
-|hasSuccessor     |is a successor to                                         |*precededBy, continues, continuesInPart* | | 
+|hasSuccessor     |is a successor to                                         |*precededBy, continues, continuesInPart* | |
 |adaptedFrom      |*is an adaptation of, is a transformation of* | | |
 |adoptedFrom | | | |
-|reviewOf         |                                                          |                                                  |reviewOf | 
+|reviewOf         |                                                          |                                                  |reviewOf |
 |commentaryOf | | |  |
 |related          |                                                          |relatedTo                                         |                                                                           |relation
 |related (as catchall)          |                                            |*dataSource*                                      |                                                                           |*conformsTo*
@@ -209,12 +209,12 @@ by Chapters 4 and 7 of the second edition.
 [[host-item]]
 === Host Item
 
-Of the bibliographic types identified in <<bibtype>>, "incollection",
-"inproceedings", and "inbook" are all inherently related to a host item. Other types
+Of the bibliographic types identified in <<bibtype>>, `incollection`,
+`inproceedings`, and `inbook` are all inherently related to a host item. Other types
 also potentially involve
 relations with host items; for example, the relation between a record track and
 a record, or a broadcast segment and a broadcast show. The relation between host
-item and contained item is modelled through "includedIn" or "partOf", depending on
+item and contained item is modelled through `includedIn` or `partOf`, depending on
 whether all included items share authorship or corporate authorship.
 
 The relation between any two items optionally includes a locality element, which indicates

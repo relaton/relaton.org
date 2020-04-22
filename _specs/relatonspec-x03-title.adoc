@@ -17,15 +17,15 @@ description: Categories of title in Relaton
 A resource can have multiple titles, including alternative titles
 and subtitles. Titles are
 classified through `title@type`; the grammar is open-ended as to title types,
-but we recommend using "alternative", "subtitle",
-"unofficial" (i.e.
+but we recommend using "`alternative`", "`subtitle`",
+"`unofficial`" (i.e.
 a title that has become prevalent but has never been the official/intended title
 of the resource),
-"original" (including the source language title of a translated resource),
-and "main" (for the proper title or titles of the resource). If a title type is
+"`original`" (including the source language title of a translated resource),
+and "`main`" (for the proper title or titles of the resource). If a title type is
 not given, it is assumed to be a main title.
 
-"Untitled" can be treated as a main title.
+"`Untitled`" can be treated as a main title.
 
 ====
 Lemuel Gulliver [pseud. of Jonathan Swift].
