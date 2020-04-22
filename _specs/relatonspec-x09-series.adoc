@@ -137,7 +137,7 @@ change name between the two runs (from "`Anthropological Institute of Great Brit
 and the series run is preferred to differentiate the two runs.
 
 ====
-J. A. Barnes. 1966. Durkheim's Division of Labour in Society. _Man_ (n.s.) 1(2): 158-175.
+\J. A. Barnes. 1966. Durkheim's Division of Labour in Society. _Man_ (n.s.) 1(2): 158-175.
 
 <bibitem type="article">
   <title lang="en">Durkheim's Division of Labour in Society</title>
