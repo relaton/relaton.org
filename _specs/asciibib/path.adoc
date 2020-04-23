@@ -1,5 +1,5 @@
 ---
-title: AsciiBib path syntax
+title: AsciiBib -- Path style definition lists
 description: Defining AsciiBib using definition list paths
 
 external_links:
@@ -7,7 +7,7 @@ external_links:
 ---
 
 [[JSONPath]]
-== AsciiBib: Path style definition lists
+== Purpose
 
 The AsciiBib "`path-style definition list`" syntax allows you to
 represent:
@@ -20,7 +20,7 @@ This is similar to how JSON data is often accessed.
 
 This syntax utilizes the structure of link:../relaton-yaml[Relaton YAML representation].
 
-NOTE: The link:../asciibib-path[AsciiBib nested list syntax] requires
+NOTE: The link:../path[AsciiBib nested list syntax] requires
 frequent breakouts into open blocks, to deal with limitations of AsciiDoc.
 
 
@@ -36,7 +36,7 @@ docid.type:: ISO
 docid.id:: 19115-1
 ----
 
-Is equivalent to the link:../asciibib-path[AsciiBib nested list syntax] of:
+Is equivalent to the link:../path[AsciiBib nested list syntax] of:
 
 [source,asciidoc]
 ----
@@ -68,7 +68,7 @@ docid.type:: ISO
 docid.id:: TC211
 ----
 
-Is equivalent to the link:../asciibib-path[AsciiBib nested list syntax] of:
+Is equivalent to the link:../path[AsciiBib nested list syntax] of:
 
 [source,asciidoc]
 ----
@@ -101,7 +101,7 @@ contributor.person.contact.type:: phone
 contributor.person.contact.value:: 223322
 ----
 
-Is equivalent to the link:../asciibib-path[AsciiBib nested list syntax] of:
+Is equivalent to the link:../path[AsciiBib nested list syntax] of:
 
 [source,asciidoc]
 ----
@@ -182,7 +182,7 @@ abstract.content::
 ISO 19115-1:2014 defines the schema required for describing geographic information and services by means of metadata. It provides information ...
 --
 abstract::
-abstract.content:: 
+abstract.content::
 +
 --
 L'ISO 19115-1:2014 définit le schéma requis pour décrire des informations géographiques et des services au moyen de métadonnées. Elle fournit des informations ...

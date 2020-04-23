@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Medium
+title: Relaton model -- Medium
 description: Categories of medium in Relaton
 ---
 

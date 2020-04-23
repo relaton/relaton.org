@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Title
+title: Relaton model -- Title
 description: Categories of title in Relaton
 ---
 

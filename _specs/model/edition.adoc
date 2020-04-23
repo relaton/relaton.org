@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Edition
+title: Relaton model -- Edition
 description: Categories of editions in Relaton
 ---
 
@@ -13,7 +13,7 @@ Editions are modelled as free text, given the variety of ways they can be repres
 For that reason, the full word "edition" needs to appear after any ordinal.
 The optional `number` attribute can be used to provide a numeric equivalent.
 
-As described in link:relatonspec-x07-production[Date Types],
+As described in link:../production[Date Types],
 dates when a resource was last accessed are modelled as `date[@type = "accessed"]`;
 dates when a resource was last updated are modelled as `date[@type = "updated"]`.
 

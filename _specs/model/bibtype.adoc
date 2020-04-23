@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Bibitem Type
+title: Relaton model -- Bibitem Type
 description: Categories of information resource in Relaton
 ---
 

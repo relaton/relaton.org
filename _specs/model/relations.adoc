@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Relations
+title: Relaton model -- Relations
 description: Categories of document relations in Relaton
 ---
 

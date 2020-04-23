@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Locations
+title: Relaton model -- Locations
 description: Access locations and online locations in Relaton
 ---
 

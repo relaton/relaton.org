@@ -2,6 +2,8 @@
 title: Relaton CLI
 description: Relaton Command-line Interface
 
+feature_with_priority: 1
+
 external_links:
   - url: https://github.com/relaton/relaton-cli/blob/master/docs/README.adoc
 ---

@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Series
+title: Relaton model -- Series
 description: Series in Relaton
 ---
 
@@ -16,7 +16,7 @@ description: Series in Relaton
 
 Articles have their journal title modelled as the series title of the article item.
 However, the journal volume and issue should be modelled as part of the article
-item extent (link:relatonspec-x08-numeration[Numeration]), rather than as part of the series (ISO 690, Clause 4.7).
+item extent (link:../numeration[Numeration]), rather than as part of the series (ISO 690, Clause 4.7).
 
 === Standards
 
@@ -51,7 +51,7 @@ The collection or fonds of archival material is modelled as a series.
 
 Organization and Place of Publication can be added to series titles for disambiguation.
 Organization in this instance is only modelled as a strings, rather than as a detailed
-object (cf. link:relatonspec-x02-creator#organisation[Organisation]). The `formattedTitle` element is used to enforce the formatting
+object (cf. link:../creator#organisation[Organisation]). The `formattedTitle` element is used to enforce the formatting
 of the series title and its qualifiers.
 
 ====

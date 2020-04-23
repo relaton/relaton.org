@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Production
+title: Relaton model -- Production
 description: Categories of place and date of publication and publisher in Relaton
 ---
 
@@ -68,7 +68,7 @@ London (Ontario)
 
 === Publisher
 
-The publisher is a subclass of creator (link:relatonspec-x02-creator[Creator]). ISO 690, Clause 4.1
+The publisher is a subclass of creator (link:../creator[Creator]). ISO 690, Clause 4.1
 differentiates between
 "publisher, online information provider, production company" and
 "distributor, online host".

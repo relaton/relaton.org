@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Additional Information
+title: Relaton model -- Additional Information
 description: Additional information in Relaton
 ---
 

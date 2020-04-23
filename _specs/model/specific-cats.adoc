@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Specific categories
+title: Relaton model -- Specific categories
 description: Conventions specific to bibliographis categories in Relaton
 ---
 
@@ -18,7 +18,7 @@ less commonly expressed now for software than they were in the 1990s and 2000s.
 URLs should not be broken at the end of a line: that
 is a rendering requirement, not an information modelling requirement.
 
-As discussed in link:relatonspec-x01-bibtype[Categories of information resource],
+As discussed in link:../bibtype[Categories of information resource],
 where possible, a more specific category
 should be used than "electronic resource",
 which is properly a description of a medium and not a resource type; monographs and
@@ -550,7 +550,7 @@ between individuals, and are cited as personal communications.
 
 A person's real name may be related to the online identity assumed by the
 author of the item, if both are known. The online identity is treated as a
-pseudonym of the real life identity, and is serialised in the same way (link:relatonspec-x02-creator#variantnames[variantnames]).
+pseudonym of the real life identity, and is serialised in the same way (link:../creator#variantnames[variantnames]).
 
 The particular form of social media communication (e.g. blog post, forum post, tweet,
 message) should be given through `medium/genre`.

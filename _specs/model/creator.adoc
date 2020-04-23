@@ -1,5 +1,5 @@
 ---
-title: Relaton specification -- Creator
+title: Relaton model -- Creator
 description: Categories of creator in Relaton
 ---
 
@@ -40,7 +40,7 @@ as engraver or photographer.
 For derivative works, the creator and title of the original resource can be mentioned
 as a bibliographic note (`bibitem/note`); however best practice is to treat the
 original resource as a distinct related bibliographic item, related through the
-`derivedFrom` relation (See link:relatonspec-x04-relations[Document Relations]). Likewise, different originators of different
+`derivedFrom` relation (See link:../relations[Document Relations]). Likewise, different originators of different
 editions should be modelled by modelling the editions as distinct related items,
 each with its own distinct editor as contributor. (For example, the later edition given
 as the main item, and the earlier edition related through a "updatedBy" relation.)

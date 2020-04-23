@@ -1,68 +1,75 @@
 ---
-title: Relaton models
-description: Bibliographic data models for Relaton.
+title: Relaton model specifications
+description: Specifications of the Relaton bibliographic and citation data models.
 
 external_links:
-  - url: https://github.com/riboseinc/relaton-models
+  - url: https://github.com/relaton/relaton-models
 
-feature_with_priority: 1
-
-spec_source:
-  git_repo_url: https://github.com/riboseinc/relaton-models
-  git_repo_subtree: images
-  build:
-    engine: png_diagrams
+feature_with_priority: 4
 
 navigation:
   items:
-    - title: "Bibliographic item"
-      path: RelBib_BibliographicItem/
-      description: ""
-      ignore_missing: yes
-    - title: "Bibliographic item type"
-      path: RelBib_BibItemType/
-      description: ""
-      ignore_missing: yes
     - title: "Citation"
-      path: RelBib_Citation/
+      path: ../model/citation/
       description: ""
-      ignore_missing: yes
-    - title: "Contribution"
-      path: RelBib_Contribution/
+
+    - title: "Bibliographic Types"
+      path: ../model/bibtype/
       description: ""
-      ignore_missing: yes
-    - title: "Contributor"
-      path: RelBib_Contributor/
+
+    - title: "Creator"
+      path: ../model/creator/
       description: ""
-      ignore_missing: yes
-    - title: "Date"
-      path: RelBib_Date/
+
+    - title: "Title"
+      path: ../model/title/
       description: ""
-      ignore_missing: yes
-    - title: "Document relations"
-      path: RelBib_DocumentRelation/
+
+    - title: "Relationships"
+      path: ../model/relations/
       description: ""
-      ignore_missing: yes
+
+    - title: "Medium"
+      path: ../model/medium/
+      description: ""
+
+    - title: "Edition"
+      path: ../model/edition/
+      description: ""
+
+    - title: "Production"
+      path: ../model/production/
+      description: ""
+
+    - title: "Numeration"
+      path: ../model/numeration/
+      description: ""
+
     - title: "Series"
-      path: RelBib_Series/
+      path: ../model/series/
       description: ""
-      ignore_missing: yes
-    - title: "Data types"
-      path: RelBib_DataTypes/
+
+    - title: "Identifiers"
+      path: ../model/identifiers/
       description: ""
-      ignore_missing: yes
-    - title: "Collection"
-      path: RelBib_Collection/
+
+    - title: "Location"
+      path: ../model/location/
       description: ""
-      ignore_missing: yes
-    - title: "Keyword"
-      path: RelBib_Keyword/
+
+    - title: "Additional Information"
+      path: ../model/additional-info/
       description: ""
-      ignore_missing: yes
+
+    - title: "Specific categories"
+      path: ../model/specific-cats/
+      description: ""
+
 ---
 
 These bibliographic models are developed to consolidate and standardize
 the data models used for bibliographic and citation purposes.
 
 These models are meant to be fully compatible
-with ISO 690 and ISO TC 46’s (and SC 4, SC 9) work on bibliography.
+with the latest edition of ISO 690 and
+ISO TC 46’s (and SC 4, SC 9) work on bibliography.

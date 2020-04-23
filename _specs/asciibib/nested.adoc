@@ -1,5 +1,5 @@
 ---
-title: AsciiBib nested list syntax
+title: AsciiBib -- Nested definition list syntax
 description: Defining AsciiBib using nested lists
 
 external_links:
@@ -7,13 +7,13 @@ external_links:
 ---
 
 [[nested-syntax]]
-== AsciiBib: Nested definition list syntax
+== Purpose
 
 This AsciiBib syntax utilizes a definition list of element name and element contents,
 with nested definition lists for nested structures.
 
-If a nested
-definition is given for an element, the element itself has a blank definition.
+If a nested definition is given for an element, the element itself has a
+blank definition.
 
 === Basic attributes
 
@@ -185,7 +185,7 @@ completename::
 --
 ----
 
-(This is very awkward, and link:../asciibib-path[AsciiBib path syntax] provides a workaround.)
+(This is very awkward, and link:../path[AsciiBib path syntax] provides a workaround.)
 
 
 The most heavily nested parts of a Relaton entry are the contributors,

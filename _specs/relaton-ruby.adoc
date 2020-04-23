@@ -1,13 +1,15 @@
 ---
-title: Relaton
-description: Gem for importing and caching bibliographic references to technical standards.
+title: Relaton on Ruby
+description: Ruby library for importing and caching bibliographic references.
+
+feature_with_priority: 2
 
 external_links:
   - url: https://github.com/relaton/relaton/tree/master/docs
 ---
 == Scope
 
-The Relaton gem obtains authoritative bibliographic entries for technical standards from online sources, and expresses them in a consistent format, which can be used in document authoring. (It is the underlying bibliographic tool for the https://github.com/metanorma/metanorma[Metanorma] toolset.)
+The Relaton Ruby gem obtains authoritative bibliographic entries for technical standards from online sources, and expresses them in a consistent format, which can be used in document authoring. (It is the underlying bibliographic tool for the https://github.com/metanorma/metanorma[Metanorma] toolset.)
 
 The gem also caches entries it has retrieved, so that subsequent iterations do not need to go back online to retrieve the same entries. The gem uses two caches: a global cache (for all bibliographic entries retrieved by the user), and a local cache (intended to store references specific to the current document being processed.)
 
@@ -126,5 +128,4 @@ db.save_entry("ISO(ISO 19011)", nil)
 
 db.load_entry("ISO(ISO 19011)")
 => nil
-
 ----
