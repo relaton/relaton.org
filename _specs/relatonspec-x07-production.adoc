@@ -270,6 +270,8 @@ implemented:: Date a standard takes effect.
 obsoleted:: Date a standard becomes no longer in effect.
 confirmed:: Date a standard is renewed to take effect.
 issued:: Date a standard is authorised for publication.
+vote_started:: Date the vote for a draft of the standard started.
+vote_ended:: Date the vote for a draft of the standard ended.
 
 The date of publication is taken to be the date when the current version of the resource
 was published, unless a separate "unchanged", "updated" or "copied" date is given; 
