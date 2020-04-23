@@ -2,10 +2,11 @@
 title: Relaton YAML
 description: Structure for encoding `bibitem` as YAML objects.
 
+feature_with_priority: 6
+
 external_links:
   - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc
 ---
-== Relaton YAML
 
 The following structure is in place for encoding `bibitem` as YAML objects. The structure has not yet been generalised to `bibdata/ext`, the flavour-specific extensions of Relaton.
 

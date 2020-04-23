@@ -2,27 +2,30 @@
 title: AsciiBib
 description: Defining bibliographic items using a structured Ascii-syntax
 
+feature_with_priority: 3
+
+navigation:
+  items:
+    - title: "AsciiBib nested definition lists"
+      path: ../asciibib/nested/
+      description: "AsciiBib nested definition list syntax"
+    - title: "AsciiBib path-style definition lists"
+      path: ../asciibib/path/
+      description: "AsciiBib path-style definition list syntax"
+
 external_links:
   - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc
 ---
-
-== AsciiBib
-
-=== General
 
 AsciiBib provides an AsciiDoc-like syntax for entering a Relaton
 bibliographic entry based on the Relaton data model
 (similarly, to link:../relaton-yaml[Relaton YAML representation]).
 
-There are two syntaxes for entering in AsciiBib:
-
-* link:../asciibib-nested[AsciiBib nested definition lists]
-* link:../asciibib-path[AsciiBib path-style definition lists]
-
 AsciiBib is very useful when needing to define bibliographic items
 inside an AsciiDoc structure, such as within Metanorma AsciiDoc.
 
-NOTE: Metanorma adopts AsciiBib syntax.
-For those looking for Metanorma AsciiBib information, this
-is the article you want to read.
+NOTE: Metanorma uses AsciiBib syntax.
+For those looking to enter bibliographic items in Metanorma,
+this is the article you want to read.
 
+There are two syntaxes for entering AsciiBib bibliographic entries.
