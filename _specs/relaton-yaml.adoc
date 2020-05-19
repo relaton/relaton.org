@@ -94,8 +94,11 @@ biblionote:
       home run record in 1998.
 # document status has stage, and optional substage and iteration
 docstatus:
-  stage: stage
-  substage: substage
+  stage:
+    value: "30"
+    abbreviation: CD
+  substage:
+    value: "00"
   iteration: iteration
 # date is an array, with mandatory type, and either an "on" value or a "from" and optional "to" value
 date:
