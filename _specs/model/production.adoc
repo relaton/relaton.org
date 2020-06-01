@@ -228,7 +228,7 @@ Michaelmas term (Oxford), 2002
 <copyright>
   <from>1951</from>
   <owner><organization><name>ISO</name></organization></owner>
-</date>
+</copyright>
 ====
 
 [[datetypes]]

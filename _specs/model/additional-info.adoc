@@ -137,12 +137,57 @@ Where available, URIs should be used to identify licenses unambiguously.
 If a URI is not available, a commonly accepted abbreviation or short name of
 the license should be used.
 
-Copyright is privileged with a separate element, incorporating copyright date
-and owner.
-
 ====
 <license>BSD-2</license>
 <license>https://creativecommons.org/licenses/by/2.0/</license>
+====
+
+Copyright is privileged with a separate element, incorporating copyright date
+and owner, and scope. Scope is only used when multiple copyright statements apply to the 
+same document, indicating the scope of each copyright statement. It is preferable
+if possible to use only one copyright statement per bibitem, and allot the other
+copyright statements to distinct related bibitems (even if the scope involved is
+as part of the publication, such as a chapter.)
+
+====
+<copyright>
+  <from>1999</from>
+  <owner><person><name><completename>Jack Frost</completename></person></owner>
+</copyright>
+====
+
+====
+<copyright>
+  <from>1999</from>
+  <owner><person><name><completename>Jack Frost</completename></person></owner>
+  <scope>Original work</scope>
+</copyright>
+<copyright>
+  <from>2002</from>
+  <owner><person><name><completename>Johannes Raureif</completename></person></owner>
+  <scope>Translation into German</scope>
+</copyright>
+====
+
+====
+<bibitem>
+  ...
+  <copyright>
+    <from>1999</from>
+    <owner><person><name><completename>Jack Frost</completename></person></owner>
+  </copyright>
+  ...
+  <relation type="translatedFrom">
+    <bibitem>
+      ...
+      <copyright>
+        <from>2002</from>
+        <owner><person><name><completename>Johannes Raureif</completename></person></owner>
+      </copyright>
+      ...
+    </bibitem>
+  </relation>
+</bibitem>
 ====
 
 === Provenance and Authenticity
