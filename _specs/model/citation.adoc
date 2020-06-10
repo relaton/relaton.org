@@ -36,6 +36,7 @@ predefined types, and a user-specified type can be added with the prefix `locali
 ** `volume`
 ** `issue`
 ** `time`
+** `anchor` (for HTML pages)
 
 * `referenceFrom` specifies the instance of the source component being cited; or, if a range of components is being
 cited, the beginning of the range.
