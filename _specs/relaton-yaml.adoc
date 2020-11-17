@@ -55,7 +55,7 @@ The structure below is given in YAML format:
 # bibliographic item anchor, used to crossreference within document
 id: ISO/TC211
 # date record was created
-fetched: 2019-06-30
+fetched: '2019-06-30'
 # titles are an array, with a mandatory type and content, and optional format, language and script
 title:
   - type: main
@@ -72,9 +72,9 @@ docid:
   type: ISO
   id: TC211
 # document number
-docnumber: 211
+docnumber: '211'
 # edition
-edition: 1
+edition: '1'
 # language is an array
 language:
   - en
@@ -84,7 +84,7 @@ script:
   Latn
 # version contains revision date and draft (as array)
 version:
-  revision_date: 2019-04-01
+  revision_date: '2019-04-01'
   draft: draft
 # note is an array of type and content
 biblionote:
@@ -95,20 +95,20 @@ biblionote:
 # document status has stage, and optional substage and iteration
 docstatus:
   stage:
-    value: "30"
+    value: '30'
     abbreviation: CD
   substage:
-    value: "00"
-  iteration: iteration
+    value: '00'
+  iteration: final
 # date is an array, with mandatory type, and either an "on" value or a "from" and optional "to" value
 date:
   - type: issued
-    value: 2014
+    value: '2014'
   - type: published
-    from: 2014-04
-    to: 2014-05
+    from: '2014-04'
+    to: '2014-05'
   - type: accessed
-    value: 2015-05-20
+    value: '2015-05-20'
 # abstract is an array, with content, and optional language, script, format
 abstract:
   - content: >
@@ -159,13 +159,13 @@ contributor:
         - street:
           - 8 Street St
           city: City
-          postcode: 123456
+          postcode: '123456'
           country: Country
           state: State
         - type: phone
-          value: 223322
+          value: '223322'
     role: author
-  - person:
+  - organization:
       name: IETF
       abbreviation: IETF
       identifier:
@@ -199,8 +199,8 @@ copyright:
      name: International Organization for Standardization
      abbreviation: ISO
      url: www.iso.org
-   from: 2014
-   to: 2020
+   from: '2014'
+   to: '2020'
 # link is an array of URIs, with a type and content
 link:
   - type: src
@@ -209,11 +209,12 @@ link:
     content: https://www.iso.org/obp/ui/#!iso:std:53798:en
   - type: rss
     content: https://www.iso.org/contents/data/standard/05/37/53798.detail.rss
-# relations are an array of type, bibitem, locality, and source_locality.
+# relations are an array of type, bibitem, locality, source_locality, and description.
 # bibitem contains any of the attributes of a bibliographic item.
 # locality is an array of locality_stack which is an array of hash of type,
 #   reference_from, and optionally reference_to
 # source_locality is an array of source_locality_stack which is similar to locality_stack
+# description is optional and contains content and optional format, language, ans script.
 relation:
   - type: updates
     bibitem:
@@ -221,18 +222,29 @@ relation:
     locality:
       locality_stack:
         type: page
-        reference_from: "7"
-        reference_to: "10"
+        reference_from: '7'
+        reference_to: '10'
     source_locality:
       source_locality_stack:
         - type: volume
-          reference_from: "1"
+          reference_from: '1'
         - type: chapter
-          reference_from: "2"
+          reference_from: '2'
   - type: updates
     bibitem:
       type: standard
-      formattedref: ISO 19115:2003/Cor 1:2006
+      formattedref:
+        content: ISO 19115:2003/Cor 1:2006
+        forr=mat: text/plain
+    description:
+      content: supersedes
+      format: text/plain
+  - type: partOf
+    bibitem:
+      title:
+        type: main
+        content: Book title
+        format: text/plain
 # series are an array, containing a type, and either a formattedref, or:
 # a title, a place, an organization (string),
 # an abbreviation, a from, a to, a number, and a partnumber.
@@ -263,17 +275,31 @@ series:
       content: serieref
       language: en
       script: Latn
+  - title:
+    content:
+    - content: Series
+      language: en
+      script: Latn
+    - content: Séries
+      language: fr
+      script: Latn
+    format: text/plain
 # medium contains a form, a size, and a scale
 medium:
   form: medium form
   size: medium size
   scale: medium scale
-# place is an array of strings
-place: bib place
+# place is an array of strings or hashes of name, url, and region
+place:
+  - bib place
+  - name: Geneva
+    uri: geneva.place
+    region: Switzelznd
 # extent is an array, containing type, a reference_from, and an optional reference_to
 extent:
   type: section
-  reference_from: 7
+  reference_from: '7'
+  reference_to: '10'
 # accesslocation is an array of strings
 accesslocation:
   - accesslocation1
@@ -287,5 +313,10 @@ validity:
   begins: 2010-10-10 12:21
   ends: 2011-02-03 18:30
   revision: 2011-03-04 09:00
+# keyword is an array of strings or hashes of content, language, script, and format
+keyword:
+  - Keyword
+  - Key Word
+# license is a string
+license: License
 ----
-
