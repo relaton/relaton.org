@@ -2,23 +2,15 @@ name: deploy
 
 on:
   push:
-    branches:
-      - master
-      - staging
+    branches: master
 
 jobs:
   build:
     name: Build site
     runs-on: ubuntu-latest
+    environment:
+      name: production
     steps:
-      - name: Set env to staging
-        if: endsWith(github.ref, '/staging')
-        run: |
-          echo "ENVIRONMENT=staging" >> $GITHUB_ENV
-      - name: Set env to production
-        if: endsWith(github.ref, '/master')
-        run: |
-          echo "ENVIRONMENT=production" >> $GITHUB_ENV
       - name: Setup prerequisites
         run: |
           sudo apt-get update
