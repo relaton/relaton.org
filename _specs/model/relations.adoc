@@ -302,7 +302,7 @@ The Relaton relations are compared with those in
 
 .Comparing Relaton bibliographic relations with other related schemes
 |===
-|Relaton |FRBR |BIBFRAME |BIBO |DC
+|Relaton |FRBR |BIBFRAME |BIBO |Dublin Core
 
 |includes         |hasPart (independent)                                     |*partOf, hasSeries, hasSubseries*                 |                                                                           |hasPart
 |hasPart          |hasPart (dependent)                                       |partOf                                            |                                                                           |hasPart
@@ -334,9 +334,12 @@ The Relaton relations are compared with those in
 |related (as catchall)          |                                            |*dataSource*                                      |                                                                           |*conformsTo*
 |complements      |*complements, supplements*                                |*accompanies, supplementTo, indexOf, findingAidOf*   |                                                                        |requires
 |supersedes       |                                                          |replacementOf                                     |*affirmedBy (legal), reversedBy (legal), subsequentLegalDecision (legal)*  |replaces
-|cites            |                                                           |references                                        |cites                                                                      |references
+|cites            |                                                          |references                                        |cites                                                                      |references
 |===
 
+NOTE: *Bolded* entries indicate non-identical matches where the
+meaning of mapped values differ. Some may represent one-to-many or
+partial matches.
 
 === Localities
 
