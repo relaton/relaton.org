@@ -248,27 +248,33 @@ of standards:
 
 Normal bibliographic dates:
 
-created:: Date a resource was created.
-published:: Date a resource was published.
+created:: Date a resource was created. (If there have been multiple versions or editions, this
+date applies to the first version.)
+published:: Date a resource was published (disrtributed by the publisher).
 accessed:: Date a resource was last accessed by the bibliographer; routinely used
 for online publications. (Unlike in ISO 690, no distinction is made between
 "viewed" and "accessed" based on whether the resource is human-readable or
 machine-readable.)
-updated:: Date a resource was updated and republished. Used for new editions.
+updated:: Date a resource was updated and republished. Used for new versions and editions.
 unchanged:: Date a resource was reprinted, i.e. republished without any changes.
-circulated:: Date a draft version of a resource was circulated. (Drafts by definition
-are not published.)
+circulated:: Date a draft version of a resource was circulated. Drafts by definition
+are not published, so `circulated` is used instead of `published` for draft resources.
+(For standards, this is associated with the latest transition to
+a formally defined preparation stage, such as Working Draft or Committee Draft.)
 transmitted:: Date a resource was broadcast.
 copied:: Date a resource was physically copied, or recreated without any substantial
 change in content (allowing for change in medium).
 adapted:: Date a resource was adapted for a new purpose or audience, with some change
 in content (includes translation).
+announced:: Date that the existence of the resource was made public knowledge;
+applies whether the resource has already been created or not, and whether it is to be
+published or not.
 
 Standards bibliographic dates:
 
-implemented:: Date a standard takes effect.
-obsoleted:: Date a standard becomes no longer in effect.
-confirmed:: Date a standard is renewed to take effect.
+implemented:: Date a standard takes effect, becomes active.
+obsoleted:: Date a standard becomes no longer in effect, was revoked.
+confirmed:: Date a standard is renewed to take effect by an issuing authority.
 issued:: Date a standard is authorised for publication.
 vote_started:: Date the vote for a draft of the standard started.
 vote_ended:: Date the vote for a draft of the standard ended.
