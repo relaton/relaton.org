@@ -244,7 +244,8 @@ unspecified fashion
 
 complements:: document A is a complement or supplement of document B
 (e.g. concordance, teacher's guide, gloss, addendum, appendix,
-libretto, incidental music) (_complementOf_)
+libretto, incidental music), and provides additional
+or contextual information to help understand the document (_complementOf_)
 
 obsoletes::: document A supersedes document B, being applicable or
 valid in more or newer domains than document B (the two documents
@@ -257,7 +258,7 @@ expressed in `bibitem/relation/description`.  The refinements a
 relation type can undergo are open-ended, and this list may be
 expanded in the future to encourage interoperability.
 
-updates/updatedBy::
+updates:: document A updates document B (_updatedBy_)
 
 corrects::: document A updates document B, and the change does not
 affect the intended meaning (_correctedBy_)
@@ -268,7 +269,7 @@ change to the intended meaning (_amendedBy_)
 revises::: document A updates document B, and the change is a major
 change to the intended meaning (_revisedBy_)
 
-adoptedFrom/adoptedAs::
+adoptedFrom:: document A is adopted from document B (_adoptedBy_)
 
 identical::: document A is adopted from document B, without any
 change
