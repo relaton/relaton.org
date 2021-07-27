@@ -30,6 +30,7 @@ const ready = ()=> {
     if (keep_year.checked) {
       url.textContent += "&keep_year=true"
     }
+    url.textContent = encodeURI(url.textContent);
   }
 
   const submit = (el)=> {
