@@ -1,0 +1,29 @@
+---
+title: Relaton API
+description: Try relaton API
+layout: post
+---
+<script src="/assets/js/relaton_api.js"></script>
+
+<h2>Try Relaton API</h2>
+<form id="api_document_form">
+  <div>
+    <label for="api_reference">Reference</label>
+    <input type="text" id="api_reference" placeholder="ISO 19115-1">
+    <div id="api_ref_msg" style="font-size: small; color: red; display: none">Reference is required</div>
+  </div>
+  <div>
+    <label for="api_year">Year</label>
+    <input type="text" id="api_year" placeholder="2011">
+  </div>
+  <fieldset>
+    <legend>Options</legend>
+    <input type="checkbox" id="api_option_all_parts" name="option_all_parts" value="all_parts">
+    <label for="api_option_all_parts">All parts</label>
+    <input type="checkbox" id="api_option_keep_year" name="option_keep_year" value="keep_year">
+    <label for="api_option_keep_year">Keep year</label>
+  </fieldset>
+  <div id="api_url"></div>
+  <input id="api_document_submit" type="submit">
+</form>
+<pre id="api_document_result"></pre>
