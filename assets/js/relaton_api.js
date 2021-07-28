@@ -2,18 +2,26 @@ const ready = ()=> {
   const form = document.getElementById("api_document_form");
   const btn = document.getElementById("api_document_submit");
   const ref = document.getElementById('api_reference');
-  const ref_msg = document.getElementById("api_ref_msg");
+  const refMsg = document.getElementById("api_ref_msg");
   const year = document.getElementById("api_year");
-  const all_parts = document.getElementById("api_option_all_parts");
-  const keep_year = document.getElementById("api_option_keep_year");
+  const allParts = document.getElementById("api_option_all_parts");
+  const keepYear = document.getElementById("api_option_keep_year");
   const url = document.getElementById("api_url");
   const req = new XMLHttpRequest();
   const res = document.getElementById("api_document_result");
 
+  const inputsBlock = (block) => {
+    ref.disabled = block;
+    year.disabled = block;
+    allParts.disabled = block;
+    keepYear.disabled = block;
+    btn.disabled = block;
+  }
+
   const reqListener = (e)=> {
     if (req.readyState === 4) {
       res.textContent = req.responseText;
-      btn.disabled = false;
+      inputsBlock(false);
     }
   }
 
@@ -24,10 +32,10 @@ const ready = ()=> {
     if (year.value.trim() !== "") {
       url.textContent += "&year=" + year.value;
     }
-    if (all_parts.checked) {
+    if (allParts.checked) {
       url.textContent += "&all_parts=true"
     }
-    if (keep_year.checked) {
+    if (keepYear.checked) {
       url.textContent += "&keep_year=true"
     }
     url.textContent = encodeURI(url.textContent);
@@ -37,19 +45,20 @@ const ready = ()=> {
     el.preventDefault();
     if (ref.value.trim() === "") {
       ref.focus();
-      ref_msg.style.display = "block";
+      refMsg.style.display = "block";
     } else {
-      btn.disabled = true;
+      inputsBlock(true);
+      res.textContent = "Awaiting for results..."
       req.open("GET", url.textContent);
       req.send();
     }
   }
 
   ref.addEventListener("keyup", update_url);
-  ref.addEventListener("focusout", (ev)=> {if (ref.value.trim() === "") { ref_msg.style.display = "block"}});
+  ref.addEventListener("focusout", (ev)=> {if (ref.value.trim() === "") { refMsg.style.display = "block"}});
   year.addEventListener("keyup", update_url);
-  all_parts.addEventListener("change", update_url);
-  keep_year.addEventListener("change", update_url);
+  allParts.addEventListener("change", update_url);
+  keepYear.addEventListener("change", update_url);
   form.addEventListener("submit", submit);
 };
 
