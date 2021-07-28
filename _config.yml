@@ -90,6 +90,7 @@ home_calls_to_action:
 permalink: /blog/:month-:day-:year/:title/
 
 plugins:
+  - jekyll-assets
   - jekyll-seo-tag
   - jekyll-sitemap
 
