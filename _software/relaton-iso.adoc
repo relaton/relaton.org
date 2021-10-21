@@ -2,6 +2,7 @@
 title: RelatonIso
 description: Retrieves ISO Standards for bibliographic use using the BibliographicItem model.
 repo_url: https://github.com/relaton/relaton-iso
+repo_branch: master
 
 external_links:
   - url: https://github.com/relaton/relaton-iso

@@ -2,6 +2,7 @@
 title: Relaton CLI
 description: Command-line tools for building Relaton sources.
 repo_url: https://github.com/relaton/relaton-cli
+repo_branch: master
 
 external_links:
   - url: https://github.com/relaton/relaton-cli

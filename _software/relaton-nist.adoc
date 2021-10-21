@@ -2,6 +2,7 @@
 title: RelatonNist
 description: Ruby gem that retrieves NIST standards.
 repo_url: https://github.com/relaton/relaton-nist
+repo_branch: master
 
 external_links:
   - url: https://github.com/relaton/relaton-nist

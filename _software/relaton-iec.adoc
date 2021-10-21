@@ -2,6 +2,7 @@
 title: RelatonIecBib
 description: Ruby gem that retrieves IEC/CIE Standards for bibliographic use.
 repo_url: https://github.com/relaton/relaton-iec
+repo_branch: master
 
 external_links:
   - url: https://github.com/relaton/relaton-iec

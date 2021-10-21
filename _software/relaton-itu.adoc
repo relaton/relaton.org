@@ -2,6 +2,7 @@
 title: RelatonItu
 description: Ruby gem that retrieves ITU standards.
 repo_url: https://github.com/relaton/relaton-itu
+repo_branch: master
 
 external_links:
   - url: https://github.com/relaton/relaton-itu

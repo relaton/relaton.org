@@ -2,6 +2,7 @@
 title: RelatonIev 
 description: Ruby gem that refactors IEV references.
 repo_url: https://github.com/relaton/relaton-iev
+repo_branch: master
 
 external_links:
   - url: https://github.com/relaton/relaton-iev
