@@ -137,7 +137,6 @@ defaults:
       layout: spec
 
 plugins:
-  - jekyll-assets
   - jekyll-seo-tag
   - jekyll-sitemap
 
