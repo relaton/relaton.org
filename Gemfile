@@ -20,8 +20,6 @@ gem "jekyll-theme-open-project"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem "sprockets", "~> 3.7"
-  gem "jekyll-assets"
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jekyll-data"
