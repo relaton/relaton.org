@@ -1,10 +1,13 @@
 title: Relaton
-description: The interoperable data model for citations
+description: Interoperable data models for citations
 # The above two are used by jekyll-seo-tag for things such as
 # `<title>` and `<meta>` tags, as well as elsewhere by the theme.
 
-url: https://www.relaton.com
-github_repo_url: https://github.com/relaton/relaton.com
+permalink: /blog/:year-:month-:day-:title/
+
+url: https://www.relaton.org
+github_repo_url: https://github.com/relaton/relaton.org
+github_repo_branch: main
 
 algolia_search:
   api_key: '31ca4bad475130bdaee582a0b9f40806'
@@ -15,6 +18,8 @@ tagline: >-
   based&nbsp;on&nbsp;ISO&nbsp;690
 
 landing_priority: [custom_intro, blog, specs, software]
+
+theme: jekyll-theme-open-project
 
 relaton:
   supported_bibliographies:
@@ -71,7 +76,10 @@ theme: jekyll-theme-open-project
 
 parent_hub:
   git_repo_url: https://github.com/riboseinc/open.ribose.com
+  git_repo_branch: main
   home_url: https://open.ribose.com/
+
+includes_dir: '.'
 
 social:
   links:
@@ -87,7 +95,46 @@ home_calls_to_action:
   - { url: "/software/relaton/docs/README/", title: "Using the gem" }
   #- { url: "/software/relaton-cli/docs/README/", title: "Using the CLI" }
 
-permalink: /blog/:month-:day-:year/:title/
+collections:
+  projects:
+    output: false
+  software:
+    output: true
+    permalink: /software/:path/
+  specs:
+    output: true
+    permalink: /specs/:path/
+  posts:
+    output: true
+    permalink: /blog/:year-:month-:day-:title/
+  pages:
+    output: true
+    permalink: /:name/
+
+
+defaults:
+  # Theme defaults.
+  # MUST be duplicated from theme’s _config.yml
+  # (does not get inherited, unlike the collections hash)
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: _posts
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: _software
+      type: software
+    values:
+      layout: product
+  - scope:
+      path: _specs
+      type: specs
+    values:
+      layout: spec
 
 plugins:
   - jekyll-assets
@@ -103,3 +150,12 @@ tag_namespaces:
   specs:
     audience: "Audience"
     completion_status: "Status"
+
+exclude:
+  - .git
+  - "*/.git"
+  - Gemfile*
+  - Makefile
+  - Rakefile
+  - README.adoc
+  - vendor # for deployment

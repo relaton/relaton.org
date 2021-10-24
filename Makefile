@@ -2,22 +2,16 @@ SHELL := /bin/bash
 
 all: _site
 
-bundle:
-	bundle
-
 clean:
 	rm -rf _site
 
-_site:
-	bundle exec jekyll build
+bundle:
+	bundle
 
-serve: bundle
+_site:
+	bundle exec jekyll build --trace
+
+serve:
 	bundle exec jekyll serve --trace
 
-update-init:
-	git submodule update --init
-
-update-modules:
-	git submodule foreach git pull origin master
-
-.PHONY: all clean serve update-init update-modules
+.PHONY: bundle all open serve distclean clean
