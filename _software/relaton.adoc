@@ -3,7 +3,6 @@ title: Relaton
 description: Gem for importing and caching bibliographic references to technical standards.
 
 repo_url: https://github.com/metanorma/relaton
-repo_branch: master
 
 external_links:
   - url: https://github.com/metanorma/relaton

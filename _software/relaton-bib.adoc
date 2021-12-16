@@ -2,7 +2,6 @@
 title: RelatonBib
 description: Ruby gem that implements the BibliographicItem model.
 repo_url: https://github.com/relaton/relaton-bib
-repo_branch: master
 
 external_links:
   - url: https://github.com/relaton/relaton-bib
