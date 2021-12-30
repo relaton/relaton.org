@@ -64,7 +64,9 @@ relaton:
       sources:
         - { label: "GB websites" }
 
-author: "Ribose Inc."
+author:
+  name: Ribose Inc.
+  url: https://www.ribose.com
 
 authors:
   - name: Ribose Inc.
@@ -152,6 +154,7 @@ tag_namespaces:
 
 exclude:
   - .git
+  - .lycheeignore
   - "*/.git"
   - Gemfile*
   - Makefile
