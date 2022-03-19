@@ -1,0 +1,10 @@
+---
+title: RelatonOasis
+description: Ruby gem that searches and fetches OASIS OPEN standards.
+repo_url: https://github.com/relaton/relaton-oasis
+
+external_links:
+  - url: https://github.com/relaton/relaton-oasis
+
+tags: ["writtenin:Ruby", "user:OASIS"]
+---

@@ -63,6 +63,11 @@ relaton:
       gem: relaton-gb
       sources:
         - { label: "GB websites" }
+    - id: oasis
+      label: OASIS
+      gem: relaton-oasis
+      sources:
+        - { url: "https://www.oasis-open.org/standards/", label: "OASIS OPEN"}
 
 author:
   name: Ribose Inc.
