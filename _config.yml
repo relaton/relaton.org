@@ -22,52 +22,108 @@ landing_priority: [custom_intro, blog, specs, software]
 theme: jekyll-theme-open-project
 
 relaton:
+
   supported_bibliographies:
     - id: iso
       label: ISO
       gem: relaton-iso
       sources:
-        - { url: "https://www.iso.org/", label: "International Organization for Standardization" }
+        - { url: "https://www.iso.org", label: "International Organization for Standardization" }
     - id: iec
       label: IEC
       gem: relaton-iec
       sources:
-        - { url: "https://www.iec.ch/", label: "International Electrotechnical Commission" }
+        - { url: "https://www.iec.ch", label: "International Electrotechnical Commission" }
     - id: itu
-      label: ITU
+      label: ITU-T & ITU-R
       gem: relaton-itu
       sources:
-        - { url: "https://www.itu.int/", label: "International Telecommunication Union" }
+        - { url: "https://www.itu.int", label: "International Telecommunication Union" }
     - id: ietf
-      label: IETF (Internet Drafts, RFCs)
+      label: RFC & I-D (IETF)
       gem: relaton-ietf
       sources:
-        - { url: "http://xml2rfc.tools.ietf.org/", label: "IETF XML2RFC" }
+        - { url: "http://xml2rfc.tools.ietf.org", label: "IETF BibXML" }
+    - id: ieee
+      label: IEEE
+      gem: relaton-ieee
+      sources:
+        - { url: "https://standards.ieee.org", label: "IEEE SA" }
     - id: nist
       label: NIST
       gem: relaton-nist
       sources:
-        - { url: "https://nist.gov", label: "NIST.gov website" }
+        - { url: "https://www.nist.gov", label: "NIST.gov" }
     - id: ogc
       label: OGC
       gem: relaton-ogc
       sources:
-        - { url: "https://www.ogc.org/", label: "Open Geospatial Consortium" }
+        - { url: "https://www.ogc.org", label: "Open Geospatial Consortium" }
     - id: iev
       label: IEC Electropedia (IEV)
       gem: relaton-iev
       sources:
-        - { url: "https://www.electropedia.org/", label: "IEC Electropedia" }
-    - id: gb
-      label: GB (Chinese national standards)
-      gem: relaton-gb
-      sources:
-        - { label: "GB websites" }
+        - { url: "https://www.electropedia.org", label: "IEC Electropedia" }
     - id: oasis
       label: OASIS
       gem: relaton-oasis
       sources:
         - { url: "https://www.oasis-open.org/standards/", label: "OASIS OPEN"}
+    - id: bipm
+      label: BIPM
+      gem: relaton-bipm
+      sources:
+        - { url: "https://www.bipm.org", label: "International Bureau of Weights and Measures" }
+    - id: 3gpp
+      label: 3GPP
+      gem: relaton-3gpp
+      sources:
+        - { url: "https://www.3gpp.org", label: "3GPP" }
+    - id: cie
+      label: CIE
+      gem: relaton-cie
+      sources:
+        - { url: "https://cie.co.at", label: "International Commission on Illumination" }
+    - id: w3c
+      label: W3C
+      gem: relaton-w3c
+      sources:
+        - { url: "https://www.w3.org", label: "World Wide Web Consortium" }
+    - id: ecma
+      label: ECMA
+      gem: relaton-ecma
+      sources:
+        - { url: "https://www.ecma-international.org", label: "ECMA" }
+    - id: omg
+      label: OMG
+      gem: relaton-omg
+      sources:
+        - { url: "https://www.omg.org", label: "Object Management Group" }
+    - id: un
+      label: UN Docs
+      gem: relaton-un
+      sources:
+        - { url: "https://documents.un.org", label: "UN Official Document System" }
+    - id: cen
+      label: EN (CEN/CENELEC)
+      gem: relaton-cen
+      sources:
+        - { url: "https://standards.cen.eu", label: "CEN/CENELEC" }
+    - id: bsi
+      label: BS, PAS (BSI)
+      gem: relaton-bsi
+      sources:
+        - { url: "https://www.bsigroup.com", label: "British Standards Institution" }
+    - id: iana
+      label: IANA
+      gem: relaton-iana
+      sources:
+        - { url: "https://www.iana.org", label: "Internet Assigned Numbers Authority" }
+    - id: gb
+      label: GB
+      gem: relaton-gb
+      sources:
+        - { label: "GB websites" }
 
 author:
   name: Ribose Inc.
