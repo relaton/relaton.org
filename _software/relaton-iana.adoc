@@ -1,0 +1,13 @@
+---
+title: RelatonIana
+description: Ruby gem that retrieves IANA Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-iana
+
+external_links:
+  - url: https://github.com/relaton/relaton-iana
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:IANA"]
+---

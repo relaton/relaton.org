@@ -1,0 +1,13 @@
+---
+title: Relaton3gpp
+description: Ruby gem that retrieves 3GPP Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-3gpp
+
+external_links:
+  - url: https://github.com/relaton/relaton-3gpp
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:3GPP"]
+---

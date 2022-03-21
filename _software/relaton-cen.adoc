@@ -1,0 +1,13 @@
+---
+title: RelatonCen
+description: Ruby gem that retrieves CEN Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-cen
+
+external_links:
+  - url: https://github.com/relaton/relaton-cen
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:CEN"]
+---

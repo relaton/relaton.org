@@ -1,0 +1,13 @@
+---
+title: RelatonEcma
+description: Ruby gem that retrieves ECMA Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-ecma
+
+external_links:
+  - url: https://github.com/relaton/relaton-ecma
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:ECMA"]
+---

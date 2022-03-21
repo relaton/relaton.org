@@ -1,0 +1,13 @@
+---
+title: RelatonIeee
+description: Ruby gem that retrieves IEEE Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-ieee
+
+external_links:
+  - url: https://github.com/relaton/relaton-ieee
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:IEEE"]
+---

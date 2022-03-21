@@ -1,0 +1,13 @@
+---
+title: RelatonBsi
+description: Ruby gem that retrieves BSI Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-bsi
+
+external_links:
+  - url: https://github.com/relaton/relaton-bsi
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:BSI"]
+---

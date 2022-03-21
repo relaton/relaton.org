@@ -1,0 +1,13 @@
+---
+title: RelatonBipm
+description: Ruby gem that retrieves BIPM Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-bipm
+
+external_links:
+  - url: https://github.com/relaton/relaton-bipm
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:BIPM"]
+---

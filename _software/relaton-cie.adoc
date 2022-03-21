@@ -1,0 +1,13 @@
+---
+title: RelatonCie
+description: Ruby gem that retrieves CIE Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-cie
+
+external_links:
+  - url: https://github.com/relaton/relaton-cie
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:CIE"]
+---

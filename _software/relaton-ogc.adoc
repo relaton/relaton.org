@@ -1,0 +1,13 @@
+---
+title: RelatonOgc
+description: Ruby gem that retrieves OGC Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-ogc
+
+external_links:
+  - url: https://github.com/relaton/relaton-ogc
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:OGC"]
+---

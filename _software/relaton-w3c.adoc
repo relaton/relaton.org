@@ -1,0 +1,13 @@
+---
+title: RelatonW3c
+description: Ruby gem that retrieves W3C Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-w3c
+
+external_links:
+  - url: https://github.com/relaton/relaton-w3c
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:W3C"]
+---

@@ -1,0 +1,13 @@
+---
+title: RelatonOmg
+description: Ruby gem that retrieves OMG Standards for bibliographic use.
+repo_url: https://github.com/relaton/relaton-omg
+
+external_links:
+  - url: https://github.com/relaton/relaton-omg
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:OMG"]
+---
