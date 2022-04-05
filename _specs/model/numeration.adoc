@@ -7,21 +7,151 @@ description: Numeration and pagination in Relaton
 == Numeration and pagination
 
 * Source: ISO 690, Clause 4.7
-* Serialisation: `bibitem/extent`
+* Serialisation: `bibitem/extent`, `bibitem/size`
+
+The bibliographic `size` of an item is the measure of how large it is, in terms
+of measurements related to content (volumes, pages, data size, duration). It is
+distinct from the physical size of the time as an object (e.g. height and breadth of a book,
+page size such as octavo), which is captured under `bibitem/medium/size`.
+
+The measures included in the bibliographic size are presented as a sequence of types
+and values, which add up to give the size of the item: `bibitem/size/value/@type` and
+`bibitem/size/value`. For example, a book with two page numerations is described
+by giving both: "`lxii + 490 pages`". This would be presented as:
+
+[source,xml]
+--
+<size>
+  <value type="page">lxii</value>
+  <value type="page">490</value>
+</size>
+--
+
+Likewise, the convention of listing plates separately from pages (unnumbered pages,
+of different, glossier material, used for full-page illustrations) would be indicated as:
+
+[source,xml]
+--
+<size>
+  <value type="page">114</value>
+  <value type="plate">3</value>
+</size>
+--
+
+corresponding to "`114pp + 3 plates`".
+
+====
+_Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited by Susan Gross Solomon. New York: St. Martin's Press, 1983. xiii, 179 pp. $27.50.
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling</title>
+  <date type="published"><on>1983</on></date>
+  <contributor>
+    <role type="editor"/>
+    <person>
+      <name>
+        <surname>Solonom</surname>
+        <forename>Susan</forename>
+        <forename>Gross</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>St Martin's Press</name>
+    </organization>
+  </contributor>
+  <note>$27.50</note>
+  <place>New York</place>
+  <series>
+    <title>Nevada Bureau of Mines and Geology Bulletin</title>
+    <number>88</number>
+  </series>
+  <size>
+    <value type="page">xiii</value>
+    <value type="page">179</value>
+  </size>
+</bibitem>
+--
+====
+
+====
+John H. Stewart, Edwin H. McKee, and Harold K. Stager.
+_Geology and mineral deposits of Lander County, Nevada_.
+Nevada Bureau of Mines and Geology Bulletin 88. 1977.
+Reno: University of Nevada. [114 pp, 3 plates]
+
+[source,xml]
+--
+<bibitem type="book">
+  <title>Geology and mineral deposits of Lander County, Nevada</title>
+  <date type="published"><on>1977</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Stewart</surname>
+        <forename>John</forename>
+        <forename>H.</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>McKee</surname>
+        <forename>Edwin</forename>
+        <forename>H.</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Stager</surname>
+        <forename>Harold</forename>
+        <forename>K.</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>University of Nevada</name>
+    </organization>
+  </contributor>
+  <place>Reno</place>
+  <series>
+    <title>Nevada Bureau of Mines and Geology Bulletin</title>
+    <number>88</number>
+  </series>
+  <size>
+    <value type="page">114</value>
+    <value type="plate">3</value>
+  </size>
+</bibitem>
+--
+====
+
+
+The bibliographic size of an item is differentiated from its `extent`, the range of
+bibliographic size components it occupies within an item. Extent is typically a
+characteristic of contained items (link:../relations#host-item["host item"]),
+e.g. a page range within a monograph or a journal for a journal article or book chapter
+(so "`pp. 25-45`").
 
 Components of an item are modelled under the `bibitem/extent` element as
 one or more "localities"; these consist of a locality type
 (`bibitem/extent@type`), a locality value (`bibitem/extent/referenceFrom`),
 and optionally a locality range endpoint (`bibitem/extent/referenceTo`).
-The `extent` gives the part of the host item being cited, if this is a
-contained item (link:../relations#host-item["host item"]),
-such as a journal article or book chapter
-(e.g. "`pp. 25-45`").
-
-If the item is not a component of another item, then the extent gives the
-locality value for the entire work (e.g. page count: "`[7 pp.]`"). This is expressed
-by giving an empty `bibitem/extent/referenceFrom`, and populating
-only `bibitem/extent/referenceTo` ("`[7 pp.]`" = pp. 1-7).
+The locality type is a superset of the types of bibliographic size: an extent
+typically involves volumes, pages, or timestamps, but can also extent to other
+subdivisions of text, such as figures or appendices.
 
 If a locality is labelled conventionally with a range, but is in fact a single
 item (as often occurs with volumes and issues; e.g. issue 18–19 is in fact a
@@ -29,7 +159,8 @@ single issue), the label should be associated with
 `bibitem/extent/referenceFrom` rather than being treated as a true range.
 However the rendering of the item will typically not be any different.
 
-A part of a contained item may be cited, and this has posed difficulty for
+A part of a contained item may be cited, and thus may have an extent applying to
+the contained item as well as the host item. This has posed difficulty for
 some citation schemes (e.g. citing a page within a journal article, which itself
 covers a page range: "`Dedes, D. 1993. Ποίηματα του Μαυλανά Ρουμή [Poems by
 Mevlana Rumi]. _Ta Istorika_ 10.18-19: 3-22. pp. 7-19`".) However, the model
@@ -40,9 +171,7 @@ normally as part of the citation, not part of the bibliographic item.
 
 A hierarchical locality is expressed by repeating the extent element
 with the different applicable locality types; these should be given in
-hierarchical order. However localities in an extent
-may be complimentary instead (e.g. "`xiii+179 pp`" for prefatory and main
-pagination; "`114pp + 3 plates`" for plates outside the main page numeration).
+hierarchical order. (So, for example, "`chapter 4, table 9`".)
 
 Discontinuous ranges are modelled by repeating the extent element for the same locality type.
 
@@ -148,109 +277,6 @@ In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and hu
   <extent type="page">
     <referenceFrom>89</referenceFrom>
     <referenceTo>112</referenceTo>
-  </extent>
-</bibitem>
---
-====
-
-====
-_Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling_. Edited by Susan Gross Solomon. New York: St. Martin's Press, 1983. xiii, 179 pp. $27.50.
-
-[source,xml]
---
-<bibitem type="book">
-  <title>Pluralism in the Soviet Union: Essays in Honour of H. Gordon Skilling</title>
-  <date type="published"><on>1983</on></date>
-  <contributor>
-    <role type="editor"/>
-    <person>
-      <name>
-        <surname>Solonom</surname>
-        <forename>Susan</forename>
-        <forename>Gross</forename>
-      </name>
-    </person>
-  </contributor>
-  <contributor>
-    <role type="publisher"/>
-    <organization>
-      <name>St Martin's Press</name>
-    </organization>
-  </contributor>
-  <note>$27.50</note>
-  <place>New York</place>
-  <series>
-    <title>Nevada Bureau of Mines and Geology Bulletin</title>
-    <number>88</number>
-  </series>
-  <extent type="page">
-    <referenceTo>xiii</referenceTo>
-  </extent>
-  <extent type="page">
-    <referenceTo>179</referenceTo>
-  </extent>
-</bibitem>
---
-====
-
-
-====
-John H. Stewart, Edwin H. McKee, and Harold K. Stager.
-_Geology and mineral deposits of Lander County, Nevada_.
-Nevada Bureau of Mines and Geology Bulletin 88. 1977.
-Reno: University of Nevada. [114 pp, 3 plates]
-
-[source,xml]
---
-<bibitem type="book">
-  <title>Geology and mineral deposits of Lander County, Nevada</title>
-  <date type="published"><on>1977</on></date>
-  <contributor>
-    <role type="author"/>
-    <person>
-      <name>
-        <surname>Stewart</surname>
-        <forename>John</forename>
-        <forename>H.</forename>
-      </name>
-    </person>
-  </contributor>
-  <contributor>
-    <role type="author"/>
-    <person>
-      <name>
-        <surname>McKee</surname>
-        <forename>Edwin</forename>
-        <forename>H.</forename>
-      </name>
-    </person>
-  </contributor>
-  <contributor>
-    <role type="author"/>
-    <person>
-      <name>
-        <surname>Stager</surname>
-        <forename>Harold</forename>
-        <forename>K.</forename>
-      </name>
-    </person>
-  </contributor>
-  <contributor>
-    <role type="publisher"/>
-    <organization>
-      <name>University of Nevada</name>
-    </organization>
-  </contributor>
-  <place>Reno</place>
-  <series>
-    <title>Nevada Bureau of Mines and Geology Bulletin</title>
-    <number>88</number>
-  </series>
-  <extent type="page">
-    <referenceTo>114</referenceTo>
-  </extent>
-  <extent type="plate">
-    <referenceTo>3</referenceTo>
   </extent>
 </bibitem>
 --
