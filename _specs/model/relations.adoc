@@ -479,7 +479,7 @@ In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and hu
     <person>
       <name>
         <surname>Ramsey</surname>
-        <initials>J. K.</initials>
+        <formatted-initials>J. K.</formatted-initials>
       </name>
     </person>
   </contributor>
@@ -488,7 +488,7 @@ In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and hu
     <person>
       <name>
         <surname>McGrew</surname>
-        <initials>W. C.</initials>
+        <formatted-initials>W. C.</formatted-initials>
       </name>
     </person>
   </contributor>
@@ -500,7 +500,7 @@ In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and hu
         <person>
           <name>
             <surname>Pellegrini</surname>
-            <initials>A. D.</initials>
+            <formatted-initials>A. D.</formatted-initials>
           </name>
         </person>
       </contributor>
@@ -509,7 +509,7 @@ In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and hu
         <person>
           <name>
             <surname>Smith</surname>
-            <initials>P. K.</initials>
+            <formatted-initials>P. K.</formatted-initials>
           </name>
         </person>
       </contributor>
@@ -721,7 +721,7 @@ Victor BERS. Austin: University of Texas Press, 2003.
     <person>
       <name>
         <surname>Bers</surname>
-        <initials>Victor</initials>
+        <formatted-initials>Victor</formatted-initials>
       </name>
     </person>
   </contributor>

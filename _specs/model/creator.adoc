@@ -71,7 +71,7 @@ In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and hu
     <person>
       <name>
         <surname>Ramsey</surname>
-        <initials>J. K.</initials>
+        <formatted-initials>J. K.</formatted-initials>
       </name>
     </person>
   </contributor>
@@ -80,7 +80,7 @@ In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and hu
     <person>
       <name>
         <surname>McGrew</surname>
-        <initials>W. C.</initials>
+        <formatted-initials>W. C.</formatted-initials>
       </name>
     </person>
   </contributor>
@@ -92,7 +92,7 @@ In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and hu
         <person>
           <name>
             <surname>Pellegrini</surname>
-            <initials>A. D.</initials>
+            <formatted-initials>A. D.</formatted-initials>
           </name>
         </person>
       </contributor>
@@ -101,7 +101,7 @@ In A. D. Pellegrini & P. K. Smith (Eds.), _The nature of play: Great apes and hu
         <person>
           <name>
             <surname>Smith</surname>
-            <initials>P. K.</initials>
+            <formatted-initials>P. K.</formatted-initials>
           </name>
         </person>
       </contributor>
@@ -144,7 +144,7 @@ Victor BERS. Austin: University of Texas Press, 2003.
     <person>
       <name>
         <surname>Bers</surname>
-        <initials>Victor</initials>
+        <forename>Victor</forename>
       </name>
     </person>
   </contributor>
@@ -268,9 +268,11 @@ may choose to truncate contributors with "`et al.`" beyond a certain cutoff poin
 If this information is not available, a dummy contributor can be
 named with "`et al.`" as their `completename`, but this is not preferred.
 
-The `initials` component is used if all forenames are replaced by initials.
+The `formatted-initials` component is used if all forenames are replaced by initials.
 If only the middle name is replaced by an initial, it is still treated as a
 forename.
+
+Forenames are given an `initial` attribute if initials are to be assembled on a more granular basis.
 
 ====
 BACH, J.S.
@@ -280,7 +282,7 @@ BACH, J.S.
 <person>
   <name>
     <surname>Bach</surname>
-    <initials>J. S.</initials>
+    <formatted-initials>J. S.</formatted-initials>
   </name>
 </person>
 --
@@ -294,7 +296,7 @@ PICASSO, Pablo
 <person>
   <name>
     <surname>Picasso</surname>
-    <forename>Pablo</forename>
+    <forename initial="P">Pablo</forename>
   </name>
 </person>
 --
