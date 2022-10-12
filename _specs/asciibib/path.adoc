@@ -44,8 +44,8 @@ Is equivalent to the link:../path[AsciiBib nested list syntax] of:
 == {blank}
 id:: iso19115
 docid::
-  type::: ISO
-  id::: 19115-1
+type::: ISO
+id::: 19115-1
 ----
 
 
@@ -76,11 +76,11 @@ Is equivalent to the link:../path[AsciiBib nested list syntax] of:
 == {blank}
 id:: iso19115
 docid::
-  type::: ISO
-  id::: 19115-1
+type::: ISO
+id::: 19115-1
 docid::
-  type::: ISO
-  id::: TC211
+type::: ISO
+id::: TC211
 type:: standard
 ----
 
@@ -109,16 +109,15 @@ Is equivalent to the link:../path[AsciiBib nested list syntax] of:
 ...
 === Contributor
 person::
-  contact:::
-    street::::
-      . 8 Street St
-    city:::: City
-    postcode:::: 123456
-    country:::: Country
-    state:::: State
-  contact:::
-    type:::: phone
-    value:::: 223322
+contact:::
+street:::: 8 Street St
+city:::: City
+postcode:::: 123456
+country:::: Country
+state:::: State
+contact:::
+type:::: phone
+value:::: 223322
 ----
 
 
@@ -209,8 +208,8 @@ medium.form:: medium form
 medium.size:: medium size
 medium.scale:: medium scale
 place:: bib place
-extent.type:: section
-extent.reference_from:: 7
+extent.locality.type:: section
+extent.locality.reference_from:: 7
 accesslocation:: accesslocation1
 accesslocation:: accesslocation2
 classification.type:: type
