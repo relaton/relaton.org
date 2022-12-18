@@ -140,7 +140,7 @@ GATES, B. [BillGates]. (2013, February 26).
     <form>Twitter</form>
     <genre>tweet</genre>
   </medium>
-  <relation type="complements">
+  <relation type="hasComplement">
     <bibitem type="video">
        <uri>http://b-gat.es/X75Lvy</uri>
     </bibitem>
