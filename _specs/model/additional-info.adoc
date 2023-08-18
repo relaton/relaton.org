@@ -137,26 +137,44 @@ Where available, URIs should be used to identify licenses unambiguously.
 If a URI is not available, a commonly accepted abbreviation or short name of
 the license should be used.
 
+.Indicating the BSD 2-clause license
 ====
+[source,xml]
+--
 <license>BSD-2</license>
+--
+====
+
+.Indicating the Creative Commons 2.0 license
+====
+[source,xml]
+--
 <license>https://creativecommons.org/licenses/by/2.0/</license>
+--
 ====
 
 Copyright is privileged with a separate element, incorporating copyright date
-and owner, and scope. Scope is only used when multiple copyright statements apply to the 
+and owner, and scope. Scope is only used when multiple copyright statements apply to the
 same document, indicating the scope of each copyright statement. It is preferable
 if possible to use only one copyright statement per bibitem, and allot the other
 copyright statements to distinct related bibitems (even if the scope involved is
 as part of the publication, such as a chapter.)
 
+.Copyright to a person
 ====
+[source,xml]
+--
 <copyright>
   <from>1999</from>
   <owner><person><name><completename>Jack Frost</completename></person></owner>
 </copyright>
+--
 ====
 
+.Multiple copyright statements
 ====
+[source,xml]
+--
 <copyright>
   <from>1999</from>
   <owner><person><name><completename>Jack Frost</completename></person></owner>
@@ -167,9 +185,13 @@ as part of the publication, such as a chapter.)
   <owner><person><name><completename>Johannes Raureif</completename></person></owner>
   <scope>Translation into German</scope>
 </copyright>
+--
 ====
 
+.A copyright statement within a document relation
 ====
+[source,xml]
+--
 <bibitem>
   ...
   <copyright>
@@ -188,6 +210,7 @@ as part of the publication, such as a chapter.)
     </bibitem>
   </relation>
 </bibitem>
+--
 ====
 
 === Provenance and Authenticity
@@ -197,6 +220,4 @@ as part of the publication, such as a chapter.)
 
 Notes on bibliographical provenance, and checksums for digital resources,
 are both given as bibliographic notes.
-
-
 
