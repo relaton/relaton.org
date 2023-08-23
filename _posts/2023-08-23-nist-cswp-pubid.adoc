@@ -1,0 +1,454 @@
+---
+layout: post
+title:  "NIST CyberSecurity White Paper PubID scheme change and mapping"
+date:   2023-08-23 00:00:00 +0800
+categories:
+  - plurimath
+  - introduction
+authors:
+  -
+    name: Ronald Tse
+    email: tse@ribose.com
+    social_links:
+      - https://www.linkedin.com/in/rhtse/
+      - https://github.com/ronaldtse
+
+excerpt: >-
+  With the adoption of the latest NIST PubID 1.0 scheme, the NIST Library has
+  decided to retroactively apply the scheme to CyberSecurity White Papers
+  published by the CSRC. This post provides a mapping from the old CSWP PubIDs
+  to the newly assigned PubIDs.
+---
+= NIST CyberSecurity White Paper PubID scheme change and mapping
+
+== General
+
+NIST has now officially adopted the
+https://www.nist.gov/system/files/documents/2022/04/01/PubID_Syntax_NIST_TechPubs.pdf[NIST PubID 1.0 scheme],
+which describes a clever publication identifier across all NIST Technical Publications.
+
+More background information on the NIST PubID can be found on this
+https://www.metanorma.org/posts/2022-01-09-nist-pubid[Metanorma blog post].
+
+NIST Cyber Security White Papers (CSWP) are cybersecurity-related documents that
+represent latest research or a consensus-based expert topic. A number of
+important publications, such as the NIST Cyber Security Framework,
+the NIST Privacy Framework, are all published as CSWPs.
+
+In the past, CSWP PubIDs utilize the date string `ddmmyyyy` as their unique
+identifier. This usage is also reflect in the PubID 1.0 document itself.
+
+Very recently, the NIST Research Library decided that CSWPs are to be
+represented with a sequential number for each publication, possibly in response
+to some CSWPs having been published on the same date.
+
+.Previous NIST CSWP PubID scheme conflicted when publication dates are identical
+[example]
+The "NIST Privacy Framework" (old PubID "NIST CSWP 01162020") and
+"Case Studies in Cyber Supply Chain Risk Management: Observations from Industry"
+(old PubID "NIST CSWP 02042020-2") were both published on the same day, leading
+to a non-unique PubID.
+
+As a result, the old CSWP PubIDs have been replaced with a new assignment.
+Since the assignment was a manual one, an old-to-new mapping becomes necessary.
+
+.NIST Cyber Security Framework 1.0 was `NIST CSWP 02122014` now `NIST CSWP 4`
+[example]
+The NIST Cyber Security Framework 1.0 originally had the PubID "NIST CSWP 02122014",
+and is now been assigned "NIST CSWP 4".
+
+.NIST Privacy Framework was `NIST CSWP 01162020` now `NIST CSWP 10`
+[example]
+The NIST Privacy Framework originally had the PubID "NIST CSWP 01162020",
+and is now been assigned "NIST CSWP 10".
+
+== CSWP PubID mapping: old to new
+
+Relaton users who have been citing or referencing CSWPs using the previous
+CSWP PubID syntax will somewhat be in confusion when learning about the change
+of their CSWP's PubID -- how will I know what the new CSWP PubID is, since
+the IDs are sequentially assigned manually?
+
+Here comes the rescue!
+
+https://www.nist.gov/people/james-foti[James Foti] of the NIST ITL Cyber
+Security Division is one of the authors of the NIST PubID 1.0 scheme.
+He has graciously provided a mapping table for those who have cited the old
+CSWP PubIDs to the new CSWP PubIDs.
+
+When using the latest versions of Relaton, please utilize the new PubID to
+refer to CSWP documents.
+
+Thank you Jim!
+
+[cols="2a,a,a,a,3a,5a",options="header"]
+|===
+| PubID (old PubID) | Stage | Status | Date | New DOI (old DOI) | Title
+
+| NIST CSWP 1
+
+was: _NIST CSWP 02122014_
+| Final
+| Published
+| 2/12/2014
+| https://doi.org/10.6028/NIST.CSWP.1
+
+was: _https://doi.org/10.6028/NIST.CSWP.02122014_
+| Framework for Improving Critical Infrastructure Cybersecurity, Version 1.0
+
+| NIST CSWP 2
+
+was: _NIST CSWP 02192014_
+| Final
+| Published
+| 2/19/2014
+| https://doi.org/10.6028/NIST.CSWP.2
+
+was: _https://doi.org/10.6028/NIST.CSWP.02192014_
+| Summary of NIST SP 800-53, Revision 4: Security and Privacy Controls for Federal Information Systems and Organizations
+
+| NIST CSWP 3
+
+was: _NIST CSWP 06032014_
+| Final
+| Withdrawn
+| 6/3/2014
+| https://doi.org/10.6028/NIST.CSWP.3
+
+was: _https://doi.org/10.6028/NIST.CSWP.06032014_
+| Supplemental Guidance on Ongoing Authorization: Transitioning to Near Real-Time Risk Management
+
+| NIST CSWP 4
+
+was: _NIST CSWP 04212016_
+| Final
+| Published
+| 4/21/2016
+| https://doi.org/10.6028/NIST.CSWP.4
+
+was: _https://doi.org/10.6028/NIST.CSWP.04212016_
+| Best Practices for Privileged User PIV Authentication
+
+| NIST CSWP 5
+
+was: _NIST CSWP 01262018_
+| Final
+| Published
+| 1/26/2018
+| https://doi.org/10.6028/NIST.CSWP.5
+
+was: _https://doi.org/10.6028/NIST.CSWP.01262018_
+| Security Considerations for Code Signing
+
+| NIST CSWP 6
+
+was: _NIST CSWP 04162018_
+| Final
+| Published
+| 4/16/2018
+| https://doi.org/10.6028/NIST.CSWP.6
+
+was: _https://doi.org/10.6028/NIST.CSWP.04162018_
+| Framework for Improving Critical Infrastructure Cybersecurity, Version 1.1
+
+| NIST CSWP 7
+
+was: _NIST CSWP 09102018_
+| Final
+| Published
+| 9/10/2018
+| https://doi.org/10.6028/NIST.CSWP.7
+
+was: _https://doi.org/10.6028/NIST.CSWP.09102018_
+| Transitioning to the Security Content Automation Protocol (SCAP) Version 2
+
+| NIST CSWP 8
+
+was: _NIST CSWP 04222019_
+| Final
+| Published
+| 4/22/2019
+| https://doi.org/10.6028/NIST.CSWP.8
+
+was: _https://doi.org/10.6028/NIST.CSWP.04222019_
+| BowTie - A deep learning feedforward neural network for sentiment analysis
+
+| NIST CSWP 9 ipd
+
+was: _NIST CSWP 07092019-draft_
+| IPD
+| Withdrawn
+| 7/9/2019
+| https://doi.org/10.6028/NIST.CSWP.9.ipd
+
+was: _https://doi.org/10.6028/NIST.CSWP.07092019-draft_
+| A Taxonomic Approach to Understanding Emerging Blockchain Identity Management Systems
+
+| NIST CSWP 9
+
+was: _NIST CSWP 01142020_
+| Final
+| Published
+| 1/14/2020
+| https://doi.org/10.6028/NIST.CSWP.9
+
+was: _https://doi.org/10.6028/NIST.CSWP.01142020_
+| A Taxonomic Approach to Understanding Emerging Blockchain Identity Management Systems
+
+| NIST CSWP 10
+
+was: _NIST CSWP 01162020_
+| Final
+| Published
+| 1/16/2020
+| https://doi.org/10.6028/NIST.CSWP.10
+
+was: _https://doi.org/10.6028/NIST.CSWP.01162020_
+| NIST Privacy Framework: A Tool for Improving Privacy Through Enterprise Risk Management, Version 1.0
+
+| NIST CSWP 11
+
+was: _NIST CSWP 02042020-1_
+| Final
+| Published
+| 2/4/2020
+| https://doi.org/10.6028/NIST.CSWP.11
+
+was: _https://doi.org/10.6028/NIST.CSWP.02042020-1_
+| Case Studies in Cyber Supply Chain Risk Management: Summary of Findings and Recommendations
+
+| NIST CSWP 11A
+
+was: _NIST CSWP 02042020-2_
+| Final
+| Published
+| 2/4/2020
+| https://doi.org/10.6028/NIST.CSWP.11A
+
+was: _https://doi.org/10.6028/NIST.CSWP.02042020-2_
+| Case Studies in Cyber Supply Chain Risk Management: Anonymous Consumer Electronics Company
+
+| NIST CSWP 11B
+
+was: _NIST CSWP 02042020-3_
+| Final
+| Published
+| 2/4/2020
+| https://doi.org/10.6028/NIST.CSWP.11B
+
+was: _https://doi.org/10.6028/NIST.CSWP.02042020-3_
+| Case Studies in Cyber Supply Chain Risk Management: Anonymous Consumer Goods Company
+
+| NIST CSWP 11C
+
+was: _NIST CSWP 02042020-4_
+| Final
+| Published
+| 2/4/2020
+| https://doi.org/10.6028/NIST.CSWP.11C
+
+was: _https://doi.org/10.6028/NIST.CSWP.02042020-4_
+| Case Studies in Cyber Supply Chain Risk Management: Anonymous Renewable Energy Company
+
+| NIST CSWP 11D
+
+was: _NIST CSWP 02042020-5_
+| Final
+| Published
+| 2/4/2020
+| https://doi.org/10.6028/NIST.CSWP.11D
+
+was: _https://doi.org/10.6028/NIST.CSWP.02042020-5_
+| Case Studies in Cyber Supply Chain Risk Management: Mayo Clinic
+
+| NIST CSWP 11E
+
+was: _NIST CSWP 02042020-6_
+| Final
+| Published
+| 2/4/2020
+| https://doi.org/10.6028/NIST.CSWP.11E
+
+was: _https://doi.org/10.6028/NIST.CSWP.02042020-6_
+| Case Studies in Cyber Supply Chain Risk Management: Palo Alto Networks, Inc.
+
+| NIST CSWP 11F
+
+was: _NIST CSWP 02042020-7_
+| Final
+| Published
+| 2/4/2020
+| https://doi.org/10.6028/NIST.CSWP.11F
+
+was: _https://doi.org/10.6028/NIST.CSWP.02042020-7_
+| Case Studies in Cyber Supply Chain Risk Management: Seagate Technology
+
+| NIST CSWP 12 ipd
+
+was: _NIST CSWP 04012020-draft_
+| IPD
+| Withdrawn
+| 4/1/2020
+| https://doi.org/10.6028/NIST.CSWP.12.ipd
+
+was: _https://doi.org/10.6028/NIST.CSWP.04012020-draft_
+| Methodology for Characterizing Network Behavior of Internet of Things Devices
+
+| NIST CSWP 13
+
+was: _NIST CSWP 04232020_
+| Final
+| Withdrawn
+| 4/23/2020
+| https://doi.org/10.6028/NIST.CSWP.13
+
+was: _https://doi.org/10.6028/NIST.CSWP.04232020_
+| Mitigating the Risk of Software Vulnerabilities by Adopting a Secure Software Development Framework (SSDF)
+
+| NIST CSWP 14 ipd
+
+was: _NIST CSWP 04282020-draft_
+| IPD
+| Withdrawn
+| 4/28/2020
+| https://doi.org/10.6028/NIST.CSWP.14.ipd
+
+was: _https://doi.org/10.6028/NIST.CSWP.04282020-draft_
+| Hardware-Enabled Security for Server Platforms: Enabling a Layered Approach to Platform Security for Cloud and Edge Computing Use Cases
+
+| NIST CSWP 15 ipd
+
+was: _NIST CSWP 05262020-draft_
+| IPD
+| Withdrawn
+| 5/26/2020
+| https://doi.org/10.6028/NIST.CSWP.15.ipd
+
+was: _https://doi.org/10.6028/NIST.CSWP.05262020-draft_
+| Getting Ready for Post-Quantum Cryptography: Explore Challenges Associated with Adoption and Use of Post-Quantum Cryptographic Algorithms
+
+| NIST CSWP 16 ipd
+
+was: _NIST CSWP 09082020-draft_
+| IPD
+| Published
+| 9/8/2020
+| https://doi.org/10.6028/NIST.CSWP.16.ipd
+
+was: _https://doi.org/10.6028/NIST.CSWP.09082020-draft_
+| Trusted Internet of Things (IoT) Device Network-Layer Onboarding and Lifecycle Management
+
+| NIST CSWP 17 ipd
+
+was: _NIST CSWP 10012020-draft_
+| IPD
+| Published
+| 10/1/2020
+| https://doi.org/10.6028/NIST.CSWP.17.ipd
+
+was: _https://doi.org/10.6028/NIST.CSWP.10012020-draft_
+| Securing Data Integrity Against Ransomware Attacks: Using the NIST Cybersecurity Framework and NIST Cybersecurity Practice Guides
+
+| NIST CSWP 15
+
+was: _NIST CSWP 04282021_
+| Final
+| Published
+| 4/28/2021
+| https://doi.org/10.6028/NIST.CSWP.15
+
+was: _https://doi.org/10.6028/NIST.CSWP.04282021_
+| Getting Ready for Post-Quantum Cryptography: Exploring Challenges Associated with Adopting and Using Post-Quantum Cryptographic Algorithms
+
+| NIST CSWP 18 ipd
+
+was: _NIST CSWP 05142021-draft_
+| IPD
+| Published
+| 5/14/2021
+| https://doi.org/10.6028/NIST.CSWP.18.ipd
+
+was: _https://doi.org/10.6028/NIST.CSWP.05142021-draft_
+| Establishing Confidence in IoT Device Security: How do we get there?
+
+| NIST CSWP 19 ipd
+
+was: _NIST CSWP 06222021-draft_
+| IPD
+| Published
+| 6/22/2021
+| https://doi.org/10.6028/NIST.CSWP.19.ipd
+
+was: _https://doi.org/10.6028/NIST.CSWP.06222021-draft_
+| Combinatorial Coverage Difference Measurement
+
+| NIST CSWP 20 ipd
+
+was: _NIST CSWP 08042021-draft_
+| IPD
+| Published
+| 8/4/2021
+| https://doi.org/10.6028/NIST.CSWP.20.ipd
+
+was: _https://doi.org/10.6028/NIST.CSWP.08042021-draft_
+| Planning for a Zero Trust Architecture: A Starting Guide for Administrators
+
+| NIST CSWP 21
+
+was: _NIST CSWP 09292021_
+| Final
+| Published
+| 9/29/2021
+| https://doi.org/10.6028/NIST.CSWP.21
+
+was: _https://doi.org/10.6028/NIST.CSWP.09292021_
+| Benefits of an Updated Mapping between the NIST Cybersecurity Framework and the NERC Critical Infrastructure Protection Standards
+
+| NIST CSWP 22 ipd
+
+was: _NIST CSWP 12062021-draft_
+| IPD
+| Published
+| 12/6/2021
+| https://doi.org/10.6028/NIST.CSWP.22.ipd
+
+was: _https://doi.org/10.6028/NIST.CSWP.12062021-draft_
+| Combination Frequency Differencing
+
+| NIST CSWP 23
+
+was: _NIST CSWP 02042022-1_
+| Final
+| Published
+| 2/4/2022
+| https://doi.org/10.6028/NIST.CSWP.23
+
+was: _https://doi.org/10.6028/NIST.CSWP.02042022-1_
+| Recommended Criteria for Cybersecurity Labeling of Consumer Software
+
+| NIST CSWP 24
+
+was: _NIST CSWP 02042022-2_
+| Final
+| Published
+| 2/4/2022
+| https://doi.org/10.6028/NIST.CSWP.24
+
+was: _https://doi.org/10.6028/NIST.CSWP.02042022-2_
+| Recommended Criteria for Cybersecurity Labeling for Consumer Internet of Things (IoT) Products
+
+|===
+
+== Conclusion
+
+The recent change in NIST CSWP PubID references highlights the strong need
+in PubID stability, and the importance of getting PubIDs defined correctly
+early on.
+
+Changing the PubID scheme at the authoritative source is never an easy task and
+similarly creates challenges for users.
+
+It is important for the organization that changes PubIDs to provide some
+mapping from the old PubID to the new PubID so that users can understand how
+the references changed.
+
