@@ -81,6 +81,20 @@ indentation.
 instanceOf:: document B is an instance of document A (e.g. an
 edition, a format, a single copy: agnostic as to whether B is an
 Expression, Manifestation, or Item) (_hasInstance_)
++
+--
+Instances are often used in the Relaton modelling of standards, since
+concrete documents (FRBR Expressions) are often lumped together
+as more abstract entities (typically FRBR Works), particularly for
+the purposes of citation.
+
+So different
+editions of a standard are often lumped together as a single Work;
+the different editions of a standard are then modelled as instances of
+the undated standard. Similarly, translations of a standard are often
+lumped together as a single Work; the distinct language versions are
+then modelled as instances of the same, language-independent standard.
+--
 
 exemplarOf:: document B is an Item of document A (_hasExemplar_)
 
