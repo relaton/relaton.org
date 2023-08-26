@@ -147,7 +147,7 @@ and the series run is preferred to differentiate the two runs.
     <person>
       <name>
         <surname>Barnes</surname>
-        <initials>J. A.</initials>
+        <formatted-initials>J. A.</formatted-initials>
       </name>
     </person>
   </contributor>

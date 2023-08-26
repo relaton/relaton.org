@@ -417,7 +417,7 @@ HICKS, H. D. _Correspondence from Henry Davies Hicks to the Annapolis County ele
     <role type="author"/>
     <person>
       <surname>Hicks</surname>
-      <initials>H. D.</initials>
+      <formatted-initials>H. D.</formatted-initials>
     </person>
   </contributor>
   <contributor>
@@ -463,7 +463,7 @@ MILBERGER, S. (2002). _Evaluation of violence against women with physical disabi
     <person>
       <name>
         <surname>Milberger</surname>
-        <initials>S.</initials>
+        <formatted-initials>S.</formatted-initials>
       </name>
     </person>
   </contributor>
@@ -587,7 +587,7 @@ GATES, B. [BillGates]. (2013, February 26). #Polio is 99% eradicated. Join me & 
     <form>Twitter</form>
     <genre>tweet</genre>
   </medium>
-  <relation type="complements">
+  <relation type="hasComplement">
     <bibitem type="video">
        <uri>http://b-gat.es/X75Lvy</uri>
     </bibitem>

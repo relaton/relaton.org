@@ -6,8 +6,9 @@ description: Interoperable data models for citations
 permalink: /blog/:year-:month-:day-:title/
 
 url: https://www.relaton.org
-github_repo_url: https://github.com/relaton/relaton.org
+github_repo_url: https://github.com/relaton/relaton.github.io
 github_repo_branch: main
+permalink: /blog/:year-:month-:day-:title/
 
 algolia_search:
   api_key: '31ca4bad475130bdaee582a0b9f40806'
@@ -155,6 +156,7 @@ legal:
   privacy_policy_link: https://www.ribose.com/privacy
 
 home_calls_to_action:
+  - { url: "/blog/", title: "Blog" }
   - { url: "/software/relaton/docs/README/", title: "Using the gem" }
   #- { url: "/software/relaton-cli/docs/README/", title: "Using the CLI" }
 
@@ -212,6 +214,10 @@ tag_namespaces:
   specs:
     audience: "Audience"
     completion_status: "Status"
+
+include:
+  - "index.adoc"
+  - "404.html"
 
 exclude:
   - .git

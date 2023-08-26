@@ -29,8 +29,8 @@ the content of the element is represented in YAML with a `content` key:
 [source,asciidoc]
 ----
 title::
-  type::: main
-  content::: Geographic information
+type::: main
+content::: Geographic information
 ----
 
 
@@ -42,8 +42,8 @@ repeating elements in an object can be realised as ordered or unordered lists.
 [source,asciidoc]
 ----
 language::
-  . en
-  . fr
+. en
+. fr
 ----
 
 EXAMPLE:
@@ -54,11 +54,11 @@ EXAMPLE:
 [%bibitem]
 == {blank}
 docid::
-  type::: ISO
-  id::: 19115-1
+type::: ISO
+id::: 19115-1
 language::
-  . en
-  . fr
+. en
+. fr
 ----
 
 AsciiBib also supports representing repeating elements
@@ -79,8 +79,8 @@ EXAMPLE:
 [%bibitem]
 == {blank}
 docid::
-  type::: ISO
-  id::: 19115-1
+type::: ISO
+id::: 19115-1
 language:: en
 language:: fr
 ----
@@ -100,11 +100,11 @@ So the following is a very simple reference in Metanorma AsciiDoc:
 == {blank}
 id:: iso19115-3
 docid::
-  type::: ISO
-  id::: 19115-3
+type::: ISO
+id::: 19115-3
 docid::
-  type::: ISO
-  id::: TC211
+type::: ISO
+id::: TC211
 type:: standard
 ----
 
@@ -125,11 +125,11 @@ content body:
 == {blank}
 id:: iso19115-3
 title::
-  language::: fr
-  script::: Latn
-  format::: text/plain
-  type::: main
-  content::: Information géographique
+language::: fr
+script::: Latn
+format::: text/plain
+type::: main
+content::: Information géographique
 ----
 
 Note the use of `content` as a key to represent the contents under the `title` tag.
@@ -147,8 +147,8 @@ subclause, which takes priority:
 [%bibitem]
 == {blank}
 docid::
-  type::: ISO
-  id::: 19115-3
+type::: ISO
+id::: 19115-3
 type:: standard
 ----
 
@@ -170,18 +170,18 @@ list with a list continuation, with the definition list depth reset back to one:
 [%bibitem]
 == {blank}
 docid::
-  type::: ISO
-  id::: 19115-3
+type::: ISO
+id::: 19115-3
 type:: standard
 contributor::
-  role::: author
-  person:::
-    name::::
+role::: author
+person:::
+name::::
 +
 --
 completename::
-  language::: en
-  content::: Fred
+language::: en
+content::: Fred
 --
 ----
 
@@ -217,87 +217,87 @@ given in link:../relaton-yaml[Relaton YAML representation]:
 [%bibitem]
 == {blank}
 title::
-  type::: main
-  content::: Geographic information
+type::: main
+content::: Geographic information
 title::
-  type::: subtitle
-  content::: Metadata
+type::: subtitle
+content::: Metadata
 title::
-  type::: parttitle
-  content::: Part 3: XML schema implementation for fundamental concepts
+type::: parttitle
+content::: Part 3: XML schema implementation for fundamental concepts
 type:: standard
 docid::
-  type::: ISO
-  id::: 19115-3
+type::: ISO
+id::: 19115-3
 edition:: 1
 language:: en
 script:: Latn
 version::
-  revision_date::: 2019-04-01
-  draft::: draft
+revision_date::: 2019-04-01
+draft::: draft
 biblionote::
-  type::: bibnote
-  content:::
+type::: bibnote
+content:::
 +
 --
 Paper format is not available for this standard. Only PDF.
 --
 docstatus::
-  stage::: 90
-  substage::: 90.92
-  iteration::: iteration
+stage::: 90
+substage::: 90.92
+iteration::: iteration
 date::
-  type::: issued
-  value::: 2016
+type::: issued
+value::: 2016
 date::
-  type::: published
-  from::: 2016-06
-  to::: 2016-08
+type::: published
+from::: 2016-06
+to::: 2016-08
 date::
-  type::: accessed
-  value::: 2015-05-20
+type::: accessed
+value::: 2015-05-20
 abstract::
-  content:::
+content:::
 +
 --
 ISO/TS 19115-3:2016 defines an integrated XML implementation of ISO 19115‑1, ISO 19115‑2, and concepts from ISO/TS 19139 by defining the following artefacts ...
 --
 copyright::
-   owner:::
-     name:::: International Organization for Standardization
-     abbreviation:::: ISO
-     url:::: www.iso.org
-   from::: 2016
-   to::: 2020
+owner:::
+name:::: International Organization for Standardization
+abbreviation:::: ISO
+url:::: www.iso.org
+from::: 2016
+to::: 2020
 link::
-  type::: src
-  content::: https://www.iso.org/standard/32579.html
+type::: src
+content::: https://www.iso.org/standard/32579.html
 link::
-  type::: obp
-  content::: https://www.iso.org/obp/ui/#iso:std:iso:ts:19115:-3:ed-1:v1:en
+type::: obp
+content::: https://www.iso.org/obp/ui/#iso:std:iso:ts:19115:-3:ed-1:v1:en
 
 
 === Contributor
 
 organization::
-  name::: International Organization for Standardization
-  url::: www.iso.org
-  abbreviation::: ISO
+name::: International Organization for Standardization
+url::: www.iso.org
+abbreviation::: ISO
 role::
-  type::: publisher
-  description::: Publisher role
+type::: publisher
+description::: Publisher role
 
 === Contributor
 person::
-  name:::
-    completename::::
+name:::
+completename::::
 +
 --
 content:: A. Bierman
 language:: en
 --
-  affiliation:::
-    organization::::
+affiliation:::
+organization::::
 +
 --
 name:: ISO
@@ -306,79 +306,78 @@ identifier::
 type::: uri
 id::: www.iso.org
 --
-    description:::: Affiliation description
-  contact:::
-    street::::
-      8 Street St
-    city:::: City
-    postcode:::: 123456
-    country:::: Country
-    state:::: State
-  contact:::
-    type:::: phone
-    value:::: +1 800-000-0000
+description:::: Affiliation description
+contact:::
+street:::: 8 Street St
+city:::: City
+postcode:::: 123456
+country:::: Country
+state:::: State
+contact:::
+type:::: phone
+value:::: +1 800-000-0000
 role:: author
 
 === Contributor
 organization::
-  name::: IETF
-  abbreviation::: IETF
-  identifier:::
-    type:::: uri
-    id:::: www.ietf.org
+name::: IETF
+abbreviation::: IETF
+identifier:::
+type:::: uri
+id:::: www.ietf.org
 role:: publisher
 
 === Contributor
 person::
-  name:::
-    language:::: en
-    initial:::: A.
-    surname:::: Bierman
-  affiliation:::
+name:::
+language:::: en
+initial:::: A.
+surname:::: Bierman
+affiliation:::
 +
 --
 organization::
-  name::: IETF
-  abbreviation::: IETF
+name::: IETF
+abbreviation::: IETF
 description::
-  content::: Affiliation description
-  language::: en
-  script::: Latn
+content::: Affiliation description
+language::: en
+script::: Latn
 --
-  identifier:::
-    type:::: uri
-    id:::: www.person.com
+identifier:::
+type:::: uri
+id:::: www.person.com
 role:: author
 
 === Relation
 type:: updates
 bibitem::
-  formattedref::: ISO 19115:2003
-  bib_locality:::
-    type:::: page
-    reference_from:::: 7
-    reference_to:::: 10
+formattedref::: ISO 19115:2003
+bib_locality:::
+type:::: page
+reference_from:::: 7
+reference_to:::: 10
 
 === Relation
 type:: updates
 bibitem::
-  type::: standard
-  formattedref::: ISO 19115:2003/Cor 1:2006
+type::: standard
+formattedref::: ISO 19115:2003/Cor 1:2006
 
 === Series
 type:: main
 title::
-  type::: original
-  content::: ISO/IEC FDIS 10118-3
-  language::: en
-  script::: Latn
-  format::: text/plain
+type::: original
+content::: ISO/IEC FDIS 10118-3
+language::: en
+script::: Latn
+format::: text/plain
 place:: Serie's place
 organization:: Serie's organization
 abbreviation::
-  content::: ABVR
-  language::: en
-  script::: Latn
+content::: ABVR
+language::: en
+script::: Latn
 from:: 2009-02-01
 to:: 2010-12-20
 number:: serie1234
@@ -387,8 +386,8 @@ partnumber:: part5678
 === Series
 type:: alt
 formattedref::
-  content::: serieref
-  language::: en
-  script::: Latn
+content::: serieref
+language::: en
+script::: Latn
 ----
 

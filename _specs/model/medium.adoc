@@ -34,7 +34,7 @@ subclass of bibliographic type or content.
 Information about alternate formats should be modelled as related bibliographic
 items (through the "instance" document relation), each with their own medium information.
 
-The size and scale of the item (`medium/size`, `medium/scale`) 
+The size and scale of the item (`medium/size`, `medium/scale`)
 usually contains numerical information, but is modelled as a string,
 given the complications of how size and scale can be described, particularly for
 cartographic material.
@@ -79,8 +79,8 @@ Mosfellsbær: Sundlaugin, 2002.
 ====
 
 ====
-Easterbrook, Don J. _Geologic Map of Western Whatcom County, Washington_. 
-Map. 1:62,500. col. 68 x 69 cm. fold. in envelope 30 x 24 cm. 
+Easterbrook, Don J. _Geologic Map of Western Whatcom County, Washington_.
+Map. 1:62,500. col. 68 x 69 cm. fold. in envelope 30 x 24 cm.
 Miscellaneous Investigations Series, map 1-854-B. Reston, VA: U.S. Geological Survey, 1976.
 
 [source,xml]
@@ -108,14 +108,13 @@ Miscellaneous Investigations Series, map 1-854-B. Reston, VA: U.S. Geological Su
   <place>Reston, VA</place>
 </bibitem>
 --
-
 ====
 
 ====
-GATES, B. [BillGates]. (2013, February 26). 
-#Polio is 99% eradicated. Join me & @FCBarcelona as we work to finish the job and #EndPolio. 
-[Tweet]. Available from: https://twitter.com/BillGates/status/306195345845665792. 
-[viewed 2016-07-06T12:30:15+02:00]. See also VIDEO: http://b-gat.es/X75Lvy. 
+GATES, B. [BillGates]. (2013, February 26).
+#Polio is 99% eradicated. Join me & @FCBarcelona as we work to finish the job and #EndPolio.
+[Tweet]. Available from: https://twitter.com/BillGates/status/306195345845665792.
+[viewed 2016-07-06T12:30:15+02:00]. See also VIDEO: http://b-gat.es/X75Lvy.
 
 [source,xml]
 --
@@ -140,7 +139,7 @@ GATES, B. [BillGates]. (2013, February 26).
     <form>Twitter</form>
     <genre>tweet</genre>
   </medium>
-  <relation type="complements">
+  <relation type="hasComplement">
     <bibitem type="video">
        <uri>http://b-gat.es/X75Lvy</uri>
     </bibitem>
