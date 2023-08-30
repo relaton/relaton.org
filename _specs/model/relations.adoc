@@ -184,7 +184,7 @@ document B (_cataloguedBy_)
 hasSuccessor::: document A is succeeded by document B in a sequence;
 includes sequels, and continuations of journals (_successorOf_)
 
-adapted::: document A is a reworking of document B to make it
+adaptedFrom::: document A is a reworking of document B to make it
 suitable for a different audience (FRBR Adaptation: includes
 paraphrase, free translation, musical variations) or medium (FRBR
 Transformation: includes dramatisation, novelisation, versification,
