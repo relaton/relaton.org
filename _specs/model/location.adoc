@@ -20,7 +20,7 @@ and either a navigation path, or an in-document object identifier is used.
 
 An archival URI can be differentiated from an original URI for a resource,
 through using "archival" as the `uri/@type`. Alternatively, the archival copy
-and the original copy may be treated as related items (through an "instance"
+and the original copy may be treated as related items (through an "instanceOf"
 relation), although that is typically not necessary.
 
 Persistent identifiers and other identifiers expressed as actionable URIs
@@ -149,7 +149,7 @@ British Library Web site February 1997 [online]. archive.org [distributor]. Avai
       <name>British Library</name>
     </organization> 
   </contributor>
-  <relation type="instance">
+  <relation type="instanceOf">
     <bibitem type="website">
       <uri type="archival">https://web.archive.org/web/19970218190613/http://www.bl.uk/</uri>
       <date type="copied">1997-02-18</date>
