@@ -167,7 +167,7 @@ captured in Relaton through the `edition` element; the `hasEdition`
 relation still applies to such minor variants of the text, whether
 they are considered distinct editions or not.
 
-==== Derived relations:
+==== Derived relations
 
 In the following, the two related items belong to distinct works,
 but the creation of B is determined in some way by A.
@@ -237,7 +237,7 @@ Abstracts, digests and summaries are also considered to represent
 new works.
 ____
 
-==== Other relations:
+==== Other relations
 
 related:: document A is related to document B in an otherwise
 unspecified fashion

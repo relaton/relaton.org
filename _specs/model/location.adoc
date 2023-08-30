@@ -15,7 +15,7 @@ which gives the repository that the cited copy is held in, and the
 locator used by the repository.
 The repository and locator are not differentiated, and are treated as a single
 string. The `bibitem/accessLocation` element is also used for online locations
-of digital resources, where a single URL (`bibitem/uri`) is not sufficient, 
+of digital resources, where a single URL (`bibitem/uri`) is not sufficient,
 and either a navigation path, or an in-document object identifier is used.
 
 An archival URI can be differentiated from an original URI for a resource,
@@ -113,7 +113,7 @@ Australian Government Bureau of Meteorology. _Latest Weather Observations for Du
 ====
 
 ====
-British Library Web site February 1997 [online]. archive.org [distributor]. Available from: https://web.archive.org/web/19970218190613/http://www.bl.uk/. [archived 1997-02-18] [viewed 2019-02-28]. 
+British Library Web site February 1997 [online]. archive.org [distributor]. Available from: https://web.archive.org/web/19970218190613/http://www.bl.uk/. [archived 1997-02-18] [viewed 2019-02-28].
 
 [source,xml]
 --
@@ -147,7 +147,7 @@ British Library Web site February 1997 [online]. archive.org [distributor]. Avai
     <role type="author"/>
     <organization>
       <name>British Library</name>
-    </organization> 
+    </organization>
   </contributor>
   <relation type="instanceOf">
     <bibitem type="website">
