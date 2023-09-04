@@ -1,0 +1,15 @@
+---
+title: RelatonJIS
+description: Retrieves JIS Standards for bibliographic use using the BibliographicItem model.
+repo_url: https://github.com/relaton/relaton-jis
+
+external_links:
+  - url: https://github.com/relaton/relaton-jis
+
+tags: ["writtenin:Ruby", "user:JIS"]
+
+feature_with_priority: 2
+---
+
+You can use it to retrieve metadata of JIS Standards from https://webdesk.jsa.or.jp
+and access that metadata through the `BibliographicItem` object.

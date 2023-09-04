@@ -1,0 +1,15 @@
+---
+title: RelatonXSF
+description: Retrieves IHO Standards for bibliographic use using the BibliographicItem model.
+repo_url: https://github.com/relaton/relaton-xsf
+
+external_links:
+  - url: https://github.com/relaton/relaton-xsf
+
+tags: ["writtenin:Ruby", "user:XSF"]
+
+feature_with_priority: 2
+---
+
+You can use it to retrieve metadata of XSF Standards from https://xmpp.org/extensions/
+and access that metadata through the `BibliographicItem` object.

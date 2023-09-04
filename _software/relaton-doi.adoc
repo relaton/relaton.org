@@ -1,0 +1,15 @@
+---
+title: RelatonDOI
+description: Retrieves DOI Standards for bibliographic use using the BibliographicItem model.
+repo_url: https://github.com/relaton/relaton-doi
+
+external_links:
+  - url: https://github.com/relaton/relaton-doi
+
+tags: ["writtenin:Ruby", "user:DOI"]
+
+feature_with_priority: 2
+---
+
+You can use it to retrieve metadata of DOI Standards from https://www.crossref.org/documentation/retrieve-metadata/rest-api/
+and access that metadata through the `BibliographicItem` object.

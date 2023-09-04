@@ -1,0 +1,15 @@
+---
+title: RelatonCCSDS
+description: Retrieves CCSDS Standards for bibliographic use using the BibliographicItem model.
+repo_url: https://github.com/relaton/relaton-ccsds
+
+external_links:
+  - url: https://github.com/relaton/relaton-ccsds
+
+tags: ["writtenin:Ruby", "user:CCSDS"]
+
+feature_with_priority: 2
+---
+
+You can use it to retrieve metadata of CCSDS Standards from https://ccsds.org
+and access that metadata through the `BibliographicItem` object.
