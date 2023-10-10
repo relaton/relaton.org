@@ -44,17 +44,27 @@ relaton:
       label: RFC & I-D (IETF)
       gem: relaton-ietf
       sources:
-        - { url: "http://xml2rfc.tools.ietf.org", label: "IETF BibXML" }
+        - { url: "https://bib.ietf.org", label: "Internet Engineering Task Force" }
     - id: ieee
       label: IEEE
       gem: relaton-ieee
       sources:
-        - { url: "https://standards.ieee.org", label: "IEEE SA" }
+        - { url: "https://standards.ieee.org", label: "IEEE Standards Association" }
     - id: nist
       label: NIST
       gem: relaton-nist
       sources:
-        - { url: "https://www.nist.gov", label: "NIST.gov" }
+        - { url: "https://www.nist.gov", label: "National Institute of Standards and Technology" }
+    - id: bipm
+      label: BIPM
+      gem: relaton-bipm
+      sources:
+        - { url: "https://www.bipm.org", label: "International Bureau of Weights and Measures" }
+    - id: 3gpp
+      label: 3GPP
+      gem: relaton-3gpp
+      sources:
+        - { url: "https://www.3gpp.org", label: "3rd Generation Partnership Project" }
     - id: ogc
       label: OGC
       gem: relaton-ogc
@@ -70,16 +80,6 @@ relaton:
       gem: relaton-oasis
       sources:
         - { url: "https://www.oasis-open.org/standards/", label: "OASIS OPEN"}
-    - id: bipm
-      label: BIPM
-      gem: relaton-bipm
-      sources:
-        - { url: "https://www.bipm.org", label: "International Bureau of Weights and Measures" }
-    - id: 3gpp
-      label: 3GPP
-      gem: relaton-3gpp
-      sources:
-        - { url: "https://www.3gpp.org", label: "3GPP" }
     - id: cie
       label: CIE
       gem: relaton-cie
@@ -91,10 +91,15 @@ relaton:
       sources:
         - { url: "https://www.w3.org", label: "World Wide Web Consortium" }
     - id: ecma
-      label: ECMA
+      label: Ecma
       gem: relaton-ecma
       sources:
-        - { url: "https://www.ecma-international.org", label: "ECMA" }
+        - { url: "https://www.ecma-international.org", label: "Ecma International" }
+    - id: iho
+      label: IHO
+      gem: relaton-iho
+      sources:
+        - { url: "https://www.iho.int", label: "International Hydrographic Organization" }
     - id: omg
       label: OMG
       gem: relaton-omg
@@ -115,46 +120,41 @@ relaton:
       gem: relaton-bsi
       sources:
         - { url: "https://www.bsigroup.com", label: "British Standards Institution" }
+    - id: jis
+      label: JIS (JSA)
+      gem: relaton-jis
+      sources:
+        - { url: "https://webdesk.jsa.or.jp", label: "Japanese Standards Association" }
+    - id: gb
+      label: GB
+      gem: relaton-gb
+      sources:
+        - { label: "Chinese National Standards" }
+    - id: calconnect
+      label: CalConnect
+      gem: relaton-calconnect
+      sources:
+        - { url: "https://www.calconnect.org", label: "CalConnect" }
+    - id: ccsds
+      label: CCSDS
+      gem: relaton-ccsds
+      sources:
+        - { url: "https://public.ccsds.org", label: "Consultative Committee for Space Data Systems" }
     - id: iana
       label: IANA
       gem: relaton-iana
       sources:
         - { url: "https://www.iana.org", label: "Internet Assigned Numbers Authority" }
-    - id: gb
-      label: GB
-      gem: relaton-gb
-      sources:
-        - { label: "GB websites" }
-    - id: relaton-calconnect
-      label: CalConnect
-      gem: relaton-calconnect
-      sources:
-        - { url: "https://www.calconnect.org", label: "CalConnect" }
-    - id: relaton-ccsds
-      label: CCSDS
-      gem: relaton-ccsds
-      sources:
-        - { url: "https://public.ccsds.org", label: "CCSDS" }
-    - id: doi
-      label: DOI
-      gem: relaton-doi
-      sources:
-        - { url: "https://www.crossref.org/documentation/retrieve-metadata/rest-api/", label: "DOI" }
-    - id: IHO
-      label: IHO
-      gem: relaton-iho
-      sources:
-        - { url: "https://www.iho.int", label: "International Hydrographic Organization" }
-    - id: JIS
-      label: JIS
-      gem: relaton-jis
-      sources:
-        - { url: "https://webdesk.jsa.or.jp", label: "Japanese Standards Association" }
-    - id: XSF
+    - id: xsf
       label: XSF
       gem: relaton-xsf
       sources:
         - { url: "https://xmpp.org/extensions/", label: "XMPP Standards Foundation" }
+    - id: doi
+      label: DOI
+      gem: relaton-doi
+      sources:
+        - { url: "https://www.crossref.org/documentation/retrieve-metadata/rest-api/", label: "Digital Object Identifier" }
 
 author:
   name: Ribose Inc.
