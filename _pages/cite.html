@@ -1,0 +1,17 @@
+---
+title: Cite
+description: Cite keys for Relaton project.
+layout: default
+hero_include: index-page-hero.html
+---
+
+<section class="items">
+  {% for item in site.cite_docs %}
+    <a class="row" href="{{ item.url }}" role="article">
+      <header class="col1">
+        <h3 class="title">{{ item.title }}</h3>
+      </header>
+      <p class="body col2">{{ item.description }}</p>
+    </a>
+  {% endfor %}
+</section>

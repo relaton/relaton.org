@@ -205,6 +205,9 @@ collections:
   pages:
     output: true
     permalink: /:name/
+  cite_docs:
+    output: true
+    permalink: /cite/:path/
 
 
 defaults:

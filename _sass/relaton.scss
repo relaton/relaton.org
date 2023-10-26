@@ -281,3 +281,18 @@ body > .underlay > header {
     @include docs-page($primary-dark-color);
   }
 }
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  border-bottom: lightgrey 1px solid;
+
+  > .col1 {
+    flex: 1;
+  }
+
+  > .col2 {
+    flex: 2 1 auto;
+  }
+}
