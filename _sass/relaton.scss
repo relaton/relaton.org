@@ -284,7 +284,7 @@ body > .underlay > header {
 
 .row {
   align-items: center;
-  border-bottom: #d3d3d3 1px solid;
+  border-bottom: $light-gray-color 1px solid;
   display: flex;
   flex-flow: row wrap;
 
@@ -294,5 +294,14 @@ body > .underlay > header {
 
   > .col2 {
     flex: 3;
+  }
+}
+
+article {
+  div.sectionbody {
+    a, a:link, a:visited {
+      color: $article-link-color;
+      text-decoration: underline;
+    }
   }
 }

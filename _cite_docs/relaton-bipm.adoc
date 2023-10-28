@@ -1,0 +1,138 @@
+---
+title: Relaton BIPM
+description: Relaton plugin to fetch BIPM Metrologia, SI Brochure, and Outcomes standards
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== SI Brochure
+
+* The International System of Units (SI)
+`BIPM SI Brochure`
+* Historical notes on the development of the International System of Units
+`BIPM SI Brochure, Appendix 4`
+
+== Metrologia
+
+Use the following format to cite a Metrologia articles: +
+`BIPM Metrologia {JOURNAL} {VOLUME} {ISSUE}`
+
+- `{JOURNAL}` - journal number, optional
+- `{VOLUME}` - volume number, optional
+- `{ISSUE}` - issue number, optional
+
+Examples:
+`BIPM Metrologia`
+`BIPM Metrologia 15`
+`BIPM Metrologia 55 5`
+
+== Outcomes
+
+=== Basic pattern
+
+----
+Long:
+{group name} -- {type} {number} ({year})
+{group name} {type} {number} ({year})
+{group name} {type} {year}-{zero_leading_number}
+
+Short:
+{group name} -- {type-abbrev} {number} ({year}, {lang})
+{group name} {type-abbrev} {number} ({year}, {lang})
+----
+
+- `group name` - a name of the group, required. A full list of group names is available https://github.com/metanorma/bipm-editor-guides/blob/main/sources/bipm-references-en.adoc#appendix-a-bipm-groups-and-codes[here].
+- `type` - a type of document, required. A list of types is: Resolution (Résolution), Recommendation (Recommandation), Decision (Décision), Meeting (Réunion), Declaration (Déclaration).
+- `type-abbrev` - an abbreviation of the type, required. A list of abbreviations: RES (Resolution), REC (Recommendation), DECN (Decision).
+- `number` - a number of the document, optional. Can be with part, e.g. `1-2`.
+- `zero_leading_number` - a number of the document with a leading zero, required. Can be used when a document has a 1 or 2 digits number. It's `00` for documents without a number.
+- `year` - a year of the document, optional.
+- `lang` - a language of the document, optional. Can be `EN` or `FR`.
+
+=== Special case pattern
+
+The basic pattern works fine for all, except for these 2 cases:
+
+- Decisions of the CIPM (since 2012)
+- Recommendations/Resolutions/Decisions of the JCRB
+
+Where the committee name is part of the outcome identifier. +
+Special cases:
+
+----
+Decision CIPM/111-10 (2022) / Décision CIPM/111-10 (2022)
+Recommendation JCRB/43-1 (2021) / Recommandation JCRB/43-1 (2021)
+----
+
+=== Single language version (English)
+
+`type` can be:
+
+- Resolution (RES)
+- Recommendation (REC)
+- Decision (DECN)
+- Statement (DECL)
+
+e.g.
+
+----
+CCTF -- Recommendation 2 (1970)
+CCTF -- REC 2 (1970, EN)
+----
+
+Special cases:
+
+----
+Decision CIPM/111-10 (2022)
+CIPM DECN CIPM/111-10 (2022, EN)
+Recommendation JCRB/43-1 (2021)
+JCRB REC JCRB/43-1 (2021, EN)
+----
+
+=== Single language version (French)
+
+`type` can be:
+
+- Résolution (RES)
+- Recommandation (REC)
+- Décision (DECN)
+- Déclaration (DECL)
+
+e.g.
+
+----
+CCTF -- Recommandation 2 (1970)
+CCTF -- REC 2 (1970, FR)
+----
+
+Special cases:
+
+----
+Décision CIPM/111-10 (2022)
+CIPM DECN CIPM/111-10 (2022, FR)
+Recommandation JCRB/43-1 (2021)
+JCRB REC JCRB/43-1 (2021, FR)
+----
+
+=== Dual language version (language independent version)
+
+`type` can be in their respective languages or the following abbreviations:
+
+- RES
+- REC
+- DECN
+- DECL
+
+----
+CCTF -- Recommandation 2 (1970) / Recommendation 2 (1970)
+CCTF REC 2 (1970)
+----
+
+Special cases:
+
+----
+Decision CIPM/110-10 (2022) / Décision CIPM/111-10 (2022)
+CIPM DECN CIPM/110-10 (2022)
+Recommendation JCRB/43-1 (2021) / Recommandation JCRB/43-1 (2021)
+JCRB REC JCRB/43-1 (2021)
+----
