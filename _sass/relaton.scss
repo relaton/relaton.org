@@ -298,8 +298,10 @@ body > .underlay > header {
 }
 
 article {
-  div.sectionbody {
-    a, a:link, a:visited {
+  .sectionbody {
+    a,
+    a:link,
+    a:visited {
       color: $article-link-color;
       text-decoration: underline;
     }

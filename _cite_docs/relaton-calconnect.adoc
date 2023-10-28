@@ -1,0 +1,47 @@
+---
+title: Relaton CalConnect
+description: Relaton plugin to fetch CalConnect documents
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing CalConnect documents
+
+All the CalConnect documents are available at https://standards.calconnect.org
+
+=== Prefix
+
+The Relaton CalConnect plugin accepts the prefix `CC`: +
+`CC 18012:2018`
+
+=== Copublishers
+
+* `IETF` - Internet Engineering Task Force +
+`CC/IETF 6321:2009`
+* `ISO` - International Organization for Standardization +
+`CC/ISO/AWI 34300`
+
+=== Types
+
+* `A`, `Adm` - Administrative +
+`CC/A 1602:2016` +
+`CC/Adm 0401:2004`
+* `DIR` - Directory +
+`CC/DIR 10001:2019`
+* `R` - Report +
+`CC/R 0510:2005`
+* `Adv` - Advisory +
+`CC/Adv 0514:2005`
+* `S` - Specification +
+`CC/S 0505:2005`
+* Without any of the above types - standard +
+`CC 18012:2018`
+
+=== Stages
+
+* `WD` - Working Draft +
+`CC/WD 19160-6:2019`
+* `FDS` - Final Draft Standard +
+`CC/FDS 10010:2019`
+* `CD` - Committee Draft +
+`CC/CD 51003:2018`
