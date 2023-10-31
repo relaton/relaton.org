@@ -1,0 +1,31 @@
+---
+title: Relaton CCSDS
+description: Relaton plugin to fetch CCSDS standards
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing CCSDS standards
+
+All CCSDS standards are available at https://public.ccsds.org/Publications/AllPubs.aspx[CCSDS].
+
+=== Prefix
+
+The prefix for CCSDS standards is `CCSDS` +
+`CCSDS 100.0-G-1`
+
+=== Books
+
+* `B` - Blue. Recommended Standards +
+`CCSDS 101.0-B-1`
+* `M` - Magenta. Recommended Practices +
+`CCSDS 131.4-M-1`
+* `G` - Green. Information Reports +
+`CCSDS 100.0-G-1`
+* `O` - Orange. Experimental +
+`CCSDS 131.1-O-1`
+* `Y` - Yellow. Record +
+`CCSDS 313.0-Y-1`
+* `S` - Silver. Historical. Obsolete documents. Any of above mentioned document types can be obsoleted +
+`CCSDS 100.0-G-1-S` +
+`CCSDS 101.0-B-1-S`
