@@ -1,0 +1,13 @@
+---
+title: Relaton DOI
+description: Relaton plugin to fetch standard metadata from CrossRef.org using DOI
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing standards using DOI
+
+To cite a standard use DOI (Digital Object Identifier) prefixed with "doi:". Fot example, to cite "10.6028/nist.ir.8245" use:
+```
+doi:10.6028/nist.ir.8245
+```
