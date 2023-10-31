@@ -5,7 +5,7 @@ layout: cite-doc
 hero_include: index-page-hero.html
 ---
 
-== Citing an ISO Standards
+== Citing ISO Standards
 
 To cite an ISO Standard, you can use identifiers as the citation key. The identifiers start with the publisher abbreviation `ISO`:
 

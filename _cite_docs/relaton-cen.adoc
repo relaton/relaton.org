@@ -22,7 +22,7 @@ hero_include: index-page-hero.html
 * `CR` - CEN Report +
 `CR 12101-5:2000`
 
-=== Copublisher
+=== Copublishers
 
 * `ISO` - International Organization for Standardization +
 `EN ISO 1833-10:2019`
