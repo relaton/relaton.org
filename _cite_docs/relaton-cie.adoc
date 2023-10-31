@@ -1,0 +1,17 @@
+---
+title: Relaton CIE
+description: Relaton plugin to fetch CIE standards
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing CIE standards
+
+=== Prefix
+
+The prefix for the CIE standards is `CIE`.
+
+=== Copublishers
+
+* `ISO` - International Organization for Standardization +
+`CIE ISO 11664-5:2016`
