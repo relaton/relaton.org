@@ -1,0 +1,13 @@
+---
+title: Relaton GB
+description: Relaton plugin to fetch Chinese standards
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing GB standards
+
+* `GB` is the prefix for Chinese standards +
+`GB 2024-2016`
+* `GB/T` is the prefix for Chinese recommended standards +
+`GB/T 32843-2016`
