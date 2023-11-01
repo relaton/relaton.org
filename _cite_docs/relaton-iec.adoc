@@ -1,0 +1,43 @@
+---
+title: Relaton IEC
+description: Relaton plugin to fetch IEC standards
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing IEC standards
+
+=== Prefixes
+
+* `IEC` - International Electrotechnical Commission +
+`IEC 31010:2019`
+* `CISPR` - International Special Committee on Radio Interference +
+`CISPR 1:1961`
+
+=== Types
+
+* `TS` - Technical Specification +
+`IEC TS 60514:1975`
+* `TR` - Technical Report +
+`CISPR TR 16-3:2010`
+`IEC TR 60787:2007`
+* `PAS` - Publicly Available Specification +
+`IEC PAS 60027-6:2004`
+* Withouth type - International Standard +
+`IEC 31010:2019`
+
+=== Parts
+
+Some standards are published in parts. To cite a specific part of a standard, use an ID with `part`. For example, to cite part 1 of `IEC 61326` use: +
+`IEC 61326-1`
+
+The `all parts` option is supported for IEC standards. For example, to cite all parts of `IEC 61326` use: +
+`IEC 61326 (all parts)`
+
+=== Year
+
+The year is optional. If not provided, the current year will be used. For example, to cite `IEC 61332` from 1995 use: +
+`IEC 61332:1995`
+
+To cite `IEC 61332` from the current (2016) year use: +
+`IEC 61332`

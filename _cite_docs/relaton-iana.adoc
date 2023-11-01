@@ -1,0 +1,16 @@
+---
+title: Relaton IANA
+description: Relaton plugin to fetch IANA documents
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing IANA documents
+
+To cite an IANA document, use the `IANA` prefix and the document identifier:
+```
+IANA alto-protocol/address-types
+IANA babel
+IANA c-dns/c-dns-address-event-types
+IANA dhcpv6-parameters/dhcpv6-options-attribute
+```
