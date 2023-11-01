@@ -19,7 +19,6 @@ navigation:
     - title: "Bibliographic item"
       path: RelBib_BibliographicItem/
       description: ""
-      ignore_missing: yes
     - title: "Bibliographic item type"
       path: RelBib_BibItemType/
       description: ""
