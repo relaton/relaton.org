@@ -1,0 +1,16 @@
+---
+title: Citation guide for ITU publications
+flavor: ITU
+description: Cite ITU standards
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Ciiting ITU publications
+
+* `ITU-T` for ITU-T Standardization Sector Recommendations +
+`ITU-T L.163`
+* `ITU-R` for ITU-R Radiocommunication Sector Recommendations +
+`ITU-R 01-201`
+* `ITU-R RR` for ITU-R Radio Regulations +
+`ITU-R RR (2020)`
