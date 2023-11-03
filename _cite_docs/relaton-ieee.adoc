@@ -1,0 +1,51 @@
+---
+title: Relaton IEEE
+description: Relaton plugin to fetch IEEE standards
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing IEEE standards
+
+=== Prefixes
+
+* `IEEE` - IEEE standards +
+`IEEE 1-1969`
+* `ANSI/IEEE` - IEEE standards +
+`ANSI/IEEE C57.110-1986`
+* `ANSI` - American National Standard +
+`ANSI N42.4-1971`
+* `AIEE` - American Institute of Electrical Engineers +
+`AIEE 955-1962`
+* `ASA` - American Standards Association +
+`ASA C16.31-1959`
+* `IRE` - Institute of Radio Engineers +
+`IRE 7.S2-1962`
+
+=== Copublishers
+
+* `ASTM` - American Society for Testing and Materials +
+`IEEE/ASTM PSI 10/D-2-2015`
+* `CSA` - Canadian Standards Association +
+`IEEE/CSA P844.1/293.1/D-2-2016-09`
+* `EIA` - Electronic Industries Alliance +
+`IEEE/EIA 12207.0-1996`
+* `IEC` - International Electrotechnical Commission +
+`IEEE/IEC P60076.57-129_FDIS-2017-07`
+* `ISO` - International Organization for Standardization +
+`IEEE/ISO/IEC 8802.1Q/Amd1-2020`
+* `NACE` - National Association of Corrosion Engineers +
+`NACE SP0215-2015` +
+`NACE/IEEE P1835/D-1a-2011`
+
+=== Status
+
+* `CD` - Committee Draft +
+`IEEE CD P16085-2018-02` +
+`IEEE CD2 P15026.4-2018-02`
+* `DIS` - Draft International Standard +
+`IEEE DIS P15026™-2015`
+* `FCD` - Final Committee Draft +
+`IEEE FCD P15026.3-2010-12`
+* `FDIS` - Final Draft International Standard +
+`IEEE FDIS P15026.2-2010-08`
