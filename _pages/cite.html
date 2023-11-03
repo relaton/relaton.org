@@ -1,17 +1,17 @@
 ---
-title: Cite
-description: Cite keys for Relaton project.
+title: Cite publications from supported organizations
+description: Citation guides for Relaton-supported organizations
 layout: default
-hero_include: index-page-hero.html
 ---
 
+{% assign guides = site.cite_docs | sort: "flavor" %}
 <section class="items">
-  {% for item in site.cite_docs %}
+  {% for item in guides %}
     <a class="row" href="{{ item.url }}" role="article">
       <header class="col1">
-        <h3 class="title">{{ item.title }}</h3>
+        <h3 class="title">{{ item.flavor }}</h3>
       </header>
-      <p class="body col2">{{ item.description }}</p>
+      <p class="body col2">{{ item.title }}</p>
     </a>
   {% endfor %}
 </section>

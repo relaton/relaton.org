@@ -1,6 +1,7 @@
 ---
-title: Relaton 3GPP
-description: Relaton plugin to fetch 3GPP standards
+title: Citation guide for 3GPP standards
+flavor: 3GPP
+description: Cite 3GPP standards
 layout: cite-doc
 hero_include: index-page-hero.html
 ---

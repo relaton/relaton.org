@@ -1,6 +1,7 @@
 ---
-title: Relaton CIE
-description: Relaton plugin to fetch CIE standards
+title: Citation guide for CIE standards
+flavor: CIE
+description: Cite CIE standards
 layout: cite-doc
 hero_include: index-page-hero.html
 ---

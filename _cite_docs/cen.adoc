@@ -1,6 +1,7 @@
 ---
-title: Relaton CEN
-description: Relaton plugin to fetch CEN standards
+title: Citation guide for CEN and EN standards
+flavor: CEN/CENELEC
+description: Cite CEN and EN standards
 layout: cite-doc
 hero_include: index-page-hero.html
 ---

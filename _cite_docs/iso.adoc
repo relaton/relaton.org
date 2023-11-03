@@ -1,6 +1,7 @@
 ---
-title: Relaton ISO
-description: Relaton plugin to fetch ISO standards
+title: Citation guide for ISO publications
+flavor: ISO
+description: Cite ISO standards
 layout: cite-doc
 hero_include: index-page-hero.html
 ---
@@ -9,65 +10,65 @@ hero_include: index-page-hero.html
 
 To cite an ISO Standard, you can use identifiers as the citation key. The identifiers start with the publisher abbreviation `ISO`:
 
-```
+----
 ISO 690:2010
-```
+----
 
 Co-publishers, such as `ISO/IEC`, `ISO/IEEE`, etc. are possible:
 
-```
+----
 ISO/IEC 27001:2013
 ISO/IEEE 11073-20702:2018
-```
+----
 
 Document stage can be used in identifiers published by ISO, such as `ISO/WD`, or in the case of ISO/IEC, `ISO/IEC WD`:
 
-```
+----
 ISO/WD 9139
 ISO/IEC WD 29128-3
-```
+----
 
 Document types can be used in identifiers published by ISO, such as `ISO/TR`, or in the case of ISO/IEC, `ISO/IEC TR`:
 
-```
+----
 ISO/TR 20123:2023
 ISO/IEC TR 7052:2023
-```
+----
 
 Dcoument types can also be used in identifiers along with the stage, such as `ISO/WD TR` and `ISO/IEC WD TR`:
 
-```
+----
 ISO/WD TR 19626-3
 ISO/IEC WD TR 20000-17
-```
+----
 
 The identifier can include a year and amendment/corrigendum.
 
-```
+----
 ISO 690:2010/Amd 1:2018
 ISO/IEC 23003-1:2007/Amd 1:2008/Cor 3:2015
-```
+----
 
 === Parts of an ISO Standard
 
 Some ISO Standards can have multiple parts. To cite a certain part of an ISO Standard, use an identifier with a part number:
 
-```
+----
 ISO 690-2:1997
-```
+----
 
 To cite all parts of the ISO Standard, use an identifier without part and year, and add the `(all parts)` option to it:
 
-```
+----
 ISO 690 (all parts)
-```
+----
 
 === Specify a year
 
 If you need to cite a specific year of an ISO Standard, use indentifiers with the year:
 
-```
+----
 ISO 690-2:1997
-```
+----
 
 Without the year, the latest version of the standard will be cited.

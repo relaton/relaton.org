@@ -1,6 +1,7 @@
 ---
-title: Relaton CalConnect
-description: Relaton plugin to fetch CalConnect documents
+title: Citation guide for CalConnect standards
+flavor: CalConnect
+description: Cite CalConnect standards
 layout: cite-doc
 hero_include: index-page-hero.html
 ---

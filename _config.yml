@@ -27,131 +27,157 @@ relaton:
   supported_bibliographies:
     - id: iso
       label: ISO
+      citation_guide: true
       gem: relaton-iso
       sources:
         - { url: "https://www.iso.org", label: "International Organization for Standardization" }
     - id: iec
       label: IEC
+      citation_guide: true
       gem: relaton-iec
       sources:
         - { url: "https://www.iec.ch", label: "International Electrotechnical Commission" }
     - id: itu
       label: ITU-T & ITU-R
+      citation_guide: false
       gem: relaton-itu
       sources:
         - { url: "https://www.itu.int", label: "International Telecommunication Union" }
     - id: ietf
       label: RFC & I-D (IETF)
+      citation_guide: true
       gem: relaton-ietf
       sources:
         - { url: "https://bib.ietf.org", label: "Internet Engineering Task Force" }
     - id: ieee
       label: IEEE
+      citation_guide: true
       gem: relaton-ieee
       sources:
         - { url: "https://standards.ieee.org", label: "IEEE Standards Association" }
     - id: nist
       label: NIST
+      citation_guide: false
       gem: relaton-nist
       sources:
         - { url: "https://www.nist.gov", label: "National Institute of Standards and Technology" }
     - id: bipm
       label: BIPM
+      citation_guide: true
       gem: relaton-bipm
       sources:
         - { url: "https://www.bipm.org", label: "International Bureau of Weights and Measures" }
     - id: 3gpp
       label: 3GPP
+      citation_guide: true
       gem: relaton-3gpp
       sources:
         - { url: "https://www.3gpp.org", label: "3rd Generation Partnership Project" }
     - id: ogc
       label: OGC
+      citation_guide: false
       gem: relaton-ogc
       sources:
         - { url: "https://www.ogc.org", label: "Open Geospatial Consortium" }
     - id: iev
       label: IEC Electropedia (IEV)
+      citation_guide: false
       gem: relaton-iev
       sources:
         - { url: "https://www.electropedia.org", label: "IEC Electropedia" }
     - id: oasis
       label: OASIS
+      citation_guide: false
       gem: relaton-oasis
       sources:
         - { url: "https://www.oasis-open.org/standards/", label: "OASIS OPEN"}
     - id: cie
       label: CIE
+      citation_guide: true
       gem: relaton-cie
       sources:
         - { url: "https://cie.co.at", label: "International Commission on Illumination" }
     - id: w3c
       label: W3C
+      citation_guide: false
       gem: relaton-w3c
       sources:
         - { url: "https://www.w3.org", label: "World Wide Web Consortium" }
     - id: ecma
       label: Ecma
+      citation_guide: true
       gem: relaton-ecma
       sources:
         - { url: "https://www.ecma-international.org", label: "Ecma International" }
     - id: iho
       label: IHO
       gem: relaton-iho
+      citation_guide: false
       sources:
         - { url: "https://www.iho.int", label: "International Hydrographic Organization" }
     - id: omg
       label: OMG
+      citation_guide: false
       gem: relaton-omg
       sources:
         - { url: "https://www.omg.org", label: "Object Management Group" }
     - id: un
       label: UN Docs
+      citation_guide: false
       gem: relaton-un
       sources:
         - { url: "https://documents.un.org", label: "UN Official Document System" }
     - id: cen
       label: EN (CEN/CENELEC)
+      citation_guide: true
       gem: relaton-cen
       sources:
         - { url: "https://standards.cen.eu", label: "CEN/CENELEC" }
     - id: bsi
       label: BS, PAS (BSI)
+      citation_guide: true
       gem: relaton-bsi
       sources:
         - { url: "https://www.bsigroup.com", label: "British Standards Institution" }
     - id: jis
       label: JIS (JSA)
+      citation_guide: false
       gem: relaton-jis
       sources:
         - { url: "https://webdesk.jsa.or.jp", label: "Japanese Standards Association" }
     - id: gb
       label: GB
+      citation_guide: true
       gem: relaton-gb
       sources:
         - { label: "Chinese National Standards" }
     - id: calconnect
       label: CalConnect
+      citation_guide: true
       gem: relaton-calconnect
       sources:
         - { url: "https://www.calconnect.org", label: "CalConnect" }
     - id: ccsds
       label: CCSDS
+      citation_guide: true
       gem: relaton-ccsds
       sources:
         - { url: "https://public.ccsds.org", label: "Consultative Committee for Space Data Systems" }
     - id: iana
       label: IANA
+      citation_guide: true
       gem: relaton-iana
       sources:
         - { url: "https://www.iana.org", label: "Internet Assigned Numbers Authority" }
     - id: xsf
       label: XSF
+      citation_guide: false
       gem: relaton-xsf
       sources:
         - { url: "https://xmpp.org/extensions/", label: "XMPP Standards Foundation" }
     - id: doi
       label: DOI
+      citation_guide: false
       gem: relaton-doi
       sources:
         - { url: "https://www.crossref.org/documentation/retrieve-metadata/rest-api/", label: "Digital Object Identifier" }
