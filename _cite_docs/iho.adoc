@@ -1,0 +1,34 @@
+---
+title: Citation guide for IHO publications
+flavor: IHO
+description: Cite IHO standards
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing IHO standards
+
+=== Prefix
+
+The IHO plugin recongnizes refernces with the `IHO` prefix. For example: +
+`IHO B-4`
+
+=== Edition
+
+Some IHO standards have multiple editions: +
+```
+IHO S-100 1.0.0
+IHO S-100 2.0.0
+```
+
+=== Volume
+
+Some IHO standards have multiple volumes: +
+```
+IHO P-1/21
+IHO P-1/22
+```
+
+=== Annex
+
+`IHO S-65AnnexA 1.0.0`

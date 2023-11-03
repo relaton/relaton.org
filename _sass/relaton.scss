@@ -287,13 +287,18 @@ body > .underlay > header {
   border-bottom: $light-gray-color 1px solid;
   display: flex;
   flex-flow: row wrap;
+  min-height: 4em;
 
   > .col1 {
-    flex: 1;
+    flex: 1 12em;
+    h3 {
+      margin: 0.2em 0;
+    }
   }
 
   > .col2 {
-    flex: 3;
+    flex: 3 12em;
+    margin: 0;
   }
 }
 
