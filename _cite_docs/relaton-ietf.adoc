@@ -1,0 +1,28 @@
+---
+title: Relaton IETF
+description: Relaton plugin to fetch IETF documents
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing IETF documents
+
+=== Prefixes
+
+* `RFC` - Request for Comments +
+`RFC 1`
+* `BCP` - Best Current Practice +
+`BCP 3`
+* `FYI` - For Your Information +
+`FYI 2`
+* `STD` - Internet Standard +
+`STD 3`
+* `I-D` - Internet-Draft +
+`I-D draft-abarth-cake-01`
+
+The additional `IETF` prefix can be used to cite IETF documents: +
+`IETF RFC 1` +
+`IETF BCP 3` +
+`IETF FYI 2` +
+`IETF STD 3` +
+`IETF I-D draft-abarth-cake-01`
