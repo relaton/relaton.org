@@ -1,0 +1,14 @@
+---
+title: Citation guide for OASIS publications
+flavor: OASIS
+description: Cite OASIS standards
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing OASIS standards
+
+Prefix for all OASIS standards is `OASIS`: +
+`OASIS AkomaNtosoCore-v1.0-Pt1-Vocabulary`
+
+All the OASIS standards references are available in the https://www.relaton.org/relaton-data-oasis/[OASIS Standards index].
