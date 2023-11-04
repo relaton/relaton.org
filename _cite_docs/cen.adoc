@@ -9,33 +9,67 @@ layout: cite-doc
 
 === Prefixes
 
-* `CEN` - European Committee for Standardization +
+* `CEN` - European Committee for Standardization
+
+[example]
 `CEN/TR 15214-1:2006`
-* `EN` - European Standard +
+
+* `EN` - European Standard
+
+[example]
 `EN 2100:1992`
-* `ENV` - European Prestandard +
+
+* `ENV` - European Prestandard
+
+[example]
 `ENV 1613:1995`
-* `CWA` - CEN Workshop Agreement +
+
+* `CWA` - CEN Workshop Agreement
+
+[example]
 `CWA 14050-21:2000`
-* `HD` - Harmonization Document +
+
+* `HD` - Harmonization Document
+
+[example]
 `HD 1215-2:1988`
-* `CR` - CEN Report +
+
+* `CR` - CEN Report
+
+[example]
 `CR 12101-5:2000`
 
 === Copublishers
 
-* `ISO` - International Organization for Standardization +
+* `ISO` - International Organization for Standardization
+
+[example]
 `EN ISO 1833-10:2019`
-* `IEC` - International Electrotechnical Commission +
-`EN IEC 60076-22-8:2021` +
-`EN ISO/IEC 10373:1995`
-* `ISP` - International Standard Profiles +
+
+* `IEC` - International Electrotechnical Commission
+
+[example]
+----
+EN IEC 60076-22-8:2021
+EN ISO/IEC 10373:1995
+----
+
+* `ISP` - International Standard Profiles
+
+[example]
 `EN ISP 10607-1:1993`
 
 === Types
 
-* `TR` - Technical Report +
+* `TR` - Technical Report
+
+[example]
 `CEN/TR 15214-1:2006`
-* `TS` - Technical Specification +
-`CEN/TS 12007-6:2021` +
-`CEN ISO/TS 12180-1:2007`
+
+* `TS` - Technical Specification
+
+[example]
+----
+CEN/TS 12007-6:2021
+CEN ISO/TS 12180-1:2007
+----

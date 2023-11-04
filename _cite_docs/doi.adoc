@@ -10,6 +10,7 @@ layout: cite-doc
 To cite a standard use DOI (Digital Object Identifier) prefixed with "doi:". Fot
 example, to cite "10.6028/nist.ir.8245" use:
 
+[example]
 ----
 doi:10.6028/nist.ir.8245
 ----

@@ -9,35 +9,61 @@ layout: cite-doc
 
 === Prefixes
 
-* `IEC` - International Electrotechnical Commission +
+* `IEC` - International Electrotechnical Commission
+
+[example]
 `IEC 31010:2019`
-* `CISPR` - International Special Committee on Radio Interference +
+
+* `CISPR` - International Special Committee on Radio Interference
+
+[example]
 `CISPR 1:1961`
 
 === Types
 
-* `TS` - Technical Specification +
+* `TS` - Technical Specification
+
+[example]
 `IEC TS 60514:1975`
-* `TR` - Technical Report +
-`CISPR TR 16-3:2010`
-`IEC TR 60787:2007`
-* `PAS` - Publicly Available Specification +
+
+* `TR` - Technical Report
+
+[example]
+----
+CISPR TR 16-3:2010
+IEC TR 60787:2007
+----
+
+* `PAS` - Publicly Available Specification
+
+[example]
 `IEC PAS 60027-6:2004`
-* Withouth type - International Standard +
+
+* Withouth type - International Standard
+
+[example]
 `IEC 31010:2019`
 
 === Parts
 
-Some standards are published in parts. To cite a specific part of a standard, use an ID with `part`. For example, to cite part 1 of `IEC 61326` use: +
+Some standards are published in parts. To cite a specific part of a standard, use an ID with `part`. For example, to cite part 1 of `IEC 61326` use:
+
+[example]
 `IEC 61326-1`
 
-The `all parts` option is supported for IEC standards. For example, to cite all parts of `IEC 61326` use: +
+The `all parts` option is supported for IEC standards. For example, to cite all parts of `IEC 61326` use:
+
+[example]
 `IEC 61326 (all parts)`
 
 === Year
 
-The year is optional. If not provided, the current year will be used. For example, to cite `IEC 61332` from 1995 use: +
+The year is optional. If not provided, the current year will be used. For example, to cite `IEC 61332` from 1995 use:
+
+[example]
 `IEC 61332:1995`
 
-To cite `IEC 61332` from the current (2016) year use: +
+To cite `IEC 61332` from the current (2016) year use:
+
+[example]
 `IEC 61332`

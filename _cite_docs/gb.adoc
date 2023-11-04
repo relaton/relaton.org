@@ -7,7 +7,12 @@ layout: cite-doc
 
 == Citing GB standards
 
-* `GB` is the prefix for Chinese standards +
+* `GB` is the prefix for Chinese standards
+
+[example]
 `GB 2024-2016`
-* `GB/T` is the prefix for Chinese recommended standards +
+
+* `GB/T` is the prefix for Chinese recommended standards
+
+[example]
 `GB/T 32843-2016`

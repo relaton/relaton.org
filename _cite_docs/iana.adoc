@@ -8,6 +8,8 @@ layout: cite-doc
 == Citing IANA documents
 
 To cite an IANA document, use the `IANA` prefix and the document identifier:
+
+[example]
 ----
 IANA alto-protocol/address-types
 IANA babel

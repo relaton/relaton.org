@@ -291,9 +291,6 @@ body > .underlay > header {
 
   > .col1 {
     flex: 1 12em;
-    h3 {
-      margin: 0.2em 0;
-    }
   }
 
   > .col2 {
@@ -302,13 +299,17 @@ body > .underlay > header {
   }
 }
 
-article {
-  .sectionbody {
-    a,
-    a:link,
-    a:visited {
-      color: $article-link-color;
-      text-decoration: underline;
-    }
+.row > .col1 {
+  h3 {
+    margin: 0.2em 0;
+  }
+}
+
+article .sectionbody {
+  a,
+  a:link,
+  a:visited {
+    color: $article-link-color;
+    text-decoration: underline;
   }
 }

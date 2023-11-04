@@ -8,8 +8,13 @@ layout: cite-doc
 == SI Brochure
 
 * The International System of Units (SI)
+
+[example]
 `BIPM SI Brochure`
+
 * Historical notes on the development of the International System of Units
+
+[example]
 `BIPM SI Brochure, Appendix 4`
 
 == Metrologia
@@ -22,14 +27,19 @@ Use the following format to cite a Metrologia articles: +
 - `{ISSUE}` - issue number, optional
 
 Examples:
-`BIPM Metrologia`
-`BIPM Metrologia 15`
-`BIPM Metrologia 55 5`
+
+[example]
+----
+BIPM Metrologia
+BIPM Metrologia 15
+BIPM Metrologia 55 5
+----
 
 == Outcomes
 
 === Basic pattern
 
+[example]
 ----
 Long:
 {group name} -- {type} {number} ({year})
@@ -59,6 +69,7 @@ The basic pattern works fine for all, except for these 2 cases:
 Where the committee name is part of the outcome identifier. +
 Special cases:
 
+[example]
 ----
 Decision CIPM/111-10 (2022) / Décision CIPM/111-10 (2022)
 Recommendation JCRB/43-1 (2021) / Recommandation JCRB/43-1 (2021)
@@ -75,6 +86,7 @@ Recommendation JCRB/43-1 (2021) / Recommandation JCRB/43-1 (2021)
 
 e.g.
 
+[example]
 ----
 CCTF -- Recommendation 2 (1970)
 CCTF -- REC 2 (1970, EN)
@@ -82,6 +94,7 @@ CCTF -- REC 2 (1970, EN)
 
 Special cases:
 
+[example]
 ----
 Decision CIPM/111-10 (2022)
 CIPM DECN CIPM/111-10 (2022, EN)
@@ -100,6 +113,7 @@ JCRB REC JCRB/43-1 (2021, EN)
 
 e.g.
 
+[example]
 ----
 CCTF -- Recommandation 2 (1970)
 CCTF -- REC 2 (1970, FR)
@@ -107,6 +121,7 @@ CCTF -- REC 2 (1970, FR)
 
 Special cases:
 
+[example]
 ----
 Décision CIPM/111-10 (2022)
 CIPM DECN CIPM/111-10 (2022, FR)
@@ -123,6 +138,7 @@ JCRB REC JCRB/43-1 (2021, FR)
 - DECN
 - DECL
 
+[example]
 ----
 CCTF -- Recommandation 2 (1970) / Recommendation 2 (1970)
 CCTF REC 2 (1970)
@@ -130,6 +146,7 @@ CCTF REC 2 (1970)
 
 Special cases:
 
+[example]
 ----
 Decision CIPM/110-10 (2022) / Décision CIPM/111-10 (2022)
 CIPM DECN CIPM/110-10 (2022)

@@ -11,21 +11,42 @@ All CCSDS standards are available at https://public.ccsds.org/Publications/AllPu
 
 === Prefix
 
-The prefix for CCSDS standards is `CCSDS` +
+The prefix for CCSDS standards is `CCSDS`
+
+[example]
 `CCSDS 100.0-G-1`
 
 === Books
 
-* `B` - Blue. Recommended Standards +
+* `B` - Blue. Recommended Standards
+
+[example]
 `CCSDS 101.0-B-1`
-* `M` - Magenta. Recommended Practices +
+
+* `M` - Magenta. Recommended Practices
+
+[example]
 `CCSDS 131.4-M-1`
-* `G` - Green. Information Reports +
+
+* `G` - Green. Information Reports
+
+[example]
 `CCSDS 100.0-G-1`
-* `O` - Orange. Experimental +
+
+* `O` - Orange. Experimental
+
+[example]
 `CCSDS 131.1-O-1`
-* `Y` - Yellow. Record +
+
+* `Y` - Yellow. Record
+
+[example]
 `CCSDS 313.0-Y-1`
-* `S` - Silver. Historical. Obsolete documents. Any of above mentioned document types can be obsoleted +
-`CCSDS 100.0-G-1-S` +
-`CCSDS 101.0-B-1-S`
+
+* `S` - Silver. Historical. Obsolete documents. Any of above mentioned document types can be obsoleted
+
+[example]
+----
+CCSDS 100.0-G-1-S
+CCSDS 101.0-B-1-S
+----

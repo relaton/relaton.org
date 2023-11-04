@@ -13,99 +13,236 @@ To cite a 3GPP standard in your document, use document identifiers as citation k
 
 === Types of 3GPP documents
 
-* TR - Technical Report +
+`TR` - Technical Report
+
+[example]
 `3GPP TR 01.00:R98/7.1.0`
-* TS - Technical Specification +
+
+`TS` - Technical Specification
+
+[example]
 `3GPP TS 01.01:Ph1/3.0.0`
 
 === Specification number
 
-* `00` - General information +
+* `00` - General information
+
+[example]
 `3GPP TR 00.01U:UMTS/3.0.0`
-* `01` - Requirements +
+
+* `01` - Requirements
+
+[example]
 `3GPP TR 01.00:Ph2/0.0.0`
-* `02` - Service aspects (stage 1) +
+
+* `02` - Service aspects (stage 1)
+
+[example]
 `3GPP TR 02.08:Ph1/0.1.0`
-* `03` - Technical realization (stage 2) +
+
+* `03` - Technical realization (stage 2)
+
+[example]
 `3GPP TR 03.01U:UMTS/0.8.0`
-* `04` - Signalling protocols (stage 3) - user equipment to network +
+
+* `04` - Signalling protocols (stage 3) - user equipment to network
+
+[example]
 `3GPP TS 04.01:Ph1/3.0.1`
-* `05` - GSM radio aspects +
+
+* `05` - GSM radio aspects
+
+[example]
 `3GPP TR 05.01U:UMTS/2.0.0`
-* `06` - CODECs +
+
+* `06` - CODECs
+
+[example]
 `3GPP TR 06.01U:UMTS/3.0.0`
-* `07` - Data +
+
+* `07` - Data
+
+[example]
 `3GPP TS 07.01:Ph1/3.2.0`
-* `08` - Signalling protocols (stage 3) - (RSS-CN) +
+
+* `08` - Signalling protocols (stage 3) - (RSS-CN)
+
+[example]
 `3GPP TS 08.01:Ph1/3.0.1`
-* `09` - Signalling protocols (stage 3) - (infra-fixed-network) +
+
+* `09` - Signalling protocols (stage 3) - (infra-fixed-network)
+
+[example]
 `3GPP TR 09.01:Ph1/3.0.1`
-* `10` - Programme management +
+
+* `10` - Programme management
+
+[example]
 `3GPP TR 10.01:R97/0.0.2`
-* `11` - Subscriber Identity Module +
+
+* `11` - Subscriber Identity Module
+
+[example]
 `3GPP TR 11.15:R97/1.0.0`
-* `12` - OAM&P and Charging +
+
+* `12` - OAM&P and Charging
+
+[example]
 `3GPP TR 12.01U:UMTS/3.0.0`
-* `13` - Access requirements and test specifications +
+
+* `13` - Access requirements and test specifications
+
+[example]
 `3GPP TS 13.01:Ph2/4.0.0`
-* `21` - Requirements +
+
+* `21` - Requirements
+
+[example]
 `3GPP TR 12.01U:UMTS/3.0.0`
-* `22` - Service aspects +
+
+* `22` - Service aspects
+
+[example]
 `3GPP TR 22.07U:UMTS/3.0.0`
-* `23` - Technical realization +
+
+* `23` - Technical realization
+
+[example]
 `3GPP TR 23.039:R99/1.0.0`
-* `24` - Signalling protocols (stage 3) - user equipment to network +
+
+* `24` - Signalling protocols (stage 3) - user equipment to network
+
+[example]
 `3GPP TR 24.801:Rel-8/0.0.0`
-* `25` - UTRA radio aspects +
+
+* `25` - UTRA radio aspects
+
+[example]
 `3GPP TR 25.700:Rel-12/0.0.1`
-* `26` - CODECs +
+
+* `26` - CODECs
+
+[example]
 `3GPP TR 26.078:Rel-4/4.0.0`
-* `27` - Data +
+
+* `27` - Data
+
+[example]
 `3GPP TR 27.00U:UMTS/1.2.1`
-* `28` - Signalling protocols (stage 3) - (RSS-CN) and OAM&P and Charging (overflow from 32-range) +
+
+* `28` - Signalling protocols (stage 3) - (RSS-CN) and OAM&P and Charging (overflow from 32-range)
+
+[example]
 `3GPP TR 28.800:Rel-14/0.0.0`
-* `29` - Signalling protocols (stage 3) - (infra-fixed-network) +
+
+* `29` - Signalling protocols (stage 3) - (infra-fixed-network)
+
+[example]
 `3GPP TR 29.800:Rel-7/0.1.0`
-* `30` - Programme management +
+
+* `30` - Programme management
+
+[example]
 `3GPP TR 30.00U:UMTS/3.0.0`
-* `31` - Subscriber Identity Module (SIM/USIM), IC Cards. Test specs. +
+
+* `31` - Subscriber Identity Module (SIM/USIM), IC Cards. Test specs.
+
+[example]
 `3GPP TR 31.801:Rel-15/1.0.0`
-* `32` - OAM&P and Charging +
+
+* `32` - OAM&P and Charging
+
+[example]
 `3GPP TR 32.01U:UMTS/1.0.0`
-* `33` - Security aspects +
+
+* `33` - Security aspects
+
+[example]
 `3GPP TR 33.20U:UMTS/3.0.0`
-* `34` - UE and (U)SIM test specifications +
+
+* `34` - UE and (U)SIM test specifications
+
+[example]
 `3GPP TR 34.901:R99/2.0.0`
-* `35` - Security algorithms +
+
+* `35` - Security algorithms
+
+[example]
 `3GPP TR 35.909:Rel-4/4.0.0`
-* `36` - LTE (Evolved UTRA) and LTE-Advanced radio aspects +
+
+* `36` - LTE (Evolved UTRA) and LTE-Advanced radio aspects
+
+[example]
 `3GPP TR 36.276:Rel-16/0.0.1`
-* `37` - Multiple radio access technology aspects +
+
+* `37` - Multiple radio access technology aspects
+
+[example]
 `3GPP TR 37.716-00-00:Rel-16/0.0.1`
-* `38` - Radio technology beyond LTE +
+
+* `38` - Radio technology beyond LTE
+
+[example]
 `3GPP TR 38.716-01-01:Rel-16/0.0.1`
-* `41` - Requirements +
+
+* `41` - Requirements
+
+[example]
 `3GPP TR 41.031:Rel-4/4.0.0`
-* `42` - Service aspects (stage 1) +
+
+* `42` - Service aspects (stage 1)
+
+[example]
 `3GPP TS 42.009:Rel-4/4.0.0`
-* `43` - Technical realization (stage 2) +
+
+* `43` - Technical realization (stage 2)
+
+[example]
 `3GPP TS 43.005:Rel-8/8.0.0`
-* `44` - Signalling protocols (user equipment to network) +
+
+* `44` - Signalling protocols (user equipment to network)
+
+[example]
 `3GPP TS 44.001:Rel-4/4.0.0`
-* `45` - GSM radio aspects +
+
+* `45` - GSM radio aspects
+
+[example]
 `3GPP TS 45.001:Rel-4/4.0.0`
-* `46` - CODECs +
+
+* `46` - CODECs
+
+[example]
 `3GPP TS 46.001:Rel-4/4.0.0`
-* `47` - Data +
-* `48` - Signalling protocols (RSS-CN) +
+
+* `47` - Data
+
+* `48` - Signalling protocols (RSS-CN)
+
+[example]
 `3GPP TS 48.008:Rel-4/4.6.0`
-* `49` - Signalling protocols (infra-fixed-network) +
+
+* `49` - Signalling protocols (infra-fixed-network)
+
+[example]
 `3GPP TR 49.001:Rel-4/4.0.0`
-* `50` - Programme management +
+
+* `50` - Programme management
+
+[example]
 `3GPP TR 50.059:Rel-4/4.0.0`
-* `51` - Subscriber Identity Module +
+
+* `51` - Subscriber Identity Module
+
+[example]
 `3GPP TS 51.011:Rel-4/4.0.0`
-* `52` - O&M +
+
+* `52` - O&M
+
+[example]
 `3GPP TS 52.008:Rel-6/0.1.2`
-* `55` - Security algorithms +
+
+* `55` - Security algorithms
+
+[example]
 `3GPP TR 55.919:R99/3.0.0`

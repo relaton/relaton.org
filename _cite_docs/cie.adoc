@@ -13,5 +13,7 @@ The prefix for the CIE standards is `CIE`.
 
 === Copublishers
 
-* `ISO` - International Organization for Standardization +
+`ISO` - International Organization for Standardization
+
+[example]
 `CIE ISO 11664-5:2016`

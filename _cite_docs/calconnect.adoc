@@ -11,37 +11,71 @@ All the CalConnect documents are available at https://standards.calconnect.org
 
 === Prefix
 
-The Relaton CalConnect plugin accepts the prefix `CC`: +
+The Relaton CalConnect plugin accepts the prefix `CC`:
+
+[example]
 `CC 18012:2018`
 
 === Copublishers
 
-* `IETF` - Internet Engineering Task Force +
+* `IETF` - Internet Engineering Task Force
+
+[example]
 `CC/IETF 6321:2009`
-* `ISO` - International Organization for Standardization +
+
+* `ISO` - International Organization for Standardization
+
+[example]
 `CC/ISO/AWI 34300`
 
 === Types
 
-* `A`, `Adm` - Administrative +
-`CC/A 1602:2016` +
-`CC/Adm 0401:2004`
-* `DIR` - Directory +
+* `A`, `Adm` - Administrative
+
+[example]
+----
+CC/A 1602:2016
+CC/Adm 0401:2004
+----
+
+* `DIR` - Directory
+
+[example]
 `CC/DIR 10001:2019`
-* `R` - Report +
+
+* `R` - Report
+
+[example]
 `CC/R 0510:2005`
-* `Adv` - Advisory +
+
+* `Adv` - Advisory
+
+[example]
 `CC/Adv 0514:2005`
-* `S` - Specification +
+
+* `S` - Specification
+
+[example]
 `CC/S 0505:2005`
-* Without any of the above types - standard +
+
+* Without any of the above types - standard
+
+[example]
 `CC 18012:2018`
 
 === Stages
 
-* `WD` - Working Draft +
+* `WD` - Working Draft
+
+[example]
 `CC/WD 19160-6:2019`
-* `FDS` - Final Draft Standard +
+
+* `FDS` - Final Draft Standard
+
+[example]
 `CC/FDS 10010:2019`
-* `CD` - Committee Draft +
+
+* `CD` - Committee Draft
+
+[example]
 `CC/CD 51003:2018`

@@ -19,6 +19,7 @@ The prefix for JIS publications is `JIS`
 The edition year is optional. If not specified, an undated citation will be
 created with all its editions embedded within.
 
+[example]
 `JIS X 0208`
 
 === Part
