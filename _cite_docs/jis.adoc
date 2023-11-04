@@ -1,0 +1,26 @@
+---
+title: Citation guide for JIS publications
+flavor: JIS
+description: Cite JIS standards
+layout: cite-doc
+hero_include: index-page-hero.html
+---
+
+== Citing JIS publications
+
+=== Prefix
+
+The prefix for JIS publications is `JIS`: +
+`JIS X 0208:1997`
+
+=== Year
+
+Year is optional, if it is not specified, the current year is used: +
+`JIS X 0208`
+
+=== Part
+
+In case of multi-part standards, the part number is specified after the number of the standard: +
+`JIS B 0060-1:201` +
+To cite all parts of a standard, use `all parts` option: +
+`JIS B 0060 (all parts)`
