@@ -39,7 +39,7 @@ relaton:
         - { url: "https://www.iec.ch", label: "International Electrotechnical Commission" }
     - id: itu
       label: ITU-T & ITU-R
-      citation_guide: false
+      citation_guide: true
       gem: relaton-itu
       sources:
         - { url: "https://www.itu.int", label: "International Telecommunication Union" }
@@ -57,7 +57,7 @@ relaton:
         - { url: "https://standards.ieee.org", label: "IEEE Standards Association" }
     - id: nist
       label: NIST
-      citation_guide: false
+      citation_guide: true
       gem: relaton-nist
       sources:
         - { url: "https://www.nist.gov", label: "National Institute of Standards and Technology" }
@@ -87,7 +87,7 @@ relaton:
         - { url: "https://www.electropedia.org", label: "IEC Electropedia" }
     - id: oasis
       label: OASIS
-      citation_guide: false
+      citation_guide: true
       gem: relaton-oasis
       sources:
         - { url: "https://www.oasis-open.org/standards/", label: "OASIS OPEN"}
@@ -112,7 +112,7 @@ relaton:
     - id: iho
       label: IHO
       gem: relaton-iho
-      citation_guide: false
+      citation_guide: true
       sources:
         - { url: "https://www.iho.int", label: "International Hydrographic Organization" }
     - id: omg
@@ -141,7 +141,7 @@ relaton:
         - { url: "https://www.bsigroup.com", label: "British Standards Institution" }
     - id: jis
       label: JIS (JSA)
-      citation_guide: false
+      citation_guide: true
       gem: relaton-jis
       sources:
         - { url: "https://webdesk.jsa.or.jp", label: "Japanese Standards Association" }
@@ -177,7 +177,7 @@ relaton:
         - { url: "https://xmpp.org/extensions/", label: "XMPP Standards Foundation" }
     - id: doi
       label: DOI
-      citation_guide: false
+      citation_guide: true
       gem: relaton-doi
       sources:
         - { url: "https://www.crossref.org/documentation/retrieve-metadata/rest-api/", label: "Digital Object Identifier" }
