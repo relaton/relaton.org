@@ -3,7 +3,6 @@ title: Citation guide for JIS publications
 flavor: JIS
 description: Cite JIS standards
 layout: cite-doc
-hero_include: index-page-hero.html
 ---
 
 == Citing JIS publications

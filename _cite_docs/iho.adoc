@@ -3,7 +3,6 @@ title: Citation guide for IHO publications
 flavor: IHO
 description: Cite IHO standards
 layout: cite-doc
-hero_include: index-page-hero.html
 ---
 
 == Citing IHO standards

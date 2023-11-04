@@ -3,7 +3,6 @@ title: Citation guide for NIST publications
 flavor: NIST
 description: Cite NIST standards
 layout: cite-doc
-hero_include: index-page-hero.html
 ---
 
 == Citing NIST publications

@@ -3,7 +3,6 @@ title: Citation guide for OASIS publications
 flavor: OASIS
 description: Cite OASIS standards
 layout: cite-doc
-hero_include: index-page-hero.html
 ---
 
 == Citing OASIS standards

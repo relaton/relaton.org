@@ -3,7 +3,6 @@ title: Citation guide for Chinese standards
 flavor: Chinese standards (GB etc.)
 description: Cite Chinese National, Regional, Local and Industry standards
 layout: cite-doc
-hero_include: index-page-hero.html
 ---
 
 == Citing GB standards

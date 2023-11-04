@@ -3,7 +3,6 @@ title: Citation guide for IETF publications
 flavor: IETF
 description: Cite IETF RFCs, BCPs and Internet-Drafts
 layout: cite-doc
-hero_include: index-page-hero.html
 ---
 
 == Citing IETF documents

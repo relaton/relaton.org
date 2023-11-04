@@ -3,7 +3,6 @@ title: Citation guide for Ecma standards and publications
 flavor: Ecma International
 description: Cite Ecma standards and publications
 layout: cite-doc
-hero_include: index-page-hero.html
 ---
 
 == Ecma publication types

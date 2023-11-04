@@ -3,7 +3,6 @@ title: Citation guide for ISO publications
 flavor: ISO
 description: Cite ISO standards
 layout: cite-doc
-hero_include: index-page-hero.html
 ---
 
 == Citing ISO Standards
