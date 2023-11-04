@@ -7,7 +7,10 @@ layout: cite-doc
 
 == Citing OASIS standards
 
-Prefix for all OASIS standards is `OASIS`: +
+Prefix for all OASIS standards is `OASIS`.
+
+[example]
 `OASIS AkomaNtosoCore-v1.0-Pt1-Vocabulary`
 
-All the OASIS standards references are available in the https://www.relaton.org/relaton-data-oasis/[OASIS Standards index].
+All the OASIS standards references are available in the
+https://www.relaton.org/relaton-data-oasis/[OASIS Standards index].

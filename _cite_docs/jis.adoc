@@ -9,17 +9,26 @@ layout: cite-doc
 
 === Prefix
 
-The prefix for JIS publications is `JIS`: +
+The prefix for JIS publications is `JIS`
+
+[example]
 `JIS X 0208:1997`
 
-=== Year
+=== Dated and undated references
 
-Year is optional, if it is not specified, the current year is used: +
+The edition year is optional. If not specified, an undated citation will be
+created with all its editions embedded within.
+
 `JIS X 0208`
 
 === Part
 
-In case of multi-part standards, the part number is specified after the number of the standard: +
-`JIS B 0060-1:201` +
-To cite all parts of a standard, use `all parts` option: +
+In case of multi-part standards, the part number is specified after the number of the standard:
+
+[example]
+`JIS B 0060-1:201`
+
+To cite all parts of a standard, use `all parts` option:
+
+[example]
 `JIS B 0060 (all parts)`

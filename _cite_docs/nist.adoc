@@ -9,21 +9,44 @@ layout: cite-doc
 
 === Prefixes
 
-* `NBS` - NBS Publications +
+`NBS`:: NBS Publications
+
+[example]
 `NBS BH 1`
-* `NIST` - NIST Publication +
+
+
+`NIST`:: NIST Publication
+
+[example]
 `NIST SP 800-162`
-* `FIPS` - Federal Information Processing Standards +
+
+`FIPS`:: Federal Information Processing Standards
+
+[example]
 `FIPS 102`
+
 
 === Types
 
-* `SP` - Special Publication +
+`SP`:: Special Publication
+
+[example]
 `NIST SP 800-162`
-* `GCR` - General Construction Report +
+
+`GCR`:: General Construction Report
+
+[example]
 `NIST GCR 01-820`
-* `IR` - Internal Report +
+
+`IR`:: Internal Report
+
+[example]
 `NISTIR 8200:2018`
+
+[example]
 `NIST IR 8200:2018`
-* `CSWP` - Computer Security Workshops +
+
+`CSWP`:: Computer Security Workshops
+
+[example]
 `NIST CSWP 1`
