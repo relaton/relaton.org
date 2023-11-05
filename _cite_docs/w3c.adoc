@@ -1,0 +1,77 @@
+---
+title: Citation guide for W3C publications
+flavor: W3C
+description: Cite W3C standards
+layout: cite-doc
+---
+
+== Citing W3C Standards
+
+The W3C references have following format:
+
+`W3C <STAGE|TYPE> <CODE>-<DATE>/<SUFF>`
+
+* `STAGE` - the stage of the standard (REC, CR, etc.). Optional.
+* `TYPE` - the type of the standard (NOTE, TR). Optional.
+* `CODE` - the code of the standard (e.g. html, css, etc.). Mandatory.
+* `DATE` - the date of the publication. Optional.
+* `SUFF` - the suffix of the standard (e.g. fonts, 01, ReportOutcomes etc.). Optional.
+
+=== Stages
+
+* `WD` - Working Draft
+* `CRD` - Candidate Recommendation Draft
+* `CR` - Candidate Recommendation
+* `PR` - Proposed Recommendation
+* `PER` - Proposed Edited Recommendation
+* `REC` - Recommendation
+* `SPSD` - Superseded Recommendation
+* `OBSL` - Obsolete Recommendation
+
+[example]
+----
+W3C WD css3-namespace
+W3C CRD css-images-3
+W3C CR css-box-3
+W3C PR did-core
+W3C PER SMIL2
+W3C REC did-core
+W3C SPSD MathML2
+W3C OBSL P3P
+----
+
+=== Type
+
+`NOTE` - W3C Note
+
+[example]
+`W3C NOTE photo-rdf`
+
+=== Dates
+
+* `YYYY` - year
+* `MMDD` - month and day
+* `YYMMDD` - year and month
+* `YYYYMMDD` - year, month and day
+
+[example]
+----
+W3C css-2022
+W3C NOTE voice-0128
+W3C NOTE cgm-970618
+W3C REC html32-19970114
+----
+
+Withouth date the latest version of the standard is assumed.
+
+[example]
+`W3C css`
+
+=== Suffix
+
+[example]
+----
+W3C WCA-terms/01
+W3C 9605-Indexing-Workshop/ReportOutcomes
+W3C REC CSS2/fonts
+----
