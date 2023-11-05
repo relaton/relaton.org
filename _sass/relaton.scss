@@ -281,3 +281,35 @@ body > .underlay > header {
     @include docs-page($primary-dark-color);
   }
 }
+
+.row {
+  align-items: center;
+  border-bottom: $light-gray-color 1px solid;
+  display: flex;
+  flex-flow: row wrap;
+  min-height: 4em;
+
+  > .col1 {
+    flex: 1 12em;
+  }
+
+  > .col2 {
+    flex: 3 12em;
+    margin: 0;
+  }
+}
+
+.row > .col1 {
+  h3 {
+    margin: 0.2em 0;
+  }
+}
+
+article .sectionbody {
+  a,
+  a:link,
+  a:visited {
+    color: $article-link-color;
+    text-decoration: underline;
+  }
+}

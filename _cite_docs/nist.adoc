@@ -1,0 +1,52 @@
+---
+title: Citation guide for NIST publications
+flavor: NIST
+description: Cite NIST standards
+layout: cite-doc
+---
+
+== Citing NIST publications
+
+=== Prefixes
+
+`NBS`:: NBS Publications
+
+[example]
+`NBS BH 1`
+
+
+`NIST`:: NIST Publication
+
+[example]
+`NIST SP 800-162`
+
+`FIPS`:: Federal Information Processing Standards
+
+[example]
+`FIPS 102`
+
+
+=== Types
+
+`SP`:: Special Publication
+
+[example]
+`NIST SP 800-162`
+
+`GCR`:: General Construction Report
+
+[example]
+`NIST GCR 01-820`
+
+`IR`:: Internal Report
+
+[example]
+`NISTIR 8200:2018`
+
+[example]
+`NIST IR 8200:2018`
+
+`CSWP`:: Computer Security Workshops
+
+[example]
+`NIST CSWP 1`
