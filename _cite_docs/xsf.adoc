@@ -1,0 +1,13 @@
+---
+title: Citation guide for XSF publications
+flavor: XSF
+description: Cite XSF standards
+layout: cite-doc
+---
+
+== Citing XSF standards
+
+To cite XSF standards use the `XEP` prefix:
+
+[example]
+`XEP 0001`
