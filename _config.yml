@@ -75,7 +75,7 @@ relaton:
         - { url: "https://www.3gpp.org", label: "3rd Generation Partnership Project" }
     - id: ogc
       label: OGC
-      citation_guide: false
+      citation_guide: true
       gem: relaton-ogc
       sources:
         - { url: "https://www.ogc.org", label: "Open Geospatial Consortium" }
@@ -99,7 +99,7 @@ relaton:
         - { url: "https://cie.co.at", label: "International Commission on Illumination" }
     - id: w3c
       label: W3C
-      citation_guide: false
+      citation_guide: true
       gem: relaton-w3c
       sources:
         - { url: "https://www.w3.org", label: "World Wide Web Consortium" }
@@ -117,13 +117,13 @@ relaton:
         - { url: "https://www.iho.int", label: "International Hydrographic Organization" }
     - id: omg
       label: OMG
-      citation_guide: false
+      citation_guide: true
       gem: relaton-omg
       sources:
         - { url: "https://www.omg.org", label: "Object Management Group" }
     - id: un
       label: UN Docs
-      citation_guide: false
+      citation_guide: true
       gem: relaton-un
       sources:
         - { url: "https://documents.un.org", label: "UN Official Document System" }
@@ -171,7 +171,7 @@ relaton:
         - { url: "https://www.iana.org", label: "Internet Assigned Numbers Authority" }
     - id: xsf
       label: XSF
-      citation_guide: false
+      citation_guide: true
       gem: relaton-xsf
       sources:
         - { url: "https://xmpp.org/extensions/", label: "XMPP Standards Foundation" }
