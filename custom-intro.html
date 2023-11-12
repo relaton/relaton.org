@@ -12,7 +12,12 @@
     <!-- <ul class="supported-bibliographies"> -->
       {% for bib in site.relaton.supported_bibliographies %}
       <!-- <li> -->
-        <a href="/software/{{ bib.gem }}/"
+        {% if bib.citation_guide == true %}
+        {% assign flavor_link = "/cite/" | append: bib.id %}
+        {% else %}
+        {% assign flavor_link = "/software/" | append: bib.gem %}
+        {% endif %}
+        <a href="{{ flavor_link }}"
           {% if bib.experimental %}class="experimental"{% endif %}
           {% if bib.description %}title="{{ bib.description }}"{% endif %}>
         <article class="fl">

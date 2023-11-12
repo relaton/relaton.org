@@ -1,0 +1,17 @@
+---
+title: Cite publications from supported organizations
+description: Citation guides for Relaton-supported organizations
+layout: default
+---
+
+{% assign guides = site.cite_docs | sort: "flavor" %}
+<section class="items">
+  {% for item in guides %}
+    <a class="row" href="{{ item.url }}" role="article">
+      <header class="col1">
+        <h3 class="title">{{ item.flavor }}</h3>
+      </header>
+      <p class="body col2">{{ item.title }}</p>
+    </a>
+  {% endfor %}
+</section>

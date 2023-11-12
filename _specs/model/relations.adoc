@@ -81,6 +81,20 @@ indentation.
 instanceOf:: document B is an instance of document A (e.g. an
 edition, a format, a single copy: agnostic as to whether B is an
 Expression, Manifestation, or Item) (_hasInstance_)
++
+--
+Instances are often used in the Relaton modelling of standards, since
+concrete documents (FRBR Expressions) are often lumped together
+as more abstract entities (typically FRBR Works), particularly for
+the purposes of citation.
+
+So different
+editions of a standard are often lumped together as a single Work;
+the different editions of a standard are then modelled as instances of
+the undated standard. Similarly, translations of a standard are often
+lumped together as a single Work; the distinct language versions are
+then modelled as instances of the same, language-independent standard.
+--
 
 exemplarOf:: document B is an Item of document A (_hasExemplar_)
 
@@ -167,7 +181,7 @@ captured in Relaton through the `edition` element; the `hasEdition`
 relation still applies to such minor variants of the text, whether
 they are considered distinct editions or not.
 
-==== Derived relations:
+==== Derived relations
 
 In the following, the two related items belong to distinct works,
 but the creation of B is determined in some way by A.
@@ -184,7 +198,7 @@ document B (_cataloguedBy_)
 hasSuccessor::: document A is succeeded by document B in a sequence;
 includes sequels, and continuations of journals (_successorOf_)
 
-adapted::: document A is a reworking of document B to make it
+adaptedFrom::: document A is a reworking of document B to make it
 suitable for a different audience (FRBR Adaptation: includes
 paraphrase, free translation, musical variations) or medium (FRBR
 Transformation: includes dramatisation, novelisation, versification,
@@ -237,7 +251,7 @@ Abstracts, digests and summaries are also considered to represent
 new works.
 ____
 
-==== Other relations:
+==== Other relations
 
 related:: document A is related to document B in an otherwise
 unspecified fashion

@@ -1,0 +1,26 @@
+---
+title: Citation guide for OGC publications
+flavor: OGC
+description: Cite OGC standards
+layout: cite-doc
+---
+
+== Citing OGC standards
+
+=== Prefix
+
+The prefix for OGC standards is `OGC`:
+
+[example]
+`OGC 23-025`
+
+
+=== Edition
+
+The edition is the revision number `rNN` of the standard:
+
+[example]
+----
+OGC 20-072r5
+OGC 21-056r11
+----

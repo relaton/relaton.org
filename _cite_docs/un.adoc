@@ -1,0 +1,16 @@
+---
+title: Citation guide for UN publications
+flavor: UN
+description: Cite UN standards
+layout: cite-doc
+---
+
+== Citing UN documents
+
+To cite a UN documents use references prefixed with `UN`:
+
+[example]
+----
+UN TRADE/CEFACT/2004/32
+UN TRADE/WP.4/1068
+----

@@ -1,0 +1,18 @@
+---
+title: Citation guide for Chinese standards
+flavor: Chinese standards (GB etc.)
+description: Cite Chinese National, Regional, Local and Industry standards
+layout: cite-doc
+---
+
+== Citing GB standards
+
+* `GB` is the prefix for Chinese standards
+
+[example]
+`GB 2024-2016`
+
+* `GB/T` is the prefix for Chinese recommended standards
+
+[example]
+`GB/T 32843-2016`

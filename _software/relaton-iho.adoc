@@ -1,0 +1,15 @@
+---
+title: RelatonIHO
+description: Retrieves IHO Standards for bibliographic use using the BibliographicItem model.
+repo_url: https://github.com/relaton/relaton-iho
+
+external_links:
+  - url: https://github.com/relaton/relaton-iho
+
+tags: ["writtenin:Ruby", "user:IHO"]
+
+feature_with_priority: 2
+---
+
+You can use it to retrieve metadata of IHO Standards from https://www.iho.int
+and access that metadata through the `BibliographicItem` object.

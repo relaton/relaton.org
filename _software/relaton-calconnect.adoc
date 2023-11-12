@@ -1,0 +1,15 @@
+---
+title: RelatonCalConnect
+description: Retrieves CalConnect Standards for bibliographic use using the BibliographicItem model.
+repo_url: https://github.com/relaton/relaton-calconnect
+
+external_links:
+  - url: https://github.com/relaton/relaton-calconnect
+
+tags: ["writtenin:Ruby", "user:CalConnect"]
+
+feature_with_priority: 2
+---
+
+You can use it to retrieve metadata of CalConnect Standards from https://www.calconnect.org
+and access that metadata through the `BibliographicItem` object.
