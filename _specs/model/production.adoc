@@ -292,6 +292,9 @@ for online publications. (Unlike in ISO 690, no distinction is made between
 "viewed" and "accessed" based on whether the resource is human-readable or
 machine-readable.)
 updated:: Date a resource was updated and republished. Used for new versions and editions.
+corrected:: Date a resource was corrected and republished. Used for new versions of documents,
+in cases where the correction is not considered to amount to a new edition of the document.
+(This is a subjective distinction made by the publisher.)
 unchanged:: Date a resource was reprinted, i.e. republished without any changes.
 circulated:: Date a draft version of a resource was circulated. Drafts by definition
 are not published, so `circulated` is used instead of `published` for draft resources.
