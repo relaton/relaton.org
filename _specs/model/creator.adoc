@@ -53,8 +53,39 @@ composer given priority over the librettist.
 NOTE: Inventor and patentee are atypical of the "performer" roles,
 and could arguably be regarded as author roles instead.
 
-NOTE: Sponsoring organisations are conventionally included as distributors,
+[NOTE]
+--
+Sponsoring organisations are conventionally included as distributors,
 following practice in ISO 690.
+
+In the Relaton model, however, we have refined the ISO 690 model of roles,
+based on analysis of the 270 creator roles encoded in the MARC bibliographic standard. The Relaton listing
+of roles is as follows; italicised roles are not currently in ISO 690. The following
+discussion uses the older FRBR distinction between Works (a family of content identified
+as the same), Expressions (versions of the content of a Work, including revisions and performers),
+Manifestations (presentations of an Expression), Items (instances of a Manifestation).
+Later bibliographic models conflate Expressions and Manifestations, as the distinction can be
+difficult to make, but it is useful in defining Publishers abstractly.
+
+* author: creates a Work (ISO 690: a) "creator of work")
+**  editor: finalises a Work; "finalises" is a subclass of "creates" (ISO 690: "c) reviser of work")
+** adapter: creates a Derived-Work, a Work derived from the initial Work ISO 690: "d) creator of derivative work")
+* translator, performer, realiser: creates an Expression of a Work (ISO 690: "b) expresser of created work")
+** translator: creates an Expression of a Work in a novel language
+**  performer: creates an Expression as a novel performance (time-bound realisation of Work), specific to performing arts
+**  _realiser_: creates Expression, is default (is intended as the catch-all for ISO 690 "b) expresser of created work"):
+includes bringing someone's creative vision into fulfilment, and coordinating performance (as opposed to performing): 
+in the performing arts, a performer works front of stage, and a realiser works backstage (e.g. a producer, or a choreographer)
+* publisher: creates a Manifestation of an Expression, a distinct presentation (ISO 690: "e) publisher of manifestation")
+* distributor: gives out Items of a Manifestation to an audience (ISO 690: "f) distributor of manifestation")
+* _owner_: receives Items of a Manifestation
+* _authoriser_: authorises the Work, lends it authority. (This includes includes Standards Defining Organisations, software companies, scholarly societies)
+* _enabler_: supports, enables, facilitates a Work, an Expression, or a Manifestation. (This includes funders, sponors.)
+* _subject_: referenced in a Work.
+  
+Note that in this model, sponsors are no longer conflated with distributors, and SDOs are differentiated from publishers;
+they are often but not always the same organisation in the case of standards.
+--
 
 ====
 Ramsey, J. K., & McGrew, W. C. (2005). Object play in great apes: Studies in nature and captivity.
