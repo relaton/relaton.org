@@ -8,7 +8,7 @@ description: Series in Relaton
 
 === General
 
-* Source: ISO 690, Clause 4.8, ISO 690, Clause 5.2
+* Source: ISO 690, 4.8, ISO 690, 5.2
 * Serialisation: `bibitem/series`
 
 
@@ -16,11 +16,11 @@ description: Series in Relaton
 
 Articles have their journal title modelled as the series title of the article item.
 However, the journal volume and issue should be modelled as part of the article
-item extent (link:../numeration[Numeration]), rather than as part of the series (ISO 690, Clause 4.7).
+item extent (link:../numeration[Numeration]), rather than as part of the series (ISO 690, 4.7).
 
 === Standards
 
-Standards body identifiers for standards (ISO 690, Clause 5.9) are modelled as series numbers.
+Standards body identifiers for standards (ISO 690, 5.9) are modelled as series numbers.
 
 ====
 ISO 690, _Information and documentation -- Guidelines for bibliographic references and citations to information resources_.

@@ -8,7 +8,7 @@ description: Categories of document relations in Relaton
 
 === General
 
-* Source: ISO 690, Clause 4.3
+* Source: ISO 690, 4.3
 * Serialisation: `bibitem/relation`
 
 The model allows for various relations between bibliographic items,
@@ -605,7 +605,7 @@ relation need be invoked in the title:
 (<<date>>: `date[@type="created"]` vs `date[@type="adapted"]`).
 
 However, if any further details of the source item need to be
-provided (e.g.  source language: ISO 690, Clause 4.11), they should
+provided (e.g.  source language: ISO 690, 4.11), they should
 be modelled through an overt relationship between the source item
 and the translation.
 

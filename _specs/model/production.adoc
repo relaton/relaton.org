@@ -8,7 +8,7 @@ description: Categories of place and date of publication and publisher in Relato
 
 === General
 
-* Source: ISO 690, Clause 4.6
+* Source: ISO 690, 4.6
 * Serialisation: `bibitem/place, bibitem/contributor[role@type = "publisher"], bibitem/date`
 
 
@@ -71,7 +71,7 @@ London (Ontario)
 
 The publisher is a subclass of creator (link:../creator[Creator]).
 
-ISO 690, Clause 4.1 differentiates between
+ISO 690, 4.1 differentiates between
 "`publisher, online information provider, production company`" and
 "`distributor, online host`".
 
@@ -81,7 +81,7 @@ Of the classes of creator that can be used as the publisher,
 "`distributor or issuing body`" and "`sponsoring body`" have
 `bibitem/contributor/role@type = "distributor"`.
 
-ISO 690, Clause 4.6 allows that distributors, issuers and sponsors
+ISO 690, 4.6 allows that distributors, issuers and sponsors
 can be named in addition to publishers.
 
 Any restrictions on access to a resource imposed by an online host

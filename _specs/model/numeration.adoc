@@ -6,7 +6,7 @@ description: Numeration and pagination in Relaton
 [[numeration]]
 == Numeration and pagination
 
-* Source: ISO 690, Clause 4.7
+* Source: ISO 690, 4.7
 * Serialisation: `bibitem/extent`, `bibitem/size`
 
 The bibliographic `size` of an item is the measure of how large it is, in terms
