@@ -6,7 +6,7 @@ description: Categories of editions in Relaton
 [[edition]]
 == Edition
 
-* Source: ISO 690, Clause 4.5
+* Source: ISO 690, 4.5
 * Serialisation: `bibitem/edition, bibitem/version, bibitem/date`
 
 Editions are modelled as free text, given the variety of ways they can be represented.

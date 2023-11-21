@@ -6,7 +6,7 @@ description: Categories of medium in Relaton
 [[medium]]
 == Medium
 
-* Source: ISO 690, Clause 4.4, ISO 690, Clause 5.4
+* Source: ISO 690, 4.4, ISO 690, 5.4
 * Serialisation: `bibitem/medium`
 
 ISO 690 differentiates between the content type of the item,

@@ -6,7 +6,7 @@ description: Access locations and online locations in Relaton
 [[location]]
 == Location
 
-* Source: ISO 690, Clause 4.10, ISO 690, Clause 5.10
+* Source: ISO 690, 4.10, ISO 690, 5.10
 * Serialisation: `bibitem/accessLocation`, `bibitem/uri`
 
 Unpublished items with a limited number of copies that are held at a repository
