@@ -7,85 +7,122 @@ description: Categories of creator in Relaton
 
 === General
 
-* Source: ISO 690, Clause 4.1
+* Source: ISO 690, 4.1
 * Serialisation: `bibitem/contributor`, `Person, Organization, Affiliation`
+
+ISO 690, 4.1 classifies the various possible roles a creator can have
+with regard to a resource into six broad categories in order of priority,
+with more refined classifications typically named for the creator.
+
+These classifications are retained in the Relaton model:
+
+`bibitem/contributor/role@type`::
+Provides the broad category of role
+(author, performer, compiler, adaptor, publisher, distributor).
+The content of this element is optional, and contains a more specific expression
+of the creator role.
+
+`bibitem/contributor/role/description`::
+Contains one or more specific descriptions of the role of the contributor.
+The description can be strictly a noun, e.g. "librettist", or it can be a
+phrase, corresponding to how it will be rendered in a citation ("libretto by");
+the choice is at the discretion of the bibliographer, and is determined by how
+the citation is expected to be rendered (as rendering systems are unlikely to be
+sophisticated enough to convert the one into the other.)
+
+
+=== Role
+
+The Relaton model further refines the ISO 690 model of roles, based on analysis
+of the 270 creator roles encoded in the
+https://www.loc.gov/marc/bibliographic/[MARC bibliographic standard].
+
+The Relaton listing of roles is as follows:
+
+author:: creates a Work (ISO 690: "a) creator of work")
+
+editor::: finalises a Work; "finalises" is a subclass of "creates" (ISO 690: "c) reviser of work")
+adapter::: creates a Derived-Work, a Work derived from the initial Work ISO 690: "d) creator of derivative work")
+
+translator, performer, realiser:: creates an Expression of a Work (ISO 690: "b) expresser of created work")
+translator::: creates an Expression of a Work in a novel language
+performer::: creates an Expression as a novel performance (time-bound realisation of Work), specific to performing arts
+
+_realiser_::: creates Expression, is default (is intended as the catch-all for ISO 690 "b) expresser of created work"):
+
+*** includes bringing someone's creative vision into fulfilment, and coordinating performance (as opposed to performing):
+*** in the performing arts, a performer works front of stage, and a realiser works backstage (e.g. a producer, or a choreographer)
+
+publisher:: creates a Manifestation of an Expression, a distinct presentation (ISO 690: "e) publisher of manifestation")
+
+distributor:: gives out Items of a Manifestation to an audience (ISO 690: "f) distributor of manifestation")
+
+_owner_:: receives Items of a Manifestation
+
+_authoriser_:: authorises the Work, lends it authority. (This includes includes standards development organisations, software companies, scholarly societies)
+
+_enabler_:: supports, enables, facilitates a Work, an Expression, or a Manifestation. (This includes funders, sponsors.)
+
+_subject_:: referenced in a Work.
+
+NOTE: Italicised roles are not currently in ISO 690.
+
+[NOTE]
+--
+The above description uses the older FRBR distinction between:
+
+* Works (a family of content identified as the same),
+* Expressions (versions of the content of a Work, including revisions and performers),
+* Manifestations (presentations of an Expression),
+* Items (instances of a Manifestation).
+
+Later bibliographic models such as BIBFRAME conflate Expressions and
+Manifestations, as the distinction can be difficult to make, but it is useful in
+defining publishers abstractly.
+--
+
 
 [[creator-selection]]
 === Selection
-
-ISO 690, Clause 4.1 classifies the various possible roles a creator can have
-with regard to a resource into six broad categories in order of priority,
-with more refined classifications typically named for the creator. These
-classifications
-are retained in the model: `bibitem/contributor/role@type` provides the broad
-category of role (author, performer, compiler, adaptor, publisher, distributor),
-while `bibitem/contributor/role/description`
-contains one or more specific descriptions of the role of the contributor.
-
-The content of the `bibitem/contributor/role` element is optional, and contains
-a more specific expression of the creator role. The description can be
-strictly a noun, e.g. "librettist", or it can be a phrase, corresponding to how
-it will be rendered in a citation ("libretto by"); the choice is at the discretion
-of the bibliographer, and is determined by how the citation is expected to be rendered
-(as rendering systems are unlikely to be sophisticated enough to convert the one
-into the other.)
 
 Whether subsidiary creators should be included in a bibliographic item, and
 which creators should be included, is at the discretion of the bibliographer.
 
 Exceptionally, "translator" is differentiated from the other "adaptor" roles,
 because it is so different from other adaptor roles such
-as engraver or photographer.
+as "engraver" or "photographer".
 
-For derivative works, the creator and title of the original resource can be mentioned
-as a bibliographic note (`bibitem/note`); however best practice is to treat the
-original resource as a distinct related bibliographic item, related through the
-`derivedFrom` relation (See link:../relations[Document Relations]). Likewise, different originators of different
-editions should be modelled by modelling the editions as distinct related items,
-each with its own distinct editor as contributor. (For example, the later edition given
-as the main item, and the earlier edition related through a "updatedBy" relation.)
 
-NOTE: Although both composer and librettist are included as authors under
-ISO 690, Clause 4.1,
-the two roles are clearly differentiated in ISO 690, Clause 5.7, with the
-composer given priority over the librettist.
+=== Derivative works
+
+For derivative works, the creator and title of the original resource can be
+mentioned as a bibliographic note (`bibitem/note`).
+However, best practice is to treat the original resource as a distinct related
+bibliographic item, related through the
+`derivedFrom` relation (See link:../relations[Document Relations]).
+
+Likewise, different originators of different editions should be modelled by
+modelling the editions as distinct related items, each with its own distinct
+editor as contributor. (For example, the later edition given as the main item,
+and the earlier edition related through a "updatedBy" relation.)
+
+NOTE: Although both "composer" and "librettist" are included as authors under
+ISO 690, 4.1,
+the two roles are clearly differentiated in ISO 690, 5.7, with the
+"composer" given priority over the "librettist".
 
 NOTE: Inventor and patentee are atypical of the "performer" roles,
 and could arguably be regarded as author roles instead.
 
-[NOTE]
---
+=== Sponsoring organisations
+
 Sponsoring organisations are conventionally included as distributors,
 following practice in ISO 690.
 
-In the Relaton model, however, we have refined the ISO 690 model of roles,
-based on analysis of the 270 creator roles encoded in the MARC bibliographic standard. The Relaton listing
-of roles is as follows; italicised roles are not currently in ISO 690. The following
-discussion uses the older FRBR distinction between Works (a family of content identified
-as the same), Expressions (versions of the content of a Work, including revisions and performers),
-Manifestations (presentations of an Expression), Items (instances of a Manifestation).
-Later bibliographic models conflate Expressions and Manifestations, as the distinction can be
-difficult to make, but it is useful in defining Publishers abstractly.
-
-* author: creates a Work (ISO 690: a) "creator of work")
-**  editor: finalises a Work; "finalises" is a subclass of "creates" (ISO 690: "c) reviser of work")
-** adapter: creates a Derived-Work, a Work derived from the initial Work ISO 690: "d) creator of derivative work")
-* translator, performer, realiser: creates an Expression of a Work (ISO 690: "b) expresser of created work")
-** translator: creates an Expression of a Work in a novel language
-**  performer: creates an Expression as a novel performance (time-bound realisation of Work), specific to performing arts
-**  _realiser_: creates Expression, is default (is intended as the catch-all for ISO 690 "b) expresser of created work"):
-includes bringing someone's creative vision into fulfilment, and coordinating performance (as opposed to performing): 
-in the performing arts, a performer works front of stage, and a realiser works backstage (e.g. a producer, or a choreographer)
-* publisher: creates a Manifestation of an Expression, a distinct presentation (ISO 690: "e) publisher of manifestation")
-* distributor: gives out Items of a Manifestation to an audience (ISO 690: "f) distributor of manifestation")
-* _owner_: receives Items of a Manifestation
-* _authoriser_: authorises the Work, lends it authority. (This includes includes Standards Defining Organisations, software companies, scholarly societies)
-* _enabler_: supports, enables, facilitates a Work, an Expression, or a Manifestation. (This includes funders, sponors.)
-* _subject_: referenced in a Work.
-  
 Note that in this model, sponsors are no longer conflated with distributors, and SDOs are differentiated from publishers;
 they are often but not always the same organisation in the case of standards.
---
+
+=== Examples
 
 ====
 Ramsey, J. K., & McGrew, W. C. (2005). Object play in great apes: Studies in nature and captivity.
@@ -288,7 +325,7 @@ WINSBACHER KNABENCHOR. All' Lust und Freud'. Frankfurt: Bellaphon, 1983.
 Names may be modelled either broken up into their constituent components
 (prefix, forename, initials, surname, addition), or as a complete name string.
 The latter is useful if
-(contrary to the recommendation of ISO 690, Clause 4.1)
+(contrary to the recommendation of ISO 690, 4.1)
 language-specific conventions for ordering of name components are to be
 observed; e.g. "`James CLARK, John COWAN, MURATA Makoto`".
 
@@ -386,7 +423,7 @@ The model caters for both full names and abbreviations of organisations.
 Subordinate body names are modelled separately from the parent body name; the
 choice of whether
 to model parent + subordinate or a single name depends on the degree of
-independence of the subordinate body, as outlined in ISO 690, Clause 4.1.
+independence of the subordinate body, as outlined in ISO 690, 4.1.
 
 ====
 St. Thomas University [Florida].
