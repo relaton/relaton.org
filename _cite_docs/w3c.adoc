@@ -18,6 +18,8 @@ The W3C references have following format:
 * `DATE` - date of publication. Optional.
 * `SUFF` - suffix of standard (e.g. fonts, 01, ReportOutcomes etc.). Optional.
 
+Cases:
+
 * `W3C <ID>` - returns a document with the last document as relation
 * `W3C <ID>-<YEAR>` - returns a document with the last dated document for the year as a relation
 * `W3C <STAGE|TYPE> <CODE>-<YEAR>` - returns the last dated document for the year with specified type or stage
