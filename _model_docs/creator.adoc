@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Creator
+title: Creator
 description: Categories of creator in Relaton
+layout: model-doc
 ---
 
 == Creator
@@ -99,7 +100,7 @@ For derivative works, the creator and title of the original resource can be
 mentioned as a bibliographic note (`bibitem/note`).
 However, best practice is to treat the original resource as a distinct related
 bibliographic item, related through the
-`derivedFrom` relation (See link:../relations[Document Relations]).
+`derivedFrom` relation (See link:/model/relations[Document Relations]).
 
 Likewise, different originators of different editions should be modelled by
 modelling the editions as distinct related items, each with its own distinct

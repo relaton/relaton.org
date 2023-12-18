@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Locations
+title: Locations
 description: Access locations and online locations in Relaton
+layout: model-doc
 ---
 
 [[location]]

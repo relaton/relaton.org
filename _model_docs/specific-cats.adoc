@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Specific categories
-description: Conventions specific to bibliographis categories in Relaton
+title: Specific categories
+description: Conventions specific to bibliographic categories in Relaton
+layout: model-doc
 ---
 
 [[specific-categories]]
@@ -18,7 +19,7 @@ less commonly expressed now for software than they were in the 1990s and 2000s.
 URLs should not be broken at the end of a line: that
 is a rendering requirement, not an information modelling requirement.
 
-As discussed in link:../bibtype[Categories of information resource],
+As discussed in link:/model/bibtype[Categories of information resource],
 where possible, a more specific category
 should be used than "electronic resource",
 which is properly a description of a medium and not a resource type; monographs and
@@ -27,6 +28,7 @@ journals are now routinely published online.
 The specific type of electronic resource, if not covered by `bibitem/@type` (e.g.
 "book", "dataset"), should be given as `medium/genre`.
 
+.Examples of citing an electronic information resource
 ====
 Ubisoft. _Far Cry 5_ [computer game]. 2018. Viewed: 2018-05-10.
 System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
@@ -550,7 +552,7 @@ between individuals, and are cited as personal communications.
 
 A person's real name may be related to the online identity assumed by the
 author of the item, if both are known. The online identity is treated as a
-pseudonym of the real life identity, and is serialised in the same way (link:../creator#variantnames[variantnames]).
+pseudonym of the real life identity, and is serialised in the same way (link:/model/creator#variantnames[variantnames]).
 
 The particular form of social media communication (e.g. blog post, forum post, tweet,
 message) should be given through `medium/genre`.

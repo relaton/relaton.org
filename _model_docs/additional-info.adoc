@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Additional Information
+title: Additional Information
 description: Additional information in Relaton
+layout: model-doc
 ---
 
 [[additional-info]]
