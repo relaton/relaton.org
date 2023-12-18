@@ -1,6 +1,7 @@
 ---
 title: AsciiBib -- Path style definition lists
 description: Defining AsciiBib using definition list paths
+layout: post
 
 external_links:
   - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc
@@ -18,9 +19,9 @@ as a dot-delimited path of keys.
 
 This is similar to how JSON data is often accessed.
 
-This syntax utilizes the structure of link:../relaton-yaml[Relaton YAML representation].
+This syntax utilizes the structure of link:/specs/relaton-yaml[Relaton YAML representation].
 
-NOTE: The link:../path[AsciiBib nested list syntax] requires
+NOTE: The link:/asciibib/path[AsciiBib nested list syntax] requires
 frequent breakouts into open blocks, to deal with limitations of AsciiDoc.
 
 
@@ -36,7 +37,7 @@ docid.type:: ISO
 docid.id:: 19115-1
 ----
 
-Is equivalent to the link:../path[AsciiBib nested list syntax] of:
+Is equivalent to the link:/asciibib/path[AsciiBib nested list syntax] of:
 
 [source,asciidoc]
 ----
@@ -68,7 +69,7 @@ docid.type:: ISO
 docid.id:: TC211
 ----
 
-Is equivalent to the link:../path[AsciiBib nested list syntax] of:
+Is equivalent to the link:/asciibib[AsciiBib nested list syntax] of:
 
 [source,asciidoc]
 ----
@@ -101,7 +102,7 @@ contributor.person.contact.type:: phone
 contributor.person.contact.value:: 223322
 ----
 
-Is equivalent to the link:../path[AsciiBib nested list syntax] of:
+Is equivalent to the link:/asciibib[AsciiBib nested list syntax] of:
 
 [source,asciidoc]
 ----

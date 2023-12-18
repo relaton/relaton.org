@@ -233,7 +233,13 @@ collections:
     permalink: /:name/
   cite_docs:
     output: true
-    permalink: /cite/:path/
+    permalink: /guides/:path/
+  asciibib_docs:
+    output: true
+    permalink: /asciibib/:path/
+  model_docs:
+    output: true
+    permalink: /model/:path/
 
 
 defaults:

@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Title
+title: Title
 description: Categories of title in Relaton
+layout: model-doc
 ---
 
 [[title]]

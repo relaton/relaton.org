@@ -1,0 +1,12 @@
+---
+title: Cite publications from supported organizations
+description: Citation guides for Relaton-supported organizations
+layout: post
+---
+:page-liquid:
+
+{% assign guides = site.cite_docs | sort: "flavor" %}
+{% for item in guides %}
+link:{{ item.url }}[*{{ item.flavor }}*]:: {{ item.title }}
+
+{% endfor %}

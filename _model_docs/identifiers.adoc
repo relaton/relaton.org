@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Identifiers
+title: Identifiers
 description: Identifiers in Relaton
+layout: model-doc
 ---
 
 [[identifiers]]
@@ -36,7 +37,7 @@ identifier scope: the cancellation of the identifier does not impact
 its namespace, but its connnection to a referent.
 
 Standards body identifiers for standards (ISO 690, 5.9)
-may be modelled as series numbers or as identifiers (link:../series.adoc[Series]).
+may be modelled as series numbers or as identifiers (link:/model/series[Series]).
 We recommend that the canonical identifier issued for a standard by a
 standards body be encoded as an identifier; other identifiers assigned
 to the same document may be better identified with a series title, as a
