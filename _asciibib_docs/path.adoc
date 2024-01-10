@@ -45,8 +45,8 @@ Is equivalent to the link:/asciibib/path[AsciiBib nested list syntax] of:
 == {blank}
 id:: iso19115
 docid::
-type::: ISO
-id::: 19115-1
+  type::: ISO
+  id::: 19115-1
 ----
 
 
@@ -77,12 +77,11 @@ Is equivalent to the link:/asciibib[AsciiBib nested list syntax] of:
 == {blank}
 id:: iso19115
 docid::
-type::: ISO
-id::: 19115-1
+  type::: ISO
+  id::: 19115-1
 docid::
-type::: ISO
-id::: TC211
-type:: standard
+  type::: ISO
+  id::: TC211
 ----
 
 Embedded elements can also repeat.
@@ -107,12 +106,12 @@ Is equivalent to the link:/asciibib[AsciiBib nested list syntax] of:
 ...
 === Contributor
 person::
-contact:::
-phone:::: 223322
-type:::: mobile
-contact:::
-phone:::: 332233
-type:::: work
+  contact:::
+    phone:::: 223322
+    type:::: mobile
+  contact:::
+    phone:::: 332233
+    type:::: work
 ----
 
 
