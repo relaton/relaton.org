@@ -168,23 +168,22 @@ medium.scale:: medium scale
 place::
 place.name:: bib place
 place::
-place.name:: Geneva
-place.uri:: geneva.place
+place.city:: Geneva
 place.region:: Switzelznd
 extent::
-extent.type:: section
-extent.reference_from:: Reference from
-extent.reference_to:: Reference to
+extent.loclaity.type:: section
+extent.loclaity.reference_from:: Reference from
+extent.loclaity.reference_to:: Reference to
 extent::
-extent.type:: chapter
-extent.reference_from:: 4
+extent.loclaity.type:: chapter
+extent.loclaity.reference_from:: 4
 extent::
-extent.type:: page
-extent.reference_from:: 10
-extent.reference_to:: 20
+extent.loclaity.type:: page
+extent.loclaity.reference_from:: 10
+extent.loclaity.reference_to:: 20
 extent::
-extent.type:: volume
-extent.reference_from:: 1
+extent.loclaity.type:: volume
+extent.loclaity.reference_from:: 1
 accesslocation:: accesslocation1
 accesslocation:: accesslocation2
 classification::
@@ -218,8 +217,8 @@ contributor.person.address.city:: City
 contributor.person.address.state:: State
 contributor.person.address.country:: Country
 contributor.person.address.postcode:: 123456
-contributor.person.contact.type:: phone
-contributor.person.contact.value:: 223322
+contributor.person.contact.phone:: 223322
+contributor.person.contact.type:: mobile
 contributor.role.type:: author
 contributor::
 contributor.organization.name:: IETF
@@ -254,8 +253,8 @@ contributor.person.address.city:: City
 contributor.person.address.state:: State
 contributor.person.address.country:: Country
 contributor.person.address.postcode:: 123456
-contributor.person.contact.type:: phone
-contributor.person.contact.value:: 223322
+contributor.person.contact.phone:: 223322
+contributor.person.contact.type:: mobile
 contributor.role.type:: author
 contributor::
 contributor.organization.name:: Institution
