@@ -92,14 +92,11 @@ Embedded elements can also repeat.
 [%bibitem]
 ...
 contributor.person.contact::
-contributor.person.contact.street:: 8 Street St
-contributor.person.contact.city:: City
-contributor.person.contact.postcode:: 123456
-contributor.person.contact.country:: Country
-contributor.person.contact.state:: State
+contributor.person.contact.phone:: 223322
+contributor.person.contact.type:: mobile
 contributor.person.contact::
-contributor.person.contact.type:: phone
-contributor.person.contact.value:: 223322
+contributor.person.contact.phone:: 332233
+contributor.person.contact.type:: work
 ----
 
 Is equivalent to the link:/asciibib[AsciiBib nested list syntax] of:
@@ -111,14 +108,11 @@ Is equivalent to the link:/asciibib[AsciiBib nested list syntax] of:
 === Contributor
 person::
 contact:::
-street:::: 8 Street St
-city:::: City
-postcode:::: 123456
-country:::: Country
-state:::: State
+phone:::: 223322
+type:::: mobile
 contact:::
-type:::: phone
-value:::: 223322
+phone:::: 332233
+type:::: work
 ----
 
 
@@ -132,6 +126,7 @@ given above, using path style syntax instead of nested definition list syntax:
 [[ISO-19115-1]]
 [%bibitem]
 == {blank}
+id:: ISO/TC211
 fetched:: 2019-06-30
 title::
 title.type:: main
@@ -146,11 +141,10 @@ title.language:: en
 title.script:: Latn
 title.format:: text/plain
 type:: standard
-docid::
 docid.type:: ISO
 docid.id:: ISO19115-1
 docnumber:: 19115-1
-edition:: 1
+edition.content:: 1
 language:: en
 language:: fr
 script:: Latn
@@ -232,15 +226,13 @@ contributor.person.affiliation.organization.abbreviation:: IETF
 contributor.person.affiliation.organization.identifier.type:: uri
 contributor.person.affiliation.organization.identifier.id:: www.ietf.org
 contributor.person.affiliation.description:: Affiliation description
-contributor.person.contact::
-contributor.person.contact.street:: 8 Street St
-contributor.person.contact.city:: City
-contributor.person.contact.postcode:: 123456
-contributor.person.contact.country:: Country
-contributor.person.contact.state:: State
-contributor.person.contact::
-contributor.person.contact.type:: phone
-contributor.person.contact.value:: 223322
+contributor.person.address.street:: 8 Street St
+contributor.person.address.city:: City
+contributor.person.address.postcode:: 123456
+contributor.person.address.country:: Country
+contributor.person.address.state:: State
+contributor.person.contact.phone:: 223322
+contributor.person.contact.type:: mobile
 contributor.role:: author
 contributor::
 contributor.organization.name:: IETF
@@ -291,4 +283,6 @@ series.type:: alt
 series.formattedref.content:: serieref
 series.formattedref.language:: en
 series.formattedref.script:: Latn
+keyword:: Keyword
+keyword:: Key Word
 ----
