@@ -32,5 +32,8 @@ In case of multi-part standards, the part number is specified after the number o
 To cite all parts of a standard, adding space and `(all parts)` option after the number of the standard:
 
 [example]
-`JIS B 0060 (all parts)`
-`JIS B 0060 (規格群)`
+[source]
+----
+JIS B 0060 (all parts)
+JIS B 0060 (規格群)
+----

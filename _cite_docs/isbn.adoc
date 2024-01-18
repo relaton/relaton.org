@@ -1,0 +1,27 @@
+---
+title: Citation guide for ISBN publications
+flavor: ISBN
+description: Cite ISBN publications
+layout: cite-doc
+---
+
+== Citing ISBN publications
+
+=== Prefix
+
+The prefix for ISBN publications is `ISBN`
+
+[example]
+`ISBN 978-0-12-064481-0`
+
+=== Number format
+
+ISBN number canb ISBN-10 or ISBN-13. Hyphens are optional.
+
+[example]
+[sources]
+----
+ISBN 978-0-12-064481-0
+ISBN 9780120644810
+ISBN 0120644819
+----
