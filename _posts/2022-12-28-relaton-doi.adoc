@@ -28,7 +28,9 @@ Since 1997, the https://www.doi.org[Digital Object Identifier (DOI)] service has
 been part of the essential infrastructure of digital publishing, registering and
 managing a unique identifier (DOI identifier) for all publications.
 
-The DOI identifier scheme was ratified as an ISO standard as ISO 26324, with the
+The DOI identifier scheme was ratified as an ISO standard as ISO 26324
+(https://www.iso.org/standard/43506.html[ISO 26324:2012],
+https://www.iso.org/standard/81599.html[ISO 26324:2022]), with the
 actual implementation managed by the DOI Foundation, which delegates
 registration matters to DOI registration agencies. DOI identifiers are lodged
 with a DOI registration agency.
