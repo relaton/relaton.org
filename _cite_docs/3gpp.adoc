@@ -5,25 +5,32 @@ description: Cite 3GPP standards
 layout: cite-docs
 ---
 
-== Citing 3GPP standards
+== General
 
-=== General
+To cite a 3GPP standard in your document, use document identifiers as citation
+keys.
 
-To cite a 3GPP standard in your document, use document identifiers as citation keys. All 3GPP identiiers start with `3GPP` prefix.
+3GPP identifiers start with the `3GPP` prefix.
 
-=== Types of 3GPP documents
 
-`TR` - Technical Report
+== Document types
+
+=== Technical Report
+
+`TR`
 
 [example]
 `3GPP TR 01.00:R98/7.1.0`
 
-`TS` - Technical Specification
+=== Technical Specification
+
+`TS`
 
 [example]
 `3GPP TS 01.01:Ph1/3.0.0`
 
-=== Specification number
+
+== Specification number
 
 * `00` - General information
 

@@ -1,6 +1,6 @@
 ---
 title: AsciiBib
-description: Defining bibliographic items using a structured Ascii-syntax
+description: Defining bibliographic items using structured syntax in ASCII
 layout: asciibib-docs
 external_links:
   - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc
@@ -43,8 +43,8 @@ title.content:: Geographic information
 ----
 
 Any elements with a cardinality of many can be represented as arrays. In case elements in array
-have multiple attributes they are prepended with empty name of alement. For example,
-a Relaton can have multiple titles, and multiple langauges:
+have multiple attributes they are prepended with empty name of element. For example,
+a Relaton can have multiple titles, and multiple languages:
 
 [source]
 ----

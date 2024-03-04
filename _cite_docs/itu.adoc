@@ -5,9 +5,7 @@ description: Cite ITU standards
 layout: cite-docs
 ---
 
-== Ciiting ITU publications
-
-=== ITU-T
+== ITU-T
 
 Prefix: `ITU-T` for ITU-T Standardization Sector Recommendations.
 
@@ -15,7 +13,7 @@ Prefix: `ITU-T` for ITU-T Standardization Sector Recommendations.
 `ITU-T L.163`
 
 
-=== ITU-R
+== ITU-R
 
 Prefix: `ITU-R` for ITU-R Radiocommunication Sector Recommendations.
 
@@ -28,7 +26,7 @@ Prefix: `ITU-R RR` for ITU-R Radio Regulations.
 [example]
 `ITU-R RR (2020)`
 
-=== ITU-D
+== ITU-D
 
 Prefix: `ITU-D` for ITU-D Development Sector Recommendations.
 

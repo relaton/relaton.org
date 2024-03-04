@@ -5,9 +5,7 @@ description: Cite OGC standards
 layout: cite-docs
 ---
 
-== Citing OGC standards
-
-=== Prefix
+== Prefix
 
 The prefix for OGC standards is `OGC`:
 
@@ -15,7 +13,7 @@ The prefix for OGC standards is `OGC`:
 `OGC 23-025`
 
 
-=== Edition
+== Edition
 
 The edition is the revision number `rNN` of the standard:
 

@@ -5,9 +5,7 @@ description: Cite CEN and EN standards
 layout: cite-docs
 ---
 
-== Citing CEN standards
-
-=== Prefixes
+== Prefixes
 
 * `CEN` - European Committee for Standardization
 
@@ -39,7 +37,7 @@ layout: cite-docs
 [example]
 `CR 12101-5:2000`
 
-=== Copublishers
+== Copublishers
 
 * `ISO` - International Organization for Standardization
 
@@ -59,7 +57,7 @@ EN ISO/IEC 10373:1995
 [example]
 `EN ISP 10607-1:1993`
 
-=== Types
+== Types
 
 * `TR` - Technical Report
 

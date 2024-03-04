@@ -5,16 +5,14 @@ description: Cite IHO standards
 layout: cite-docs
 ---
 
-== Citing IHO standards
-
-=== Prefix
+== Prefix
 
 The prefix `IHO` identifies it as an IHO document.
 
 [example]
 `IHO B-4`
 
-=== Edition
+== Edition
 
 Some IHO standards have multiple editions:
 
@@ -26,7 +24,7 @@ IHO S-100 2.0.0
 ----
 
 
-=== Volume
+== Volume
 
 Some IHO standards have multiple volumes:
 
@@ -37,7 +35,7 @@ IHO P-1/21
 IHO P-1/22
 ----
 
-=== Annex
+== Annex
 
 [example]
 [source]

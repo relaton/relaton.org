@@ -5,8 +5,6 @@ description: Cite XSF standards
 layout: cite-docs
 ---
 
-== Citing XSF standards
-
 To cite XSF standards use the `XEP` prefix:
 
 [example]

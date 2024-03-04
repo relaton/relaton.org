@@ -5,8 +5,6 @@ description: Cite Chinese National, Regional, Local and Industry standards
 layout: cite-docs
 ---
 
-== Citing GB standards
-
 * `GB` is the prefix for Chinese standards
 
 [example]
