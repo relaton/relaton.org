@@ -2,7 +2,7 @@
 title: Citation guide for IETF publications
 flavor: IETF
 description: Cite IETF RFCs, BCPs and Internet-Drafts
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing IETF documents

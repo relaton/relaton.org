@@ -1,7 +1,7 @@
 ---
 title: AsciiBib -- Path style definition lists
 description: Defining AsciiBib using definition list paths
-layout: post
+layout: asciibib-docs
 
 external_links:
   - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc

@@ -1,7 +1,7 @@
 ---
 title: Edition
 description: Categories of editions in Relaton
-layout: model-doc
+layout: model-docs
 ---
 
 [[edition]]

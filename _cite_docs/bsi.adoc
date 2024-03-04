@@ -2,7 +2,7 @@
 title: Citation guide for BSI resources
 flavor: British Standards Institution (BSI)
 description: Cite British Standards Institution (BSI) documents
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing British Standards Institute (BSI) documents

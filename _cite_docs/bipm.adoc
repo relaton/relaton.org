@@ -2,7 +2,7 @@
 title: Citation guide for BIPM resources
 flavor: BIPM
 description: Cite BIPM Metrologia, SI Brochure, and Outcomes
-layout: cite-doc
+layout: cite-docs
 ---
 
 == SI Brochure

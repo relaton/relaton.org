@@ -2,7 +2,7 @@
 title: Citation guide for ITU publications
 flavor: ITU
 description: Cite ITU standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Ciiting ITU publications

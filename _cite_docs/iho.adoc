@@ -2,7 +2,7 @@
 title: Citation guide for IHO publications
 flavor: IHO
 description: Cite IHO standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing IHO standards

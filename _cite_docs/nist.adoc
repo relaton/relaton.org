@@ -2,7 +2,7 @@
 title: Citation guide for NIST publications
 flavor: NIST
 description: Cite NIST standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing NIST publications

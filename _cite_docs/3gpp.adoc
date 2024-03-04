@@ -2,7 +2,7 @@
 title: Citation guide for 3GPP standards
 flavor: 3GPP
 description: Cite 3GPP standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing 3GPP standards

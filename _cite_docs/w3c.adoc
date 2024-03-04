@@ -2,7 +2,7 @@
 title: Citation guide for W3C publications
 flavor: W3C
 description: Cite W3C standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing W3C Standards

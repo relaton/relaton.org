@@ -2,7 +2,7 @@
 title: Citation guide for OASIS publications
 flavor: OASIS
 description: Cite OASIS standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing OASIS standards

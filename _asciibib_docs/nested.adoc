@@ -1,7 +1,7 @@
 ---
 title: AsciiBib -- Nested definition list syntax
 description: Defining AsciiBib using nested lists
-layout: post
+layout: asciibib-docs
 
 external_links:
   - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc

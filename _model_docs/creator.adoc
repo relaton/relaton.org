@@ -1,7 +1,7 @@
 ---
 title: Creator
 description: Categories of creator in Relaton
-layout: model-doc
+layout: model-docs
 ---
 
 == Creator

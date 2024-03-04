@@ -2,7 +2,7 @@
 title: Citation guide for CEN and EN standards
 flavor: CEN/CENELEC
 description: Cite CEN and EN standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing CEN standards

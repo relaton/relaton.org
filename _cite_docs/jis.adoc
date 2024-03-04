@@ -2,7 +2,7 @@
 title: Citation guide for JIS publications
 flavor: JIS
 description: Cite JIS standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing JIS publications
