@@ -1,7 +1,7 @@
 ---
 title: Bibitem Type
 description: Categories of information resource in Relaton
-layout: model-doc
+layout: model-docs
 ---
 
 == Categories of information resource

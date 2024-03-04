@@ -1,7 +1,7 @@
 ---
 title: Numeration and Pagination
 description: Numeration and pagination in Relaton
-layout: model-doc
+layout: model-docs
 ---
 
 [[numeration]]

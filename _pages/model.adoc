@@ -1,7 +1,7 @@
 ---
 title: Relaton information models
 description: Specifications of the Relaton bibliographic and citation data models.
-layout: post
+layout: model-docs
 external_links:
   - url: https://github.com/relaton/relaton-models
 ---

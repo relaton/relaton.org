@@ -2,7 +2,7 @@
 title: Citation guide for Digital Object Identifiers (DOI)
 flavor: Digital Object Identifiers (DOI)
 description: Cite standard metadata from CrossRef.org using DOI identifiers
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing standards using DOI

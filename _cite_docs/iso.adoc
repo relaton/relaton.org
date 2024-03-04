@@ -2,7 +2,7 @@
 title: Citation guide for ISO publications
 flavor: ISO
 description: Cite ISO standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing ISO Standards

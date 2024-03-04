@@ -1,7 +1,7 @@
 ---
 title: AsciiBib
 description: Defining bibliographic items using a structured Ascii-syntax
-layout: post
+layout: asciibib-docs
 external_links:
   - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc
 ---

@@ -1,7 +1,7 @@
 ---
 title: Medium
 description: Categories of medium in Relaton
-layout: model-doc
+layout: model-docs
 ---
 
 [[medium]]

@@ -2,7 +2,7 @@
 title: Citation guide for OMG publications
 flavor: OMG
 description: Cite OMG standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Cititng OMG standards

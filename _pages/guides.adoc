@@ -1,7 +1,7 @@
 ---
 title: Cite publications from supported organizations
 description: Citation guides for Relaton-supported organizations
-layout: post
+layout: cite-docs
 ---
 :page-liquid:
 

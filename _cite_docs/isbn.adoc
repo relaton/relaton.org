@@ -2,7 +2,7 @@
 title: Citation guide for ISBN publications
 flavor: ISBN
 description: Cite ISBN publications
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing ISBN publications

@@ -2,7 +2,7 @@
 title: Citation guide for IEC publications
 flavor: IEC
 description: Cite IEC standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing IEC standards

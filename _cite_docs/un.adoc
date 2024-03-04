@@ -2,7 +2,7 @@
 title: Citation guide for UN publications
 flavor: UN
 description: Cite UN standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing UN documents

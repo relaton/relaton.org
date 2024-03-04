@@ -2,7 +2,7 @@
 title: Citation guide for CalConnect standards
 flavor: CalConnect
 description: Cite CalConnect standards
-layout: cite-doc
+layout: cite-docs
 ---
 
 == Citing CalConnect documents

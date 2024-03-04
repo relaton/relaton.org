@@ -1,7 +1,7 @@
 ---
 title: Specific categories
 description: Conventions specific to bibliographic categories in Relaton
-layout: model-doc
+layout: model-docs
 ---
 
 [[specific-categories]]
