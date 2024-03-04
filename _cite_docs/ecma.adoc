@@ -5,29 +5,27 @@ description: Cite Ecma standards and publications
 layout: cite-docs
 ---
 
-== Ecma publication types
-
 Ecma publishes the following types of content that can be cited:
 
 * Standards
 * Technical Reports
 * Mementos
 
-=== Standards
+== Standards
 
 Format: `ECMA-<number>`
 
 [example]
 `ECMA-262` is the standard for the "ECMAScript language specification".
 
-=== Technical Reports
+== Technical Reports
 
 Format: `ECMA TR/<number>`
 
 [example]
 `ECMA TR/104` is the technical report for the "ECMAScript test suite".
 
-=== Mementos
+== Mementos
 
 Format: `ECMA MEM/<year>`
 

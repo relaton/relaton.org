@@ -5,8 +5,6 @@ description: Cite W3C standards
 layout: cite-docs
 ---
 
-== Citing W3C Standards
-
 The W3C references have following format:
 
 `W3C <STAGE|TYPE> <CODE>-<YEAR>-<DATE>/<SUFF>`
@@ -25,7 +23,7 @@ Cases:
 * `W3C <STAGE|TYPE> <CODE>-<YEAR>` - returns the last dated document for the year with specified type or stage
 * `W3C <STAGE|TYPE> <CODE>-<YEAR>-<DATE>` - returns dated document
 
-=== Stages
+== Stages
 
 * `WD` - Working Draft
 * `CRD` - Candidate Recommendation Draft
@@ -48,14 +46,14 @@ W3C SPSD MathML2
 W3C OBSL P3P
 ----
 
-=== Type
+== Type
 
 `NOTE` - W3C Note
 
 [example]
 `W3C NOTE photo-rdf`
 
-=== Year
+== Year
 
 Year is a part of the standard code. If year is specified but date is not, the latest version of the standard is assumed.
 
@@ -63,7 +61,7 @@ Year is a part of the standard code. If year is specified but date is not, the l
 * `W3C NOTE-css-2018` - returns the last dated document for the year with specified type or stage
 * `W3C NOTE-css-2010-20110512` - returns dated document
 
-=== Dates
+== Dates
 
 * `MMDD` - month and day
 * `YYMMDD` - year and month
@@ -81,7 +79,7 @@ Withouth date the latest version of the standard is assumed.
 [example]
 `W3C css`
 
-=== Suffix
+== Suffix
 
 [example]
 ----

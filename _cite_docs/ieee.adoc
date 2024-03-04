@@ -5,9 +5,7 @@ description: Cite IEEE-SA standards and publications
 layout: cite-docs
 ---
 
-== Citing IEEE standards
-
-=== Prefixes
+== Prefixes
 
 * `IEEE` - IEEE standards
 
@@ -39,7 +37,7 @@ layout: cite-docs
 [example]
 `IRE 7.S2-1962`
 
-=== Copublishers
+== Copublishers
 
 * `ASTM` - American Society for Testing and Materials
 
@@ -74,7 +72,7 @@ NACE SP0215-2015
 NACE/IEEE P1835/D-1a-2011
 ----
 
-=== Status
+== Status
 
 * `CD` - Committee Draft
 

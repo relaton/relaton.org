@@ -5,18 +5,16 @@ description: Cite ISBN publications
 layout: cite-docs
 ---
 
-== Citing ISBN publications
-
-=== Prefix
+== Prefix
 
 The prefix for ISBN publications is `ISBN`
 
 [example]
 `ISBN 978-0-12-064481-0`
 
-=== Number format
+== Number format
 
-ISBN number canb ISBN-10 or ISBN-13. Hyphens are optional.
+ISBN number can be ISBN-10 or ISBN-13. Hyphens are optional.
 
 [example]
 [sources]

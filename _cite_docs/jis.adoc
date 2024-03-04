@@ -5,16 +5,14 @@ description: Cite JIS standards
 layout: cite-docs
 ---
 
-== Citing JIS publications
-
-=== Prefix
+== Prefix
 
 The prefix for JIS publications is `JIS`
 
 [example]
 `JIS X 0208:1997`
 
-=== Dated and undated references
+== Dated and undated references
 
 The edition year is optional. If not specified, an undated citation will be
 created with all its editions embedded within.
@@ -22,7 +20,7 @@ created with all its editions embedded within.
 [example]
 `JIS X 0208`
 
-=== Part
+== Part
 
 In case of multi-part standards, the part number is specified after the number of the standard:
 

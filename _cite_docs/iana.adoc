@@ -5,8 +5,6 @@ description: Cite IANA registries and registry entries
 layout: cite-docs
 ---
 
-== Citing IANA documents
-
 To cite an IANA document, use the `IANA` prefix and the document identifier:
 
 [example]

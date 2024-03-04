@@ -5,9 +5,7 @@ description: Cite UN standards
 layout: cite-docs
 ---
 
-== Citing UN documents
-
-To cite a UN documents use references prefixed with `UN`:
+To cite a UN document use references prefixed with `UN`:
 
 [example]
 ----

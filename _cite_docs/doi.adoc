@@ -5,8 +5,6 @@ description: Cite standard metadata from CrossRef.org using DOI identifiers
 layout: cite-docs
 ---
 
-== Citing standards using DOI
-
 To cite a standard use DOI (Digital Object Identifier) prefixed with "doi:". Fot
 example, to cite "10.6028/nist.ir.8245" use:
 
