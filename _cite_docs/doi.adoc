@@ -12,3 +12,5 @@ example, to cite "10.6028/nist.ir.8245" use:
 ----
 doi:10.6028/nist.ir.8245
 ----
+
+To collect metadata the relaton-doi gem makes a few requests to the CrossRef API. It may take a few seconds to get the metadata.
