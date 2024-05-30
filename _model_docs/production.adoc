@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Production
+title: Production
 description: Categories of place and date of publication and publisher in Relaton
+layout: model-docs
 ---
 
 [[production]]
@@ -8,7 +9,7 @@ description: Categories of place and date of publication and publisher in Relato
 
 === General
 
-* Source: ISO 690, Clause 4.6
+* Source: ISO 690, 4.6
 * Serialisation: `bibitem/place, bibitem/contributor[role@type = "publisher"], bibitem/date`
 
 
@@ -69,9 +70,9 @@ London (Ontario)
 
 === Publisher
 
-The publisher is a subclass of creator (link:../creator[Creator]).
+The publisher is a subclass of creator (link:/model/creator[Creator]).
 
-ISO 690, Clause 4.1 differentiates between
+ISO 690, 4.1 differentiates between
 "`publisher, online information provider, production company`" and
 "`distributor, online host`".
 
@@ -81,7 +82,7 @@ Of the classes of creator that can be used as the publisher,
 "`distributor or issuing body`" and "`sponsoring body`" have
 `bibitem/contributor/role@type = "distributor"`.
 
-ISO 690, Clause 4.6 allows that distributors, issuers and sponsors
+ISO 690, 4.6 allows that distributors, issuers and sponsors
 can be named in addition to publishers.
 
 Any restrictions on access to a resource imposed by an online host
@@ -292,6 +293,9 @@ for online publications. (Unlike in ISO 690, no distinction is made between
 "viewed" and "accessed" based on whether the resource is human-readable or
 machine-readable.)
 updated:: Date a resource was updated and republished. Used for new versions and editions.
+corrected:: Date a resource was corrected and republished. Used for new versions of documents,
+in cases where the correction is not considered to amount to a new edition of the document.
+(This is a subjective distinction made by the publisher.)
 unchanged:: Date a resource was reprinted, i.e. republished without any changes.
 circulated:: Date a draft version of a resource was circulated. Drafts by definition
 are not published, so `circulated` is used instead of `published` for draft resources.

@@ -1,6 +1,7 @@
 ---
 title: AsciiBib -- Nested definition list syntax
 description: Defining AsciiBib using nested lists
+layout: asciibib-docs
 
 external_links:
   - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc
@@ -17,7 +18,7 @@ blank definition.
 
 === Basic attributes
 
-As with the link:../relaton-yaml[Relaton YAML representation],
+As with the link:/specs/relaton-yaml[Relaton YAML representation],
 if an element in Relaton XML has attributes,
 the content of the element is represented in YAML with a `content` key:
 
@@ -36,7 +37,7 @@ content::: Geographic information
 
 === Element arrays
 
-Similar to the link:../relaton-yaml[Relaton YAML representation],
+Similar to the link:/specs/relaton-yaml[Relaton YAML representation],
 repeating elements in an object can be realised as ordered or unordered lists.
 
 [source,asciidoc]
@@ -185,7 +186,7 @@ content::: Fred
 --
 ----
 
-(This is very awkward, and link:../path[AsciiBib path syntax] provides a workaround.)
+(This is very awkward, and link:/asciibib/path[AsciiBib path syntax] provides a workaround.)
 
 
 The most heavily nested parts of a Relaton entry are the contributors,
@@ -208,7 +209,7 @@ in the subclause, including AsciiDoc citations, into the current AsciiBib
 citation.
 
 The following is Metanorma AsciiDoc markup corresponding to the YAML
-given in link:../relaton-yaml[Relaton YAML representation]:
+given in link:/specs/relaton-yaml[Relaton YAML representation]:
 
 
 [source,asciidoc]

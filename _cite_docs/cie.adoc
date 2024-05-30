@@ -2,16 +2,14 @@
 title: Citation guide for CIE standards
 flavor: CIE
 description: Cite CIE standards
-layout: cite-doc
+layout: cite-docs
 ---
 
-== Citing CIE standards
-
-=== Prefix
+== Prefix
 
 The prefix for the CIE standards is `CIE`.
 
-=== Copublishers
+== Copublishers
 
 `ISO` - International Organization for Standardization
 

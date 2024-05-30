@@ -1,0 +1,28 @@
+---
+title: Relaton information models
+description: Specifications of the Relaton bibliographic and citation data models.
+layout: model-docs
+external_links:
+  - url: https://github.com/relaton/relaton-models
+---
+:page-liquid:
+
+These bibliographic models are developed to consolidate and standardize
+the data models used for bibliographic and citation purposes.
+
+The Relaton information models are defined on GitHub:
+
+* https://github.com/relaton/relaton-models
+
+
+These models are meant to be fully compatible with the latest edition of
+https://www.iso.org/standard/72642.html[ISO 690:2021] and ISO TC
+46’s (and SC 4, SC 9) work on bibliography.
+
+{% assign model_type = site.model_docs | sort %}
+
+{% for item in model_type %}
+link:{{ item.url }}[*{{ item.title }}*]:: {{ item.description }}
+
+{% endfor %}
+

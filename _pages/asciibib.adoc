@@ -1,25 +1,19 @@
 ---
 title: AsciiBib
-description: Defining bibliographic items using a structured Ascii-syntax
-
-feature_with_priority: 3
-
-navigation:
-  items:
-    - title: "AsciiBib nested definition lists"
-      path: ../asciibib/nested/
-      description: "AsciiBib nested definition list syntax"
-    - title: "AsciiBib path-style definition lists"
-      path: ../asciibib/path/
-      description: "AsciiBib path-style definition list syntax"
-
+description: Defining bibliographic items using structured syntax in ASCII
+layout: asciibib-docs
 external_links:
   - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc
 ---
 
 AsciiBib provides an AsciiDoc-like syntax for entering a Relaton
 bibliographic entry based on the Relaton data model
-(similarly, to link:../relaton-yaml[Relaton YAML representation]).
+(similarly, to link:/specs/relaton-yaml[Relaton YAML representation]).
+
+There are two syntaxes for entering AsciiBib bibliographic entries:
+
+* link:/asciibib/nested/[AsciiBib nested definition lists (syntax)]
+* link:/asciibib/path/[AsciiBib path-style definition lists (syntax)]
 
 AsciiBib is very useful when needing to define bibliographic items
 inside an AsciiDoc structure, such as within Metanorma AsciiDoc.
@@ -28,9 +22,9 @@ NOTE: Metanorma uses AsciiBib syntax.
 For those looking to enter bibliographic items in Metanorma,
 this is the article you want to read.
 
-There are two syntaxes for entering AsciiBib bibliographic entries.
-
-The following structure is in place for encoding `bibitem` as AsciiBib objects. The structure has not yet been generalised to `bibdata/ext`, the flavour-specific extensions of Relaton.
+The following structure is in place for encoding `bibitem` as AsciiBib objects.
+The structure has not yet been generalised to `bibdata/ext`, the
+flavour-specific extensions of Relaton.
 
 NOTE: Relaton AsciiBib can be used to represent bibliographic entries in Metanorma.
 
@@ -49,8 +43,8 @@ title.content:: Geographic information
 ----
 
 Any elements with a cardinality of many can be represented as arrays. In case elements in array
-have multiple attributes they are prepended with empty name of alement. For example,
-a Relaton can have multiple titles, and multiple langauges:
+have multiple attributes they are prepended with empty name of element. For example,
+a Relaton can have multiple titles, and multiple languages:
 
 [source]
 ----
@@ -174,23 +168,22 @@ medium.scale:: medium scale
 place::
 place.name:: bib place
 place::
-place.name:: Geneva
-place.uri:: geneva.place
+place.city:: Geneva
 place.region:: Switzelznd
 extent::
-extent.type:: section
-extent.reference_from:: Reference from
-extent.reference_to:: Reference to
+extent.loclaity.type:: section
+extent.loclaity.reference_from:: Reference from
+extent.loclaity.reference_to:: Reference to
 extent::
-extent.type:: chapter
-extent.reference_from:: 4
+extent.loclaity.type:: chapter
+extent.loclaity.reference_from:: 4
 extent::
-extent.type:: page
-extent.reference_from:: 10
-extent.reference_to:: 20
+extent.loclaity.type:: page
+extent.loclaity.reference_from:: 10
+extent.loclaity.reference_to:: 20
 extent::
-extent.type:: volume
-extent.reference_from:: 1
+extent.loclaity.type:: volume
+extent.loclaity.reference_from:: 1
 accesslocation:: accesslocation1
 accesslocation:: accesslocation2
 classification::
@@ -224,8 +217,8 @@ contributor.person.address.city:: City
 contributor.person.address.state:: State
 contributor.person.address.country:: Country
 contributor.person.address.postcode:: 123456
-contributor.person.contact.type:: phone
-contributor.person.contact.value:: 223322
+contributor.person.contact.phone:: 223322
+contributor.person.contact.type:: mobile
 contributor.role.type:: author
 contributor::
 contributor.organization.name:: IETF
@@ -260,8 +253,8 @@ contributor.person.address.city:: City
 contributor.person.address.state:: State
 contributor.person.address.country:: Country
 contributor.person.address.postcode:: 123456
-contributor.person.contact.type:: phone
-contributor.person.contact.value:: 223322
+contributor.person.contact.phone:: 223322
+contributor.person.contact.type:: mobile
 contributor.role.type:: author
 contributor::
 contributor.organization.name:: Institution

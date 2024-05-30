@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Specific categories
-description: Conventions specific to bibliographis categories in Relaton
+title: Specific categories
+description: Conventions specific to bibliographic categories in Relaton
+layout: model-docs
 ---
 
 [[specific-categories]]
@@ -8,7 +9,7 @@ description: Conventions specific to bibliographis categories in Relaton
 
 === Electronic information resources
 
-* Source: ISO 690, Clause 5.3
+* Source: ISO 690, 5.3
 
 System requirements are modelled as a note, prefixed with "`System requirements`:".
 
@@ -18,7 +19,7 @@ less commonly expressed now for software than they were in the 1990s and 2000s.
 URLs should not be broken at the end of a line: that
 is a rendering requirement, not an information modelling requirement.
 
-As discussed in link:../bibtype[Categories of information resource],
+As discussed in link:/model/bibtype[Categories of information resource],
 where possible, a more specific category
 should be used than "electronic resource",
 which is properly a description of a medium and not a resource type; monographs and
@@ -27,6 +28,7 @@ journals are now routinely published online.
 The specific type of electronic resource, if not covered by `bibitem/@type` (e.g.
 "book", "dataset"), should be given as `medium/genre`.
 
+.Examples of citing an electronic information resource
 ====
 Ubisoft. _Far Cry 5_ [computer game]. 2018. Viewed: 2018-05-10.
 System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
@@ -67,7 +69,7 @@ NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better)
 
 === Cartographic material
 
-* Source: ISO 690, Clause 5.4
+* Source: ISO 690, 5.4
 
 
 The projection, prime meridian, orientation, and reference systems (such as
@@ -138,7 +140,7 @@ Fire Scar Mapping: Landsat 7 ETM+, Landsat 5 TM, Landsat 1–3 MSS</note>
 
 === Films, videos and broadcasts
 
-* Source: ISO 690, Clause 5.5
+* Source: ISO 690, 5.5
 
 
 If a single contributor is to be singled out as the creator of a resource, they
@@ -234,7 +236,7 @@ NBC. 1978-05-13.
 
 === Graphic Works
 
-* Source: ISO 690, Clause 5.6
+* Source: ISO 690, 5.6
 
 
 The fuller description of a contributors role under `bibitem/contributor/role`
@@ -267,7 +269,7 @@ _[Tent of Darius]_ C. Le Brun pinxit. S. Gribelin sculpsit.
 
 === Music
 
-* Source: ISO 690, Clause 5.7
+* Source: ISO 690, 5.7
 * Serialisation: `bibitem/contributor/role`
 
 Librettists and composers are both contributors of role type "author"; the role
@@ -362,10 +364,10 @@ Marin Alsop (Conductor). Colorado Symphony Orchestra. [Audio CD].
 
 === Patents
 
-* Source: ISO 690, Clause 5.8
+* Source: ISO 690, 5.8
 
 Patents are encoded similarly to contributions within a serial
-(ISO 690, Clause 5.2), with the series designation for the
+(ISO 690, 5.2), with the series designation for the
 patent preceded by the country name or code. The date of application
 is encoded as a date of type "`issued`".
 
@@ -396,7 +398,7 @@ Green, Martin Andrew. _Artificial amorphous semiconductors and applications to s
 
 === Archival materials
 
-* Source:  ISO 690, Clause 5.10
+* Source:  ISO 690, 5.10
 
 The fonds or collection of an archival item is modelled as a series.
 The box and folder number is encoded as an access location. The reference code
@@ -441,7 +443,7 @@ HICKS, H. D. _Correspondence from Henry Davies Hicks to the Annapolis County ele
 
 === Datasets
 
-* Source:  ISO 690, Clause 5.11
+* Source:  ISO 690, 5.11
 
 The organisation publishing or producing the dataset is modelled as a publisher;
 the organisation hosting the dataset in a repository is modelled as a distributor.
@@ -538,7 +540,7 @@ LEUPRECHT [et al.]. tas_CNRM-CERFACS-CNRM-CM5_RCP4.5_r1i1p1_CLMcom-CCLM4-8-17, [
 
 === Social Media
 
-* Source:  ISO 690, Clause 5.12
+* Source:  ISO 690, 5.12
 
 Social media items are typically items of `bibitem/@type` `webresource`,
 although they may not always have an associated exposed URI (particularly
@@ -550,7 +552,7 @@ between individuals, and are cited as personal communications.
 
 A person's real name may be related to the online identity assumed by the
 author of the item, if both are known. The online identity is treated as a
-pseudonym of the real life identity, and is serialised in the same way (link:../creator#variantnames[variantnames]).
+pseudonym of the real life identity, and is serialised in the same way (link:/model/creator#variantnames[variantnames]).
 
 The particular form of social media communication (e.g. blog post, forum post, tweet,
 message) should be given through `medium/genre`.

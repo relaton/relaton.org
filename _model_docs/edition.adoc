@@ -1,19 +1,20 @@
 ---
-title: Relaton model -- Edition
+title: Edition
 description: Categories of editions in Relaton
+layout: model-docs
 ---
 
 [[edition]]
 == Edition
 
-* Source: ISO 690, Clause 4.5
+* Source: ISO 690, 4.5
 * Serialisation: `bibitem/edition, bibitem/version, bibitem/date`
 
 Editions are modelled as free text, given the variety of ways they can be represented.
 For that reason, the full word "edition" needs to appear after any ordinal.
 The optional `number` attribute can be used to provide a numeric equivalent.
 
-As described in link:../production[Date Types],
+As described in link:/model/production[Date Types],
 dates when a resource was last accessed are modelled as `date[@type = "accessed"]`;
 dates when a resource was last updated are modelled as `date[@type = "updated"]`.
 

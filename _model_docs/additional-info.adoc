@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Additional Information
+title: Additional Information
 description: Additional information in Relaton
+layout: model-docs
 ---
 
 [[additional-info]]
@@ -8,7 +9,7 @@ description: Additional information in Relaton
 
 === Classification
 
-* Source: ISO 690, Clause 4.11
+* Source: ISO 690, 4.11
 * Serialisation: `bibitem/classification`
 
 ====
@@ -78,7 +79,7 @@ ISBN 0662674979. Charlottetown, P.E.I. : Veterans Affairs Canada. 2003.
 
 === Price and availability
 
-* Source: ISO 690, Clause 4.11
+* Source: ISO 690, 4.11
 * Serialisation: `bibitem/price`, `bibitem/note`
 
 
@@ -130,7 +131,7 @@ $27.50. Available on request to the author.
 
 === License
 
-* Source: ISO 690, Clause 4.11
+* Source: ISO 690, 4.11
 * Serialisation: `bibitem/license`, `bibitem/copyright`.
 
 Where available, URIs should be used to identify licenses unambiguously.
@@ -215,7 +216,7 @@ as part of the publication, such as a chapter.)
 
 === Provenance and Authenticity
 
-* Source: ISO 690, Clause 4.11
+* Source: ISO 690, 4.11
 * Serialisation: `bibitem/note`
 
 Notes on bibliographical provenance, and checksums for digital resources,

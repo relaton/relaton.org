@@ -2,22 +2,28 @@
 title: Citation guide for W3C publications
 flavor: W3C
 description: Cite W3C standards
-layout: cite-doc
+layout: cite-docs
 ---
-
-== Citing W3C Standards
 
 The W3C references have following format:
 
-`W3C <STAGE|TYPE> <CODE>-<DATE>/<SUFF>`
+`W3C <STAGE|TYPE> <CODE>-<YEAR>-<DATE>/<SUFF>`
 
-* `STAGE` - the stage of the standard (REC, CR, etc.). Optional.
-* `TYPE` - the type of the standard (NOTE, TR). Optional.
-* `CODE` - the code of the standard (e.g. html, css, etc.). Mandatory.
-* `DATE` - the date of the publication. Optional.
-* `SUFF` - the suffix of the standard (e.g. fonts, 01, ReportOutcomes etc.). Optional.
+* `STAGE` - stage of standard (REC, CR, etc.). Optional.
+* `TYPE` - type of standard (NOTE, TR). Optional.
+* `CODE` - code of standard (e.g. html, css, etc.). Mandatory.
+* `YEAR` - year of publication. Optional.
+* `DATE` - date of publication. Optional.
+* `SUFF` - suffix of standard (e.g. fonts, 01, ReportOutcomes etc.). Optional.
 
-=== Stages
+Cases:
+
+* `W3C <ID>` - returns a document with the last document as relation
+* `W3C <ID>-<YEAR>` - returns a document with the last dated document for the year as a relation
+* `W3C <STAGE|TYPE> <CODE>-<YEAR>` - returns the last dated document for the year with specified type or stage
+* `W3C <STAGE|TYPE> <CODE>-<YEAR>-<DATE>` - returns dated document
+
+== Stages
 
 * `WD` - Working Draft
 * `CRD` - Candidate Recommendation Draft
@@ -40,23 +46,29 @@ W3C SPSD MathML2
 W3C OBSL P3P
 ----
 
-=== Type
+== Type
 
 `NOTE` - W3C Note
 
 [example]
 `W3C NOTE photo-rdf`
 
-=== Dates
+== Year
 
-* `YYYY` - year
+Year is a part of the standard code. If year is specified but date is not, the latest version of the standard is assumed.
+
+* `W3C css-2018` - returns document with the last dated document for the year as a relation
+* `W3C NOTE-css-2018` - returns the last dated document for the year with specified type or stage
+* `W3C NOTE-css-2010-20110512` - returns dated document
+
+== Dates
+
 * `MMDD` - month and day
 * `YYMMDD` - year and month
 * `YYYYMMDD` - year, month and day
 
 [example]
 ----
-W3C css-2022
 W3C NOTE voice-0128
 W3C NOTE cgm-970618
 W3C REC html32-19970114
@@ -67,7 +79,7 @@ Withouth date the latest version of the standard is assumed.
 [example]
 `W3C css`
 
-=== Suffix
+== Suffix
 
 [example]
 ----

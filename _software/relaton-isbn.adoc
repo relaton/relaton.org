@@ -1,0 +1,15 @@
+---
+title: RelatonIsbn
+description: Retrieves ISBN publications for bibliographic use using the BibliographicItem model.
+repo_url: https://github.com/relaton/relaton-isbn
+
+external_links:
+  - url: https://github.com/relaton/relaton-isbn
+
+tags: ["writtenin:Ruby", "user:ISBN"]
+
+feature_with_priority: 2
+---
+
+You can use it to retrieve metadata of ISBN publications from http://openlibrary.org
+and access that metadata through the `BibliographicItem` object.

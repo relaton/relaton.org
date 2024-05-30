@@ -2,12 +2,11 @@
 title: Citation guide for ISO publications
 flavor: ISO
 description: Cite ISO standards
-layout: cite-doc
+layout: cite-docs
 ---
 
-== Citing ISO Standards
 
-=== General
+== General
 
 To cite an ISO Standard, you can use identifiers as the citation key.
 
@@ -19,7 +18,7 @@ The identifiers start with the publisher abbreviation `ISO`:
 ISO 690:2010
 ----
 
-=== Dated and undated references
+== Dated and undated references
 
 If you need to cite a specific year of an ISO Standard, use identifiers with the year:
 
@@ -29,7 +28,7 @@ ISO 690-2:1997
 
 Without the year, the latest version of the standard will be cited.
 
-=== Co-published standards
+== Co-published standards
 
 Co-publishers, such as `ISO/IEC`, `ISO/IEEE`, etc., are supported:
 
@@ -38,7 +37,7 @@ ISO/IEC 27001:2013
 ISO/IEEE 11073-20702:2018
 ----
 
-=== Stages
+== Stages
 
 Document stage can be used in identifiers published by ISO, such as `ISO/WD`, or in the case of ISO/IEC, `ISO/IEC WD`:
 
@@ -47,7 +46,7 @@ ISO/WD 9139
 ISO/IEC WD 29128-3
 ----
 
-=== Types
+== Types
 
 Document types can be used in identifiers published by ISO, such as `ISO/TR`, or in the case of ISO/IEC, `ISO/IEC TR`:
 
@@ -64,7 +63,7 @@ ISO/IEC WD TR 20000-17
 ----
 
 
-=== Amendments and corrigenda
+== Amendments and corrigenda
 
 The identifier can include a year and amendment/corrigendum.
 
@@ -74,15 +73,17 @@ ISO/IEC 23003-1:2007/Amd 1:2008/Cor 3:2015
 ----
 
 
-=== Parts
+== Parts
 
-Some ISO Standards can have multiple parts. To cite a certain part of an ISO Standard, use an identifier with a part number:
+Some ISO Standards can have multiple parts. To cite a certain part of an ISO
+Standard, use an identifier with a part number:
 
 ----
 ISO 690-2:1997
 ----
 
-To cite all parts of the ISO Standard, use an identifier without part and year, and add the `(all parts)` option to it:
+To cite all parts of the ISO Standard, use an identifier without part and year,
+and add the `(all parts)` option to it:
 
 ----
 ISO 690 (all parts)

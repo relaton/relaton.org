@@ -2,21 +2,19 @@
 title: Citation guide for CCSDS standards
 flavor: CCSDS
 description: Cite CCSDS standards
-layout: cite-doc
+layout: cite-docs
 ---
 
-== Citing CCSDS standards
+CCSDS standards are available at https://public.ccsds.org/Publications/AllPubs.aspx[CCSDS].
 
-All CCSDS standards are available at https://public.ccsds.org/Publications/AllPubs.aspx[CCSDS].
-
-=== Prefix
+== Prefix
 
 The prefix for CCSDS standards is `CCSDS`
 
 [example]
 `CCSDS 100.0-G-1`
 
-=== Books
+== Books
 
 * `B` - Blue. Recommended Standards
 

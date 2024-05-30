@@ -2,21 +2,19 @@
 title: Citation guide for CalConnect standards
 flavor: CalConnect
 description: Cite CalConnect standards
-layout: cite-doc
+layout: cite-docs
 ---
 
-== Citing CalConnect documents
+CalConnect standards are available at https://standards.calconnect.org.
 
-All the CalConnect documents are available at https://standards.calconnect.org
-
-=== Prefix
+== Prefix
 
 The Relaton CalConnect plugin accepts the prefix `CC`:
 
 [example]
 `CC 18012:2018`
 
-=== Copublishers
+== Copublishers
 
 * `IETF` - Internet Engineering Task Force
 
@@ -28,7 +26,7 @@ The Relaton CalConnect plugin accepts the prefix `CC`:
 [example]
 `CC/ISO/AWI 34300`
 
-=== Types
+== Types
 
 * `A`, `Adm` - Administrative
 
@@ -63,7 +61,7 @@ CC/Adm 0401:2004
 [example]
 `CC 18012:2018`
 
-=== Stages
+== Stages
 
 * `WD` - Working Draft
 

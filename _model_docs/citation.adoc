@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Citation Model
+title: Citation Model
 description: Citation model for Relaton
+layout: model-docs
 ---
 
 == Citation Model

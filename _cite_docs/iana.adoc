@@ -2,10 +2,8 @@
 title: Citation guide for IANA resources
 flavor: IANA
 description: Cite IANA registries and registry entries
-layout: cite-doc
+layout: cite-docs
 ---
-
-== Citing IANA documents
 
 To cite an IANA document, use the `IANA` prefix and the document identifier:
 

@@ -2,10 +2,8 @@
 title: Citation guide for Chinese standards
 flavor: Chinese standards (GB etc.)
 description: Cite Chinese National, Regional, Local and Industry standards
-layout: cite-doc
+layout: cite-docs
 ---
-
-== Citing GB standards
 
 * `GB` is the prefix for Chinese standards
 

@@ -2,37 +2,47 @@
 title: Citation guide for IETF publications
 flavor: IETF
 description: Cite IETF RFCs, BCPs and Internet-Drafts
-layout: cite-doc
+layout: cite-docs
 ---
 
-== Citing IETF documents
+== RFC: Request for Comments
 
-=== Prefixes
-
-* `RFC` - Request for Comments
+`RFC`
 
 [example]
 `RFC 1`
 
-* `BCP` - Best Current Practice
+== BCP: Best Current Practice
+
+`BCP`
 
 [example]
 `BCP 3`
 
-* `FYI` - For Your Information
+== FYI: For Your Information
+
+`FYI`
 
 [example]
 `FYI 2`
 
-* `STD` - Internet Standard
+== STD: Internet Standard
+
+`STD`
 
 [example]
 `STD 3`
 
-* `I-D` - Internet-Draft
+
+== Internet-Draft
+
+`I-D`
 
 [example]
 `I-D draft-abarth-cake-01`
+
+
+== Additional information
 
 The additional `IETF` prefix can be used to cite IETF documents:
 

@@ -2,15 +2,13 @@
 title: Citation guide for OASIS publications
 flavor: OASIS
 description: Cite OASIS standards
-layout: cite-doc
+layout: cite-docs
 ---
 
-== Citing OASIS standards
+OASIS standards are available in the
+https://www.relaton.org/relaton-data-oasis/[OASIS Standards index].
 
 Prefix for all OASIS standards is `OASIS`.
 
 [example]
 `OASIS AkomaNtosoCore-v1.0-Pt1-Vocabulary`
-
-All the OASIS standards references are available in the
-https://www.relaton.org/relaton-data-oasis/[OASIS Standards index].

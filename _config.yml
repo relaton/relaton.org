@@ -181,6 +181,12 @@ relaton:
       gem: relaton-doi
       sources:
         - { url: "https://www.crossref.org/documentation/retrieve-metadata/rest-api/", label: "Digital Object Identifier" }
+    - id: isbn
+      label: ISBN
+      citation_guide: true
+      gem: relaton-isbn
+      sources:
+        - { url: "http://openlibrary.org", label: "Open Library" }
 
 author:
   name: Ribose Inc.
@@ -233,7 +239,13 @@ collections:
     permalink: /:name/
   cite_docs:
     output: true
-    permalink: /cite/:path/
+    permalink: /guides/:path/
+  asciibib_docs:
+    output: true
+    permalink: /asciibib/:path/
+  model_docs:
+    output: true
+    permalink: /model/:path/
 
 
 defaults:

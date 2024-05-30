@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Title
+title: Title
 description: Categories of title in Relaton
+layout: model-docs
 ---
 
 [[title]]
@@ -8,7 +9,7 @@ description: Categories of title in Relaton
 
 === General
 
-* Source: ISO 690, Clause 4.2
+* Source: ISO 690, 4.2
 * Serialisation: `bibitem/title`
 
 [[alt-title]]

@@ -13,7 +13,7 @@
       {% for bib in site.relaton.supported_bibliographies %}
       <!-- <li> -->
         {% if bib.citation_guide == true %}
-        {% assign flavor_link = "/cite/" | append: bib.id %}
+        {% assign flavor_link = "/guides/" | append: bib.id %}
         {% else %}
         {% assign flavor_link = "/software/" | append: bib.gem %}
         {% endif %}

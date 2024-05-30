@@ -2,19 +2,17 @@
 title: Citation guide for OMG publications
 flavor: OMG
 description: Cite OMG standards
-layout: cite-doc
+layout: cite-docs
 ---
 
-== Cititng OMG standards
-
-=== Prefix
+== Prefix
 
 The prefix for OMG standards is `OMG`:
 
 [example]
 `OMG AMI4CCM`
 
-=== Version
+== Version
 
 Version can be specified in the end of the citation:
 

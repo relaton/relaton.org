@@ -2,18 +2,15 @@
 title: Citation guide for NIST publications
 flavor: NIST
 description: Cite NIST standards
-layout: cite-doc
+layout: cite-docs
 ---
 
-== Citing NIST publications
-
-=== Prefixes
+== Prefixes
 
 `NBS`:: NBS Publications
 
 [example]
 `NBS BH 1`
-
 
 `NIST`:: NIST Publication
 
@@ -26,7 +23,7 @@ layout: cite-doc
 `FIPS 102`
 
 
-=== Types
+== Types
 
 `SP`:: Special Publication
 
@@ -46,7 +43,7 @@ layout: cite-doc
 [example]
 `NIST IR 8200:2018`
 
-`CSWP`:: Computer Security Workshops
+`CSWP`:: Cybersecurity White Paper
 
 [example]
 `NIST CSWP 1`

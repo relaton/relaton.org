@@ -1,6 +1,7 @@
 ---
-title: Relaton model -- Bibitem Type
+title: Bibitem Type
 description: Categories of information resource in Relaton
+layout: model-docs
 ---
 
 == Categories of information resource
@@ -12,7 +13,7 @@ While ISO 690 does not prescribe a list of possible bibliographic types,
 there are categories specific to particular information resource categories
 (ISO 690, Clause 5),
 as well as rendering rules specific to information resource categories (e.g.
-ISO 690, Clause 5.5: series title appears before item title for
+ISO 690, 5.5: series title appears before item title for
 broadcasts). For that reason, bibliographic items should indicate what
 bibliographic type they belong to.
 

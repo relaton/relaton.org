@@ -2,12 +2,10 @@
 title: Citation guide for IEC publications
 flavor: IEC
 description: Cite IEC standards
-layout: cite-doc
+layout: cite-docs
 ---
 
-== Citing IEC standards
-
-=== Prefixes
+== Prefixes
 
 * `IEC` - International Electrotechnical Commission
 
@@ -19,7 +17,7 @@ layout: cite-doc
 [example]
 `CISPR 1:1961`
 
-=== Types
+== Types
 
 * `TS` - Technical Specification
 
@@ -44,7 +42,7 @@ IEC TR 60787:2007
 [example]
 `IEC 31010:2019`
 
-=== Parts
+== Parts
 
 Some standards are published in parts. To cite a specific part of a standard, use an ID with `part`. For example, to cite part 1 of `IEC 61326` use:
 
@@ -56,7 +54,7 @@ The `all parts` option is supported for IEC standards. For example, to cite all 
 [example]
 `IEC 61326 (all parts)`
 
-=== Year
+== Year
 
 The year is optional. If not provided, the current year will be used. For example, to cite `IEC 61332` from 1995 use:
 
