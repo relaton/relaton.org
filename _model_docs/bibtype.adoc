@@ -22,6 +22,42 @@ they belong to.
 NOTE: The list of bibliographic types is a union of the types listed in ISO 690
 and BibTeX. Master's Thesis and PhD Thesis from BibTeX are subsumed under "thesis".
 
+The supported types are:
+
+* article
+* book
+* booklet
+* manual
+* proceedings
+* presentation
+* thesis
+* techreport
+* standard
+* map
+* electronic resource
+* audiovisual
+* film
+* video
+* broadcast
+* software
+* graphic_work
+* music
+* patent
+* inbook
+* incollection
+* inproceedings
+* journal
+* website
+* webresource
+* dataset
+* archival
+* social_media
+* alert
+* message
+* conversation
+* misc
+* unpublished
+
 The list maintains a distinction between the following resources, all of which are
 necessarily included in another resource:
 
