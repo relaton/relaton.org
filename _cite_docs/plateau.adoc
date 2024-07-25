@@ -1,0 +1,17 @@
+---
+title: Citation guide for Plateau publications
+flavor: Plateau
+description: Cite Plateau publications
+layout: cite-docs
+---
+
+== Prefix
+
+The prefix for Plateau publications is `PLATEAU`
+
+[example]
+[sources]
+----
+PLATEAU Handbook #00 第1.0版
+PLATEAU Tech Report #00
+----

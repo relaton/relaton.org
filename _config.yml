@@ -187,6 +187,13 @@ relaton:
       gem: relaton-isbn
       sources:
         - { url: "http://openlibrary.org", label: "Open Library" }
+    - id: plateau
+      label: Plateau
+      citation_guide: true
+      gem: relaton-plateau
+      sources:
+        - { url: "https://www.mlit.go.jp/plateau/_next/data/1.3.0/libraries/handbooks.json", label: "Handbooks" }
+        - { url: "https://www.mlit.go.jp/plateau/_next/data/1.3.0/libraries/technical-reports.json", label: "Technical Reports" }
 
 author:
   name: Ribose Inc.
