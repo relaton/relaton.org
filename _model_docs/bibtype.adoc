@@ -14,8 +14,10 @@ there are categories specific to particular information resource categories
 (ISO 690, Clause 5),
 as well as rendering rules specific to information resource categories (e.g.
 ISO 690, 5.5: series title appears before item title for
-broadcasts). For that reason, bibliographic items should indicate what
-bibliographic type they belong to.
+broadcasts).
+
+For that reason, bibliographic items should indicate what bibliographic type
+they belong to.
 
 NOTE: The list of bibliographic types is a union of the types listed in ISO 690
 and BibTeX. Master's Thesis and PhD Thesis from BibTeX are subsumed under "thesis".
@@ -60,10 +62,17 @@ typically cited as "personal communication").
 * `conversation`: an exchange of messages between two or more persons. May be electronic (e.g. web chat)
 or voice (e.g. phone call).
 
-Bibliographic types can overlap; for example much social media can be treated as `webresource``s,
-and `webresource``s are electronic resources; a Facebook status update can be treated as an `alert`,
-or as `social_media`. However each bibliographic type is associated with a particular set of conventions
+Bibliographic types can overlap.
+
+[example]
+Social media can be treated as `webresource`, and `webresource``s are electronic
+resources. A Facebook status update can be treated as an `alert`, or as
+`social_media`.
+
+However each bibliographic type is associated with a particular set of conventions
 around citation, so classifying an item as belonging to a given bibliographic type determines how it will
-be cited. Following the classification of citations in ISO 690, `social_media` takes priority over other
+be cited.
+
+Following the classification of citations in ISO 690, `social_media` takes priority over other
 types where it is applicable, particularly for publicly visible communications (such as status updates).
 
