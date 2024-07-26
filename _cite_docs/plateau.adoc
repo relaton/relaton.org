@@ -1,17 +1,160 @@
 ---
-title: Citation guide for Plateau publications
-flavor: Plateau
-description: Cite Plateau publications
+title: Citation guide for MLIT Project PLATEAU publications
+flavor: MLIT Project PLATEAU
+description: Cite MLIT Project PLATAEU publications
 layout: cite-docs
 ---
+
+== Introduction
+
+https://www.mlit.go.jp/plateau/[PLATEAU] by https://www.mlit.go.jp[MLIT] is a
+project of the
+https://www.mlit.go.jp[Ministry of Land, Infrastructure and Transportation of Japan].
+
+The project aims to develop a platform for the creation and sharing of digital
+geospatial information. The project is a collaboration between industry,
+academia, and government.
+
+== Relaton components
+
+* https://github.com/relaton/relaton-model-plateau/[Information models]
+* https://github.com/relaton/relaton-data-plateau[Relaton data]
+* https://github.com/relaton/relaton-plateau[Relaton implementation]
+
 
 == Prefix
 
 The prefix for Plateau publications is `PLATEAU`
 
+
+== Document types
+
+=== Handbook
+
+Project PLATEAU Handbooks are available at:
+
+* https://www.mlit.go.jp/plateau/libraries/handbooks/
+
+The pattern to cite in Relaton is:
+
+[source]
+----
+PLATEAU Handbook #{number} {#{edition}}
+----
+
+Where,
+
+`number`:: handbook number.
+
+`edition`:: (optional) edition number. When not provided the latest edition will
+be used.
+
+
+.Citing the PLATEAU Handbook #01 latest edition
 [example]
-[sources]
+====
+[source]
 ----
-PLATEAU Handbook #00 第1.0版
-PLATEAU Tech Report #00
+PLATEAU Handbook #01
 ----
+====
+
+.Citing the PLATEAU Handbook #01 edition 4
+[example]
+====
+[source]
+----
+PLATEAU Handbook #01 第4.0版
+----
+====
+
+Some editions are meant for a particular audience.
+
+For example, Handbook #11 has these editions:
+
+* `第1.0版（民間活用編）`
+* `第1.0版（公共活用編）`
+
+In such cases, the edition number includes the audience type.
+
+[example]
+====
+----
+PLATEAU Handbook #11 第1.0版（公共活用編）
+----
+====
+
+[example]
+====
+----
+PLATEAU Handbook #11 第1.0版（民間活用編）
+----
+====
+
+
+=== Handbook annexes
+
+The citation method is identical to that of Handbooks.
+
+The only difference is that their number appears in a pattern like
+`#{handbook-number}-#{annex-number}`.
+
+.Citing the PLATEAU Handbook #03 Annex 1 latest edition
+[example]
+====
+[source]
+----
+PLATEAU Handbook #03-1
+----
+====
+
+.Citing the PLATEAU Handbook #03 Annex 1 edition 2
+[example]
+====
+[source]
+----
+PLATEAU Handbook #03-1 第2.0版
+----
+====
+
+
+=== Technical Report
+
+Project PLATEAU Technical Reports are available at:
+
+* https://www.mlit.go.jp/plateau/libraries/technical-reports/
+
+The pattern to cite in Relaton is:
+
+[source]
+----
+PLATEAU Technical Report #{number} {#{edition}}
+----
+
+Where,
+
+`number`:: Technical Report number
+
+`edition`:: (optional) edition number. When not provided the latest edition will
+be used. All Technical Reports so far are all of edition 1.0.
+
+
+.Citing the PLATEAU Technical Report #56 latest edition
+[example]
+====
+[source]
+----
+PLATEAU Technical Report #56
+----
+====
+
+.Citing the PLATEAU Handbook #56 edition 1
+[example]
+====
+[source]
+----
+PLATEAU Technical Report #56 第1.0版
+----
+====
+
+
