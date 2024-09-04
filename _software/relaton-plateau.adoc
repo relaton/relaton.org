@@ -1,0 +1,13 @@
+---
+title: Relaton::Plateau
+description: Retrieves MLIT PLATEAU publications for bibliographic use using the BibliographicItem model.
+repo_url: https://github.com/relaton/relaton-plateau
+
+external_links:
+  - url: https://github.com/relaton/relaton-plateau
+
+docs:
+  git_repo_subtree: .
+
+tags: ["writtenin:Ruby", "user:PLATEAU"]
+---

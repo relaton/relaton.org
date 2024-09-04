@@ -1,0 +1,480 @@
+---
+layout: post
+title: Support for ISBN bibliographic information auto-fetch through the OpenLibrary
+date: 2024-01-19
+categories: relaton
+authors:
+  -
+    name: Ronald Tse
+    email: ronald.tse@ribose.com
+    social_links:
+      - https://github.com/ronaldtse
+  -
+    name: Andrei Kislichenko
+    email: andrew2net@gmail.com
+    social_links:
+      - https://github.com/andrew2net
+
+excerpt: >-
+  Relaton now supports auto-fetching OpenLibrary bibliographic information via
+  ISBN-10 and ISBN-13.
+---
+
+== Introduction
+
+=== The International Standard Book Number (ISBN)
+
+The International Standard Book Number (ISBN) is the ubiquitous identifier used
+to uniquely identify books and other monographic publications. It provides a
+standardized way to reference and catalog books, making it easier to manage and
+track publications across the publishing industry.
+
+Since its launch in 1972, the ISBN has been an essential part of the
+publishing industry, providing a unique identifier for books and other
+monographic publications. Initially a 10-digit number, it was expanded to 13
+digits in 2005.
+
+ISBNs are essential for the book trade, libraries, and bibliographic services.
+They provide a unique identifier for each edition and format of a book,
+simplifying inventory management, sales tracking, and cataloging processes.
+
+Each ISBN uniquely identifies a specific edition and format of a book, making it
+invaluable for inventory management, sales tracking, and bibliographic
+record-keeping.
+
+The purpose of this International Standard is to coordinate and standardize the
+use of book numbers internationally. An International Standard Book Number
+(ISBN) identifies one title, or edition of a title, from one specific publisher,
+ensuring it is unique to that title or edition.
+
+
+=== A brief history of ISBN
+
+ISBN is an adoption of the British Standard Book Numbering (SBN) system, a
+9-digit system originally developed by the bookseller WHSmith. The SBN system
+was first introduced in the United Kingdom in 1967, then adopted and extended by
+ISO/TC 46 for the international community.
+
+The initial ISBN standard was approved in September 1971 by ISO members
+and published the year after, as *ISO 2108:1972*.
+
+.ISBN edition 1 (1972) to edition 5 (2017)
+[cols="a,a",options="header"]
+|===
+| ISO 2108:1972 (1st edition) | ISO 2108:2017 (5th edition)
+
+|
+image::/assets/blog/2024-01-19/iso-2108-1972-cover.png[]
+|
+image::/assets/blog/2024-01-19/iso-2108-2017-cover.png[]
+
+|===
+
+The standard was later revised as:
+
+* https://www.iso.org/standard/6897.html[ISO 2108:1978] (2nd edition);
+* https://www.iso.org/standard/6898.html[ISO 2108:1992] (3rd edition);
+* https://www.iso.org/standard/36563.html[ISO 2108:2005] (4th edition);
+* https://www.iso.org/standard/65483.html[ISO 2108:2017] (5th edition).
+
+In 2005, the number of digits was increased to 13. In the words of the standard,
+this was done to "increase substantially the numbering capacity of the global
+ISBN system and to harmonise the format of the ISBN with the EAN-UCC product
+code system."
+
+Therefore there are currently 2 types of ISBN codes:
+
+* ISBN with 10-digits, now commonly referred as "ISBN-10";
+* ISBN with 13-digits, now commonly referred as "ISBN-13".
+
+
+=== The ISBN system
+
+The ISBN system is managed by the
+https://www.isbn-international.org[International ISBN Agency]. The agency is
+appointed as the Registration Authority for this ISO standard to coordinate and
+supervise worldwide use of the ISBN system.
+
+The International ISBN Agency plays a crucial role in the global book industry
+by registering additional National ISBN agencies. These national agencies, in
+turn, facilitate the registration of books within their respective countries or
+regions, ensuring a standardized system for book identification worldwide.
+
+
+
+=== Structure of the ISBN code
+
+This is best described by the original ISO 2108:1972 standard:
+
+____
+When an international standard book number is either written or printed it shall
+be preceded by the letters ISBN, and each part shall be separated by a space or
+a hyphen as in the following examples:
+
+* ISBN 0 571 08989 5
+
+* ISBN 90-7000-234-5
+____
+
+NOTE: These digits are the arabic numerals 0 to 9; in the case of the check
+digit only, an X can sometimes occur.
+
+An ISBN consists of ten digits made up of the following parts:
+
+* group identifier (i.e. national, geographical, language or other convenient
+group);
+
+* publisher identifier;
+
+* title identifier;
+
+* check digit.
+
+The title identifier is the only part of the ISBN that is variable in length,
+depending on the length of the group and publisher identifiers.
+
+The assigners of identifiers are as follows:
+
+* The group identifier is assigned by the International ISBN Agency.
+* The publisher identifier is assigned by the regional ISBN agency.
+* The title identifier is assigned by the publisher.
+
+The 13-digit ISBN is made up of the same parts except that the group identifier
+can be longer. The check digit is calculated differently, and the ISBN-13 is the
+same as the EAN-13 barcode.
+
+
+=== OpenLibrary: A Digital Library Initiative
+
+https://openlibrary.org[OpenLibrary] is a project of the
+https://archive.org[Internet Archive], aiming to create "one web page for every
+book ever published."
+
+The International ISBN Agency is only concerned with assigning group identifiers,
+and does not keep a global database of ISBNs. There are various commercial
+databases that provide ISBN lookup services, but these are all proprietary and
+are only accessible behind paywalls.
+
+OpenLibrary, on the other hand, is an open, editable library catalog that
+provides free access to millions of book records, including many full-text
+books.
+
+OpenLibrary maintains a vast database of bibliographic information, indexed by
+ISBN among other identifiers, and provides an open API for retrieval of
+bibliographic information. This makes it an excellent resource for retrieving
+book metadata programmatically.
+
+NOTE: Keep in mind that OpenLibrary is a community-driven project. While it
+already provides millions of ISBN records, it does not contain the full set
+of metadata of all books and monographs issued with an ISBN identifier.
+We encourage anyone who discovers missing or incorrect data to contribute to
+the OpenLibrary project by adding or correcting the metadata.
+
+=== Difference between OpenLibrary and Crossref
+
+https://crossref.org[Crossref] is a paywalled "for-profit service" run by a
+non-profit organization,
+which provides a slow bibliographic endpoint to encourage users to pay for their
+faster API.
+
+On the other hand, OpenLibrary is completely open and free, with an excellent
+data API that is not limited or restricted.
+
+We commend the OpenLibrary for democratizing bibliographic information access,
+and would strongly recommend usage of and contribution to the OpenLibrary over
+Crossref.
+
+We find that bibliographic information from OpenLibrary often
+exceeds in quality with compared to the same from Crossref.
+
+* This stems from the fact that OpenLibrary is a community-driven project, and
+the data is often curated by volunteers who are passionate about books and
+libraries.
+
+* Crossref on the other hand takes whatever publishers dump into it, and often
+the metadata is incomplete or incorrect.
+
+
+=== Relaton and ISBN Support
+
+Relaton, an interoperable data model for citations based on ISO 690, has now
+expanded its capabilities to include ISBN lookup through OpenLibrary. This
+integration allows users to easily retrieve bibliographic information for books
+using their ISBN.
+
+The new functionality is implemented in the
+https://github.com/relaton/relaton-isbn[relaton-isbn] gem. This addition to
+the Relaton ecosystem further enhances its ability to provide comprehensive
+bibliographic data across various identification systems.
+
+Relaton supports retrieval of both ISBN-10 and ISBN-13 from OpenLibrary.
+
+
+== Using Relaton for ISBN Lookups
+
+=== Installation and setup
+
+To use Relaton's ISBN lookup functionality, you'll need to install the Relaton
+CLI.
+
+This can be done using the following command:
+
+[source,console]
+----
+$ gem install relaton-cli
+----
+
+=== Fetching bibliographic data
+
+Once installed, you can use the Relaton CLI to fetch bibliographic data for
+books using their ISBN.
+
+[source,console]
+----
+$ relaton fetch isbn:{ISBN}
+----
+
+This will return the bibliographic record in Relaton XML format by default. You
+can specify other output formats using the `-f` flag, such as YAML or BibTeX.
+
+=== Example: Looking up "Snow Crash"
+
+We use Neal Stephenson's seminal cyberpunk novel "Snow Crash" as an example.
+This book, first published in 1992, is often credited with popularizing the
+concept of the Metaverse.
+
+The ISBN-13 for a popular paperback edition of "Snow Crash" is 978-0553380958.
+
+Here's how we can fetch its bibliographic data using Relaton:
+
+[source,console]
+----
+$ relaton fetch isbn:9780553380958 -f yaml
+----
+
+This command will return the bibliographic information in YAML format.
+
+Here's what the output might look like:
+
+[source,yaml]
+----
+---
+schema-version: v1.2.9
+id: '9780553380958'
+title:
+- content: Snow crash
+  format: text/plain
+  type: main
+link:
+- content: http://openlibrary.org/books/OL18141225M/Snow_crash
+  type: src
+docid:
+- id: '9780553380958'
+  type: ISBN
+  primary: true
+date:
+- type: published
+  value: '2000'
+contributor:
+- person:
+    name:
+      completename:
+        content: Neal Stephenson
+  role:
+  - type: author
+- person:
+    name:
+      completename:
+        content: Juanma Barranquero
+  role:
+  - type: author
+- organization:
+    name:
+    - content: Bantam Books
+  role:
+  - type: publisher
+revdate: '2000'
+place:
+- city: New York
+----
+
+This YAML output provides a wealth of information about the book, including its
+title, author, publisher, publication date, and more. All of this data is
+structured according to the Relaton bibliographic data model, making it easy to
+integrate with other Relaton-compatible systems.
+
+
+
+== Beyond basic lookups
+
+While simple ISBN lookups are straightforward, Relaton's capabilities extend
+beyond this.
+
+=== Batch processing
+
+You can create scripts to process multiple ISBNs in batch. For example:
+
+.bash script using Relaton to fetch OpenLibrary data using ISBNs into a BibTeX file
+[source,sh]
+----
+#!/bin/bash
+ISBNs="9780553380958 9780307887436 9780062190376"
+echo "" > sci_fi_books.bibtex
+for isbn in $ISBNs; do
+  relaton fetch isbn:$isbn -f bibtex >> sci_fi_books.bibtex
+done
+----
+
+This script would create a BibTeX file containing entries for "Snow Crash" and two other science fiction novels.
+
+=== Integration with Ruby Code
+
+For developers working within the Ruby ecosystem, the `relaton-isbn` gem can be used directly in Ruby code:
+
+.Ruby code that fetches Relaton bibliographic objects using ISBN identifiers
+[source,ruby]
+----
+require 'relaton_isbn'
+
+isbn = "9780553380958"
+item = RelatonIsbn::IsbnBibliography.get("isbn:#{isbn}")
+puts item.to_yaml
+----
+
+This allows for more complex processing and integration with other Ruby-based
+systems.
+
+
+
+== Enhancements and caveats
+
+=== Challenges with OpenLibrary data
+
+OpenLibrary is a valuable resource for bibliographic information, offering a
+vast collection of book data that is openly accessible. It provides unique
+identifiers for books and aims to create "one web page for every book ever
+published."
+
+However, using OpenLibrary data comes with its own set of challenges:
+
+* Data quality varies significantly across entries;
+* Metadata is not consistently normalized;
+* Book information can be incomplete or outdated;
+* Duplicate entries for the same book are common;
+* User-contributed data may introduce errors.
+
+These issues arise from OpenLibrary's collaborative nature, where data is
+contributed by various users and sources without rigorous standardization.
+
+We recommend using OpenLibrary as a starting point for gathering book
+information, but users should be prepared to verify and supplement the data from
+other sources.
+
+== Specific examples of OpenLibrary data challenges
+
+=== Conflicted entries on a unique ISBN number
+
+Given that the OpenLibrary is contributor focused, there are occasionally
+issues with conflicting entries for the same ISBN.
+
+.Different Snow Crash entries with the same ISBN
+[example]
+====
+The ISBN-10 `0553380958` for "Snow Crash" links to two entries:
+
+[cols="a,a",options="header"]
+|===
+h| https://openlibrary.org/books/OL18141225M/Snow_crash[Entry 1]: Bantam trade reissue, May 2000
+h| https://openlibrary.org/books/OL23230597M/Snow_crash[Entry 2]: Bantam Spectra trade paperback reissue/September 2008
+
+|
+image::/assets/blog/2024-01-19/snow-crash-1.png[]
+|
+image::/assets/blog/2024-01-19/snow-crash-2.png[]
+
+|===
+
+====
+
+This can lead to confusion when trying to retrieve accurate bibliographic data.
+
+
+=== Conflated author names
+
+Some author names are actually combinations of multiple names.
+
+.Author names not properly normalized
+[example]
+====
+This entry for
+https://openlibrary.org/works/OL31707543W/Beowulf_and_the_Finnesburg_Fragment[Beowulf and the Finnesburg Fragment]
+lists a single author as "John R. Clark; Wrenn, C. L.; Tolkien, J. R. R. Hall".
+
+However, this single author entry contains 3 creators's names rolled into one.
+====
+
+
+=== Incomplete publication information
+
+Some entries lack complete publication details, such as:
+
+* Missing publisher
+* Incomplete publication date (only year, no month or day)
+* Missing publication place
+* Incomplete edition information
+
+For these entries, when you notice any missing or incorrect bibliographic data,
+we encourage you to directly contribute to OpenLibrary to improve the quality of
+the data.
+
+At least you have a direct avenue to fix the item for your usage and benefit
+others who may encounter the same issue!
+
+
+=== Duplicate entries
+
+OpenLibrary often has multiple entries for the same book, especially for works
+with many editions.
+
+These duplicates may contain conflicting information. For example, "1984" by
+George Orwell might have several entries with different publication years,
+ISBNs, and even slight variations in the title.
+
+
+=== Missing or incorrect cover images
+
+While OpenLibrary aims to provide cover images, many entries lack them or have
+incorrect images associated.
+
+That said, if you are concerned only about bibliographic citations, then this
+isn't a problem.
+
+
+
+== Working with OpenLibrary data
+
+Despite these challenges, OpenLibrary remains a valuable resource.
+
+To make the most of it:
+
+. Double-check the rendered bibliographic information to ensure completeness of
+data;
+. Be prepared to fill in gaps in information manually (if you use Metanorma, use
+citation spans);
+. Contribute corrections back to OpenLibrary when errors are found;
+
+By understanding these limitations and taking appropriate measures, you can
+effectively utilize the ISBN fetch functionality from OpenLibrary's extensive
+publications database.
+
+
+== Conclusion
+
+The addition of ISBN support to Relaton through OpenLibrary integration
+represents a significant enhancement to the Relaton ecosystem. It provides
+researchers, librarians, and developers with a powerful tool for retrieving
+standardized bibliographic data for books.
+
+We encourage users to explore this new functionality, contribute to its
+development, and provide feedback to help improve this valuable resource for the
+broader community of bibliographic data users.

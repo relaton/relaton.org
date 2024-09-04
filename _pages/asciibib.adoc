@@ -158,7 +158,7 @@ link.type:: rss
 link.content:: https://www.iso.org/contents/data/standard/05/37/53798.detail.rss
 link::
 link.type:: doi
-link.content:: http://standrd.org/doi-123
+link.content:: https://doi.org/10.6028/NIST.HB.105-3-1997
 link::
 link.type:: file
 link.content:: file://path/file
