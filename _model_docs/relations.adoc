@@ -57,7 +57,10 @@ italics and brackets, unless the relation is symmetric.
 includes:: document A includes document B, through a well-defined
 relation outlined in <<host-item>>, and with distinct metadata
 (including authorship) and bibliographic record (e.g. Chapter in
-Edited Work, Illustration) (_includedIn_)
+Edited Work, Illustration in Book).
+In general, text-based resources have components that can be considered a 
+different kind of resource (`includes`); components of non-textual resources are considered
+to be of the same type as their host (`hasPart`). (_includedIn_)
 
 hasPart:: document A includes document B, with no distinct metadata
 (other than extent) or bibliographic record, and all items in
@@ -81,13 +84,14 @@ indentation.
 
 instanceOf:: document B is an instance of document A (e.g. an
 edition, a format, a single copy: agnostic as to whether B is an
-Expression, Manifestation, or Item) (_hasInstance_)
+Expression, Manifestation, or Item). (_hasInstance_)
 +
 --
 Instances are often used in the Relaton modelling of standards, since
 concrete documents (FRBR Expressions) are often lumped together
 as more abstract entities (typically FRBR Works), particularly for
-the purposes of citation.
+the purposes of citation. This is a cover-all for the more specific
+relations `exemplarOf`, `manifestationOf`, and `expressionOf`.
 
 So different
 editions of a standard are often lumped together as a single Work;
@@ -97,47 +101,58 @@ lumped together as a single Work; the distinct language versions are
 then modelled as instances of the same, language-independent standard.
 --
 
-exemplarOf:: document B is an Item of document A (_hasExemplar_)
+exemplarOf:: document B is an Item of document A: document B is a
+single physical instance of the bibliographic item,
+which is more generically referred to as document A. (_hasExemplar_)
 
 
-manifestationOf:: document B is a Manifestation of document A
-(_hasManifestation_)
+manifestationOf:: document B is a Manifestation of document A:
+document B  an embodiment in a particular medium of the content of a bibliographic item.
+which is more generically referred to as document A. Includes the more
+specific relations `reproductionOf` and `reprintOf`. (_hasManifestation_)
 
 reproductionOf::: document B is a Manifestation of the same
-Expression as document A (reproduction) (_hasReproduction_)
+Expression as document A (reproduction): document B presents the same content as document A, and document B
+has been created to reproduce document A faithfully. 
+Includes the more specific relation `reprintOf`. (_hasReproduction_)
 
 reprintOf:::: document B is a reproduction of document A, involving
 a new publisher or distributor and mass dissemination, and no
 overriding concern with reproducing the source manifestation
 precisely (not necessarily restricted to print media) (_hasReprint_)
 
-
-expressionOf:: document B is an Expression of document A (_hasExpression_)
+expressionOf:: document B is an Expression of document A: document B
+is a particular realisation of the intellectual or artistic content of the
+bibliographic item, which is more generically referred to as document A. 
+Includes the more precise `translatedFrom`, `arrangementOf`,
+`abridgementOf`, and `annotationOf`. (_hasExpression_)
 
 translatedFrom::: document B is an Expression of document A in a
 different language than the source Expression of A (translation).
 This includes dubbed and subtitled versions of a film.
 (_hasTranslation_)
 
-arrangementOf::: document B is an Expression of musical work A for
-different instruments or voices than the source Expression of A
-(arrangement). This includes adding parts or an accompaniment
-(_hasArrangement_)
+arrangementOf::: document B is an arrangement Expression of document A.
+The main document has the same intellectual or artistic content as the target document, and the main
+document has been created to realise that content through different resources than the target document.
+Is typically understood to involve the realisation of a musical work with different instruments or voices 
+than the original. This includes adding parts or an accompaniment. (_hasArrangement_)
 
-abridgementOf::: document B is an Expression of document A that is
-significantly shortened in extent relative to the source Expression
-of A (abridgement) (_hasAbridgement_)
+abridgementOf::: document B is an abridged Expression of document A.
+The main document presents a subset of the intellectual or artistic content of the target document,
+but is still intended as a complete work, presenting a shortened version of the source Expression of A.
+(_hasAbridgement_)
 
-annotationOf::: document B is an Expression of document A that
-incorporates added explanatory notes not present in the source
-Expression of A (annotation). The annotation still substantially
-includes the original text of document A (_hasAnnotation_)
+annotationOf::: document B is an annotated Expression of document A.
+The main document has a target document which incorporates part or all of it, and which
+enhances it with explanatory commentary not present in the source
+Expression of A (annotation). (_hasAnnotation_)
 
 ===== Revision relations
 
 FRBR uses Revision to refer to the updating of the content of a
 source Expression to form a new Expression, in ways that do not
-involve changing language (translation), instrumentation
+involve changing language (translation), resources/instrumentation
 (arrangement), or extent (abridgement, annotation). So a Revision
 updates the content of an Expression, but is not a new Abridgement,
 Translation, Arrangement, or Annotation; an Abridgement,
@@ -159,21 +174,28 @@ its own version of the textual content of the Work it is annotating.
 This is somewhat rare, and FRBR does not model annotations as
 distinct from revisions.
 
-draftOf:: document B is an unpublished revision of document A, which
-precedes its publication; it may also be the first, unpublished
+draftOf:: document B is a specific unpublished or revision of document A;
+it may also be the first, unpublished
 expression of document A. Document A may be a Work or an Expression
-(e.g. a draft may be specific to an edition or translation)
-(_hasDraft_)
+(e.g. a draft may be specific to an edition or translation).
+Document A need not itself be published. (_hasDraft_)
 
 editionOf:: document B is a published revision of document A, or the
-first published Expression of document A. A is a Work, or else A is
+first published Expression of document A. Document A is a Work, or else document A is
 an Expression with the same language, instrumentation, and
 substantially the same extent as B (i.e. translations, arrangements,
 abridgements, annotations can have editions; editions cannot have
 editions). (_hasEdition_)
 
 updates::: document B is an edition of the same Work as document A,
-and is subsequent to document A; A is an Expression (_updatedBy_)
+and is subsequent to document A; A is an Expression.
+Unlike the `obsoletes` relation,
+the target document may still remain valid after the main document appears.
+(However by default in the standards world, it does not.) (_updatedBy_)
+
+obsoletes::: document A supersedes document B, being applicable or
+valid in more or newer domains than document B. (The two documents
+are not necessarily Expressions of the same Work.) (_obsoletedBy_)
 
 NOTE: Documents often have notions of corrections and other minor
 adjustments to content, which are not modelled bibliographically as
@@ -185,39 +207,54 @@ they are considered distinct editions or not.
 ==== Derived relations
 
 In the following, the two related items belong to distinct works,
-but the creation of B is determined in some way by A.
+but the creation of document B is determined in some way by document A.
 
-derivedFrom:: document A is derived from document B; includes
+derivedFrom:: document A is derived from document B, depending on it
+for at least some of its content; includes
 classes not otherwise specified, such as parodies (_derives_)
 
-describes::: document A is a description of document B
-(_describedBy_)
+describes::: document A is a description of document B.
+Includes the more specific `catalogues` relation. (_describedBy_)
 
-catalogues::: document A is a catalogue including a description of
-document B (_cataloguedBy_)
+catalogues:::: document A is a catalogue including a description of
+document B, expected to be a bibliographic record (_cataloguedBy_)
 
-hasSuccessor::: document A is succeeded by document B in a sequence;
-includes sequels, and continuations of journals (_successorOf_)
+hasSuccessor::: document A is succeeded by document B in a sequence:
+The main document has ceased fulfilling some function, and the target document has assumed that
+function in its stead. Typically applies when the main document is a periodical publication
+which has ceased publication, and the target document is a new periodical publication,
+designated as the continuation of the main document (i.e. continuation of journal). (_successorOf_)
 
 adaptedFrom::: document A is a reworking of document B to make it
-suitable for a different audience (FRBR Adaptation: includes
-paraphrase, free translation, musical variations) or medium (FRBR
-Transformation: includes dramatisation, novelisation, versification,
-screenplay) (_hasAdaptation_)
+suitable for a different audience
+(FRBR Adaptation: includes paraphrase, free translation, musical variations) 
+or medium (FRBR Transformation: includes dramatisation, novelisation, versification,
+screenplay). In music, an adaptation changes the musical content, whereas an arrangement
+changes the instrumenal and vocal resources of the work. (_hasAdaptation_)
 
-adoptedFrom::: document A is adopted by a standards organisation
-from document B by a different organisation. (These are potentially
-the same content, but they have institutional authorship and
+adoptedFrom::: document A is adopted in response to document B:
+The main document has its content derived from the target document, and has been adopted in response to it
+by a distinct authorising body.  Typically it is a national standard body's counterpart to an international
+standard. (These are potentially
+the same content, but they have distinct institutional authorship and
 application; this kind of appropriation of text is not
-characteristic of literary works.) (_adoptedAs_)
+characteristic of literary works.) Includes more specific relations `identical`, `equivalent`,
+and `nonequivalent`. (_adoptedAs_)
 
-reviewOf::: document A is a review of document B (_hasReview_)
+identical:::: document A is adopted from document B, is equivalent to it in force and scope,
+and is identical to it in content.
+
+equivalent:::: document A is adopted from document B, and is equivalent to it in force and scope,
+but has not undergone significant textual change.
+
+nonequivalent:::: document A is adopted from document B, but is not equivalent to it in force and scope.
+
+reviewOf::: document A is a evaluation of document B. (_hasReview_)
 
 commentaryOf::: document A is a commentary on document B, but does
-not include substantial text from document B, unlike an annotation.
-(This distinction is a judgement call; commentaries and annotations
-are not discussed in FRBR, but see immediately below)
-(_hasCommentary_)
+not include substantial text from document B, unlike `annotationOf`,
+and so cannot be read independently of document B.
+(This distinction is a judgement call.) (_hasCommentary_)
 
 The distinction between distinct works and expressions of the same
 work is subtle, and can vary culturally. Its major consequence is
@@ -255,25 +292,23 @@ ____
 ==== Other relations
 
 related:: document A is related to document B in an otherwise
-unspecified fashion
+unspecified fashion.
 
 complementOf:: document A is a complement or supplement of document B
 (e.g. concordance, teacher's guide, gloss, addendum, appendix,
 libretto, incidental music), and provides additional
-or contextual information to help understand the document (_hasComplement_)
+or contextual information to help understand the document. (_hasComplement_).
 
-obsoletes::: document A supersedes document B, being applicable or
-valid in more or newer domains than document B (the two documents
-are not necessarily Expressions of the same Work) (_obsoletedBy_)
+cites:: document A references document B (_isCitedIn_)
 
-cites:: document A cites document B (_isCitedIn_)
+==== Refinements 
 
 The following relations are treated as refinements, and are
-expressed in `bibitem/relation/description`.  The refinements a
+expressed in `bibitem/relation/description`, not `bibitem/relation/type`. The refinements a
 relation type can undergo are open-ended, and this list may be
 expanded in the future to encourage interoperability.
 
-updates:: document A updates document B (_updatedBy_)
+updates::
 
 corrects::: document A updates document B, and the change does not
 affect the intended meaning (_correctedBy_)
@@ -284,18 +319,7 @@ change to the intended meaning (_amendedBy_)
 revises::: document A updates document B, and the change is a major
 change to the intended meaning (_revisedBy_)
 
-adoptedFrom:: document A is adopted from document B (_adoptedBy_)
-
-identical::: document A is adopted from document B, without any
-change
-
-equivalent::: document A is adopted from document B, without any
-significant textual change
-
-nonequivalent::: document A is adopted from document B, and has been
-altered textually significantly
-
-reproductionOf/hasReproduction::
+reproductionOf::
 
 facsimile::: document A is a reproduction of two-dimensional
 document B (e.g. book, manuscript), which prioritises visual
