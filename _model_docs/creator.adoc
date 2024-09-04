@@ -12,14 +12,16 @@ layout: model-docs
 * Serialisation: `bibitem/contributor`, `Person, Organization, Affiliation`
 
 ISO 690, 4.1 classifies the various possible roles a creator can have
-with regard to a resource into six broad categories in order of priority,
+with regard to a resource into broad categories in order of priority,
 with more refined classifications typically named for the creator.
 
 These classifications are retained in the Relaton model:
 
 `bibitem/contributor/role@type`::
 Provides the broad category of role
-(author, performer, compiler, adaptor, publisher, distributor).
+(author, performer, compiler, adaptor, publisher, distributor),
+with some further refinements to deal with the range of roles in other standards,
+and roles whose status is intermediate between those categories (e.g. translator).
 The content of this element is optional, and contains a more specific expression
 of the creator role.
 
@@ -40,33 +42,146 @@ https://www.loc.gov/marc/bibliographic/[MARC bibliographic standard].
 
 The Relaton listing of roles is as follows:
 
-author:: creates a Work (ISO 690: "a) creator of work")
+`author`:: creates a Work (ISO 690: "a) creator of work")
++
+--
+Creator of the intellectual content of the bibliographic item. Includes both the major intellectual contributors to intellectual
+content, and subsidiary contributors.
 
-editor::: finalises a Work; "finalises" is a subclass of "creates" (ISO 690: "c) reviser of work")
-adapter::: creates a Derived-Work, a Work derived from the initial Work ISO 690: "d) creator of derivative work")
+Includes: _composer, librettist, mapping agency, surveyor,
+cartographer, system designer of software, patentee,
+patent applicant, artist, photographer, draughtsman, graphic
+designer, inventor._
 
-translator, performer, realiser:: creates an Expression of a Work (ISO 690: "b) expresser of created work")
-translator::: creates an Expression of a Work in a novel language
-performer::: creates an Expression as a novel performance (time-bound realisation of Work), specific to performing arts
+In the case of documents arising from legal cases, all participants
+involved are considered creators, e.g. _applicants, complainants, defendants,
+judges_.
+--
 
-_realiser_::: creates Expression, is default (is intended as the catch-all for ISO 690 "b) expresser of created work"):
+`editor`::: finalises a Work; "finalises" is a subclass of "creates" (ISO 690: "c) reviser of work")
++
+--
+Party imposing structure on the intellectual content of the bibliographic item.
+Is someone finalising a work (i.e. its intellectual content), which has been
+created or initiated by others.
 
-*** includes bringing someone's creative vision into fulfilment, and coordinating performance (as opposed to performing):
-*** in the performing arts, a performer works front of stage, and a realiser works backstage (e.g. a producer, or a choreographer)
+Includes: _compiler, corrector, curator, editor, moderator, proofreader, reviser_.
+--
 
-publisher:: creates a Manifestation of an Expression, a distinct presentation (ISO 690: "e) publisher of manifestation")
+`adapter`::: creates a Derived-Work, a Work derived from the initial Work ISO 690: "d) creator of derivative work")
++
+--
+Party converting the intellectual content of the bibliographic item into
+a different medium or form.
 
-distributor:: gives out Items of a Manifestation to an audience (ISO 690: "f) distributor of manifestation")
+Includes: _abridger, annotator, adapter, commentator, reviewer;
+photographer of another creator's work, copyist, arranger_.
+--
 
-_owner_:: receives Items of a Manifestation
+`realizer`:: creates an Expression of a Work (ISO 690: "b) expresser of created work")
++
+--
+Realises the intellectual content of the bibliographic item.
+Contributes to the work being realised in a particular intellectual or
+artistic form, but is distinct from a mass-produced physical presentation
+of that form (a manifestation).
 
-_authoriser_:: authorises the Work, lends it authority. (This includes includes standards development organisations, software companies, scholarly societies)
+Includes: _animator, art director, film director, cinematographer, engineer,
+music copyist, musical director, recordist, stage manager, videographer;
+analyst, court reporter, markup editor, programmer, scribe_.
 
-_enabler_:: supports, enables, facilitates a Work, an Expression, or a Manifestation. (This includes funders, sponsors.)
+A large number of visual artists, such as engravers, etchers, and illustrators,
+can be modelled as creators, realisers, or adapters, depending on whether
+they are creating work they have conceived of themselves (_author_),
+carrying out a creator's artistic vision and following their drafts (_realizer_),
+or copying an artistic work that has already been fully realised in a different
+medium (_adapter_). In the bibliographic description of visual works,
+_realizer_ is the usual role involved.
+--
 
-_subject_:: referenced in a Work.
+`translator`::: creates an Expression of a Work in a novel language
++
+--
+Party converting the intellectual content of the bibliographic item into
+a different language. Is given a separate role from _realizer_ because of the
+prominence given to translators in bibliographic description.
+--
 
-NOTE: Italicised roles are not currently in ISO 690.
+`performer`::: creates an Expression as a novel performance (time-bound realisation of Work), specific to performing arts
++
+--
+Indicates the performers realising the work in a time-bound event. If performers are indicated for
+an artistic work, a distinction is made between the performers ("front of stage"),
+and the _realizers_, the other contributors working towards realising the performance
+in a planning or coordinating role ("backstage").
+
+Includes: _actor, conductor, dancer, musician, narrator, performer, singer_.
+--
+
+`publisher`:: creates a Manifestation of an Expression, a distinct presentation (ISO 690: "e) publisher of manifestation")
++
+--
+Party responsible for the bibliographic item becoming publicly available.
+Covers all parties involved in creating and producing a manifestation
+(physical presentation) of the work.
+
+Includes: _bookbinder, manufacturer, online information provider, publisher,
+printer, production company_.
+--
+
+`distributor`:: gives out Items of a Manifestation to an audience (ISO 690: "f) distributor of manifestation")
++
+--
+Party arranging for the bibliographic item to become publicly accessible.
+Covers all parties involved in making a manifestation available, and
+providing manifestation Items to owners.
+
+Includes: _auctioneer, bookseller, online host, provider,
+repository, vendor_.
+--
+
+`authorizer`::: authorises the Work, lends it authority
++
+--
+Party which lends its authority to the bibliographic item, and vouches for its
+quality and accuracy.
+Covers most cases of corporate authorship: the organisation lends its
+authority to works that individual authors create, whether as work for hire,
+or under the auspices of the organisation.
+
+Includes: _copyright holder, degree supervisor, issuing body, jurisdiction,
+laboratory, licensor, monitor, scholarly society, scientific advisor, software company,
+standards body_.
+--
+
+`enabler`::: supports, enables, facilitates a Work, an Expression, or a Manifestation. (This includes funders, sponsors.)
++
+--
+Party who is involved in supporting, enabling, or facilitating the
+production of a bibliographic item, without contributing directly to its
+intellectual content, realisation, or presentation.
+
+Includes: _donor, host institution, licensee, patron, producer, sponsor_.
+--
+
+`owner`:: receives Items of a Manifestation
++
+--
+Party who is in physical possession of a bibliographic item.
+
+Includes: _autographer, collector, depositor, lender, owner_.
+--
+
+
+`subject`:: referenced in a Work.
++
+--
+Party who is referenced in a bibliographic item. Is not properly a contributor of
+intellectual content, but is included because of edge cases in some contributor
+models.
+
+Includes: _addressee, cited, dedicatee, depicted, honoree, subject_.
+--
 
 [NOTE]
 --
