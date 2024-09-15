@@ -12,7 +12,7 @@ layout: model-docs
 * Source: ISO 690, 4.3
 * Serialisation: `bibitem/relation`
 
-The model allows for various relations between bibliographic items,
+The model allows specifying relations between bibliographic items,
 with one related item embedded within the other.
 
 === Relation types
@@ -25,7 +25,8 @@ https://www.ifla.org/publications/functional-requirements-for-bibliographic-reco
 and represents generic bibliographical requirements, particularly
 inclusion in a host item (<<host-item>>: `includedIn`, `includes`)
 and translation (<<translation>>: `translatedFrom`, `hasTranslation`).
-The class has been expanded substantially to deal with the
+
+The class of relation types have been expanded substantially to deal with the
 requirements of standards documents.
 
 In addition, the class has also been designed for extensibility:
@@ -33,6 +34,7 @@ refinements to the base class can be expressed through
 `bibitem/relation/description`, with the understanding that the
 relation described in that element is a subset of the relation
 named in `bibitem/relation/@type`.
+
 Relations can be modelled in a hierarchical fashion, and we attempt
 to do so in the following; but relations are kept in `@type`, rather
 than moved to `description`, if they are commonplace.
@@ -40,14 +42,14 @@ than moved to `description`, if they are commonplace.
 The modelling of relation types draws on the four basic classes of
 bibliographic entity modelled in FRBR:
 
-* Work: a distinct intellectual or artistic creation
+Work:: a distinct intellectual or artistic creation
 
-* Expression: a realisation of a Work (e.g. edition, adaptation)
+Expression:: a realisation of a Work (e.g. edition, adaptation)
 
-* Manifestation: the physical embodiment of an Expression (e.g.
+Manifestation:: the physical embodiment of an Expression (e.g.
 print run; audio vs online vs print)
 
-* Item: a single exemplar of a Manifestation
+Item:: a single exemplar of a Manifestation
 
 All relations in the following are given with their inverse in
 italics and brackets, unless the relation is symmetric.
@@ -57,18 +59,19 @@ italics and brackets, unless the relation is symmetric.
 includes:: document A includes document B, through a well-defined
 relation outlined in <<host-item>>, and with distinct metadata
 (including authorship) and bibliographic record (e.g. Chapter in
-Edited Work, Illustration in Book).
-In general, text-based resources have components that can be considered a 
-different kind of resource (`includes`); components of non-textual resources are considered
-to be of the same type as their host (`hasPart`). (_includedIn_)
+Edited Work, Illustration in Book). (_includedIn_)
++
+NOTE: In general, text-based resources have components that can be considered a
+different kind of resource (`includes`); components of non-textual resources are
+considered to be of the same type as their host (`hasPart`).
 
 hasPart:: document A includes document B, with no distinct metadata
 (other than extent) or bibliographic record, and all items in
 document B share the same authorship or corporate authorship (e.g.
 Chapter, Section, Part, Volume, Issue, Track) (_partOf_)
 
-merges:: document A results from a merger of earlier documents B1,
-B2, B3... (_mergedInto_)
+merges:: document A is the result of merging earlier documents B1, B2, B3...
+(_mergedInto_)
 
 splits:: document A1, A2, A3... is split off from earlier documents
 B (_splitInto_)
@@ -90,31 +93,35 @@ Expression, Manifestation, or Item). (_hasInstance_)
 Instances are often used in the Relaton modelling of standards, since
 concrete documents (FRBR Expressions) are often lumped together
 as more abstract entities (typically FRBR Works), particularly for
-the purposes of citation. This is a cover-all for the more specific
-relations `exemplarOf`, `manifestationOf`, and `expressionOf`.
+the purposes of citation.
 
-So different
-editions of a standard are often lumped together as a single Work;
-the different editions of a standard are then modelled as instances of
-the undated standard. Similarly, translations of a standard are often
-lumped together as a single Work; the distinct language versions are
-then modelled as instances of the same, language-independent standard.
+Different editions of a standard are often lumped together as a single Work; the
+different editions of a standard are then modelled as instances of the undated
+standard. Similarly, translations of a standard are often lumped together as a
+single Work; the distinct language versions are then modelled as instances of
+the same, language-independent standard.
+
+NOTE: This is a generalized relation of the more specific relations
+`exemplarOf`, `manifestationOf`, and `expressionOf`.
 --
 
 exemplarOf:: document B is an Item of document A: document B is a
-single physical instance of the bibliographic item,
-which is more generically referred to as document A. (_hasExemplar_)
+single physical instance of document A. (_hasExemplar_)
 
 
 manifestationOf:: document B is a Manifestation of document A:
-document B  an embodiment in a particular medium of the content of a bibliographic item.
-which is more generically referred to as document A. Includes the more
-specific relations `reproductionOf` and `reprintOf`. (_hasManifestation_)
+document B is an embodiment in a particular medium of the content of document A.
+(_hasManifestation_)
++
+NOTE: This is a generalized relation of the more specific relations
+`reproductionOf` and `reprintOf`.
 
 reproductionOf::: document B is a Manifestation of the same
-Expression as document A (reproduction): document B presents the same content as document A, and document B
-has been created to reproduce document A faithfully. 
-Includes the more specific relation `reprintOf`. (_hasReproduction_)
+Expression as document A (reproduction): document B presents the same content as
+document A, and document B has been created to reproduce document A faithfully.
+ (_hasReproduction_)
++
+NOTE: This is a generalized relation of the more specific relation `reprintOf`.
 
 reprintOf:::: document B is a reproduction of document A, involving
 a new publisher or distributor and mass dissemination, and no
@@ -123,29 +130,34 @@ precisely (not necessarily restricted to print media) (_hasReprint_)
 
 expressionOf:: document B is an Expression of document A: document B
 is a particular realisation of the intellectual or artistic content of the
-bibliographic item, which is more generically referred to as document A. 
-Includes the more precise `translatedFrom`, `arrangementOf`,
-`abridgementOf`, and `annotationOf`. (_hasExpression_)
+bibliographic item, which is more generically referred to as document A.
+(_hasExpression_)
++
+NOTE: This is a generalized relation of the more specific relations
+`translatedFrom`, `arrangementOf`, `abridgementOf`, and `annotationOf`.
 
 translatedFrom::: document B is an Expression of document A in a
 different language than the source Expression of A (translation).
 This includes dubbed and subtitled versions of a film.
 (_hasTranslation_)
 
-arrangementOf::: document B is an arrangement Expression of document A.
-The main document has the same intellectual or artistic content as the target document, and the main
-document has been created to realise that content through different resources than the target document.
-Is typically understood to involve the realisation of a musical work with different instruments or voices 
-than the original. This includes adding parts or an accompaniment. (_hasArrangement_)
+arrangementOf::: document B is an arrangement Expression of document A. Document
+B has the same intellectual or artistic content as document A, and document B
+has been created to realise that content through different resources than
+document A. (_hasArrangement_)
++
+`arrangementOf` is typically understood to involve the realisation of a musical
+work with different instruments or voices than the original. This includes
+adding parts or an accompaniment.
 
-abridgementOf::: document B is an abridged Expression of document A.
-The main document presents a subset of the intellectual or artistic content of the target document,
-but is still intended as a complete work, presenting a shortened version of the source Expression of A.
-(_hasAbridgement_)
+abridgementOf::: document B is an abridged Expression of document A. Document B
+presents a subset of the intellectual or artistic content of document A, but is
+still intended as a complete work, presenting a shortened version of the source
+Expression of A. (_hasAbridgement_)
 
 annotationOf::: document B is an annotated Expression of document A.
-The main document has a target document which incorporates part or all of it, and which
-enhances it with explanatory commentary not present in the source
+Document B incorporates part or all of document A, and which
+enhances document A with explanatory commentary not present in the source
 Expression of A (annotation). (_hasAnnotation_)
 
 ===== Revision relations
@@ -190,7 +202,7 @@ editions). (_hasEdition_)
 updates::: document B is an edition of the same Work as document A,
 and is subsequent to document A; A is an Expression.
 Unlike the `obsoletes` relation,
-the target document may still remain valid after the main document appears.
+the document B may still remain valid after the document A appears.
 (However by default in the standards world, it does not.) (_updatedBy_)
 
 obsoletes::: document A supersedes document B, being applicable or
@@ -213,41 +225,47 @@ derivedFrom:: document A is derived from document B, depending on it
 for at least some of its content; includes
 classes not otherwise specified, such as parodies (_derives_)
 
-describes::: document A is a description of document B.
-Includes the more specific `catalogues` relation. (_describedBy_)
+describes::: document A is a description of document B (_describedBy_).
++
+NOTE: This is a generalized relation of the more specific relation `catalogues`.
 
 catalogues:::: document A is a catalogue including a description of
 document B, expected to be a bibliographic record (_cataloguedBy_)
 
-hasSuccessor::: document A is succeeded by document B in a sequence:
-The main document has ceased fulfilling some function, and the target document has assumed that
-function in its stead. Typically applies when the main document is a periodical publication
-which has ceased publication, and the target document is a new periodical publication,
-designated as the continuation of the main document (i.e. continuation of journal). (_successorOf_)
+hasSuccessor::: document A is succeeded by document B in a sequence.
+Document A has ceased fulfilling some function, and document B has assumed that
+function in its stead. Typically applies when document A is a periodical publication
+which has ceased publication, and document B is a new periodical publication,
+designated as the continuation of document A (i.e. continuation of journal). (_successorOf_)
 
 adaptedFrom::: document A is a reworking of document B to make it
 suitable for a different audience
-(FRBR Adaptation: includes paraphrase, free translation, musical variations) 
+(FRBR Adaptation: includes paraphrase, free translation, musical variations)
 or medium (FRBR Transformation: includes dramatisation, novelisation, versification,
 screenplay). In music, an adaptation changes the musical content, whereas an arrangement
-changes the instrumenal and vocal resources of the work. (_hasAdaptation_)
+changes the instrumental and vocal resources of the work. (_hasAdaptation_)
 
-adoptedFrom::: document A is adopted in response to document B:
-The main document has its content derived from the target document, and has been adopted in response to it
-by a distinct authorising body.  Typically it is a national standard body's counterpart to an international
-standard. (These are potentially
-the same content, but they have distinct institutional authorship and
-application; this kind of appropriation of text is not
-characteristic of literary works.) Includes more specific relations `identical`, `equivalent`,
-and `nonequivalent`. (_adoptedAs_)
+adoptedFrom::: document A is adopted in response to document B.
+Document B has its content derived from document A, and has been adopted in
+response to it by a distinct authorising body. (_adoptedAs_)
++
+NOTE: Typically document B is a national standard body's counterpart to an
+international standard. In this case document A and document B have potentially
+the same content, but have distinct institutional authorship and application.
++
+NOTE: This kind of appropriation of text is not characteristic of literary works.
++
+NOTE: This is a generalized relation of the more specific relations `identical`,
+`equivalent`, and `nonequivalent`.
 
-identical:::: document A is adopted from document B, is equivalent to it in force and scope,
-and is identical to it in content.
+identical:::: document A is adopted from document B, is equivalent to it in
+force and scope, and is identical to it in content.
 
-equivalent:::: document A is adopted from document B, and is equivalent to it in force and scope,
-but has not undergone significant textual change.
+equivalent:::: document A is adopted from document B, and is equivalent to it in
+force and scope, but has not undergone significant textual change.
 
-nonequivalent:::: document A is adopted from document B, but is not equivalent to it in force and scope.
+nonequivalent:::: document A is adopted from document B, but is not equivalent
+to it in force and scope.
 
 reviewOf::: document A is a evaluation of document B. (_hasReview_)
 
@@ -301,11 +319,12 @@ or contextual information to help understand the document. (_hasComplement_).
 
 cites:: document A references document B (_isCitedIn_)
 
-==== Refinements 
+==== Refinements
 
-The following relations are treated as refinements, and are
-expressed in `bibitem/relation/description`, not `bibitem/relation/type`. The refinements a
-relation type can undergo are open-ended, and this list may be
+The following relations are treated as refinements, and are expressed in
+`bibitem/relation/description`, not `bibitem/relation/type`.
+
+The refinements a relation type can undergo are open-ended, and this list may be
 expanded in the future to encourage interoperability.
 
 updates::
@@ -323,11 +342,12 @@ reproductionOf::
 
 facsimile::: document A is a reproduction of two-dimensional
 document B (e.g. book, manuscript), which prioritises visual
-accuracy
+accuracy.
 
 replica::: document A is a reproduction of three-dimensional or
 pictorial document B (e.g. sculpture, oil painting), which
-prioritises visual and tactile accuracy
+prioritises visual and tactile accuracy.
+
 
 ==== Comparison with other bibliographic relations lists
 
@@ -341,40 +361,42 @@ The Relaton relations are compared with those in
 (The directionality of corresponding relations is ignored.)
 
 .Comparing Relaton bibliographic relations with other related schemes
+[options=header]
 |===
 |Relaton |FRBR |BIBFRAME |BIBO |Dublin Core
 
-|includes         |hasPart (independent)                                     |*partOf, hasSeries, hasSubseries*                 |                                                                           |hasPart
-|hasPart          |hasPart (dependent)                                       |partOf                                            |                                                                           |hasPart
-|splits           |is a reconfiguration of (Item only)                       |*splitInto, separatedFrom* | |
-|merges           |is a reconfiguration of (Item only)                       |*mergerOf, absorbed* | |
+|includes         |hasPart (independent)                                |*partOf, hasSeries, hasSubseries*                  |                                                                          |hasPart
+|hasPart          |hasPart (dependent)                                  |partOf                                             |                                                                          |hasPart
+|splits           |is a reconfiguration of (Item only)                  |*splitInto, separatedFrom* | |
+|merges           |is a reconfiguration of (Item only)                  |*mergerOf, absorbed* | |
 |instanceOf       | | | |
-|exemplarOf       |is exemplified by                                         |itemOf | |
-|manifestationOf  |is embodied in                                            |instanceOf                                        |                                                                           |hasFormat
-|reproductionOf   |*is a reproduction of, is an alternate to*                |reproductionOf                                    |reproducedIn |
+|exemplarOf       |is exemplified by                                    |itemOf | |
+|manifestationOf  |is embodied in                                       |instanceOf                                         |                                                                          |hasFormat
+|reproductionOf   |*is a reproduction of, is an alternate to*           |reproductionOf                                     |reproducedIn |
 |reprintOf        |is a reproduction of | | |
-|expressionOf     |is realised through                                       |expressionOf                                      |                                                                           |hasVersion
-|expressionOf (as catchall)  |                                               |                                                  |*transcriptOf* |
-|translatedFrom   |is a translation of                                       |translationOf                                     |translationOf |
+|expressionOf     |is realised through                                  |expressionOf                                       |                                                                          |hasVersion
+|expressionOf (as generalization) |                                     |                                                   |*transcriptOf* |
+|translatedFrom   |is a translation of                                  |translationOf                                      |translationOf |
 |arrangementOf    |is an arrangement of | | |
 |abridgementOf    |is an abridgement of | |  |
 |annotationOf | | |  |
 |draftOf          |is a revision of | |  |
 |editionOf        |is a revision of | |  |
 |updates          |is a revision of | |  |
-|derivedFrom      |                                                          |*derivativeOf, originalVersion*                   |                                                                           |source
-|derivedFrom (as catchall) |*is a summary of, is an imitation of*            |                                                  | |
-|describedBy      |                                                          |                                                  |annotates                                                                  |*description, abstract, tableOfContents*
-|hasSuccessor     |is a successor to                                         |*precededBy, continues, continuesInPart* | |
+|derivedFrom      |                                                     |*derivativeOf, originalVersion*                    |                                                                          |source
+|derivedFrom (as generalization) |*is a summary of, is an imitation of* |                                                   | |
+|describedBy      |                                                     |                                                   |annotates                                                                 |*description, abstract, tableOfContents*
+|hasSuccessor     |is a successor to                                    |*precededBy, continues, continuesInPart* | |
 |adaptedFrom      |*is an adaptation of, is a transformation of* | | |
-|adoptedFrom | | | |
-|reviewOf         |                                                          |                                                  |reviewOf |
-|commentaryOf | | |  |
-|related          |                                                          |relatedTo                                         |                                                                           |relation
-|related (as catchall)          |                                            |*dataSource*                                      |                                                                           |*conformsTo*
-|complementOf      |*complements, supplements*                                |*accompanies, supplementTo, indexOf, findingAidOf*   |                                                                        |requires
-|supersedes       |                                                          |replacementOf                                     |*affirmedBy (legal), reversedBy (legal), subsequentLegalDecision (legal)*  |replaces
-|cites            |                                                          |references                                        |cites                                                                      |references
+|adoptedFrom      | | | |
+|reviewOf         |                                                     |                                                   |reviewOf |
+|commentaryOf     | | |  |
+|related          |                                                     |relatedTo                                          |                                                                          |relation
+|related (as generalization) |                                          |*dataSource*                                       |                                                                          |*conformsTo*
+|complementOf     |*complements, supplements*                           |*accompanies, supplementTo, indexOf, findingAidOf* |                                                                          |requires
+|supersedes       |                                                     |replacementOf                                      |*affirmedBy (legal), reversedBy (legal), subsequentLegalDecision (legal)* |replaces
+|cites            |                                                     |references                                         |cites                                                                     |references
+
 |===
 
 NOTE: *Bolded* entries indicate non-identical matches where the
@@ -631,7 +653,7 @@ relation need be invoked in the title:
 
 However, if any further details of the source item need to be
 provided (e.g.  source language: ISO 690, 4.11), they should
-be modelled through an overt relationship between the source item
+be modelled through an overt relation between the source item
 and the translation.
 
 ====

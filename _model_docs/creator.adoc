@@ -45,7 +45,8 @@ The Relaton listing of roles is as follows:
 `author`:: creates a Work (ISO 690: "a) creator of work")
 +
 --
-Creator of the intellectual content of the bibliographic item. Includes both the major intellectual contributors to intellectual
+Creator of the intellectual content described by the bibliographic item.
+Includes both the major intellectual contributors to intellectual
 content, and subsidiary contributors.
 
 Includes: _composer, librettist, mapping agency, surveyor,
@@ -53,12 +54,12 @@ cartographer, system designer of software, patentee,
 patent applicant, artist, photographer, draughtsman, graphic
 designer, inventor._
 
-In the case of documents arising from legal cases, all participants
+In the case of documents arising from legal cases, the involved participants
 involved are considered creators, e.g. _applicants, complainants, defendants,
 judges_.
 --
 
-`editor`::: finalises a Work; "finalises" is a subclass of "creates" (ISO 690: "c) reviser of work")
+`editor`::: finalises a Work. "finalises" is a subclass of "creates" (ISO 690: "c) reviser of work")
 +
 --
 Party imposing structure on the intellectual content of the bibliographic item.
@@ -68,7 +69,8 @@ created or initiated by others.
 Includes: _compiler, corrector, curator, editor, moderator, proofreader, reviser_.
 --
 
-`adapter`::: creates a Derived-Work, a Work derived from the initial Work ISO 690: "d) creator of derivative work")
+`adapter`::: creates a Derived-Work, a Work derived from the initial Work
+(ISO 690: "d) creator of derivative work")
 +
 --
 Party converting the intellectual content of the bibliographic item into
@@ -154,12 +156,15 @@ laboratory, licensor, monitor, scholarly society, scientific advisor, software c
 standards body_.
 --
 
-`enabler`::: supports, enables, facilitates a Work, an Expression, or a Manifestation. (This includes funders, sponsors.)
+`enabler`::: supports, enables, facilitates a Work, an Expression, or a
+Manifestation.
 +
 --
-Party who is involved in supporting, enabling, or facilitating the
-production of a bibliographic item, without contributing directly to its
-intellectual content, realisation, or presentation.
+Party involved in supporting, enabling, or facilitating the production of a
+bibliographic item, without contributing directly to its intellectual content,
+realisation, or presentation.
+
+This includes funders and sponsors.
 
 Includes: _donor, host institution, licensee, patron, producer, sponsor_.
 --
@@ -622,11 +627,12 @@ TWAIN, Mark [pseud. of Samuel Langhorne CLEMENS]
 
 === Anonymous and Varii
 
-Descriptors of authors, such as "`Anon`" or
-"`Various Authors`", should be given as `completename`
-elements. The model does not standardise the designations of
-authors. As with pseudonyms, the real name of the creator if known can be
-modelled as a note, or as a name variant.
+Descriptors of authors, such as "`Anon`" or "`Various Authors`", should be given
+as `completename` elements.
+
+The model does not standardise the designations of authors. As with pseudonyms,
+the real name of the creator if known can be modelled as a note, or as a name
+variant.
 
 ====
 Anon. _Sir Gawain and the Green Knight_. Edited by R. A. WALDRON. Evanston:
