@@ -140,6 +140,8 @@ and the series run is preferred to differentiate the two runs.
 ====
 \J. A. Barnes. 1966. Durkheim's Division of Labour in Society. _Man_ (n.s.) 1(2): 158-175.
 
+[source,xml]
+----
 <bibitem type="article">
   <title lang="en">Durkheim's Division of Labour in Society</title>
   <date type="published"><on>1966</on></date>
@@ -163,6 +165,5 @@ and the series run is preferred to differentiate the two runs.
     <referenceTo>175</referenceTo>
   </extent>
 </bibitem>
-
+----
 ====
-
