@@ -119,16 +119,30 @@ ____
 NOTE: These digits are the arabic numerals 0 to 9; in the case of the check
 digit only, an X can sometimes occur.
 
-An ISBN consists of ten digits made up of the following parts:
+An ISBN (ISBN 10 code) consists of ten digits made up of the following parts:
 
-* group identifier (i.e. national, geographical, language or other convenient
-group);
+group identifier:: The group number is assigned by the International ISBN Agency
+for a group of publishers.
+(i.e. national, geographical, language or other convenient group)
+"It will vary in length from group to group according to the title output of the
+group concerned." (ISO 2108:1972, 2.1)
 
-* publisher identifier;
+publisher identifier::
+"The publisher identifier will be allocated internally within the group, by the
+agency appointed for this purpose. It will vary in length from publisher to
+publisher according to the title output of the publisher concerned."
+(ISO 2108:1972, 2.2)
 
-* title identifier;
+title identifier::
+"The length of the title identifier will be determined by the length of the
+group and publisher identifiers which precede it."
+(ISO 2108:1972, 2.3)
 
-* check digit.
+check digit::
+"The check digit is calculated on a modulus 11 with weights 10-2, using X in
+lieu of 10 where 10 would occur as a check digit."
+(ISO 2108:1972, 2.4)
+
 
 The title identifier is the only part of the ISBN that is variable in length,
 depending on the length of the group and publisher identifiers.
