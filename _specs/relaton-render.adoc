@@ -1,0 +1,347 @@
+---
+title: Relaton-Render
+description: Templates for rendering Relaton bibliographic items as Metanorma bibliographies.
+
+feature_with_priority: 8
+
+external_links:
+  - url: https://github.com/relaton/relaton-render
+---
+
+== Introduction
+
+Given one or more bibliographic items specified as Relaton objects, the `relaton-render` gem
+generates a Metanorma XML rendering of those items, to be used as a Metanorma bibliography.
+In Metanorma processing, this rendering is generated in the Presentation XML of a document,
+taking the Relaton XML that appears in the Metanorma Semantic XML as its input; the formatted
+reference it generates is output to the `bibitem` container of the bibliographic item, as
+`bibitem/formattedref`. Because the target is Metanorma XML, any formatting given in the rendered
+reference is also Metanorma XML (e.g. `<em>` for italics, `<strong>` for boldface.)
+
+The bibliographic style used is configured by a YAML template, which is documented here.
+Different Metanorma flavours provide their own YAML templates and their own
+overrides to Relaton-Render functionality, but all YAML templates follow this specification.
+
+Relaton-Render also supports author-date citation, and it generates any necessary disambiguation
+letters on dates (e.g. _Jones 1996a_ and _Jones 1996b_.)
+
+Relaton-Render incorporates internationalisation, and localises strings as appropriate
+(e.g. rendering ordinals of editions in the target language, rendering target language
+abbreviations for standard abbreviations and terms such as "Ed." and "accessed", and inflection
+such as "Ed." vs "Eds."
+
+== Templates
+
+There is one template provided for each of the bibliographic types recognised by Relaton (`/bibitem/@type`), and a default template:
+
+Currently supported:
+
+* article
+* book
+* booklet
+* manual
+* proceedings
+* presentation
+* thesis
+* techreport
+* standard
+* unpublished
+* electronic resource
+* inbook
+* incollection
+* inproceedings
+* journal
+* website
+* webresource
+* dataset
+* misc (default)
+
+Not currently supported:
+
+* map
+* audiovisual
+* film
+* video
+* broadcast
+* software
+* graphic_work
+* music
+* performance
+* patent
+* archival
+* social_media
+* alert
+* message
+* conversation
+
+In Metanorma, not all types are used, but there are exemplars for all of these given on this site, following
+the human-readable style used in ISO 690. These can be overridden by supplying corresponding paramerers in the call
+to initialise Relaton::Render.
+
+Each `template` is a string marked up with https://shopify.github.io/liquid/[Liquid Markup], with the following fields
+drawn from the bibliographic item:
+
+|===
+| Field   | Relaton XPath | Multiple | Can come from host | Note
+
+| title   | ./title | | | If multiples, prioritise match by language.
+| edition | ./edition | | Y | If numeric value, is given internationalised rendering of "nth edition", as set in `edition_numbering`. Otherwise, the textual content of the tag is given.
+| edition_raw | ./edition | | Y | The strict textual content of the tag is given.
+| edition_num | ./edition[@number] | | Y |
+| medium  | ./medium | | Y |
+| place   | ./place | | Y |
+| publisher | ./contributor[role/@type = 'publisher']/organization/name | | Y |
+| distributor | ./contributor[role/@type = 'distributor']/organization/name | | Y |
+| authorizer | ./contributor[role/@type = 'authorizer']/organization/name \| ./contributor[role/@type = 'publisher']/organization/name | | Y |
+| authoritative_identifier | ./docidentifier[not(@type = 'metanorma' or @type = 'ordinal' or @type = 'ISBN' or @type = 'ISSN' or @type = 'DOI')] | Y | |
+| other_identifier | ./docidentifier[@type = 'ISBN' or @type = 'ISSN' or @type = 'DOI'] | Y | | By default, each such identifier is prefixed with its type and colon.
+| doi | ./docidentifier[@type = 'DOI'] | Y | | No prefix supplied.
+| status | ./status | | | Rendering varies by flavour.
+| uri | ./uri[@type = 'citation' or @type = 'uri' or @type = 'src' or true] | | | If multiples, prioritise language match. Always exclude DOI: that is not where the resource is available from.
+| access_location | ./accessLocation | | Y |
+| extent | ./extent | Y | | Render with standard abbreviations for pp, vols, en-dash, and with delimiting of multiple locations.
+| creatornames | ./contributor[role/@type = 'author'] \| ./contributor[role/@type = 'performer'] \| ./contributor[role/@type = 'adapter'] \| ./contributor[role/@type = 'translator'] \| ./contributor[role/@type = 'editor'] \| ./contributor[role/@type = 'distributor'] \| ./contributor[role/@type = 'authorizer'] \| ./contributor | Y | | <<nametemplate,`nametemplate`>> applied to each name; joining template from internationalisation applied to multiple names.
+| authorcite | ./contributor[role/@type = 'author'] \| ./contributor[role/@type = 'performer'] \| ./contributor[role/@type = 'adapter'] \| ./contributor[role/@type = 'translator'] \| ./contributor[role/@type = 'editor'] \| ./contributor[role/@type = 'distributor'] \| ./contributor[role/@type = 'authorizer'] \| ./contributor | Y | | <<authorcitetemplate,`authorcitetemplate`>> applied to each name; joining template from internationalisation applied to multiple names.
+| role | ./contributor[role/description] \| ./contributor[role/@type] | | |
+| date | ./date[@type = 'issued'] \| ./date[@type = 'circulated'] \| ./date | | Y | By default truncated to just year.
+| date_updated | ./date[@type = 'updated'] | | Y |
+| date_accessed | ./date[@type = 'accessed'] | | Y |
+| series | ./series[@type = 'main' or not(@type) or true] | | Y | <<seriestemplate,`seriestemplate`>> applies to series.
+| host_creatornames | ./relation[@type = 'includedIn']/ bibitem/contributor[role/@type = 'author'] | |  Y | Follows options for `creatornames`.
+| host_title | ./relation[@type = 'includedIn']/ bibitem/title | Y | Y | Follows options for `creatornames`.
+| host_role | ./relation[@type = 'includedIn']/ bibitem/contributor[role/description] \| ./relation[@type = 'includedIn']/ bibitem/contributor[role/@type] | | Y |
+| type | ./@type | | |
+| home_standard | | | | Whether the document is published by the same organisation as is publishing the document containing it, or a closely affiliated organisation. In standards, citations of standards by the same organisation or affiliates are typically truncated; so in an ISO document, other ISO and IEC standards are cited only by document identifier and title. Not used for all flavours of Metanorma.
+| labels | | | text to be looked up in internationalisation configuration files: e.g. "edition", "In", "At", "Vol", "Vols", "p.", "pp".
+|===
+
+Missing dates and places of publication are rendered as "n.d." and "n.p." or the equivalent internationalisation (`no_date`, `no_place` in the internationalisation YAML files.) However, missing dates are left as nil in standards, as undated standards indicate that the citation applies to the latest version of the standard, and not that the date is unknown. Missing dates are also left as nil in webresources and websites, since they are continuously updated.
+
+Many fields are populated either by the description of the bibliographic item itself, or by the description of the item containing it (the _host_ item: `./relation[@type = 'includedIn']/bibitem`). For example, in a paper included in an edited volume, the edition will typically be given for the editor volume, rather than for the paper. Those fields are indicated by "Can come from host" in the table above.
+
+The Liquid templates use the filters defined in Liquid, such as `upcase`. We have defined some custom filters for Relaton Render:
+
+* `capitalize_first` capitalises only the first word in a string, and does not lowercase other words in the string. So "third edition" becomes "Third edition", but "3. Aufl." does not become "3. aufl."
+
+The Liquid template surrounds each field by preceding and following punctuation.
+
+* Fields are space-delimited. So `<em>{{ title }}</em> [{{medium}}]` are treated as two separate fields. (Space within Liquid delimiters, `{% %} {{ }}`, is ignored.)
+* If fields are not space-delimited, this is indicated by inserting `|`. So `{{ title }}|{{ medium}}` is two fields, rendered with no space separation.
+* If the field is empty, its surrounding markup is also removed. So if there is no medium, then `[{{medium}}]` is not rendered, and the brackets will be stripped.
+* Underscore is treated as space, attaching to the preceding or following field. So `,_{{ edition }}_{{ labels['edition'] }}` is treated in rendering as a single field: if `edition` is missing, not only will it not be rendered, but neither will the following edition label. (So "1st ed.: , but not " ed.".)
+* Underscore is escaped by \. So `<span_class="std\_note">` maps to `<span class="std_note">`.
+* If punctuation is space-delimited, it is inserted regardless of preceding content. So `{{ creatornames }} ({{date}}) .` will insert the full stop whether or not the date is present. On the other hand, in `{{date}}.`, if the date is empty, the full stop is also stripped.
+* Space between punctuation and before punctuation is automatically removed.
+* Spaces within fields are globally converted to underscores. For that reason, any filter operations in Liquid need to refer to underscore instead of space.
+* There are primary and secondary quotation marks defined as labels, and subject to internationalisation: `{{ labels['qq-open'] }}`, `{{ labels['qq-close'] }}`,  `{{ labels['q-open'] }}`, `{{ labels['q-close'] }}`. By default in Latin and Cyrillic, these are `<em>`/`</em>` and empty, respectively. (Recall that formatting in Relaton Render is indicated through Metanorma XML tags.) They are >《…》 , 〈…〉 in Simplified Chinese; wavy underline, empty in Traditional Chinese; and ignored in Japanese. If these are used, they need not to be space-delimited from what they quote; e.g. `{{ labels['qq-open'] }}{{ title }}{{ labels['qq-close'] }}`.
+
+For example:
+
+....
+"{{ creatornames }} ({{date}}) . <em>{{ title }}</em> [{{medium}}] ,_{{ edition }}_{{ labels['edition'] }} ."
+....
+
+If a type uses another type's template, the type is mapped to the other type's name; e.g.
+
+....
+template: 
+  book: ... 
+  booklet:  book
+....
+
+[nametemplate]]
+== Name templates
+
+The `nametemplate` is a hash of Liquid templates for the formatting of contributor names in particular positions. It
+draws on the following fields drawn from the bibliographic item:
+
+|===
+| Field  | Relaton XPath | Multiple | Note
+
+| surname[0] | ./contributor[1]/person/name/surname \| ./contributor[1]/person/name/completename | | i.e. surname is the name default
+| surname[1] | ./contributor[2]/name/surname | |
+| surname[2] | ./contributor[3]/name/surname | |
+| initials[0] | ./contributor[1]/name/formatted-initials \| ./contributor[1]/name/forename/@initial | | If not supplied, the first letter of each given name is used instead
+| initials[1] | ./contributor[2]/name/initial | |
+| given[0] | ./contributor[1]/name/forename[1] | | If not supplied, initials are used instead
+| given[1] |  ./contributor[2]/name/forename[1] | |
+| middle[0] | ./contributor[1]/name/forename[not(first())] | Y |
+| middle[1] | ./contributor[2]/name/forename[not(first())] | Y |
+| nonpersonal[0] |./contributor[1]/organization/name | Y |
+| nonpersonal[1] |./contributor[2]/organization/name | Y |
+|===
+
+The `formatted-initials` field is presumed to contain full stops, and so do the surrogates of that 
+field realised by using individual forenames' `initial` attributes, or the forename initials.
+Initials are presumed to be delimited by a full stop followed by space or an alphabetic character.
+If the full stops are to be stripped, as is often required by bibliographic styles, that needs to occur within the
+Liquid template. Bibliographic styles also govern whether initials are separated by space; this gem treats full stop,
+not space, as the initials delimiter.
+
+(So _D. X._ is two initials, as is _D.X._, but _M.-J._ is a single initial, and so is _de S._)
+
+
+There are at least three distinct `nametemplate` instances that need to be provided, one for a single contributor (`one:`), one for two contributors (`two:`), one for three or more (`more:`), and optionally one for "et al." (`etal:`). The number of contributors for which "et al." starts being used is indicated by `etal_count`.
+
+For example:
+....
+{
+  one: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %}",
+  two: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %} &amp; {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{ given[1] }} {{ middle[1] | slice : 0 }} {{ surname[1] }}{% endif %}",
+  more: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %}, {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{ given[1] }} {{ middle[1] | slice : 0 }} {{ surname[1] }}{% endif %} &amp; {% if nonpersonal[2] %}{{ nonpersonal[2] }}{% else %}{{ given[2] }} {{ middle[2] | slice : 0 }} {{ surname[2] }}{% endif %}",
+  etal: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %}, {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{ given[1] }} {{ middle[1] | slice : 0 }} {{ surname[1] }}{% endif %} <em>et al.</em>",
+  etal_count: 6
+}
+....
+
+In the case of `more`, the template for the `(name)[1]` entries is repeated for all additional authors above 2 and before the final author.
+
+The behaviour of _et al._ can be specified as follows:
+
+* `etal_count`: the number of authors to trigger _et al._ in bibliographic rendering
+* `etal_display`: how many authors to show if using _et al._ in bibliography (by default, same as `etal_count`)
+
+So the Chicago Manual of Style behaviour:
+
+____
+For more than ten authors (not shown here), list the first seven in the reference list, followed by et al.
+____
+
+is realised with `etal_count` = 10, `etal_display` = 7
+
+[authorcitetemplate]]
+== Author citation templates
+
+The `authorcitetemplate` is a subclass of the name template, configured for rendering author names for author-date citations.
+That means that it typically selects only surnames for rendering.
+
+
+The behaviour of _et al._ in author-date citations can be specified the same way as for names in general:
+
+* `etal_count`: the number of authors to trigger _et al._ in bibliographic rendering
+* `etal_display`: how many authors to show if using _et al._ in bibliography (by default, same as `etal_count`)
+
+[[seriestemplate]]
+== Series template
+
+The `seriestemplate` is a template for the rendering of series information. It draws on the following fields drawn from the bibliographic item:
+
+|===
+| Field  | Relaton XPath | Multiple | Can come from host | Note
+
+| series_title  | ./series[@type = 'main' or not(@type) or true]/name | | Y |
+| series_abbr  | ./series[@type = 'main' or not(@type) or true]/abbreviation | | Y |
+| series_num  | ./series[@type = 'main' or not(@type) or true]/number | | Y |
+| series_partnumber  | ./series[@type = 'main' or not(@type) or true]/partnumber | | Y |
+| series_run  | ./series[@type = 'main' or not(@type) or true]/run | | Y |
+| series_place  | ./series[@type = 'main' or not(@type) or true]/place | | Y |
+| series_organization  | ./series[@type = 'main' or not(@type) or true]/organization | | Y |
+| series_dates  | ./series[@type = 'main' or not(@type) or true]/from, ./series[@type = 'main' or not(@type) or true]/to | | Y |
+|===
+
+For example: `{% if series_abbr %}{{series_abbr}}{% else %}{{series_title}}{% endif %} ,_({{series_run}}) {{series_num}}|({{series_partnumber}})`
+
+That is: use the series abbreviation if available, else the series title. If there is a series run, insert it with a comma after the title.
+Then insert the series number, and the series part number (with no intervening space). So:
+
+____
+Studies in Post-Modernism, (3rd series) 30(4)
+____
+
+== Journal template
+
+The `journaltemplate` is a template for the rendering of series information, when they relate to articles in a journal. The template is distinct because of longstanding practice of rendering journal information differently from monograph series information. The template draws on the same fields as the `seriestemplate`, but because the journal title is typically italicised and the numeration is not, any italicisation needs to occur within the template.
+
+For example, the recommended practice in the current edition of ISO 690 is to give explicit volume labels:
+
+`<em>{% if series_abbr %}{{series_abbr}}{% else %}{{series_title}}{% endif %}</em> {{ labels['volume'] }}_{{series_num}} {{ labels['part'] }}_{{series_partnumber}}`
+
+e.g.
+
+____
+_J. Am. Chem. Soc._ Vol. 103 Part 1
+____
+
+A common template that drops those labels is:
+
+`<em>{% if series_abbr %}{{series_abbr}}{% else %}{{series_title}}{% endif %}</em> {{series_num}}|({{series_partnumber}})`
+
+e.g.
+
+____
+_J. Am. Chem. Soc._ 103(1)
+____
+
+== Extent template
+
+The extent of a bibliographic item may be expressed differently depending on the type of bibliographic item. For example, the extent of a book chapter may be expressed as _pp. 9–20_, while the extent of an article may be expressed as just _9–20_.
+
+To capture this, a separate template is supplied under `extenttemplate` for each bibliographic item type. For those types where none is supplied, the template given for `misc` is used as the default.
+
+The template draws on the defined types of locality of extents; the most common of these is `volume`, `issue` (within volume; "number" for journals), and `page`. Locality types are the fields used in the Liquid templates; for example:
+
+....
+{
+  article: "{{ volume_raw }}|({{ issue_raw }}) : {{ page_raw }}"
+  misc: "{{ volume }}, {{ page }}"
+}
+....
+
+The number of the volume, issue/number, or page, without accompanying labels, is given in `volume_raw`, `issue_raw`, and `page_raw`.
+So `{{volume}}` is by default defined to include the locality type label _Vol._ (or its internationalised equivalent); 
+`volume_raw` contains just the number.
+
+The internationalisation files define a singular and a plural version of the locality types, under `labels['extent']`.
+
+* The plural label is always used if the extent is a range (with a `<from>` and `<to>`).
+* The singular label is used if the extent is not a range (_pp. 2–4_ vs. _p. 3_).
+* The internationalisation files include a slot where the number or number range is inserted, indicated by `%`, since this varies by language. (For instance, English has `pp. %`,  whereas Chinese has `第%页`.)
+
+== Size template
+
+The size of a bibliographic item is distinct from the extent: the size is how large the item is (e.g. how many pages are in the book), whereas the extent is how much of the host item the item covers (e.g. which pages of the book are in the current chapter.) They can be displayed quite differently from extent; for example, while extent pages is given in English as _pp. 9–20_ or _p. 3_, size pages is given as _3 pp._.
+
+To capture this, a separate template is supplied under `sizetemplate` for each bibliographic item type. Again, for those types where none is supplied, the template given for `misc` is used as the default.
+
+The template draws on the defined types of locality of extents; the following are currently recognised:
+
+|===
+| Field  | Relaton XPath | Note
+
+| volume  | ./medium/size[@type = 'volume'] | With internationalisation of label
+| volume_raw  | ./medium/size[@type = 'volume'] |
+| issue  | ./medium/size[@type = 'issue'] | With internationalisation of label
+| issue_raw  | ./medium/size[@type = 'issue'] |
+| page  | ./medium/size[@type = 'page'] | With internationalisation of label
+| page_raw  | ./medium/size[@type = 'page'] |
+| data  | ./medium/size[@type = 'data'] | Unit of size is included in value
+| duration  | ./medium/size[@type = 'time'] | Expressed in ISO 8601 duration
+|===
+
+
+Locality types are the fields used in the Liquid templates; for example:
+
+....
+{
+  dataset: "{{ data }}"
+  misc: "{{ volume }}, {{ page }}, {{ data }}, {{ duration }}"
+}
+....
+
+The internationalisation files define a singular and a plural version of the locality types, under `labels['size']`.
+
+* The plural label is always used if the extent is a range (with a `<from>` and `<to>`).
+* The label is singular only if the value is `1`, else it is plural (_1 p._, _2 pp._)
+* Again, the internationalisation files include a slot where the number or number range is inserted, since this varies by language.
+* The number of volumes or pages, without accompanying labels, is given in `volume_raw` and `page_raw`.
+* Multiple spans of the same type are joined by `+`; e.g. _xlii + 76 pp._.
+
+== Other
+
+In addition, the configuration includes different configuration options for rendering. The internationalisation file sets the following variables, which can be overridden in configuration parameters:
+
+`edition_number`:: has following values corresponding to the rule-based number rules defined in https://github.com/twitter/twitter-cldr-rb[Twitter CLDR].
+for a language. For example, English _4th_ is defined as `["OrdinalRules", "digits-ordinal"]`, because under twitter-cldr, `4th` is generated as `4.localize(:en).to_rbnf_s("OrdinalRules", "digits-ordinal")`. If missing, the raw number is given.
+`edition`:: is the localised expression for edition, with the edition number given as %. So _4th ed.` is generated with `edition` as `% ed.`.
+`date`:: date format default, taken from https://github.com/twitter/twitter-cldr-rb[Twitter CLDR]: `to_full_s`, `to_long_s`, `to_medium_s`, `to_short_s`, or one of the `to_additional_s` formats. One value is given for each of "month_year", "day_month_year", and "date_time"; e.g. `{ month_year: to_long_s, day_month_year: to_long_s, date_time: to_long_s }`.
+
