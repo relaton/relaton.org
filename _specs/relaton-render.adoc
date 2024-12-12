@@ -105,7 +105,7 @@ drawn from the bibliographic item:
 | role | ./contributor[role/description] \| ./contributor[role/@type] | | |
 | date | ./date[@type = 'issued'] \| ./date[@type = 'circulated'] \| ./date | | Y | By default truncated to just year.
 | date_updated | ./date[@type = 'updated'] | | Y |
-| date_accessed | ./date[@type = 'accessed'] | | Y |
+| date_accessed | ./date[@type = 'accessed'] | | Y | Is not added by default if not explicitly supplied.
 | series | ./series[@type = 'main' or not(@type) or true] | | Y | <<seriestemplate,`seriestemplate`>> applies to series.
 | host_creatornames | ./relation[@type = 'includedIn']/ bibitem/contributor[role/@type = 'author'] | |  Y | Follows options for `creatornames`.
 | host_title | ./relation[@type = 'includedIn']/ bibitem/title | Y | Y | Follows options for `creatornames`.
