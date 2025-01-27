@@ -73,6 +73,7 @@ Not currently supported:
 * alert
 * message
 * conversation
+* collection
 
 In Metanorma, not all types are used, but there are exemplars for all of these given on this site, following
 the human-readable style used in ISO 690. These can be overridden by supplying corresponding paramerers in the call

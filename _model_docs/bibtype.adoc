@@ -57,6 +57,7 @@ The supported types are:
 * `conversation`
 * `misc`
 * `unpublished`
+* `collection`
 
 The list maintains a distinction between the following resources, all of which
 are necessarily included in another resource:
@@ -114,6 +115,10 @@ typically cited as "personal communication").
 `conversation`::
 an exchange of messages between two or more persons. May be electronic (e.g. web chat)
 or voice (e.g. phone call).
+
+`collection`::
+a grouping of multiple bibliographic resources (other than a website), which themselves
+are presumed to be classified as belonging to a bibliographic type.
 
 Bibliographic types can overlap.
 
