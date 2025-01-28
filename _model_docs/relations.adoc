@@ -186,24 +186,25 @@ its own version of the textual content of the Work it is annotating.
 This is somewhat rare, and FRBR does not model annotations as
 distinct from revisions.
 
-draftOf:: document B is a specific unpublished version or revision of document A;
-it may also be the first, unpublished
-expression of document A. Document A may be a Work or an Expression
-(e.g. a draft may be specific to an edition or translation).
-Document A need not itself be published. (_hasDraft_)
+draftOf:: document B is a draft (unpublished version) or revision of document A.
+It may also be the first, unpublished expression of document A. Document A may
+be a Work or an Expression (e.g. a draft may be specific to an edition or
+translation). Document A may or may not be published. (_hasDraft_)
 
-preliminaryDraftOf::: document B is an unpublished version preceding and preparatory
-to document A. (_hasPreliminaryDraft_)
+preliminaryDraftOf::: document B is an immediate predecessor draft (unpublished
+version) to document A, where the content of document B was modified to create
+document A.
+(_hasPreliminaryDraft_)
 
-revisionDraftOf::: document B is an revision subsequent to and modifying document A,
-and is done preparatory to a new edition of A. (_hasRevisionDraft_)
+revisionDraftOf::: document B is an immediate successor draft (unpublished
+version) to document A, where the content of document A was modified to create
+document B. (_hasRevisionDraft_)
 
-editionOf:: document B is a published revision of document A, or the
-first published Expression of document A. Document A is a Work, or else document A is
-an Expression with the same language, instrumentation, and
-substantially the same extent as B (i.e. translations, arrangements,
-abridgements, annotations can have editions; editions cannot have
-editions). (_hasEdition_)
+editionOf:: document B is a published revision of document A, or the first
+published Expression of document A. Document A is a Work, or else document A is
+an Expression with the same language, instrumentation, and substantially the
+same extent as B (i.e. translations, arrangements, abridgements, annotations can
+have editions; editions cannot have editions). (_hasEdition_)
 
 updates::: document B is an edition of the same Work as document A,
 and is subsequent to document A; A is an Expression.
