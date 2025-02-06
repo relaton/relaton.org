@@ -1,6 +1,6 @@
 ---
-title: Relaton-Render
-description: Templates for rendering Relaton bibliographic items as Metanorma bibliographies.
+title: Relaton Render
+description: Define and use bibliographic reference styles in Relaton.
 
 feature_with_priority: 8
 
@@ -14,9 +14,11 @@ external_links:
 Relaton Render (`relaton-render`) is a Ruby gem that transforms Relaton objects
 (which represent bibliographic items) into string reference renderings.
 
-The gem supports multiple bibliographic styles through configurable YAML
-templates and provides localization for text elements like ordinals, dates, and
-abbreviations.
+Relaton Render allows you to:
+
+* define bibliographic reference styles
+* render bibliographic and citation references using an existing bibliographic reference style
+* localize bibliographic reference styles in multiple languages
 
 NOTE: Formatted references are embedded within Metanorma documents as `<formattedref>` elements.
 
@@ -27,16 +29,21 @@ to render these items in a human-readable format, a rendering process is needed
 to convert the structured data into a formatted reference.
 
 There exists many types of bibliographic citation formats, each with its own
-rules and conventions. Given that Relaton models are the digital representation
-of the ISO 690 bibliographic standard, the `relaton-render` gem naturally
-is able to render bibliographic items according to its provided styles.
+rules and conventions.
+
+Given that the Relaton models implement the defined bibliographic models of the
+ISO 690 standard, Relaton Render is naturally able to render
+bibliographic items according to the ISO 690 bibliographic styles, as well as bibliographic styles that follow the bibliographic style definition framework described in ISO 690.
+
+NOTE: Most well-defined citation styles, such as APA and MLA, can be defined
+within the meta-bibliographic framework of ISO 690.
 
 Relaton Render goes beyond commonly used citation rendering libraries and
 citation specification languages, such as CSL (Citation Style Language),
 CSL-derivatives like CSL-JSON, or Zotero, in that they are unable to handle the
 comprehensive data elements and metadata supported by ISO 690.
 
-The ISO 690 is superior in expressibilty to typical styles with some key
+The ISO 690 is superior in expressibility to typical styles with some key
 differences:
 
 * ISO 690 uses a data model that is a strict superset of typical citation
@@ -47,16 +54,18 @@ languages, including:
 
 * ISO 690 citation references are expressive yet consistent:
 
-** applies consistent citation rules for every type of supported information resource
-** with the ability to round-trip human-readable citations into their
-machine-readable counterparts.
+** applies deterministic citation rules for every type of supported information
+resource
 
-NOTE: Metanorma is a standards publication system that embeds Relaton data
-inside its documents to serve as both metadata and references. Relaton Render
-provides Metanorma with the ability to render these references in a
-human-readable format in the Metanorma presentation XML layer under
-`bibitem/formattedref`, and can contain formatting (e.g. `<em>` for italics,
-`<strong>` for boldface.)
+** provides the ability to round-trip human-readable citations into their
+machine-readable counterparts in a lossless manner.
+
+NOTE: https://www.metanorma.org[Metanorma] is a standards publication system
+that embeds Relaton data inside its documents to serve as both metadata and
+references. Relaton Render provides Metanorma with the ability to render these
+references in a human-readable format in the Metanorma presentation XML layer
+under `bibitem/formattedref`, and can contain formatting (e.g. `<em>` for
+italics, `<strong>` for boldface.)
 
 
 == Data flow
