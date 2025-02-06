@@ -1,18 +1,21 @@
 ---
-title: Citation Model
+title: Relaton citation model
 description: Citation model for Relaton
 layout: model-docs
 ---
 
-== Citation Model
+== Relaton citation model
 
 A citation in Relaton consists of the following components:
 
-* An identifier `bibitemid` for the cited source. This identifier corresponds to the identifier (`id`) of
-a Relaton record describing the cited source.
-* An optional date, in ISO 8601 format. This date is not intended for disambiguation, since `bibitemid`
-already identifies the source unambiguously; it is added for ease of processing, in case author-date
-citations cannot straightforwardly extract the date from the bibliographic source.
+* An identifier `bibitemid` for the cited source. This identifier corresponds to
+the identifier (`id`) of a Relaton record describing the cited source.
+
+* An optional date, in ISO 8601 format. This date is not intended for
+disambiguation, since `bibitemid` already identifies the source unambiguously;
+it is added for ease of processing, in case author-date citations cannot
+straightforwardly extract the date from the bibliographic source.
+
 * A specification of the locality or localities in the source being cited.
 
 A locality is a hierarchical specification of a location in a source. It is specified as a sequence

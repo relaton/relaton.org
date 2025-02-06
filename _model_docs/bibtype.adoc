@@ -117,10 +117,11 @@ an exchange of messages between two or more persons. May be electronic (e.g. web
 or voice (e.g. phone call).
 
 `collection`::
-a grouping of multiple bibliographic resources (other than a website), which themselves
-are presumed to be classified as belonging to a bibliographic type.
+a grouping of multiple bibliographic resources (other than a website), which
+themselves are presumed to be classified as belonging to bibliographic types.
 
-Bibliographic types can overlap.
+Bibliographic types can overlap. A bibliographic item may be considered to
+belonging to more than one bibliographic type.
 
 [example]
 Social media can be treated as `webresource`, and `webresource`s are electronic
