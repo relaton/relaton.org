@@ -20,7 +20,7 @@ tagline: >-
 
 landing_priority: [custom_intro, blog, specs, software]
 
-theme: jekyll-theme-open-project
+theme: jekyll-theme-rop
 
 relaton:
 
@@ -204,8 +204,6 @@ authors:
 
 contact_email: open.source@ribose.com
 
-theme: jekyll-theme-open-project
-
 parent_hub:
   git_repo_url: https://github.com/riboseinc/open.ribose.com
   git_repo_branch: main
@@ -279,8 +277,7 @@ defaults:
       layout: spec
 
 plugins:
-  - jekyll-seo-tag
-  - jekyll-sitemap
+  - jekyll-theme-rop
 
 tag_namespaces:
   software:
