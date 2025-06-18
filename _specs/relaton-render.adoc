@@ -65,7 +65,7 @@ that embeds Relaton data inside its documents to serve as both metadata and
 references. Relaton Render provides Metanorma with the ability to render these
 references in a human-readable format in the Metanorma presentation XML layer
 under `bibitem/formattedref`, and can contain formatting (e.g. `<em>` for
-italics, `<strong>` for boldface.)
+italics, `<strong>` for boldface.) See <<formatting,Formatting>>.
 
 
 == Data flow
@@ -3312,6 +3312,44 @@ This renders the `date` field according to the date format defined in the
 * "June 1, 2023"
 * "June 1, 2023 12:00:00"
 ====
+
+[[ formatting ]]
+== Formatting
+
+The default inline formatting language of Relaton is Metanorma XML, and the default
+inline formatting language of Relaton Render is also Metanorma XML. This can be seen
+in the foregoing examples: italicised titles in templates are marked up as
+`<em>{{ title }}</em>`, and the formatting contained within titles is expected to also
+be in Metanorma XML, e.g. `A supply of H<sup>2</sup>O`.
+
+Relaton Render does not add formatting to variables on its own: any formatting of text
+resides in either the templates (including name templates), or the source XML values.
+That means that it is possible to use a different markup language, by providing your
+own templates; but in that case, any Metanorma XML formatting markup inside the Relaton XML
+source will also need to be transformed. 
+
+So for example the following Metanorma XML-based template uses `<em>`:
+
+[example]
+====
+[source,liquid]
+----
+{{ creatornames }} ({{date}}) . <em>{{ title }}</em> [{{medium}}] ,_{{ edition }}_{{ labels['edition'] }} .
+----
+
+For Markdown you would instead specify the template as:
+
+[example]
+====
+[source,liquid]
+----
+{{ creatornames }} ({{date}}) . \_{{ title }}\_ [{{medium}}] ,_{{ edition }}_{{ labels['edition'] }} .
+----
+
+(Recall that `_` has to be escaped in order to be interpreted as an underscore instead of a non-breaking space.)
+
+You will however need to add filters or preprocessing, to convert any Metanorma markup in source fields to Markdown,
+e.g. converting the title from `A supply of H<sup>2</sup>O` to `A supply of H~2~O`
 
 
 == Information resource templates
