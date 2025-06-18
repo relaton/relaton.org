@@ -2449,7 +2449,35 @@ lowercase other words in the string.
 
 [example]
 ====
-"third edition" becomes "Third edition", but "3. Aufl." does not become "3. aufl."
+`{{ "third edition" | capitalize_first }}` becomes "Third edition", but 
+`{{ "3. Aufl." | capitalize_first }}` does not become "3. aufl."
+====
+
+==== Selective Upcase (`selective_upcase`)
+
+Capitalise any content in the string not surrounded by `+++`. This is to ensure
+that creator names are capitalised without also capitalising any connectives like
+"and" or "et al."
+
+[example]
+====
+`{{ "Black and Decker" | selective_upcase }}` becomes "BLACK AND DECKER", 
+but `{{ "Black +++and+++ Decker" | selective_upcase }}` becomes
+"BLACK and DECKER"
+====
+
+==== Selective Tag (`selective_tag`)
+
+Tag any content in the string not surrounded by `+++` with the supplied tag
+(assuming a single tag). This is to ensure
+that creator names are marked up (smallcaps, italics, etc), without also capitalising 
+any connectives like "and" or "et al."
+
+[example]
+====
+`{{ "Black and Decker" | selective_tag: "<smallcap>" }}` becomes `<smallcap>Black and Decker</smallcap>`,
+but `{{ "Black +++and+++ Decker" | selective_tag: "<smallcap>" }}` becomes
+`<smallcap>Black</smallcap> and <smallcap>Decker</smallcap>`
 ====
 
 === Template processing rules
