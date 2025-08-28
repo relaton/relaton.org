@@ -24,7 +24,7 @@ jobs:
       run: make _site
 
     - name: Link Checker
-      uses: lycheeverse/lychee-action@v1.2.0
+      uses: lycheeverse/lychee-action@v2.0.2
       with:
         args: --verbose --no-progress --exclude-file .lycheeignore -- _site/**/*.html
         fail: true
