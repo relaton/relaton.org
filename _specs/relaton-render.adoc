@@ -22,7 +22,7 @@ Relaton Render allows you to:
 
 NOTE: Formatted references are embedded within Metanorma documents as `<formattedref>` elements.
 
-== Purpose
+=== Purpose
 
 Relaton objects represent bibliographic items in a structured format. In order
 to render these items in a human-readable format, a rendering process is needed
@@ -33,7 +33,8 @@ rules and conventions.
 
 Given that the Relaton models implement the defined bibliographic models of the
 ISO 690 standard, Relaton Render is naturally able to render
-bibliographic items according to the ISO 690 bibliographic styles, as well as bibliographic styles that follow the bibliographic style definition framework described in ISO 690.
+bibliographic items according to the ISO 690 bibliographic styles, as well as 
+bibliographic styles that follow the bibliographic style definition framework described in ISO 690.
 
 NOTE: Most well-defined citation styles, such as APA and MLA, can be defined
 within the meta-bibliographic framework of ISO 690.
@@ -68,23 +69,45 @@ under `bibitem/formattedref`, and can contain formatting (e.g. `<em>` for
 italics, `<strong>` for boldface.) See <<formatting,Formatting>>.
 
 
-== Data flow
+=== Data flow
 
 Here's how Relaton Render works:
 
 [source]
 ----
-+----------------+     +-----------------+     +-----------------+
-|                |     |                 |     |                 |
-|  Relaton Data  |     | Relaton Render  |     |   Formatted     |
-|  Model         +---->| Templates       +---->|   String        |
-|                |     | (Liquid)        |     |   Reference     |
-|                |     |                 |     |                 |
-+----------------+     +-----------------+     +-----------------+
-----
+                                                                                               ┌────────────────┐                          
+                                                                                               │                │                          
+                                                                        ┌──────────────────────►                │                          
+                               Relaton representation                   │                      │    Parse       │                          
+                               of bibiliography in XML                  │                      │                │                          
+                                                                        │                      │                │                          
+                                        │                               │                      └─────────┬──────┘                          
+                                        │                               │ Individual                     │                                 
+                                        │                               │ record in                      │Extracted bibliographic          
+                                        │                               │ native Relaton                 │fields                           
+                                        │            Iterate            │ object format        ┌─────────▼──────┐                          
+                                ┌───────▼─────────┐  individual   ┌─────┼─────────┐            │                │                          
+                                │                 │  bibliographic│               │            │                │                          
+Disambiguate citations          │                 │  records      │               │ <- i18n    │    Field       │  <- i18n
+(author-date letters: "1980a")  │   Citation      ┼───────────────►   General     │  config(s) │                │   config(s)
+                                │                 │               │               │            │                │                          
+Select template and i18n config │                 ◄───────────────┼               │            └─────────┬──────┘                          
+for each citation               └───────┬─────────┘               └───────▲─────┬─┘                      │                                 
+                                        │          Single bibiliographic  │     │                        │Formatted fields                 
+Generate different                      │          citation               │     │ Liquid template(s)     │in an object structure           
+citation types                          │                                 │     │ for each field and     │                                 
+(author-date, full, short)              │                                 │     │ full cite     ┌────────▼───────┐                         
+                                        │                                 │     └───────────────►                │                         
+                                        │                                 │                     │                │                         
+                                        ▼                                 │                     │   Template     │                         
+                                                                          └─────────────────────┼                │                         
+                           Hash: biblio entry id                        Formatted string        │                │                         
+                            to: citation type                                                   └────────────────┘                         
+                             to: citation string 
+---
 
 
-== Bibliographic style
+=== Bibliographic style
 
 A bibliographic style defines how citation and reference information should be
 formatted when displayed in a document.
@@ -106,7 +129,8 @@ The APA style renders these information resource types as follows:
 ====
 
 In Relaton, a style is implemented as a set of rendering templates that define
-how different types of bibliographic resources should be formatted.
+how different types of bibliographic resources should be formatted,
+and how fields within that resource should be formatted.
 
 A style is realized in Relaton Render using a YAML configuration file that
 specifies the template for each bibliographic resource type. The templates
@@ -141,9 +165,19 @@ reference.
 ╚═══════════════════════════════════════════════════════╝
 ----
 
-== Functionality
+In addition, several fields within the bibliographic object are given a separate
+template for rendering: there is a template for names (governing the rendering of
+one, two, three, or more authors, and the conditions for "et al." citation);
+author citation (governing the use of surnames in author-date citation);
+extents of citation (volume, issue, and page number); size of citation
+(number of volumes, number of pages); full citations (such as will appear in
+a bibliography); short citations (truncated versions of a citation that will appear
+in-line in a document); and other citation formats (e.g. author-date).
 
-The bibliographic style used is configured by a YAML template, which is
+
+=== Functionality
+
+The bibliographic style used is configured by a set of YAML templates, which is
 documented here.
 
 Relaton-Render incorporates internationalization, and localises strings as appropriate.
@@ -168,6 +202,11 @@ provide their own YAML templates to overrides.
 Relaton-Render also supports author-date citation, and it generates any necessary disambiguation
 letters on dates (e.g. _Jones 1996a_ and _Jones 1996b_.)
 
+In advanced functionality, Relaton Render can provide multiple internationalisation
+configurations and YAML templates, to be selected between according to criteria
+specific to a single citation. The main use of this (as implemented in the Plateau flavour
+of Metanorma) is to differentiate between how Japanese citations and Western-language
+citations are rendered (e.g. distinct punctuation).
 
 == YAML bibliographic configuration
 
@@ -175,8 +214,8 @@ letters on dates (e.g. _Jones 1996a_ and _Jones 1996b_.)
 
 A YAML configuration file defines the templates for a bibliographic style.
 
-Every key in the YAML file points to a specific template that is used (or re-used)
-within the bibliographic style.
+Every key in the YAML file points to a specific Liquid template that is used (or re-used)
+within the bibliographic style. The syntax of Liquid used by Relaton Render is defined under <<liquid>>.
 
 If you are creating a new bibliographic style, you may wish to define new
 templates by providing all the necessary keys in the YAML file. If a key is not
@@ -203,19 +242,30 @@ authorcitetemplate: # ...
 extenttemplate: # ...
 sizetemplate: # ...
 
-# Information resource type templates <3>
+# Citation templates <3>
+citetemplate:
+  author_date: # ...
+  author: # ...
+  title: # ...
+  short:
+    book: # ...
+    standard: # ...
+
+# Information resource type templates <4>
 template: # ...
   book: # ...
-  # ...
+  standard: # ...
+  ...
 
-# Information resource collection templates <4>
+# Information resource collection templates <5>
 seriestemplate: # ...
 journaltemplate: # ...
 ----
 <1> Language and script code of this bibliographic style.
 <2> Templates for formatting contributor names, extent, and size information.
-<3> Main templates for different types of bibliographic items.
-<4> Templates for formatting series and journal information.
+<3> Templates for formatting different citation types
+<4> Main templates for different types of bibliographic items.
+<5> Templates for formatting series and journal information.
 
 Specifically:
 
@@ -227,7 +277,11 @@ Specifically:
 `extenttemplate`:: Template for formatting extent information (e.g., pages, volumes)
 `sizetemplate`:: Template for formatting size information
 
+`citetemplate`:: Template for different formats for citing bibliographic items
+`short`::: Template for truncated formats for citing different types of bibliographic items
+
 `template`:: Main templates for different types of bibliographic items
+(full citation, used in bibliography)
 
 `seriestemplate`:: Template for formatting series information
 `journaltemplate`:: Template for formatting journal series information
@@ -338,7 +392,8 @@ the Twitter CLDR method of:
 
 The `edition` key defines the localized expression template for editions.
 
-This key is optional. If missing, the default setting is applied for that language.
+This key is optional. If missing, the default setting is applied for that language,
+as defined in the current Metanorma flavour.
 
 Syntax:
 
@@ -360,10 +415,15 @@ edition: "% ed."
 ----
 
 With `edition` set to `4` (representing the "4th edition"), this renders as "4th ed."
+The configuration of `edition_number` determines the rendering of `4` as `4th`.
 ====
 
 
-[[date-formats]]
+////
+
+THIS IS HALLUCINATED, AND DOES NOT EXIST IN RELATON-RENDER.
+
+[.date-formats]]
 ===== Date formats
 
 The `date` key defines the default date format and additional date format
@@ -404,14 +464,12 @@ date:
   date_time: to_long_s
 ----
 ====
-
-
-=== Component templates
+////
 
 [[nametemplate]]
-==== Reference contributor name templates (`nametemplate`)
+=== Reference contributor name templates (`nametemplate`)
 
-===== General
+==== General
 
 The top-level `nametemplate` key defines how contributor names are formatted in
 full reference entries.
@@ -458,21 +516,21 @@ nametemplate:
 [source,yaml]
 ----
 nametemplate:
-  one: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %}",
-  two: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %} &amp; {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{ given[1] }} {{ middle[1] | slice : 0 }} {{ surname[1] }}{% endif %}",
-  more: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %}, {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{ given[1] }} {{ middle[1] | slice : 0 }} {{ surname[1] }}{% endif %} &amp; {% if nonpersonal[2] %}{{ nonpersonal[2] }}{% else %}{{ given[2] }} {{ middle[2] | slice : 0 }} {{ surname[2] }}{% endif %}",
-  etal: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %}, {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{ given[1] }} {{ middle[1] | slice : 0 }} {{ surname[1] }}{% endif %} <em>et al.</em>",
+  one: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %}"
+  two: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %} &amp; {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{ given[1] }} {{ middle[1] | slice : 0 }} {{ surname[1] }}{% endif %}"
+  more: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %}, {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{ given[1] }} {{ middle[1] | slice : 0 }} {{ surname[1] }}{% endif %} &amp; {% if nonpersonal[2] %}{{ nonpersonal[2] }}{% else %}{{ given[2] }} {{ middle[2] | slice : 0 }} {{ surname[2] }}{% endif %}"
+  etal: "{% if nonpersonal[0] %}{{ nonpersonal[0] }}{% else %}{{ surname[0] }}, {{ given[0] }} {{ middle[0] | slice : 0 }}{% endif %}, {% if nonpersonal[1] %}{{ nonpersonal[1] }}{% else %}{{ given[1] }} {{ middle[1] | slice : 0 }} {{ surname[1] }}{% endif %} <em>et al.</em>"
   etal_count: 6
 ----
 ====
 
 
 [[nametemplate-fields]]
-===== Fields
+==== Fields
 
 The following fields are available for use in the `nametemplate`.
 
-====== Person contributor surnames
+===== Person contributor surnames
 
 Field:: `surname[0]`
 Description:: Surname of the first person contributor, or complete name if
@@ -496,7 +554,7 @@ Value type:: String
 ====
 
 Field:: `surname[2]`
-Description:: Surname of the third person contributor
+Description:: Surname of the third person contributor.
 Model path:: `1`
 Value type:: String
 +
@@ -505,7 +563,17 @@ Value type:: String
 `"Johnson"`
 ====
 
-====== Person contributor initials
+Exceptionally, in `more`, the last surname subscript given corresponds to the final
+surname, and entry for the preceding surname is repeated. So if `more` contains
+`surname[0]`, `surname[1]` and `surname[2]`, `surname[1]` indicates how all surnames
+are to be rendered between the first and the last surname, and `surname[2]`
+indicates how the last surname is to be rendered. If 10 surnames are given (and the
+`etal` template does not apply), then `surname[1]` applies to the first through ninth
+surname, and `surname[2]` to the tenth surname.
+
+The same indexing conventions apply to all other name components under `nametemplate`.
+
+===== Person contributor initials
 
 The `formatted-initials` field is presumed to contain full stops, and so do the
 surrogates of that field realized by using individual forenames' `initial`
@@ -549,7 +617,7 @@ Value type:: String
 `["M","L"]`
 ====
 
-====== Person contributor forenames
+===== Person contributor forenames
 
 Field:: `given[0]`
 Description:: First forename of the first person contributor. If not supplied, initials are used instead.
@@ -571,8 +639,6 @@ Value type:: String
 `"Mary"`
 ====
 
-====== middle[0]
-
 Field:: `middle[0]`
 Description:: Forenames of the first person contributor except the first forename
 Model path:: `1`
@@ -582,8 +648,6 @@ Value type:: String[]
 ====
 `["Clarence", "Peter"]`
 ====
-
-====== middle[1]
 
 Field:: `middle[1]`
 Description:: Forenames of the second person contributor except the first forename
@@ -595,7 +659,7 @@ Value type:: String[]
 `["Louise", "Helen"]`
 ====
 
-====== Corporate/organizational contributor names
+===== Corporate/organizational contributor names
 
 Field:: `nonpersonal[0]`
 Description:: Name of the first corporate/organizational contributor
@@ -618,7 +682,7 @@ Value type:: String[]
 ====
 
 
-===== Single contributor name
+==== Single contributor name
 
 The sub-key `one` defines how a single contributor name is formatted.
 
@@ -674,7 +738,7 @@ Possible sample outputs of this template would be:
 * "Smith, J. A." if the contributor is an individual author with only initials (`given[0]` not provided)
 ====
 
-===== Two contributor names
+==== Two contributor names
 
 The sub-key `two` defines how two contributor names are formatted.
 
@@ -741,7 +805,7 @@ Possible sample outputs of this template would be:
 * "World Health Organization and Jones, M. L." if the first contributor is a corporate author and the second is an individual author (`nonpersonal[0] is provided, `given[1]` not provided)
 ====
 
-===== More than two contributor names
+==== More than two contributor names
 
 The sub-key `more` defines how more than two contributor names are formatted.
 
@@ -815,14 +879,14 @@ nametemplate:
 Possible sample outputs of this template would be:
 
 * "World Health Organization, United Nations, and European Union" if the contributors are corporate authors (`nonpersonal[0]`, `nonpersonal[1]`, `nonpersonal[2]` are provided)
-* "Smith, John Alexander, Jones, Mary Louise, and Brown, David Peter" if the contributors are individual authors with given names provided (`given[0]`, `middle[0]`, `given[1]`, `middle[1]`, `given[2]`, `middle[2]` are provided)
+* "Smith, John Alexander, Jones, Mary Louise, Jónson, Helmut, Frederikssohn, Helga, and Brown, David Peter" if the contributors are individual authors with given names provided (`given[0]`, `middle[0]`, `given[1]`, `middle[1]`, `given[2]`, `middle[2]` are provided). Note that in this case, five names have been given: the second through fourth name are rendered using `given[1]`, `middle[1]`, `surname[1]`, and the fifth name is rendered using `given[2]`, `middle[2]`, `surname[2]`.
 * "Smith, J. A., Jones, M. L., and Brown, D. P." if the contributors are individual authors with only initials (`given[0]`, `given[1]`, `given[2]` not provided)
 * "Smith, J. A., United Nations, and European Union" if the first two contributors are individual authors and the third is a corporate author (`given[0]`, `given[1]` not provided, `nonpersonal[2]` is provided)
 * "World Health Organization, Jones, M. L., and Brown, D. P." if the first contributor is a corporate author and the second and third are individual authors (`nonpersonal[0]` is provided, `given[1]`, `given[2]` not provided)
 ====
 
 
-===== "Et al" template
+==== "Et al" template
 
 The _et al._ template is an optional template for condensing more than `m`
 contributor names into a rendered string.
@@ -888,9 +952,9 @@ is realized with `etal_count: 10`, `etal_display: 7`.
 
 
 [[authorcitetemplate]]
-==== Citation contributor name templates (`authorcitetemplate`)
+=== Citation contributor name templates (`authorcitetemplate`)
 
-===== General
+==== General
 
 The top-level `authorcitetemplate` key defines how author names are formatted in
 citations, which are typically simpler than full reference entries.
@@ -900,16 +964,16 @@ citations, which are typically simpler than full reference entries.
 Author-date citations can look like "(Smith 2020)".
 ====
 
-It is a subclass of the `nametemplate` (<<nametemplate>>), configured for
+This is a subclass of the `nametemplate` (<<nametemplate>>), configured for
 rendering author names for author-date citations.
 
 NOTE: Citation names are often shorter than full reference entries, often
-showing only surnames.
+showing only surnames. `authorcitetemplate` thus arranges surnames, whereas
+`nametemplate` arranges full names.
 
 Three distinct keys need to be provided: one for a single contributor (`one:`),
 one for two contributors (`two:`), one for three or more (`more:`).
-
-Optionally one for "et al." (`etal:`). The number of contributors for which "et
+Optionally an additional key is also provided for "et al." (`etal:`). The number of contributors for which "et
 al." starts being used is indicated by `etal_count`.
 
 These are the acceptable keys under `authorcitetemplate`:
@@ -958,13 +1022,13 @@ authorcitetemplate:
 ====
 
 [[authorcitetemplate-fields]]
-===== Fields
+==== Fields
 
 The fields available for use in the `authorcitetemplate` context is identical
 to those for `nametemplate`. See <<nametemplate-fields>> for details.
 
 
-===== Single author name
+==== Single author name
 
 The sub-key `one` defines how a single author name is formatted in citations.
 
@@ -1008,7 +1072,7 @@ Possible sample outputs of this template would be:
 * "Smith" if the author is an individual author (`surname[0]` is provided)
 ====
 
-===== Two author names
+==== Two author names
 
 The sub-key `two` defines how two author names are formatted in citations.
 
@@ -1062,7 +1126,7 @@ Possible sample outputs of this template would be:
 * "Smith and Jones" if the authors are individual authors (`surname[0]`, `surname[1]` are provided)
 ====
 
-===== More than two author names
+==== More than two author names
 
 The sub-key `more` defines how more than two author names are formatted in citations.
 
@@ -1079,6 +1143,10 @@ The following fields are available for use in the `more` sub-key:
 | `middle` | 0..n | Middle name | `["Alexander", "Louise", "Peter"]`
 
 |===
+
+As with `nametemplate`, if more than three names are provided to `authorcitetemplate`, `[0]` references
+the initial name, `[2]` refers to the final name, and `[1]` refers to the names in between. If more than two names
+are given in the template, the second last name is the name repeated.
 
 Syntax:
 
@@ -1118,10 +1186,11 @@ authorcitetemplate:
 Possible sample outputs of this template would be:
 
 * "World Health Organization, United Nations, and European Union" if the authors are corporate authors (`nonpersonal[0]`, `nonpersonal[1]`, `nonpersonal[2]` are provided)
-* "Smith, Jones, and Brown" if the authors are individual authors (`surname[0]`, `surname[1]`, `surname[2]` are provided)
+* "Smith, Jones, Jackson, and Brown" if the authors are individual authors (`surname[0]`, `surname[1]`, `surname[2]` are provided; `surname[1]` is repeated for
+Jones and Jackson)
 ====
 
-===== "Et al" template
+==== "Et al" template
 
 The _et al._ template is an optional template for condensing more than `m`
 contributor names into a rendered string when used in citations.
@@ -1184,11 +1253,44 @@ ____
 is realized with `etal_count: 3`, `etal_display: 1`.
 ====
 
+=== Information resource template re-use
+
+A template keyed to an information resource (`extenttemplate`, `sizetemplate`,
+`citetemplate.short`, `template`) can be re-used by other information resource types by specifying the
+name of the template as a string.
+
+This is useful for cases where multiple information resource types share the
+same formatting rules.
+
+Syntax:
+
+[source,yaml]
+----
+template:
+  book: # ...
+  booklet: book <1>
+  # ...
+----
+<1> The `booklet` information resource type uses the same template as `book`.
+
+[example]
+====
+[source,yaml]
+----
+template: 
+  book: # ...
+  booklet: book
+  misc: # ...
+  map: misc
+  audiovisual: misc
+----
+====
+
 
 [[extenttemplate]]
-==== Extent templates (`extenttemplate`)
+=== Extent templates (`extenttemplate`)
 
-===== General
+==== General
 
 The extent templates defines how extent information (pages, volumes) is
 formatted for different types of information resources.
@@ -1236,10 +1338,22 @@ extenttemplate:
 
 The number of the volume, issue/number, or page, without accompanying labels, is given in `volume_raw`, `issue_raw`, and `page_raw`.
 So `{{volume}}` is by default defined to include the locality type label _Vol._ (or its internationalised equivalent);
-`volume_raw` contains just the number.
+`volume_raw` contains just the number. As explained in <<liquid>>, `|` in the example is an instruction not to insert
+space between the volume number and the parenthesis befor the issue number.
 
 The internationalization files define a singular and a plural version of the
 locality types, under `labels['extent']`.
+
+.Extent internationalisation for English
+====
+[source,yaml]
+----
+extent:
+  page:
+    sg: "p. %"
+    pl: "pp. %"
+----
+====
 
 * The plural label is always used if the extent is a range (with a `<from>` and `<to>`).
 * The singular label is used if the extent is not a range (_pp. 2–4_ vs. _p. 3_).
@@ -1264,9 +1378,9 @@ extenttemplate:
 ====
 
 [[extent-locality-fields]]
-===== Fields for locality objects
+==== Fields for locality objects
 
-====== General
+===== General
 
 The extent is made up of a single locality object, conjointed locality objects,
 or a locality stack (a hierarchical structure of localities).
@@ -1280,8 +1394,7 @@ locality object provides fields that can be used in the templates.
 All Locality fields are available in `{name}` and `{name}_raw` format:
 
 `{name}`:: provides the original value applied with a localized label for the extent type (e.g. _Vol._ for volume in English,
-_vol._ in French,
-_т._ in Russian).
+_vol._ in French, _т._ in Russian).
 +
 [example]
 ====
@@ -1295,6 +1408,9 @@ _т._ in Russian).
 `volume_raw` is the numeric value `3`.
 ====
 
+////
+I have not at this time defined any i18n past volume, issue, page
+////
 
 [cols="1,1,1",options="header"]
 |===
@@ -1323,7 +1439,7 @@ extenttemplate:
 ----
 ====
 
-====== Chapter
+===== Chapter
 
 Field:: `chapter`
 Description:: Chapter number
@@ -1368,7 +1484,7 @@ Value type:: String
 `4`
 ====
 
-====== Paragraph
+===== Paragraph
 
 Field:: `paragraph`
 Description:: Paragraph number
@@ -1390,7 +1506,7 @@ Value type:: String
 `12`
 ====
 
-====== Page
+===== Page
 
 Field:: `page`
 Description:: Page number or range with label
@@ -1412,7 +1528,7 @@ Value type:: String
 `"45-67"`
 ====
 
-====== Volume
+===== Volume
 
 Field:: `volume`
 Description:: Volume number
@@ -1439,9 +1555,9 @@ Value type:: String
 
 
 
-==== Size template (`sizetemplate`)
+=== Size template (`sizetemplate`)
 
-===== General
+==== General
 
 The size template defines how size information (number of pages, volumes) is
 formatted for different types of information resources.
@@ -1453,6 +1569,10 @@ The size of a bibliographic item is distinct from the extent:
 * the extent is how much of the host item the item covers (e.g. "which pages of
 the book are in the current chapter?")
 
+Extent is required in almost all bibliographic styles, for items that do not
+take up the full extent of a resource (e.g. journal articles); sizes are required
+in bibliographic styles less commonly.
+
 They can be displayed quite differently from extent. For example, while extent
 pages is given in English as _pp. 9–20_ or _p. 3_, size pages is given as _3
 pp._.
@@ -1461,9 +1581,9 @@ For those types where none is supplied, the template given for `misc` is used as
 the default.
 
 [[size-locality-fields]]
-===== Fields for locality objects
+==== Fields for locality objects
 
-====== General
+===== General
 
 Similar to <<extent-locality-fields>>, the "size" of an information resource is
 made up of one or more locality indications, with each locality indication
@@ -1525,8 +1645,8 @@ is inserted, since this varies by language.
 * Multiple localities of the same type are joined by the `+` symbol.
 +
 ====
-The size of a book may be expressed as _Vol. 3, pp. 9–20_, while the size of a
-_xlii + 76 pp._
+The extent of a chapter in a book may be expressed as _Vol. 3, pp. 9–20_, while the size of a book may be expressed as
+_3 vols._, or as _xlii + 76 pp._, which differentiates two paginations (preface, and main body of text).
 ====
 
 [example]
@@ -1548,7 +1668,7 @@ size:
 
 
 [[field-size-data]]
-====== Data size
+===== Data size
 
 Field:: `data`
 Description:: The size of data, with unit included in value
@@ -1572,7 +1692,7 @@ Value type:: String
 
 
 [[field-size-duration]]
-====== Duration
+===== Duration
 
 Field:: `duration`
 Description:: The time duration expressed in ISO 8601-1 format
@@ -1610,7 +1730,7 @@ Value type:: String
 
 
 [[field-size-issue]]
-====== Issue
+===== Issue
 
 Field:: `issue`
 Description:: The number of issues, formatted with internationalized label
@@ -1634,7 +1754,7 @@ Value type:: String
 
 
 [[field-size-page]]
-====== Page
+===== Page
 
 Field:: `page`
 Description:: The number of pages, formatted with internationalized label
@@ -1657,55 +1777,29 @@ Value type:: String
 ====
 
 
-=== Information resource templates
-
-==== Template re-use
-
-A template can be re-used by other information resource types by specifying the
-name of the template as a string.
-
-This is useful for cases where multiple information resource types share the
-same formatting rules.
-
-Syntax:
-
-[source,yaml]
-----
-template:
-  book: # ...
-  booklet: book <1>
-  # ...
-----
-<1> The `booklet` information resource type uses the same template as `book`.
-
-[example]
-====
-[source,yaml]
-----
-template:
-  book: # ...
-  booklet: book
-  misc: # ...
-  map: misc
-  audiovisual: misc
-----
-====
+=== Information resource templates (`template`)
 
 ==== Data fields
 
-Data fields are exposed in a template definition context for accessing data
+Data fields for bibliographic entries are exposed in a template definition context, which accesses data
 elements from the Relaton bibliographic object being rendered.
 
 Each `template` points to a string value in the
 https://shopify.github.io/liquid/[Liquid language] syntax.
 
 The following fields are exposed to the Liquid context from the Relaton
-bibliographic item.
+bibliographic item, via preprocessing done in the Parse, Extract, and Fields classes
+of Relaton-Render.
 
 NOTE: A Liquid "context" is the evaluation environment of a Liquid template.
 The fields below are exposed directly at their attributable names in the template
 as Liquid variables. For example, the value of the Liquid variable `title`
-will be the Relaton object's `title` attribute.
+will be extracted from the Relaton object's `title` attribute, but with some preprocessing --
+including extracting the main title of a resource as opposed to other titles (such as the introductory
+component of a title); the `authoritative_identifier` extracts a subset of the `docidentifier`
+attributes from the Relaton object, prioritising the identifiers appropriate to display as primary
+in a bibliography; `creatornames` uses the results of passing the `contributor` attributes from the
+Relaton object through the `nametemplate` template.
 
 
 [cols="1,1,1,1,1",options="header"]
@@ -1717,6 +1811,7 @@ will be the Relaton object's `title` attribute.
 | `edition_raw` | `edition` | No | Yes | <<field-edition_raw>>
 | `edition_num` | `edition[number]` | No | Yes | <<field-edition_num>>
 | `medium` | `medium` | No | Yes | <<field-medium>>
+| `place_raw` | `place` | No | Yes | <<field-place-raw>>
 | `place` | `place` | No | Yes | <<field-place>>
 | `publisher` | `contributor[role.type='publisher'].organization.name` | No | Yes | <<field-publisher>>
 | `distributor` | `contributor[role.type='distributor'].organization.name` | No | Yes | <<field-distributor>>
@@ -1724,6 +1819,7 @@ will be the Relaton object's `title` attribute.
 | `authoritative_identifier` | `docidentifier[type!='metanorma' && type!='ordinal' && type!='ISBN' && type!='ISSN' && type!='DOI']` | Yes | No | <<field-authoritative-identifier>>
 | `other_identifier` | `docidentifier[type='ISBN' or type='ISSN' or type='DOI']` | Yes | No | <<field-other-identifier>>
 | `doi` | `docidentifier[type='DOI']` | Yes | No | <<field-doi>>
+| `status_raw` | `status` | No | No | <<field-status-raw>>
 | `status` | `status` | No | No | <<field-status>>
 | `uri` | `uri[type='citation' or type='uri' or type='src' or exists]` | No | No | <<field-uri>>
 | `access_location` | `accessLocation` | No | Yes | <<field-access-location>>
@@ -1753,7 +1849,7 @@ the Relaton BibliographicItem object.
 
 NOTE: The "Host" column indicates if the field content may come from the "host
 item". In citing an information resource located within a host item, it is
-common to render elements from the host item instead of the item itself. Hence a
+common to render elements from the host item in addition to elements from the item itself. Hence a
 number of fields can be populated either by the bibliographic item itself, or by
 the host item containing it. For example, in a paper included in an edited
 volume, the `edition` field will be given for the edited volume, rather than for
@@ -1768,8 +1864,8 @@ NOTE: The "host item" is located at path `relation[type='includedIn'].bibitem`.
 Value type:: String.
 
 Description:: The primary title of the bibliographic item.
-If multiple titles exist, prioritizes matches by language.
-
+If multiple titles exist, prioritizes titles matching the document language,
+and the `main` title type as opposed to other title types.
 
 [[field-edition]]
 ===== Edition field
@@ -1812,13 +1908,24 @@ Value type:: String.
 Description::
 The medium or format of the item.
 
+[[field-place-raw]]
+===== Place raw field
+
+Value type:: Array of string.
+
+Description::
+Array of components of a place of publication.
+So if the source record differentiates city, region, and country of publication,
+the raw place is an array of those strings.
+
 [[field-place]]
 ===== Place field
 
 Value type:: String.
 
 Description::
-The place of publication.
+The place of publication. if the raw place is an array of place components,
+these are concatenated in a format appropriate to the language, by default using commas.
 
 [[field-publisher]]
 ===== Publisher field
@@ -1850,7 +1957,7 @@ The authorizing organization, falling back to publisher if no explicit authorize
 Value type:: String.
 
 Description::
-Primary document identifiers excluding Metanorma, ordinal, ISBN, ISSN and DOI types.
+Primary document identifiers excluding Metanorma, ordinal, ISBN, ISSN, DOI, URN, and iso-reference types.
 
 [[field-other-identifier]]
 ===== Other identifier field
@@ -1869,6 +1976,14 @@ Value type:: String[].
 Description::
 The DOI identifier without the `doi:` prefix.
 
+[[field-status-raw]]
+===== Status raw field
+
+Value type:: String.
+
+Description::
+The status or stage of the document, as encoded in Relaton.
+
 [[field-status]]
 ===== Status field
 
@@ -1878,7 +1993,8 @@ Description::
 The status or stage of the document. Rendering varies by document type.
 +
 NOTE: In Metanorma, the "status" field is typically rendered differently for
-different flavors.
+different flavors, and is subject to internationalisation (so it can be translated
+to different languages).
 
 
 [[field-uri]]
@@ -1889,7 +2005,7 @@ Value type:: String.
 Description::
 Citation or source URI, excluding DOI (as a DOI is rarely the source of a resource).
 +
-Prioritizes language match if multiple exist.
+Prioritizes language match if multiple URIs exist.
 
 [[field-access-location]]
 ===== Access location field
@@ -1905,7 +2021,8 @@ Physical or electronic location where the item can be accessed.
 Value type:: String.
 
 Description::
-The extent of the item (e.g., pages, volumes). Renders with standard abbreviations.
+The extent of the item (e.g., pages, volumes). Renders with standard abbreviations, as
+formatted according to the <<extenttemplate>> template.
 +
 NOTE: This encompasses `pp`, `vols`, `-` (en-dash ranges), and supports multiple locations.
 
@@ -1915,8 +2032,7 @@ NOTE: This encompasses `pp`, `vols`, `-` (en-dash ranges), and supports multiple
 Value type:: String.
 
 Description::
-Creator names formatted according to the <<nametemplate>> each. The joining template
-from internationalization configuration is used to join multiple names.
+Creator names formatted according to the <<nametemplate>> template.
 +
 Includes authors, performers, adapters, translators, editors, distributors and authorizers.
 
@@ -1927,9 +2043,7 @@ Includes authors, performers, adapters, translators, editors, distributors and a
 Value type:: String.
 
 Description::
-Creator names formatted according to the <<authorcitetemplate>> for citations.
-The `authorcitetemplate` is applied to each name, and the joining template from
-internationalization is applied to multiple names.
+Creator names formatted according to the <<authorcitetemplate>> template for author-date citations.
 
 [[field-role]]
 ===== Role field
@@ -1937,7 +2051,8 @@ internationalization is applied to multiple names.
 Value type:: String.
 
 Description::
-The role description or type of the contributors.
+The role description or type of the contributors. By default, this is not populated for
+`author` (which is assumed as a role), only for `editor`, `translator`, etc.
 
 [[field-date]]
 ===== Date field
@@ -2016,6 +2131,9 @@ is considered a "home standard" in the document that is citing it.
 +
 A "home standard" is a document that is published by the same organization or a
 closely affiliated organization that is publishing the document containing it.
+Citations of such standards are typically much more succinct than for other
+standards, because of assumed knowledge; they are often limited to authoritative
+identifier and title.
 +
 NOTE: This field is only relevant for usage of Relaton Render inside Metanorma.
 +
@@ -2033,8 +2151,9 @@ be cited as "SP 800-53r5" and "FIPS 100" respectively.
 Value type:: String.
 
 Description::
-Series information formatted according to the <<seriestemplate>>.
-
+Series information formatted according to the <<journaltemplate>> or <<seriestemplate>>
+(depending on whether the bibliographic item is a journal article or journal,
+or a different bibliographic type)..
 
 
 ==== Information resource types
@@ -2111,12 +2230,12 @@ Example:
 [source,yaml]
 ----
 template:
-  book: "{{ creatornames }} ({{role}}) . {{labels['qq-open']}}{{ title }}{{labels['qq-close']}} [{{medium}}] . {{ edition | capitalize_first }}."
-  article: "{{ creatornames }} ({{role}}) . {{labels['q-open']}}{{ title }}{{labels['q-close']}}. {{ series }} [{{medium}}]"
+  book: "{{ creatornames }} ({{role}}) $$$ {{labels['punct']['open-title']}}{{ title }}{{labels['punct']['close-title']}} [{{medium}}] $$$ {{ edition | capitalize_first }}"
+  article: "{{ creatornames }} ({{role}}) $$$ {{labels['punct']['open-secondary-title']}}{{ title }}{{labels['punct']['close-secondary-title']}}$$$ {{ series }} [{{medium}}]$$$ {{ extent }}
 ----
 
 
-== Composite information resource templates
+=== Composite information resource templates
 
 [[seriestemplate]]
 === Series template (`seriestemplate`)
@@ -2427,10 +2546,120 @@ Please refer to that section for details on the fields available for use in the
 `journaltemplate`.
 
 
+=== Citation templates (`citetemplate`)
+
+==== General
+
+Different bibliographic styles have different ways of referencing a document from the
+bibliography. Relaton Render provides a set of citations for each defined citation style,
+to meet this requirement. 
+
+The different citation types defined by default for Relaton Render are listed below.
+
+==== Author-date citations
+
+Author-date citations use the combination of author surname(s) (as processed in <<authorcitetemplate>>)
+and date (year) of publication, to identify a reference.
+
+Two or more citations that are ambiguous because
+they have the same author and date (year) are disambiguated by appending a letter to the year.
+The citation templates include this disambiguating letter on the year where applicable.
+
+Author-date citations are often used parenthetically and discursively; the following are all
+legal ways of providing an author-date citation:
+
+====
+This claim is ludicrous (Smith 1980a).
+
+Smith (1980a) makes a ludicrous claim.
+
+Smith unfortunately made a ludicrous claim (1980a).
+
+See Smith (1980a, 1980b).
+====
+
+The following variants of author-date citation styling are currently supported by Relaton Render:
+
+`author_date`:: author then date, with no punctuation
+`author_date_br`:: author, followed by date in parentheses
+`author`:: author in isolation
+`date`:: date in isolation
+
+In Metanorma, the foregoing example would be encoded as follows:
+
+[source,asciidoc]
+----
+This claim is ludicrous (<<ref1;style=author_date%>>).
+
+<<ref1;style=author_date_br%>> makes a ludicrous claim.
+
+<<ref1;style=author%>> unfortunately made a ludicrous claim <<ref1;style=year%>>.
+
+See Smith (<<ref1;style=year%>>, <<ref2;style=year%>>).
+----
+
+Some citation styles have conventions to combine multiple author-date citations
+(e.g. "Smith 1980a" + "Smith 1980b" + "Smith 1990" + "Jones 1991" can be rendered as
+"(Smith 1980a, 1980b, 1990; Jones 1991)". Neither Metanorma nor Relaton Render does not 
+currently support such combinations, and if it is supported in the future, it will likely be
+the responsibility of Metanorma, as a document renderer.
+
+[[reference-tag]]
+==== Identifier citations
+
+The norm for standards (which are the primary type of resource cited in Metanorma, for which
+Relaton Render has been developed) is the document identifier. Different standards organisations
+have different conventions for rendering the document identifier, including the option of switching
+instead to an ordinal number of reference.
+
+In order to support this kind of referencing, the `reference_tag` style presents the reference tag
+of the resource: these are the contents of the
+`biblio-tag` element of Relaton, which is the initial identifier given in a bibliography; this
+could be a document identifier (e.g. `ISO 643`), an ordinal number (e.g. `[33]`), or a mnemonic
+identifier (e.g. `[Relatn]`).
+
+==== Title citations
+
+`title`:: Title of resource (rendered the same way as in the full citation record: <<field-title>>)
+`title_reference_tag`:: Title of resource, followed by the reference tag of the source (<<reference-tag>>)
+
+==== Full citation
+
+The `full` citation format replicates the full bibliographic record citation (as generated by
+`template`). However, whereas the bibliographic record citation can conclude in a bibliographic terminator
+(<<bibliographic-terminator>>), such as a period, the full citation is used inside of running text, and does not.
+
+==== Short citation
+
+The `short` citation format is a truncated version of the full citation, intended expressly for use
+in running text. In contemporary practice, this is restricted to the humanities, particulary in footnoted
+citations; but there is some use of it in ISO standards (for sources of terms).
+
+The short citation format template is defined like the full citation template, with a different template
+for each bibliographic type.
+
+[example]
+.Short citation vs full citation
+====
+[source,yaml]
+----
+citetemplate:
+  short:
+    book: "{{ creatornames }} ({{role}}) $$$ {{labels['punct']['open-title']}}{{ title }}{{labels['punct']['close-title']}} $$$ {{ edition | capitalize_first }}$$$ ({{ series }}$$$|) {% if place %}{{place}}{%else%}{{ labels['no_place']}}{%endif%}: {{publisher}}$$$ {{date}}$$$"
+template:
+  book: "{{ creatornames }} ({{role}}) $$$ {{labels['punct']['open-title']}}{{ title }}{{labels['punct']['close-title']}} [{{medium}}] $$$ {{ edition | capitalize_first }}$$$ ({{ series }}$$$|) {% if place %}{{place}}{%else%}{{ labels['no_place']}}{%endif%}: {{publisher}}$$$ {{date}}$$$ {{ labels['updated'] | capitalize }}:_{{date_updated}}$$$ {{ authoritative_identifier | join: '$$$ ' }}$$$ {{ other_identifier | join: '$$$ ' }}$$$ {{size}}$$$"
+----
+====
+
+[[liquid]]
 == Working with Liquid in Relaton Render templates
 
-=== Templating rules
+=== General
 
+The Liquid templating language (https://shopify.github.io/liquid/[]) is extensively used
+in Metanorma, and is the templating language used by Relaton Render to generate citation strings
+based on parsed Relaton fields. There has been some enhancement of Liquid templating rules
+to meet Relaton Render requirements.
 
 === Liquid filters
 
@@ -2445,7 +2674,10 @@ also available.
 ==== Capitalize first (`capitalize_first`)
 
 `capitalize_first` capitalises only the first word in a string, and does not
-lowercase other words in the string.
+lowercase other words in the string. If any of the text in a string contains XML
+tags (including `<esc>`, which instructs internationalisation to ignore the current
+span, as well as Metanorma XML formatting directives like `<em>` for italics),
+the filter ignores those tags.
 
 [example]
 ====
@@ -2457,7 +2689,7 @@ lowercase other words in the string.
 
 Capitalise any content in the string not surrounded by `+++`. This is to ensure
 that creator names are capitalised without also capitalising any connectives like
-"and" or "et al."
+"and" or "et al." Again, any XML tags in the string are ignored.
 
 [example]
 ====
@@ -2521,6 +2753,7 @@ i.e. space within Liquid delimiters, such as `{% %}` and `{{ }}`, is ignored.
 ====
 
 Within a template, content fields are delimited by white space characters.
+This is important for applying rules around deleting empty content fields (<<empty-fields-omitted>>).
 
 [example]
 ====
@@ -2541,7 +2774,7 @@ In the expression `({{date}}) .`, the full stop is rendered regardless of
 whether or not the `date` is present.
 
 On the other hand, in the expression of `{{date}}.`, if `date` is empty, the
-full stop will not be rendered.
+full stop will not be rendered (<<empty-fields-omitted>>).
 ====
 
 Space characters between punctuation and before punctuation is automatically
@@ -2606,6 +2839,7 @@ the content fields.
 space separation.
 ====
 
+[[empty-fields-omitted]
 ===== Empty content fields are omitted
 
 If the Liquid rendering expression in a content field gives an empty result, the
@@ -2614,10 +2848,12 @@ the rendered output.
 
 This means that the surrounding text and punctuation in the content field
 (text characters adjacent to the empty Liquid expression) are also omitted.
+This allows not only fields, but punctuation and text associated with a field,
+to be treated as optional.
 
 [example]
 ====
-In the `[{{medium}}]` content field, it contains a Liquid expression
+The `[{{medium}}]` content field contains a Liquid expression
 `{{medium}}` and enclosing square brackets. If the value of `medium` is empty,
 both the brackets and the Liquid expression will not be rendered.
 ====
@@ -2632,18 +2868,16 @@ the preceding "comma, space" is omitted as well as the following edition label.
 i.e. it renders "1st ed.", but will not render " ed.".
 ====
 
-
-
-
 [[field-labels]]
 == Localization labels from internationlization files
 
 Relaton Render accepts a set of language-specific labels for
 internationalization of commonly used word labels in citation formats.
 
-These labels are defined in the internationalization files and exposed to the
+These labels are defined in the internationalization files passed to the initialisation
+of Relaton Render, and exposed to the
 rendering template context inside the `labels` field as a map
-to support the implementation of localized citation formats.
+to support the implementation of localized citation formats. 
 
 [example]
 ====
@@ -2652,6 +2886,11 @@ formats in different languages.
 ====
 
 Value type: map.
+
+Relaton Render can be configured to use more than one internationalization file;
+the choice of internationalization configuration to apply to a citation
+can be set in code, and can extend to a specific template or field.
+
 
 The following keys are given in the respective languages.
 
@@ -2681,10 +2920,11 @@ draft: "draft %"
 editor:
   sg: ed.
   pl: eds.
-qq-open: <em>
-qq-close: </em>
-q-open:
-q-close:
+punct:
+  open-title: <em>
+  close-title: </em>
+  open-secondary-title:
+  close-secondary-title:
 stage:
   valid: Valid
   withdrawn: Withdrawn
@@ -2998,7 +3238,7 @@ edition: edition
 ====
 [source,liquid]
 ----
-{{ labels['edition'] | case_up }} {{ edition_num }}
+{{ labels['edition'] | upcase }} {{ edition_num }}
 ----
 
 Renders as:
@@ -3006,7 +3246,8 @@ Renders as:
 * "Edition 2"
 ====
 
-`edition_ordinal`:: Used for ordinal edition statements.
+`edition_ordinal`:: Used in code for ordinal edition statements, in order to define how
+`edition` is rendered.
 +
 [example]
 ====
@@ -3014,20 +3255,21 @@ Renders as:
 ----
 edition_ordinal: "{{ var1 | ordinal_num: '', '' }} edition"
 ----
+
+This is defined with inflection categories in the `isodoc-i18n` gem (gender and case);
+these are not applicable in English, hence `'', ''`.
 ====
+
+`edition_cardinal`:: Used in code for cardinal edition statements,  in order to define how
+`edition` is rendered..
 +
 [example]
 ====
-[source,liquid]
+[source,yaml]
 ----
-{{ edition_num | ordinal_num: '', '' }} {{ labels['edition'] }}
+"Edition {{ var1 }}"
 ----
-
-Renders as:
-
-* "2nd edition"
 ====
-
 
 ==== Draft label (`draft`)
 
@@ -3056,10 +3298,9 @@ Renders as:
 ==== Status labels (`stage`)
 
 `stage`:: Provides status indicators for documents.
-The following sub-keys are supported:
-
-`valid`::: Label used to indicate a valid status (e.g., "Valid")
-`withdrawn`::: Label used to indicate a withdrawn status (e.g., "Withdrawn")
+The sub-keys of this indcator are specific to how SDOs define status indicators,
+and are specific to the host organisation's stylesheet; they typically include 
+values such as `valid`, `published`, `draft`, and `withdrawn`.
 
 [example]
 ====
@@ -3124,7 +3365,7 @@ extent:
 [source,liquid]
 ----
 {% assign pg = labels['extent'].page %}
-{% if page contains '-' %}{{ pg.pl | replace: '%', page }}{% else %}{{ pg.sg | replace: '%', page }}{% endif %}
+{% if page_raw contains '-' %}{{ pg.pl | replace: '%', page_raw }}{% else %}{{ pg.sg | replace: '%', page_raw }}{% endif %}
 ----
 
 Renders as:
@@ -3133,6 +3374,10 @@ Renders as:
 * "pp. 23-45"
 * "vol. 3"
 ====
+
+NOTE: Explicit templating rules such as the foregoing are not usually necessary, as Relaton Render code
+determines whether to apply the singular or the plural suffix to `page_raw`, generating the formatted field `page` within `extent`.
+So the foregoing is equivalent to the page component of `extent`, as processed by `extenttemplate`.
 
 `size`:: Provides formatted labels for size indicators.
 The following sub-keys are supported:
@@ -3181,18 +3426,128 @@ Renders as:
 ====
 
 
-==== Quotation marks (`qq-open`, `qq-close`, `q-open`, `q-close`)
+NOTE: Explicit templating rules such as the foregoing are not usually necessary, as Relaton Render code
+determines whether to apply the singular or the plural suffix to `page_raw`, generating the formatted field `page` within `size`.
+So the foregoing is equivalent to the page component of `size`, as processed by `sizetemplate`.
 
-Primary and secondary quotation marks are defined in labels, and subject to
-internationalization.
+==== Punctuation
 
-Primary quotation marks::
-Open::: `{{ labels['qq-open'] }}`
-Close::: `{{ labels['qq-close'] }}`
+Puncutation marks are defined in the `isodoc` gem for the various languages supported by Metanorma.
+They can be invoked through `labels["punct"][...]` in templates. They are also used to transform
+instances of punctuation in a template to the target language indicated for the document (or citation);
+the content of Relaton fields inserted into the templates is almost always excluded from such transformation.
 
-Secondary quotation marks::
-Open::: `{{ labels['q-open'] }}`
-Close::: `{{ labels['q-close'] }}`
+.Punctuation for English
+====
+[source,yaml]
+----
+punct:
+  colon: ":"
+  comma: ","
+  enum-comma: ","
+  semicolon: ";"
+  period: "."
+  close-paren: ")"
+  open-paren: "("
+  close-bracket: "]"
+  open-bracket: "["
+  question-mark: "?"
+  exclamation-mark: "!"
+  emphasis-mark: ""
+  em-dash: —
+  en-dash: –
+  number-en-dash: –
+  open-quote: '“'
+  close-quote: '”'
+  open-nested-quote: '‘'
+  close-nested-quote: '’'
+  ellipse: …
+----
+====
+
+.Punctuation for Simplified Chinese
+====
+[source,yaml]
+----
+punct:
+  colon: "：" 
+  comma: "，"
+  enum-comma: "、"
+  semicolon: "；"
+  period: "。" 
+  close-paren: "）" 
+  open-paren: "（"
+  close-bracket: "］"
+  open-bracket: "［"
+  question-mark: "？"
+  exclamation-mark: "！"
+  emphasis-mark: •
+  em-dash: ⸺ 
+  en-dash: "–" 
+  number-en-dash: "〜"
+  open-quote: "“" 
+  close-quote: "”"
+  open-nested-quote: "’"
+  close-nested-quote: "’"
+  ellipse: ⋯⋯ 
+----
+====
+
+===== Title marks
+
+Titles of resources can be delimited with punctuation or formatting markup.
+This can be configured in the punctuation markup. 
+
+A distinction is made between primary titles (`open-title`, `close-title`),
+and secondary titles (e.g. chapters in books, articles in journals:
+`open-secondary-title`, `close-secondary-title`).
+
+.Title marks for English
+====
+[source,yaml]
+----
+punct:
+  open-title: <em>
+  close-title: </em>
+  open-secondary-title:
+  close-secondary-title:
+----
+====
+
+.Title marks for Traditional Chinese
+====
+[source,yaml]
+----
+punct:
+  open-title: 《
+  close-title: 》
+  open-secondary-title: 〈
+  close-secondary-title: 〉
+----
+====
+
+====
+When invoked with a book chapter template,
+
+[source,yaml]
+----
+template:
+  inbook: "{{ creatornames }} ({{role}}) $$$ {{labels['punct']['open-secondary-title']}}{{ title }}{{labels['punct']['close-secondary-title']}} $$$ {{ labels['in'] | capitalize }}: {{ host_creatornames}} ({{ host_role}}) : {{labels['punct']['open-title']}}{{host_title}}{{labels['punct']['close-title']}} [{{medium}}] $$$ {{ edition | capitalize_first }}$$$ ({{ series }}$$$|) {% if place %}{{place}}{%else%}{{ labels['no_place']}}{%endif%}: {{publisher}}$$$ {{date}}$$$ {{size}}$$$ {{extent}}$$$ {{ labels['updated'] | capitalize }}:_{{date_updated}}$$$ {{ authoritative_identifier | join: '$$$ ' }}$$$ {{ other_identifier | join: '$$$ ' }}$$$ {{ uri }}$$$ {{ labels['at'] | capitalize}}:_{{ access_location }}$$$ [{{ labels['viewed'] }}:_{{date_accessed}}]$$$"
+----
+
+these templates will give the chapter title with no markup and the book title in italics for English:
+
+____
+Smith, J. Introduction. In: Smith, J. (ed.): _Citation practices worldwide_.
+____
+
+In Traditional Chinese, they will give the chapter title with single guilllemets, and the book title with double guillemets:
+
+____
+Smith, J. 〈Introduction〉  在: Smith, J. (编): 《Citation practices worldwide》
+____
+
+====
 
 [cols="2,1,2,2",options="header"]
 |===
@@ -3212,50 +3567,164 @@ XML tags.
 
 If these are used, they need not to be space-delimited from what they quote.
 
-[example]
 ====
-[source,liquid]
+
+[[bibliographic-terminator]]
+===== Bibliographic terminator
+
+A bibliographic citation may terminate in sentence-like punctuation according to the bibliographic
+style, if the style treats the bibliographic entry like a sentence. This is configured as the punctuation
+mark `biblio-terminator`. The terminator if present is used for bibliographic entries, returned under the key
+`formattedref`; it is not used for the inline citations given under `citation.full` and `citation.short`.
+
+.Terminate all bibliographic entries with period
+====
+[source,yaml]
 ----
-{{ labels['qq-open'] }}{{ title }}{{ labels['qq-close'] }}
+punct:
+  biblio-terminator: .
+----
+====
+
+.Do not terminate any bibliographic entries with punctuation
+====
+[source,yaml]
+----
+punct:
+  biblio-terminator: ""
+----
+====
+
+NOTE: In the case of the BIPM flavour of Metanorma, whether to use a terminator on a reference
+depends on whether it is a home standard or not.
+
+
+[[bibliographic-field-delimiter]]
+===== Bibliographic field delimiter
+
+Groupings of bibliographic fields are typically delimited by punctuation.  It is important to ensure
+that the delimiter can be customised to a given language's expectation, such as
+period (in Latin script practice) or ideographic space (in CJK practice). It is also important to ensure
+that a delimiter between fields is not conflated with a bibliographic terminator. 
+
+====
+If the two last fields in a citation are date and URL, and the URL is not provided, the citation
+will conclude with the date. A delimiter should appear between date and URL; it should not appear if
+the URL is omitted, and the final punctuation to appear in a citation should be determined by 
+`biblio-terminator` alone.
+====
+
+For that reason, such groupings of bibliographic fields are indicated by `$$$` in templates, and the value
+to substitute those instances of `$$$` with is given in `biblio-field-delimiter`.
+
+.Default bibliographic field delimiter for Latin script
+====
+[source,yaml]
+----
+punct:
+  biblio-terminator: ""
+  biblio-field-delimiter: ". "
 ----
 
-This renders the `title` field enclosed in the primary quotation marks defined
-for that locale, for instance:
+Given that value, the template
 
-* In Latin script: "<em>Introduction to Programming</em>"
-* In Traditional Chinese: "《程序設計概論》"
-* In Japanese: "「プログラミング入門」"
+[source,yaml]
+----
+{{ creatornames }} $$$ {{ title }} $$$ {{ date }} $$$ {{ uri }}
+----
+
+will be rendered as follows, for a citation with no URI:
+
+____
+Smith, J. Citation practices worldwide. 1990
+____
+
 ====
+
+Note that no final period appears: `biblio-terminator` is empty, `$$$` appears between fields,
+and `{{ date }}` is the final non-empty field.
+
+With the default setting of `biblio-field-delimiter`, space appears automatically after any
+punctuation. There are contexts in which such space needs to be suppressed, if punctuation already
+appears in the template; this is done by the `|` symbol in the template:
+
+.Suppress space after bibliographic field delimiter
+====
+[source,yaml]
+----
+{{ creatornames }} $$$ {{ title }} $$$ ({{ series }}$$$|) {{ date }}
+----
+
+This allows the series to be followed by a non-spacing field delimiter:
+
+Smith, J. Citation practices worldwide. (Bibliography 101.) 1990
+====
+
 
 ==== Ordinal labels (`ordinal_keys`, `OrdinalRules`)
 
-`ordinal_keys`:: A list of keys that are used to determine which fields should be
-rendered as ordinal numbers.
+`ordinal_keys`:: A list of keys that are used to determine which inflectional categories
+are to be applied to ordinal numbers.
 
 `OrdinalRules`:: A string that defines the rules for rendering ordinal numbers.
 
 [example]
+.Ordinal labels for Spanish
+====
+[source,yaml]
+----
+ordinal_keys: [gender]
+OrdinalRules: 
+  m: digits-ordinal-masculine
+  f: digits-ordinal-feminine
+----
+
+The Spanish configuration indicates that gender is required to generate ordinal numbers
+correctly, and that the `digits-ordinal-masculine` rule from https://github.com/twitter/twitter-cldr-rb[Twitter CLDR]
+is to be applied to masculine nouns, and `digits-ordinal-feminine` to feminine nouns. This is applied
+to editions in turn through the configuration rule 
+
+[source,yaml]
+----
+edition_ordinal: "{{ var1 | ordinal_num: 'edition', '' }} ed."`
+----
+
+i.e. look up the gender of 'edition' in Spanish, as given in
+
+
+[source,yaml]
+----
+edition: edición
+inflection:
+  edición:
+    grammar:
+      gender: f
+----
+
+and use it to generate the feminine ordinal number required for `edition`.
+All this is configuration for how `edition` is generated in code; the templates themselves
+only use `{{ edition }}`.
+====
+
+[example]
+.Ordinal labels for English
 ====
 [source,yaml]
 ----
 ordinal_keys: []
 OrdinalRules: digits-ordinal
 ----
+
+As English is not as richly inflected, no ordinal keys need be given; it is sufficent
+to give the `OrdinalRules` rule `digits-ordinal`, which generates `1st`, `2nd`, `3rd` etc.,
+or alternatively `spellout-ordinal`, which generates `first`, `second`, `third` etc.
+
 ====
 
-[example]
-====
-[source,liquid]
-----
-{{ edition_num | ordinal_num: '', '' }}
-----
+////
 
-This renders the `edition_num` field as an ordinal number, for instance:
-
-* "1st"
-* "2nd"
-* "3rd"
-====
+AGAIN, THIS HAS NOT YET BEEN IMPLEMENTED, AND DOCUMENTATION SHOULD IN NO WISE BE AHEAD
+OF IMPLEMENTATION, THAT IS INTENTIONALLY MISLEADING USERS
 
 [[date-format-labels]]
 ==== Date format labels (`date_formats`)
@@ -3312,6 +3781,7 @@ This renders the `date` field according to the date format defined in the
 * "June 1, 2023"
 * "June 1, 2023 12:00:00"
 ====
+////
 
 [[ formatting ]]
 == Formatting
@@ -3326,7 +3796,8 @@ Relaton Render does not add formatting to variables on its own: any formatting o
 resides in either the templates (including name templates), or the source XML values.
 That means that it is possible to use a different markup language, by providing your
 own templates; but in that case, any Metanorma XML formatting markup inside the Relaton XML
-source will also need to be transformed. 
+source will also need to be transformed. (This is done e.g. in `metanorma-ietf`,
+which generates citation in IETF RFC XML.)
 
 So for example the following Metanorma XML-based template uses `<em>`:
 
