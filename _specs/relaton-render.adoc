@@ -212,7 +212,14 @@ citations are rendered (e.g. distinct punctuation).
 
 === General
 
-A YAML configuration file defines the templates for a bibliographic style.
+A YAML configuration file defines the templates for a bibliographic style. The YAML configuration
+file for an instance of Relaton Render is defined in the `read_config` method of `Relaton::Render::General`,
+which in Metanorma is set for each flavor gem; if it is not, a default configuration is inherited from the
+`relaton-render` gem. 
+
+Calling `Relaton::Render::General.new` with the parameter `config` lets the user pass the filename of a second
+YAML file, which is merged with the default template from `read_config`: this allows the user to selectively
+overwrite fiels in the configuration.
 
 Every key in the YAML file points to a specific Liquid template that is used (or re-used)
 within the bibliographic style. The syntax of Liquid used by Relaton Render is defined under <<liquid>>.
