@@ -191,14 +191,14 @@ It may also be the first, unpublished expression of document A. Document A may
 be a Work or an Expression (e.g. a draft may be specific to an edition or
 translation). Document A may or may not be published. (_hasDraft_)
 
-preliminaryDraftOf::: document B is an immediate predecessor draft (unpublished
+predecessorDraftOf::: document B is an immediate predecessor draft (unpublished
 version) to document A, where the content of document B was modified to create
 document A.
-(_hasPreliminaryDraft_)
+(_hasPredecessorDraft_)
 
-revisionDraftOf::: document B is an immediate successor draft (unpublished
+successorDraftOf::: document B is an immediate successor draft (unpublished
 version) to document A, where the content of document A was modified to create
-document B. (_hasRevisionDraft_)
+document B. (_hasSuccessorDraft_)
 
 editionOf:: document B is a published revision of document A, or the first
 published Expression of document A. Document A is a Work, or else document A is
