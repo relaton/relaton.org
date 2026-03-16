@@ -2588,6 +2588,8 @@ and date (year) of publication, to identify a reference.
 Two or more citations that are ambiguous because
 they have the same author and date (year) are disambiguated by appending a letter to the year.
 The citation templates include this disambiguating letter on the year where applicable.
+In order to ensure that the disambiguating letter is included, use the field
+`disambiguated_date` instead of the original `date` field.
 
 Author-date citations are often used parenthetically and discursively; the following are all
 legal ways of providing an author-date citation:
@@ -2608,6 +2610,17 @@ The following variants of author-date citation styling are currently supported b
 `author_date_br`:: author, followed by date in parentheses
 `author`:: author in isolation
 `date`:: date in isolation
+
+These are by default encoded as:
+
+[soruce,asciidoc]
+----
+citetemplate:
+  author_date: "{{ author }} {{ disambiguated_date}}"
+  author_date_br: "{{ author }} ({{ disambiguated_date}})"
+  author: "{{ author }}"
+  date: "{{ disambiguated_date }}"
+----
 
 In Metanorma, the foregoing example would be encoded as follows:
 
