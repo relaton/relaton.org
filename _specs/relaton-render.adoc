@@ -1834,7 +1834,8 @@ Relaton object through the `nametemplate` template.
 | `creatornames` | `contributor[role.type='author' or role.type='performer' or role.type='adapter' or role.type='translator' or role.type='editor' or role.type='distributor' or role.type='authorizer']` | Yes | No | <<field-creatornames>>
 | `authorcite` | `contributor[role.type='author' or role.type='performer' or role.type='adapter' or role.type='translator' or role.type='editor' or role.type='distributor' or role.type='authorizer']` | Yes | No | <<field-authorcite>>
 | `role` | `contributor[role.description or role.type]` | No | No | <<field-role>>
-| `date` | `date[type='issued' or type='circulated']` | No | Yes | <<field-date>>
+| `date` | `date[type='published' or type='issued' or type='circulated']` | No | Yes | <<field-date>>
+| `disambiguated_date` | `date[type='published' or type='issued' or type='circulated']` | No | Yes | <<field-disambiguated-date>>
 | `date_updated` | `date[type='updated']` | No | Yes | <<field-date-updated>>
 | `date_accessed` | `date[type='accessed']` | No | Yes | <<field-date-accessed>>
 
@@ -2068,6 +2069,22 @@ Value type:: String.
 
 Description::
 The publication or circulation date. By default truncated to year only.
+
+[[field-disambiguated-date]]
+===== Disambiguated date field
+
+Value type:: String.
+
+Description:: 
+The publication or circulation date, with a disambiguating letter added to it in case two or more references
+have the same author(s). This is the date value used for author-date citations; it is also used in the bibliographic
+entries of any resources that we know will be cited as author-date.
+
+It is common for SDOs to cite standards and technical notes by document identifier, but monographs and articles
+by author date. In that case, the bibliography template should use `{{ date }}` for the latter, and `{{ disambiguated_date }}`
+for the former: it would be confusing for a standard to be dated in the bibliography as "1973a", when it will never be cited 
+by author-date. If no bibliographic types will be cited in the SDO by author-date, then `{{ disambiguated_date }}` will
+not be used in the templates.
 
 [[field-date-updated]]
 ===== Date updated field
