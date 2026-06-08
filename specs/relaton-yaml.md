@@ -1,0 +1,338 @@
+---
+title: Relaton YAML
+description: Structure for encoding `bibitem` as YAML objects.
+
+feature_with_priority: 6
+
+external_links:
+  - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc
+---
+
+The following structure is in place for encoding `bibitem` as YAML objects. The structure has not yet been generalised to `bibdata/ext`, the flavour-specific extensions of Relaton.
+
+> [!NOTE]
+> Relaton YAML can be used to represent bibliographic entries in Metanorma.
+
+If an element in Relaton XML has attributes, the content of the element is represented in YAML with a `content` key:
+
+```xml
+<title type="main">Geographic information</title>
+```
+
+```yaml
+title:
+  type: main
+  content: Geographic information
+```
+
+Any elements with a cardinality of many can be represented as arrays, but they can also be populated by a hash or single element. For example, a Relaton title can have multiple titles, and multiple scripts; so the following are equivalent:
+
+```yaml
+# Array of hashes
+title:
+  - type: main
+    content: Geographic information
+  - type: title-part
+    content: Part 1
+
+# Single Hash
+title:
+  type: main
+  content: Geographic information
+
+# Array of strings
+language:
+  - en
+  - fr
+
+# Single string
+language: en
+```
+
+In YAML, `on` is a reserved word, and thus cannot be used as a key. `value` is used as a synonym for `on` in dates.
+
+The structure below is given in YAML format:
+
+```yaml
+# bibliographic item anchor, used to crossreference within document
+id: ISO/TC211
+# date record was created
+fetched: '2019-06-30'
+# titles are an array, with a mandatory type and content, and optional format, language and script
+title:
+  - type: main
+    content: Geographic information
+  - type: subtitle
+    content: Geographic information subtitle
+    language: en
+    script: Latn
+    format: text/plain
+# type of document
+type: standard
+# document identifiers are an array, with a mandatory type and id component
+docid:
+  type: ISO
+  id: TC211
+# document number
+docnumber: '211'
+# edition
+edition: '1'
+# language is an array
+language:
+  - en
+  - fr
+# script is an array
+script:
+  Latn
+# version contains revision date and draft (as array)
+version:
+  revision_date: '2019-04-01'
+  draft: draft
+# note is an array of type and content
+biblionote:
+  type: bibnote
+  content: >
+      Mark set a major league
+      home run record in 1998.
+# document status has stage, and optional substage and iteration
+docstatus:
+  stage:
+    value: '30'
+    abbreviation: CD
+  substage:
+    value: '00'
+  iteration: final
+# date is an array, with mandatory type, and either an "on" value or a "from" and optional "to" value
+date:
+  - type: issued
+    value: '2014'
+  - type: published
+    from: '2014-04'
+    to: '2014-05'
+  - type: accessed
+    value: '2015-05-20'
+# abstract is an array, with content, and optional language, script, format
+abstract:
+  - content: >
+      ISO 19115-1:2014 defines the schema required for ...
+  - content: >
+      L'ISO 19115-1:2014 définit le schéma requis pour ...
+    language: fr
+    script: Latn
+    format: text/plain
+# contributors are an array of entity/role pairs, where entity is either person or organization.
+# The role is an array of type and description; it can be a an array of just string, which are treated
+# as the type.
+# Organisations have attributes name, url, abbreviation, subdivision, contacts, identifiers, logo.
+# Persons have attributes name, affiliation, contacts
+# Person names have attributes abbreviation, surname, completename, initials, forename, additions, prefixes.
+# Initials, forename, additions, prefixes are arrays.
+# Name field values are either strings, or hashes, with content and language and script attributes.
+# The language and script attribute can also be given on the name.
+# Contacts are an array, containing either addresses, or other fields.
+# Addresses are identified as hashes containing a city attribute; they can also contain a street
+# (which is an array), a postcode, a state, and a country. The other contact fields
+# are phones, emails, uris; they can contain a type.
+# Affiliations are an array, and they contains an organization, and an optional description.
+# The affiliation description can be a single string, or a hash of content, language, script, and format.
+contributor:
+  - organization:
+      name: International Organization for Standardization
+      url: www.iso.org
+      abbreviation: ISO
+      subdivision: division
+      logo:
+        image:
+          id: logo1
+          src: logo1.png
+          mimetype: image/png
+          filename: logo1.png
+          height: "100%"
+          width: "200"
+          alt: Logo 1
+          title: "Logo #1"
+          longdesc: Logo number 1
+    role:
+      type: publisher
+      description: Publisher role
+  - person:
+      name:
+        completename:
+          content: A. Bierman
+          language: en
+      affiliation:
+        - organization:
+            name: IETF
+            abbreviation: IETF
+            identifier:
+              - type: uri
+                id: www.ietf.org
+          description: Affiliation description
+      contact:
+        - address:
+            street:
+              - 8 Street St
+            city: City
+            postcode: '123456'
+            country: Country
+            state: State
+        - phone: '223322'
+          type: mobile
+    role: author
+  - organization:
+      name: IETF
+      abbreviation: IETF
+      identifier:
+        - type: uri
+          id: www.ietf.org
+    role:
+      publisher
+  - person:
+      name:
+        abbreviation: AB
+        language: en
+        initial:
+          - A.
+        surname: Bierman
+      affiliation:
+        -  organization:
+               name: IETF
+               abbreviation: IETF
+           description:
+             content: Affiliation description
+             language: en
+             script: Latn
+      identifier:
+        - type: uri
+          id: www.person.com
+    role:
+      author
+# copyright consists of an owner (a hash containing the fields of an organisation),
+# a "from" date, and an optional "to" date
+copyright:
+   owner:
+     name: International Organization for Standardization
+     abbreviation: ISO
+     url: www.iso.org
+   from: '2014'
+   to: '2020'
+# link is an array of URIs, with a type and content
+link:
+  - type: src
+    content: https://www.iso.org/standard/53798.html
+  - type: obp
+    content: https://www.iso.org/obp/ui/#!iso:std:53798:en
+  - type: rss
+    content: https://www.iso.org/contents/data/standard/05/37/53798.detail.rss
+# relations are an array of type, bibitem, locality, source_locality, and description.
+# bibitem contains any of the attributes of a bibliographic item.
+# locality is an array of locality_stack which is an array of hash of type,
+#   reference_from, and optionally reference_to
+# source_locality is an array of source_locality_stack which is similar to locality_stack
+# description is optional and contains content and optional format, language, ans script.
+relation:
+  - type: updates
+    bibitem:
+      formattedref: ISO 19115:2003
+    locality:
+      locality_stack:
+        type: page
+        reference_from: '7'
+        reference_to: '10'
+    source_locality:
+      source_locality_stack:
+        - type: volume
+          reference_from: '1'
+        - type: chapter
+          reference_from: '2'
+  - type: updates
+    bibitem:
+      type: standard
+      formattedref:
+        content: ISO 19115:2003/Cor 1:2006
+        format: text/plain
+    description:
+      content: supersedes
+      format: text/plain
+  - type: partOf
+    bibitem:
+      title:
+        type: main
+        content: Book title
+        format: text/plain
+# series are an array, containing a title, a type, a formattedref, a place,
+# an organization (string), an abbreviation, a from, a to, a number, and a partnumber.
+# The title is mandatory, and all other fields are optional.
+# The series title, like the titles of bibliographic items, contains a type,
+# content, and optional language, script, and format attributes.
+# The abbreviation and formattedref are either a string,
+# or a hash containing content, language, and script.
+series:
+  - type: main
+    title:
+      type: original
+      content: ISO/IEC FDIS 10118-3
+      language: en
+      script: Latn
+      format: text/plain
+    place: Serie's place
+    organization: Serie's organization
+    abbreviation:
+      content: ABVR
+      language: en
+      script: Latn
+    from: '2009-02-01'
+    to: '2010-12-20'
+    number: serie1234
+    partnumber: part5678
+  - title:
+      - content: Series
+        language: en
+        script: Latn
+      - content: Séries
+        language: fr
+        script: Latn
+        format: text/plain
+# medium contains a form, a size, and a scale
+medium:
+  form: medium form
+  size: medium size
+  scale: medium scale
+# place is an array of strings or hashes. Can have name or city, region and country.
+# Name or city is mandatory, region and country are optional.
+# String and hash with name are equivalent.
+place:
+  - bib place
+  - city: Geneva
+    region:
+      - name: Region
+    country:
+      - iso: CH
+        name: Switzelznd
+        recommended: true
+# extent is an array, localities are an array of locality_stack
+extent:
+  locality:
+    type: section
+    reference_from: '7'
+    reference_to: '10'
+# accesslocation is an array of strings
+accesslocation:
+  - accesslocation1
+  - accesslocation2
+# classification is an array of type and value
+classification:
+  type: type
+  value: value
+# validity contains a begins date, an ends date, and a revision date
+validity:
+  begins: '2010-10-10 12:21'
+  ends: '2011-02-03 18:30'
+  revision: '2011-03-04 09:00'
+# keyword is an array of strings or hashes of content, language, script, and format
+keyword:
+  - Keyword
+  - Key Word
+# license is a string
+license: License
+```

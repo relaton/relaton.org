@@ -1,0 +1,109 @@
+---
+title: Edition
+description: Categories of editions in Relaton
+
+---
+
+## Edition {#edition}
+
+* Source: ISO 690, 4.5
+* Serialisation: `bibitem/edition, bibitem/version, bibitem/date`
+
+Editions are modelled as free text, given the variety of ways they can be represented.
+For that reason, the full word "edition" needs to appear after any ordinal.
+The optional `number` attribute can be used to provide a numeric equivalent.
+
+As described in [Date Types](/model/production),
+dates when a resource was last accessed are modelled as `date[@type = "accessed"]`;
+dates when a resource was last updated are modelled as `date[@type = "updated"]`.
+
+The `version` element can be used to give more detailed information about resource versions,
+including version numbers (drafts) and version dates (which are differentiated from
+`date`, since they are often used as version identifiers).
+
+> Anon [Thomas Robert MALTHUS]. *An Essay on the Principle of Population*. 1st edition.
+> London: J. Johnson, 1798.
+
+```xml
+<bibitem type="book">
+  <title>An Essay on the Principle of Population</title>
+  <date type="published"><on>1798</on></date>
+  <contributor>
+    <role type="author"/>
+    <person><name><completename>Anon</completename></name></person>
+    <note>Thomas Robert MALTHUS</note>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <person><name><completename>J. Johnson</completename></name></person>
+  </contributor>
+  <edition number="1">1st edition</edition>
+  <place>London</place>
+</bibitem>
+```
+
+> SKOUSEN, Mark. *The Structure of Production*. New revised edition.
+> New York: New York University Press, 2015.
+
+```xml
+<bibitem type="book">
+  <title>The Structure of Production</title>
+  <date type="published"><on>2015</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Skousen</surname>
+        <forename>Mark</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization><name>New York University Press</name></organization>
+  </contributor>
+  <edition>New revised edition</edition>
+  <place>New York</place>
+</bibitem>
+```
+
+> When did the sounds of 'w' and 'v' change in High German?
+> *Stack Exchange: Linguistics Beta*.
+> Updated 8 May 2017 [viewed 10 May 2018].
+> Available from: https://linguistics.stackexchange.com/questions/22872/when-did-the-sounds-of-w-and-v-change-in-high-german
+
+```xml
+<bibitem type="webresource">
+  <title>When did the sounds of 'w' and 'v' change in High German?</title>
+  <uri>https://linguistics.stackexchange.com/questions/22872/when-did-the-sounds-of-w-and-v-change-in-high-german</uri>
+  <date type="updated"><on>2017-05-08</on></date>
+  <date type="accessed"><on>2018-05-10</on></date>
+  <relation type="includedIn">
+    <bibitem type="website">
+      <title>Stack Exchange: Linguistics Beta</title>
+    </bibitem>
+  </relation>
+</bibitem>
+```
+
+> MOZILLA FOUNDATION. Mozilla Firefox version 60.4.0 ESR [computer program]. Available from: https://www.mozilla.org/. [viewed 2019-01-11].
+
+```xml
+<bibitem type="software">
+  <title>Mozilla Firefox</title>
+  <uri>https://www.mozilla.org/</uri>
+  <date type="accessed">2019-01-11</date>
+  <contributor>
+    <role type="author"/>
+    <organization>
+      <name>Mozilla Foundation</name>
+    </organization>
+  </contributor>
+  <version>
+    <draft>60.4.0 ESR</draft>
+  </version>
+  <medium>
+    <content>computer program</content>
+  </medium>
+</bibitem>
+```

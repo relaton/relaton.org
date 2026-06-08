@@ -1,0 +1,325 @@
+---
+title: Production
+description: Categories of place and date of publication and publisher in Relaton
+
+---
+
+## Production {#production}
+
+### General
+
+* Source: ISO 690, 4.6
+* Serialisation: `bibitem/place, bibitem/contributor[role@type = "publisher"], bibitem/date`
+
+### Place
+
+Strictly speaking the place of production
+is an attribute of the publisher, and it can in fact be modelled as
+`bibitem/contributor[role@type = "publisher"]/organization/address/city`.
+
+However, it is modelled as a top-level attribute of the bibliographic item
+to allow the place to be extracted by consumers of the serialisation more readily,
+to allow multiple locations to be associated with the publisher, and to allow
+only one of the places of the publisher to be associated with the production of the item.
+
+A URI in a geographical registry may optionally be given as `place/@uri`.
+A region within which the place is located may be given as `place/@region`,
+for disambiguation purposes; using a ISO 3166 code for a country or subnational
+region is recommended.
+
+> SANGSTER, R. B. *Roman Jakobson and beyond*. Berlin, New York & The Hague: Mouton, 1984.
+
+```xml
+<bibitem type="book">
+  <title>Roman Jakobson and beyond</title>
+  <date type="published"><on>1984</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Sangster</surname>
+        <initial>R. B.</initial>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Mouton</name>
+    </organization>
+  </contributor>
+  <place>Berlin</place>
+  <place>New York</place>
+  <place>The Hague</place>
+</bibitem>
+```
+
+> London (Ontario)
+
+```xml
+<place uri="https://en.wikipedia.org/wiki/London,_Ontario" region="CA-ON">London (Ontario)</place>
+```
+
+### Publisher
+
+The publisher is a subclass of creator ([Creator](/model/contributor)).
+
+ISO 690, 4.1 differentiates between
+"publisher, online information provider, production company" and
+"distributor, online host".
+
+Of the classes of creator that can be used as the publisher,
+"publisher or production company" and "printer or manufacturer" have
+`bibitem/contributor/role@type = "publisher"`;
+"distributor or issuing body" and "sponsoring body" have
+`bibitem/contributor/role@type = "distributor"`.
+
+ISO 690, 4.6 allows that distributors, issuers and sponsors
+can be named in addition to publishers.
+
+Any restrictions on access to a resource imposed by an online host
+(e.g. geographical restrictions) should be indicated in `bibitem/note`.
+
+### Date {#date}
+
+For a point date, only `date/on` is populated. For a date range, `date/from`
+and `date/to` are populated. If the range is ongoing,
+the `date/to` element is left out.
+
+The date for `date/on`, `date/from` and `date/to` is by default given as a
+Gregorian date/time, following the conventions
+of ISO 8601; in an XML serialisation, they would be expected to follow
+the XML Schema `xs:datetime` representation ([see here](https://www.w3.org/TR/xmlschema-2/)).
+
+However bibliographic
+dates often contain information that cannot be restricted to an ISO 8601 date
+(dates in other calendars, date corrections; other subdivisions of the year;
+approximate date or no date.)
+
+For that reason, the
+model allows dates to be expressed in text instead of as an ISO 8601 date
+(`date/on@text`, `date/from@text`, `date/to@text`), or as well as an ISO 8601
+date if a Gregorian date is still applicable.
+
+If the textual value of a date is a date range, and ISO 8601
+dates are still to be provided for the start and end of the date range, then
+the textual value is repeated for `date/from@text` and `date/to@text`.
+
+Date corrections may also involve indications of provenance.
+
+The date of copyright is associated expressly with the copyright holder, in
+`bibitem/copyright/date/from`. Unlike other bibliographic dates, the copyright
+date can only have a year value.
+
+> ROGET, Peter Mark. *Roget's Thesaurus*. Revised by
+> Susan M. LLOYD. Burnt Mill, Harlow, Essex: Longman Group Limited, 1982 [1852].
+
+```xml
+<bibitem type="book">
+  <title>Roget's Thesaurus</title>
+  <date type="created"><on>1852</on></date>
+  <date type="updated"><on>1982</on></date>
+  <date type="published"><on>1982</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Roget</surname>
+        <forename>Peter</forename>
+        <forename>Mark</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="editor">revised</role>
+    <person>
+      <name>
+        <surname>Lloyd</surname>
+        <forename>Susan</forename>
+        <forename>M.</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Longman Group Limited</name>
+    </organization>
+  </contributor>
+  <place>Burnt Mill, Harlow, Essex</place>
+</bibitem>
+```
+
+> 2018-05-09, 21:33:28
+
+```xml
+<date type="created">
+  <on>2018-05-09T21:33:28</on>
+</date>
+```
+
+> Islamic calendar 1439 [2017-2018]
+
+```xml
+<date type="created">
+  <from text="Islamic calendar 1439">2017</from>
+  <to text="Islamic calendar 1439">2018</to>
+</date>
+```
+
+> 1959 [i.e. 1995]
+
+```xml
+<date type="created">
+  <on>1959</on>
+</date>
+<date type="created" source="supplied">
+  <on text="1959 [i.e. 1995]">1995</on>
+</date>
+```
+
+> Michaelmas term (Oxford), 2002
+
+```xml
+<date type="created">
+  <from text="Michaelmas term (Oxford), 2002">2002-10-91</from>
+  <to text="Michaelmas term (Oxford), 2002">2002-12-17</to>
+</date>
+```
+
+> 1650?
+
+```xml
+<date type="created" text="1650?">
+  <on>1650</on>
+</date>
+```
+
+> [no date]
+
+```xml
+<date type="created" text="[no date]"/>
+```
+
+> 1951 copied 1957
+
+```xml
+<date type="created">
+  <on>1951</on>
+</date>
+<date type="copied">
+  <on>1957</on>
+</date>
+```
+
+> 1951-
+
+```xml
+<date type="published">
+  <from>1951</from>
+</date>
+```
+
+> (c) ISO, 2018
+
+```xml
+<copyright>
+  <from>1951</from>
+  <owner><organization><name>ISO</name></organization></owner>
+</copyright>
+```
+
+#### Bibliographic date types {#datetypes}
+
+Dates are associated with specific phases of the production of a bibliographic
+item, and those phases are named through `date@type`.
+
+##### Common dates
+
+The default type used in bibliography
+is the date of publication (`date[@type = "published"]`), but the "created",
+"updated", "unchanged", and "copied" dates in particular
+are often given where they differ from the date of publication.
+
+The date of transmission is used instead of the date of publication
+for a broadcast.
+
+`created`
+: Date a resource was created. (If there have been multiple versions or editions, this
+date applies to the first version.)
+
+`published`
+: Date a resource was published (distributed by the publisher).
+
+`accessed`
+: Date a resource was last accessed by the bibliographer; routinely used
+for online publications. (Unlike in ISO 690, no distinction is made between
+"viewed" and "accessed" based on whether the resource is human-readable or
+machine-readable.)
+
+`updated`
+: Date a resource was updated and republished. Used for new versions and editions.
+
+`corrected`
+: Date a resource was corrected and republished. Used for new versions of documents,
+in cases where the correction is not considered to amount to a new edition of the document.
+(This is a subjective distinction made by the publisher.)
+
+`unchanged`
+: Date a resource was reprinted, i.e. republished without any changes.
+
+`circulated`
+: Date a draft version of a resource was circulated. Drafts by definition
+are not published, so `circulated` is used instead of `published` for draft resources.
+(For standards, this is associated with the latest transition to
+a formally defined preparation stage, such as Working Draft or Committee Draft.)
+
+`transmitted`
+: Date a resource was broadcast.
+
+`copied`
+: Date a resource was physically copied, or recreated without any substantial
+change in content (allowing for change in medium).
+
+`adapted`
+: Date a resource was adapted for a new purpose or audience, with some change
+in content (includes translation).
+
+`announced`
+: Date that the existence of the resource was made public knowledge;
+applies whether the resource has already been created or not, and whether it is to be
+published or not.
+
+The date of publication is taken to be the date when the current version of the resource
+was published, unless a separate "unchanged", "updated" or "copied" date is given;
+in that case, the date of publication is assumed to be the date of initial publication.
+
+The date of creation is taken to apply to the work instantiated by the resource,
+rather than to a specific format or edition. The latter are represented by the date
+of adaptation and of update, respectively.
+
+##### Dates pertaining to standards
+
+The repertoire of date types is expanded to deal with the particular requirements
+of standards shown below.
+
+`implemented`
+: Date a standard takes effect, becomes active.
+
+`obsoleted`
+: Date a standard becomes no longer in effect, was revoked.
+
+`confirmed`
+: Date a standard is renewed to take effect by an issuing authority.
+
+`issued`
+: Date a standard is authorised for publication.
+
+`vote-started`
+: Date the vote for a draft of the standard started.
+
+`vote-ended`
+: Date the vote for a draft of the standard ended.
+
+`stable_until`
+: The document is guaranteed not to be changed or updated until this date.

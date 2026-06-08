@@ -1,0 +1,15 @@
+---
+title: Citation guide for Digital Object Identifiers (DOI)
+flavor: Digital Object Identifiers (DOI)
+description: Cite standard metadata from CrossRef.org using DOI identifiers
+---
+
+To cite a standard use DOI (Digital Object Identifier) prefixed with "doi:". For
+example, to cite "10.6028/nist.ir.8245" use:
+
+>
+> ```
+> doi:10.6028/nist.ir.8245
+> ```
+
+To collect metadata the relaton-doi gem makes a few requests to the CrossRef API. It may take a few seconds to get the metadata.

@@ -5,3 +5,11 @@ https://twitter.com/RiboseUS
 (ht|f)tps?://.*\.?example\.(com|org).*
 file://.*
 https://gravatar.com/*
+https://www.iec.ch/.*
+https://www.electropedia.org/.*
+https://documents.un.org/.*
+https://standards.cen.eu/.*
+https://linguistics.stackexchange.com/.*
+https://www.ifla.org/.*
+http://id.loc.gov/.*
+https://hdl.handle.net/.*

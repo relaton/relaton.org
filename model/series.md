@@ -1,0 +1,152 @@
+---
+title: Series
+description: Series in Relaton
+
+---
+
+## Series title and number {#series}
+
+### General
+
+* Source: ISO 690, 4.8, ISO 690, 5.2
+* Serialisation: `bibitem/series`
+
+### Journals
+
+Articles have their journal title modelled as the series title of the article item.
+However, the journal volume and issue should be modelled as part of the article
+item extent ([Numeration](/model/numeration)), rather than as part of the series (ISO 690, 4.7).
+
+### Standards
+
+Standards body identifiers for standards (ISO 690, 5.9) are modelled as series numbers.
+
+> ISO 690, *Information and documentation -- Guidelines for bibliographic references and citations to information resources*.
+
+```xml
+<bibitem type="standard">
+  <title>Information and documentation -- Guidelines for bibliographic references and citations to information resources</title>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+    </organization>
+  </contributor>
+  <series>
+    <title>ISO</title>
+    <number>690</number>
+  </series>
+</bibitem>
+```
+
+### Archival materials
+
+The collection or fonds of archival material is modelled as a series.
+
+### Qualifiers
+
+Organization and Place of Publication can be added to series titles for disambiguation.
+Organization in this instance is only modelled as a string, rather than as a detailed
+object (cf. [Organisation](/model/contributor#organisation)). The `formattedTitle` element is used to enforce the formatting
+of the series title and its qualifiers.
+
+> *Life*. MDPI.
+> *Life* (Basel). (https://en.wikipedia.org/wiki/Life_(journal))
+
+```xml
+<series>
+  <title>Life</title>
+  <place>Basel</place>
+  <organization>MDPI</organization>
+  <formattedTitle>*Life* (Basel)</formattedTitle>
+</series>
+```
+
+> *Life*. (New York). (https://en.wikipedia.org/wiki/Life_(magazine))
+
+```xml
+<series>
+  <title>Life</title>
+  <place>New York</place>
+</series>
+```
+
+### Earlier and later titles
+
+The current title of a series is given with `series@type` as "main" (which is the default);
+alternate titles, including
+historical titles, are given with `series@type` as "alt". Different time spans for historical
+titles are given with `series/dateFrom` and `series/dateTo`.
+
+> *New Scientist*. 1956-1971.
+> *New Scientist and Science Journal*. Jan 21, 1971-Sept 30, 1971.
+> *New Scientist*. 1971-.
+
+```xml
+<series type="alt">
+  <title>New Scientist</title>
+  <dateFrom>1956</dateFrom>
+  <dateTo>1956</dateTo>
+</series>
+<series type="alt">
+  <title>New Scientist and Science Journal</title>
+  <dateFrom>1971-01-21</dateFrom>
+  <dateTo>1971-09-30</dateTo>
+</series>
+<series type="main">
+  <title>New Scientist</title>
+  <dateFrom>1971-09-30</dateFrom>
+</series>
+```
+
+### Series runs
+
+If a series restarts numbering its volumes, that is typically indicated in citations
+by giving an ordinal number for the series run, given after the series name:
+1st series, 2nd series, 3rd series.
+More commonly, there are only two series runs for a series, and the second run is
+indicated as "new series", or the abbreviation "n.s.".
+
+*  *Vizantiiskii Vremmenik* (St Petersburg/Petrograd/Leningrad, 1894-1928) and
+*Vizantiiskii Vremmenik* (Moscow, 1947-) have the same name, and volume numbering
+for the Moscow journal restarted at 1; the first two
+volumes of the new series run were numbered 1/26 and 2/27, to continue the first series.
+While citations could differentiate the two by city, usual practice is to insert
+"n.s." after the journal title for the second series.
+
+* The *Journal of the Royal Anthropological Institute* was originally published
+as *Man*, from 1901-1965. The journal restarted numbering at 1 from 1966-1996
+without changing name, and explicitly designating itself as a "new series".
+Unlike *Vizantiiskii Vremmenik*, both series were published in London, so
+place of publication cannot differentiate between them. While the organization did
+change name between the two runs (from "Anthropological Institute of Great Britain and Ireland" to
+"Royal Anthropological Institute of Great Britain and Ireland"), the change is slight;
+and the series run is preferred to differentiate the two runs.
+
+> J. A. Barnes. 1966. Durkheim's Division of Labour in Society. *Man* (n.s.) 1(2): 158-175.
+
+```xml
+<bibitem type="article">
+  <title lang="en">Durkheim's Division of Labour in Society</title>
+  <date type="published"><on>1966</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Barnes</surname>
+        <formatted-initials>J. A.</formatted-initials>
+      </name>
+    </person>
+  </contributor>
+  <series>
+    <title>Man</title>
+    <number>1</number>
+    <partnumber>2</partnumber>
+    <run>new series</run>
+  </series>
+  <extent type="page">
+    <referenceFrom>158</referenceFrom>
+    <referenceTo>175</referenceTo>
+  </extent>
+</bibitem>
+```

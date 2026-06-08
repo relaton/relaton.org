@@ -1,0 +1,341 @@
+/**
+ * Relaton Design System
+ *
+ * Brand Colors:
+ *   Bilateral Ocean  #1F6CF1  — primary blue
+ *   Suspicious Aqua  #21C197  — teal accent
+ *   Dazed Aqua       #008A64  — deep green
+ *   Steamed Tar      #1C2126  — near-black (with 70%, 40%, 10% tints)
+ */
+
+/* ==========================================================================
+   1. VitePress Brand Overrides
+   ========================================================================== */
+
+:root {
+  --vp-c-brand-1: #1F6CF1;
+  --vp-c-brand-2: #4D88F3;
+  --vp-c-brand-3: #1F6CF1;
+  --vp-c-brand-soft: rgba(31, 108, 241, 0.10);
+
+  /* Surfaces */
+  --vp-c-bg: #FFFFFF;
+  --vp-c-bg-soft: #F8FAFB;
+  --vp-c-bg-mute: #F1F4F7;
+  --vp-c-bg-alt: #F0F4F8;
+
+  /* Text */
+  --vp-c-text-1: #1C2126;
+  --vp-c-text-2: #3D4854;
+  --vp-c-text-3: #64748B;
+
+  /* Borders */
+  --vp-c-divider: #E2E8F0;
+  --vp-c-gutter: #E2E8F0;
+
+  --vp-font-family-base: 'Outfit', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+.dark {
+  --vp-c-brand-soft: rgba(31, 108, 241, 0.15);
+  --vp-c-bg: #0B0F13;
+  --vp-c-bg-soft: #111820;
+  --vp-c-bg-mute: #171F28;
+  --vp-c-bg-alt: #0E1319;
+  --vp-c-text-1: #E8ECF0;
+  --vp-c-text-2: #A0AEBE;
+  --vp-c-text-3: #5F7082;
+  --vp-c-divider: #1E2A36;
+  --vp-c-gutter: #1E2A36;
+}
+
+/* ==========================================================================
+   2. Font Loading
+   ========================================================================== */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   3. VitePress Theme Overrides
+   ========================================================================== */
+
+/* Nav */
+.VPNav {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid var(--vp-c-divider);
+  transition: background 0.3s, border-color 0.3s;
+}
+.dark .VPNav {
+  background: rgba(11, 15, 19, 0.85) !important;
+}
+
+.VPNav.scrolled {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+.dark .VPNav.scrolled {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.VPNavBarTitle .logo {
+  height: 30px !important;
+  margin-right: 8px !important;
+}
+.VPNavBarTitle .title {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 18px !important;
+  letter-spacing: -0.02em;
+}
+.VPNavBarTitle:hover .title {
+  color: var(--vp-c-brand-1) !important;
+}
+
+.VPLink.active,
+.VPNavMenuLink.active {
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* Buttons */
+.VPButton.brand {
+  background: #1F6CF1 !important;
+  border-color: #1F6CF1 !important;
+  color: white !important;
+}
+.VPButton.brand:hover {
+  background: #1560D8 !important;
+  border-color: #1560D8 !important;
+}
+
+/* Sidebar */
+.VPSidebarItem.level-0 > .item .link:hover .text,
+.VPSidebarItem.level-0 > .item .link.active .text {
+  color: #1F6CF1 !important;
+}
+
+/* Doc Footer */
+.vp-doc footer.edit-info a,
+.vp-doc footer.prev-next a {
+  color: #1F6CF1;
+}
+
+/* Outline */
+.VPDocOutlineItem li a:hover,
+.VPDocOutlineItem li a.active {
+  color: #1F6CF1 !important;
+}
+
+/* ==========================================================================
+   4. Selection & Focus
+   ========================================================================== */
+
+::selection {
+  background: rgba(31, 108, 241, 0.15);
+  color: #1C2126;
+}
+.dark ::selection {
+  background: rgba(31, 108, 241, 0.25);
+  color: #E8ECF0;
+}
+
+*:focus-visible {
+  outline: 2px solid #1F6CF1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   5. Animations & Keyframes
+   ========================================================================== */
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  from { background-position: -200% 0; }
+  to { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-10px) rotate(1.5deg); }
+  66% { transform: translateY(5px) rotate(-1deg); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.04); }
+}
+
+@keyframes drift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(8px, -12px); }
+  50% { transform: translate(-4px, -20px); }
+  75% { transform: translate(-12px, -8px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.04; transform: scale(1); }
+  50% { opacity: 0.08; transform: scale(1.05); }
+}
+
+/* Page entrance */
+.page-enter { animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Card lift */
+.card-lift {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.25s ease,
+              border-color 0.2s ease;
+}
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -8px rgba(31, 108, 241, 0.12);
+}
+.dark .card-lift:hover {
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.5);
+}
+
+/* Entry card — left accent bar on hover */
+.entry-card {
+  position: relative;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.entry-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, #1F6CF1, #21C197);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.entry-card:hover::before { opacity: 1; }
+.entry-card:hover {
+  border-color: rgba(31, 108, 241, 0.3);
+}
+
+/* Scroll reveal */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Hero floating decorations */
+.hero-float-1 { animation: float 8s ease-in-out infinite; }
+.hero-float-2 { animation: float 11s ease-in-out infinite; animation-delay: -3s; }
+.hero-float-3 { animation: drift 14s ease-in-out infinite; animation-delay: -5s; }
+.hero-float-4 { animation: pulse-soft 7s ease-in-out infinite; animation-delay: -2s; }
+.hero-float-5 { animation: drift 18s ease-in-out infinite; animation-delay: -8s; }
+
+/* Glow orb */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: glow-pulse 8s ease-in-out infinite;
+}
+
+/* Hero grid pattern */
+.hero-pattern {
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 70% at 30% 50%, black 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 30% 50%, black 20%, transparent 70%);
+}
+
+/* Grain texture */
+.grain-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   6. Dark Mode Surface Overrides
+   ========================================================================== */
+
+.dark .VPHero .text {
+  color: #E8ECF0;
+}
+.dark .VPHero .tagline {
+  color: #A0AEBE;
+}
+
+/* ==========================================================================
+   7. Print Styles
+   ========================================================================== */
+
+@media print {
+  header, footer, button { display: none !important; }
+  .card-lift:hover { transform: none; box-shadow: none; }
+  * { color-adjust: exact; -webkit-print-color-adjust: exact; }
+}
+
+/* ==========================================================================
+   8. Reduced Motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal { opacity: 1; transform: none; transition: none; }
+  .card-lift { transition: none; }
+  .entry-card { transition: none; }
+  .entry-card::before { transition: none; }
+  .hero-float-1, .hero-float-2, .hero-float-3,
+  .hero-float-4, .hero-float-5 { animation: none; }
+  .page-enter { animation: none; }
+}
+
+/* ==========================================================================
+   9. Mobile Touch
+   ========================================================================== */
+
+@media (max-width: 640px) {
+  .card-lift:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+/* ==========================================================================
+   10. Scrollbar
+   ========================================================================== */
+
+.search-results-scroll::-webkit-scrollbar { width: 6px; }
+.search-results-scroll::-webkit-scrollbar-track { background: transparent; }
+.search-results-scroll::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 3px;
+}
