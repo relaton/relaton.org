@@ -713,7 +713,6 @@ function formatDate(date: string): string {
     gap: 32px;
     padding: 56px 0 48px;
   }
-  .hero-panel { order: -1; }
 }
 
 @media (max-width: 768px) {
@@ -722,11 +721,29 @@ function formatDate(date: string): string {
   .hero { text-align: center; }
   .hero-subtitle { margin-left: auto; margin-right: auto; }
   .hero-actions { justify-content: center; }
-  .hero-stats { justify-content: center; }
+  .hero-stats { justify-content: center; flex-wrap: wrap; }
   .section { padding: 56px 0; }
   .section-title { font-size: 24px; }
   .cta-content h2 { font-size: 24px; }
   .layer-body { flex-direction: column; align-items: flex-start; gap: 4px; }
   .layer-desc { font-size: 13px; }
+  .code-body { max-height: 240px; }
+  .hero-title { font-size: 28px; }
+  .hero-subtitle { font-size: 14px; }
+  .hero-grid { padding: 48px 0 40px; gap: 24px; }
+  .hero-inner { padding: 0 16px; }
+  .hero-fade { height: 40px; }
+  .hero-symbol { display: none; }
+  .btn-primary, .btn-ghost { font-size: 13px; padding: 10px 18px; }
+}
+
+@media (max-width: 480px) {
+  .hero-title { font-size: 24px; }
+  .hero-stats { gap: 8px; font-size: 12px; }
+  .code-panel-header { padding: 6px 10px; }
+  .code-tab { padding: 4px 10px; font-size: 11px; }
+  .code-body { padding: 12px 14px; max-height: 200px; }
+  .code-body code { font-size: 11px; line-height: 1.5; }
+  .layer-title { min-width: 0; }
 }
 </style>
