@@ -24,10 +24,16 @@ jobs:
     - name: Build site
       run: npm run build
 
+    - name: Serve built site
+      run: npx vitepress preview --port 4173 &
+
+    - name: Wait for server
+      run: npx wait-on http://localhost:4173 --timeout 15000
+
     - name: Link Checker
       uses: lycheeverse/lychee-action@v2
       with:
-        args: --verbose --no-progress --exclude-file .lycheeignore -- .vitepress/dist/**/*.html
+        args: --verbose --no-progress --base-url http://localhost:4173 --exclude-file .lycheeignore -- .vitepress/dist/**/*.html
         fail: true
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
