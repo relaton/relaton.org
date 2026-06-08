@@ -65,13 +65,22 @@ body {
 
 /* Nav */
 .VPNav {
-  background: rgba(255, 255, 255, 0.85) !important;
-  backdrop-filter: blur(16px) saturate(180%);
+  background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid var(--vp-c-divider);
   transition: background 0.3s, border-color 0.3s;
 }
 .dark .VPNav {
-  background: rgba(11, 15, 19, 0.85) !important;
+  background: rgba(11, 15, 19, 0.95);
+}
+
+@media (min-width: 960px) {
+  .VPNav {
+    background: rgba(255, 255, 255, 0.85) !important;
+    backdrop-filter: blur(16px) saturate(180%);
+  }
+  .dark .VPNav {
+    background: rgba(11, 15, 19, 0.85) !important;
+  }
 }
 
 .VPNav.scrolled {
