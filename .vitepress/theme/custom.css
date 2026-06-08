@@ -287,6 +287,12 @@ body {
    6. Dark Mode Surface Overrides
    ========================================================================== */
 
+/* Home layout */
+.VPHome {
+  overflow-x: hidden;
+  margin-bottom: 0 !important;
+}
+
 .dark .VPHero .text {
   color: #E8ECF0;
 }
@@ -313,7 +319,6 @@ body {
 .page-header {
   text-align: center;
   padding: 0 0 32px;
-  border-bottom: 1px solid var(--vp-c-divider);
   margin-bottom: 40px;
 }
 .page-header h1 {
@@ -331,7 +336,6 @@ body {
 .about-hero {
   text-align: center;
   padding: 0 0 32px;
-  border-bottom: 1px solid var(--vp-c-divider);
   margin-bottom: 40px;
 }
 .about-hero h1 {
@@ -342,6 +346,54 @@ body {
 .about-subtitle {
   font-size: 18px;
   color: var(--vp-c-text-2);
+}
+
+/* Logo showcase (About page) */
+.logo-showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 24px 0 32px;
+}
+.logo-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px 24px;
+  border-radius: 14px;
+  border: 1px solid var(--vp-c-divider);
+}
+.logo-card-light {
+  background: #ffffff;
+}
+.logo-card-dark {
+  background: linear-gradient(135deg, #1C2126 0%, #152035 50%, #0E2A3A 100%);
+}
+.logo-display {
+  width: 160px;
+  height: auto;
+}
+.logo-card-label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+.logo-card-light .logo-card-label {
+  color: #64748b;
+}
+.logo-card-dark .logo-card-label {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 560px) {
+  .logo-showcase {
+    grid-template-columns: 1fr;
+  }
+  .logo-display {
+    width: 120px;
+  }
 }
 
 /* ISO 690 purchase card */
@@ -395,9 +447,9 @@ body {
   transform: translate(2px, -2px);
 }
 
-/* Zero out VitePress default first-h2 margin inside doc content */
-.vp-doc > div:first-child > h2:first-child,
-.vp-doc > h2:first-child {
+/* Zero out VitePress default first-h2 border/margin inside doc content */
+.vp-doc > div > h2:first-of-type,
+.vp-doc > h2:first-of-type {
   margin-top: 0 !important;
   border-top: none !important;
   padding-top: 0 !important;

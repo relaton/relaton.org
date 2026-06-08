@@ -13,7 +13,7 @@ Relaton YAML is used by:
 - **relaton-cli** for import/export operations
 - **Relaton flavor gems** for storing and retrieving bibliographic data
 
-This specification defines the YAML encoding of the [Relaton BibliographicItem model](/model/overview), mapping the XML schema defined in [relaton-models](https://github.com/relaton/relaton-models) to YAML objects.
+This specification defines the YAML encoding of the [Relaton BibliographicItem model](/model/), mapping the XML schema defined in [relaton-models](https://github.com/relaton/relaton-models) to YAML objects.
 
 > [!NOTE]
 > The full canonical reference for the Relaton YAML hash structure is maintained in the [relaton-bib documentation](https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc).

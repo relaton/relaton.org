@@ -4,7 +4,7 @@ description: Categories of title in Relaton
 
 ---
 
-## Title {#title}
+# Title
 
 ### General
 

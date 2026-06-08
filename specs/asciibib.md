@@ -25,7 +25,7 @@ This specification defines the AsciiBib encoding of Relaton BibliographicItem ob
 
 This specification does not cover:
 
-- The Relaton data model itself (see the [model overview](/model/overview))
+- The Relaton data model itself (see the [model overview](/model/))
 - The Relaton YAML serialization (see [Relaton YAML](/specs/relaton-yaml))
 - Other AsciiDoc citation mechanisms
 

@@ -4,7 +4,7 @@ description: Categories of editions in Relaton
 
 ---
 
-## Edition {#edition}
+# Edition
 
 * Source: ISO 690, 4.5
 * Serialisation: `bibitem/edition, bibitem/version, bibitem/date`

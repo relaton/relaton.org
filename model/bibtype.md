@@ -4,7 +4,7 @@ description: Categories of information resource in Relaton
 
 ---
 
-## Categories of information resource
+# Bibitem Types
 
 * Source: ISO 690, Clause 5
 * Serialisation: `bibitem@type`, `BibItemType`

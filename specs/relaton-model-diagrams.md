@@ -64,4 +64,4 @@ navigation:
 These UML diagrams provide a bird's eye view on the organization
 between the Relaton bibliographic and citation models.
 
-For details on usage, please refer to the [model overview](/model/overview).
+For details on usage, please refer to the [model overview](/model/).

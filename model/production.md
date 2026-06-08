@@ -4,7 +4,7 @@ description: Categories of place and date of publication and publisher in Relato
 
 ---
 
-## Production {#production}
+# Production
 
 ### General
 

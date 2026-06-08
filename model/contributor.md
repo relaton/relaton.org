@@ -1,10 +1,10 @@
 ---
-title: Creator
+title: Contributor
 description: Categories of creator in Relaton
 
 ---
 
-## Creator
+# Contributor
 
 ### General
 

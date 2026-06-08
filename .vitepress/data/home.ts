@@ -70,7 +70,7 @@ export const homeData: HomeData = {
     titleLine3: 'Data Model',
     subtitle:
       'An interoperable, machine-readable data model for citations — created by the authors of ISO 690:2021, trusted by IETF, BIPM, OIML, and 25+ standards organizations.',
-    primaryAction: { label: 'Explore the Model', href: '/model/overview' },
+    primaryAction: { label: 'Explore the Model', href: '/model/' },
     secondaryAction: { label: 'Get Started', href: '/software/' },
   },
 
@@ -175,8 +175,8 @@ edition:: 2`,
   ],
 
   layers: [
-    { number: '01', title: 'ISO 690', desc: 'The international standard for bibliographic references and citations — Relaton is its machine-readable implementation.', link: '/model/iso-690', accentClass: 'layer-standard' },
-    { number: '02', title: 'Information Model', desc: 'BibliographicItem + 14 entities, 60+ relation types — a comprehensive data model covering all ISO 690 data elements.', link: '/model/overview', accentClass: 'layer-model' },
+    { number: '01', title: 'ISO 690', desc: 'The international standard for bibliographic references and citations — Relaton is its machine-readable implementation.', link: '/model/iso-690/', accentClass: 'layer-standard' },
+    { number: '02', title: 'Information Model', desc: 'BibliographicItem + 14 entities, 60+ relation types — a comprehensive data model covering all ISO 690 data elements.', link: '/model/', accentClass: 'layer-model' },
     { number: '03', title: 'Serializations', desc: 'YAML, XML, BibTeX, AsciiBib, and JSON-LD — the same data in five formats, suited to different workflows.', link: '/model/serializations', accentClass: 'layer-serial' },
     { number: '04', title: 'Auto-Fetch', desc: '27 flavor gems retrieve metadata from SDO datasets by publication identifier — no manual citation maintenance.', link: '/flavors/', accentClass: 'layer-fetch' },
     { number: '05', title: 'Rendering', desc: 'Formatted citations in ISO 690, APA, MLA, and custom styles — beyond what BibTeX or CSL can express.', link: '/specs/relaton-render', accentClass: 'layer-render' },

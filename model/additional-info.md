@@ -4,7 +4,7 @@ description: Additional information in Relaton
 
 ---
 
-## Additional general information {#additional-info}
+# Additional Information
 
 ### Classification
 

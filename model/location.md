@@ -4,7 +4,7 @@ description: Access locations and online locations in Relaton
 
 ---
 
-## Location {#location}
+# Location
 
 * Source: ISO 690, 4.10, ISO 690, 5.10
 * Serialisation: `bibitem/accessLocation`, `bibitem/uri`

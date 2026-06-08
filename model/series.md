@@ -4,7 +4,7 @@ description: Series in Relaton
 
 ---
 
-## Series title and number {#series}
+# Series
 
 ### General
 

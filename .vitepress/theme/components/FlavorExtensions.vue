@@ -9,7 +9,7 @@
         <span class="ext-badge">+ {{ data.extensions.length }} additional fields</span>
       </div>
       <div v-else class="ext-inheritance">
-        Extends <a href="/model/overview">BibliographicItem</a> directly
+        Extends <a href="/model/">BibliographicItem</a> directly
         <span class="ext-badge">{{ data.extensions.length }} fields</span>
       </div>
     </div>
