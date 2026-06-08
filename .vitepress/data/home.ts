@@ -14,12 +14,6 @@ export interface Feature {
   iconClass: string
 }
 
-export interface IsoMapping {
-  iso: string
-  relaton: string
-  link: string
-}
-
 export interface EcosystemCategory {
   label: string
   count: string
@@ -49,8 +43,7 @@ export interface HomeData {
   codeTabs: CodeFormatTab[]
   codeExamples: Record<string, string>
   features: Feature[]
-  isoMappingSection: SectionHeader
-  isoMappings: IsoMapping[]
+  layers: ArchitectureLayer[]
   orgsSection: SectionHeader
   ecosystemSection: SectionHeader
   ecosystem: EcosystemCategory[]
@@ -62,13 +55,21 @@ export interface HomeData {
   }
 }
 
+export interface ArchitectureLayer {
+  number: string
+  title: string
+  desc: string
+  link: string
+  accentClass: string
+}
+
 export const homeData: HomeData = {
   hero: {
     titleLine1: 'The Premier',
     titleLine2: 'Bibliographic',
     titleLine3: 'Data Model',
     subtitle:
-      'An interoperable, machine-readable data model for citations — based on ISO 690, trusted by IETF, BIPM, OIML, and 25+ standards organizations.',
+      'An interoperable, machine-readable data model for citations — created by the authors of ISO 690:2021, trusted by IETF, BIPM, OIML, and 25+ standards organizations.',
     primaryAction: { label: 'Explore the Model', href: '/model/overview' },
     secondaryAction: { label: 'Get Started', href: '/software/' },
   },
@@ -154,43 +155,31 @@ edition:: 2`,
 
   features: [
     {
-      title: 'Standards Compliant',
-      desc: 'Full ISO 690 coverage with extensions for document stages, supplements, and amendment tracking.',
+      title: 'Built on ISO 690',
+      desc: 'Every ISO 690 data element maps to a Relaton entity. The model extends the standard for document stages, supplements, and amendment tracking.',
       icon: '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.48 0 2.88.36 4.11.99"/></svg>',
       iconClass: 'icon-blue',
     },
     {
-      title: 'Machine Readable',
-      desc: 'XML, YAML, BibTeX, and AsciiBib serializations. Every data element is structured for programmatic access.',
+      title: 'Auto-Fetch by PubID',
+      desc: 'Provide a publication identifier and Relaton retrieves structured metadata from 27+ SDO datasets — no manual citation maintenance.',
       icon: '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
       iconClass: 'icon-aqua',
     },
     {
-      title: 'Extensible by Design',
-      desc: 'Flavor-specific extensions for each SDO. Add new organizations without changing the core model.',
+      title: 'Render Any Style',
+      desc: 'Generate formatted citations in ISO 690, APA, MLA, and custom styles via relaton-render — beyond what BibTeX or CSL can express.',
       icon: '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>',
       iconClass: 'icon-green',
     },
   ],
 
-  isoMappingSection: {
-    title: 'Built on ISO 690',
-    subtitle:
-      'Every ISO 690 concept maps directly to a Relaton entity. The model is the information model implementation of the international standard for bibliographic references.',
-  },
-
-  isoMappings: [
-    { iso: 'Title', relaton: 'Title', link: '/model/title' },
-    { iso: 'Creator', relaton: 'Contributor', link: '/model/contributor' },
-    { iso: 'Edition', relaton: 'Edition', link: '/model/edition' },
-    { iso: 'Production', relaton: 'Production', link: '/model/production' },
-    { iso: 'Location', relaton: 'Location', link: '/model/location' },
-    { iso: 'Medium', relaton: 'Medium', link: '/model/medium' },
-    { iso: 'Series', relaton: 'Series', link: '/model/series' },
-    { iso: 'Identifiers', relaton: 'Identifiers', link: '/model/identifiers' },
-    { iso: 'Numeration', relaton: 'Numeration', link: '/model/numeration' },
-    { iso: 'Relations', relaton: 'Relations', link: '/model/relations' },
-    { iso: 'Additional Info', relaton: 'Additional Info', link: '/model/additional-info' },
+  layers: [
+    { number: '01', title: 'ISO 690', desc: 'The international standard for bibliographic references and citations — Relaton is its machine-readable implementation.', link: '/model/iso-690', accentClass: 'layer-standard' },
+    { number: '02', title: 'Information Model', desc: 'BibliographicItem + 14 entities, 60+ relation types — a comprehensive data model covering all ISO 690 data elements.', link: '/model/overview', accentClass: 'layer-model' },
+    { number: '03', title: 'Serializations', desc: 'YAML, XML, BibTeX, AsciiBib, and JSON-LD — the same data in five formats, suited to different workflows.', link: '/model/serializations', accentClass: 'layer-serial' },
+    { number: '04', title: 'Auto-Fetch', desc: '27 flavor gems retrieve metadata from SDO datasets by publication identifier — no manual citation maintenance.', link: '/flavors/', accentClass: 'layer-fetch' },
+    { number: '05', title: 'Rendering', desc: 'Formatted citations in ISO 690, APA, MLA, and custom styles — beyond what BibTeX or CSL can express.', link: '/specs/relaton-render', accentClass: 'layer-render' },
   ],
 
   orgsSection: {

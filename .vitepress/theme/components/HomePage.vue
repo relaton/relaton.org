@@ -77,46 +77,22 @@
       </div>
     </section>
 
-    <!-- What is Relaton? -->
+    <!-- Architecture Layers -->
     <section class="section section--alt scroll-reveal">
       <div class="container">
-        <div class="features-row">
-          <div class="feature-block" v-for="feat in d.features" :key="feat.title">
-            <div class="feature-icon-wrap" :class="feat.iconClass">
-              <div v-html="feat.icon" />
-            </div>
-            <h3 class="feature-title">{{ feat.title }}</h3>
-            <p class="feature-desc">{{ feat.desc }}</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ISO 690 Relationship -->
-    <section class="section scroll-reveal">
-      <div class="container">
         <div class="section-header">
-          <h2 class="section-title">{{ d.isoMappingSection.title }}</h2>
-          <p class="section-subtitle">{{ d.isoMappingSection.subtitle }}</p>
+          <h2 class="section-title">Five Layers of Bibliographic Intelligence</h2>
+          <p class="section-subtitle">Relaton spans from the ISO 690 standard through to formatted citations — a complete pipeline for machine-readable references.</p>
         </div>
-
-        <div class="mapping-table">
-          <div class="mapping-row mapping-row--head">
-            <span class="mapping-cell">ISO 690 Area</span>
-            <span class="mapping-cell"></span>
-            <span class="mapping-cell">Relaton Entity</span>
-          </div>
-          <a v-for="m in d.isoMappings" :key="m.iso" :href="m.link" class="mapping-row">
-            <span class="mapping-cell mapping-iso">{{ m.iso }}</span>
-            <span class="mapping-cell mapping-arrow">
-              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" d="M9 5l7 7-7 7"/></svg>
-            </span>
-            <span class="mapping-cell mapping-relaton">{{ m.relaton }}</span>
+        <div class="layers-row">
+          <a v-for="layer in d.layers" :key="layer.number" :href="layer.link" class="layer-card entry-card">
+            <div class="layer-accent" :class="layer.accentClass" />
+            <div class="layer-body">
+              <span class="layer-number">{{ layer.number }}</span>
+              <h3 class="layer-title">{{ layer.title }}</h3>
+              <p class="layer-desc">{{ layer.desc }}</p>
+            </div>
           </a>
-        </div>
-
-        <div class="section-cta">
-          <a href="/model/overview" class="link-arrow">Explore the full model</a>
         </div>
       </div>
     </section>
@@ -533,89 +509,75 @@ function formatDate(date: string): string {
   gap: 8px;
 }
 
-/* ── Features Row ─────────────────────────────────────── */
-.features-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-}
-.feature-block {
-  text-align: center;
-  padding: 32px 24px;
-}
-.feature-icon-wrap {
-  width: 48px;
-  height: 48px;
-  border-radius: 12px;
+/* ── Architecture Layers ─────────────────────────────── */
+.layers-row {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 16px;
-}
-.icon-blue { background: rgba(31,108,241,0.1); color: #1F6CF1; }
-.icon-aqua { background: rgba(33,193,151,0.1); color: #21C197; }
-.icon-green { background: rgba(0,138,100,0.1); color: #008A64; }
-
-.feature-title {
-  font-size: 17px;
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: var(--vp-c-text-1);
-}
-.feature-desc {
-  font-size: 14px;
-  line-height: 1.6;
-  color: var(--vp-c-text-2);
-}
-
-/* ── Mapping Table ────────────────────────────────────── */
-.mapping-table {
-  max-width: 600px;
+  flex-direction: column;
+  gap: 0;
+  max-width: 720px;
   margin: 0 auto;
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  overflow: hidden;
-  background: var(--vp-c-bg);
 }
-.mapping-row {
-  display: grid;
-  grid-template-columns: 1fr 40px 1fr;
-  align-items: center;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--vp-c-divider);
+.layer-card {
+  display: flex;
   text-decoration: none;
   color: inherit;
-  transition: background 0.15s;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 0;
+  overflow: hidden;
+  transition: background 0.15s, border-color 0.15s;
 }
-.mapping-row:last-child { border-bottom: none; }
-.mapping-row:not(.mapping-row--head):hover {
+.layer-card:first-child {
+  border-radius: 12px 12px 0 0;
+}
+.layer-card:last-child {
+  border-radius: 0 0 12px 12px;
+}
+.layer-card + .layer-card {
+  border-top: none;
+}
+.layer-card:hover {
   background: var(--vp-c-bg-soft);
+  border-color: rgba(31,108,241,0.3);
 }
-.mapping-row--head {
-  background: var(--vp-c-bg-soft);
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--vp-c-text-3);
+.layer-accent {
+  width: 4px;
+  flex-shrink: 0;
 }
-.mapping-iso {
-  color: var(--vp-c-text-2);
-  font-size: 14px;
-}
-.mapping-arrow {
+.layer-standard { background: linear-gradient(180deg, #1F6CF1, #4D88F3); }
+.layer-model { background: linear-gradient(180deg, #008A64, #21C197); }
+.layer-serial { background: linear-gradient(180deg, #21C197, #34D399); }
+.layer-fetch { background: linear-gradient(180deg, #4D88F3, #7EAAF5); }
+.layer-render { background: linear-gradient(180deg, #6366F1, #818CF8); }
+.layer-body {
+  padding: 10px 20px;
+  flex: 1;
   display: flex;
-  justify-content: center;
-  color: #1F6CF1;
-  opacity: 0.5;
+  align-items: center;
+  gap: 14px;
 }
-.mapping-row:not(.mapping-row--head):hover .mapping-arrow {
-  opacity: 1;
+.layer-number {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--vp-c-text-3);
+  flex-shrink: 0;
+  min-width: 24px;
+  line-height: 1.5;
 }
-.mapping-relaton {
-  font-weight: 500;
-  font-size: 14px;
-  color: #1F6CF1;
+.layer-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+  flex-shrink: 0;
+  min-width: 120px;
+  line-height: 1.5;
+  margin: 0;
+}
+.layer-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--vp-c-text-2);
+  flex: 1;
 }
 
 /* ── Ecosystem ────────────────────────────────────────── */
@@ -754,10 +716,8 @@ function formatDate(date: string): string {
 }
 
 @media (max-width: 768px) {
-  .features-row { grid-template-columns: 1fr; gap: 24px; }
   .ecosystem-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
-  .mapping-table { margin: 0 -24px; border-radius: 0; border-left: none; border-right: none; }
   .hero { text-align: center; }
   .hero-subtitle { margin-left: auto; margin-right: auto; }
   .hero-actions { justify-content: center; }
@@ -765,5 +725,7 @@ function formatDate(date: string): string {
   .section { padding: 56px 0; }
   .section-title { font-size: 24px; }
   .cta-content h2 { font-size: 24px; }
+  .layer-body { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .layer-desc { font-size: 13px; }
 }
 </style>

@@ -14,3 +14,6 @@ node_modules
 .vitepress/cache
 
 public/logos/.vitepress/
+TODO*
+.vscode
+site.zip

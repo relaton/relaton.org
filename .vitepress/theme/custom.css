@@ -295,12 +295,24 @@ body {
 }
 
 /* ==========================================================================
-   7. Page Layout — shared styles for page-header used across index pages
+   7. Page Layout — shared container for all layout:page pages
    ========================================================================== */
+
+/* VPPage is a bare div in VitePress. Every layout:page page needs this. */
+.VPPage {
+  max-width: 1152px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+
+/* Doc layout pages: ensure content has breathing room */
+.VPDoc .container {
+  max-width: 1152px;
+}
 
 .page-header {
   text-align: center;
-  padding: 48px 0 32px;
+  padding: 0 0 32px;
   border-bottom: 1px solid var(--vp-c-divider);
   margin-bottom: 40px;
 }
@@ -316,14 +328,9 @@ body {
   line-height: 1.5;
 }
 
-.about-page {
-  max-width: 864px;
-  margin: 0 auto;
-  padding: 0 24px 64px;
-}
 .about-hero {
   text-align: center;
-  padding: 48px 0 32px;
+  padding: 0 0 32px;
   border-bottom: 1px solid var(--vp-c-divider);
   margin-bottom: 40px;
 }
@@ -337,10 +344,70 @@ body {
   color: var(--vp-c-text-2);
 }
 
-/* Remove VitePress default top margin on first content element inside page layout */
+/* ISO 690 purchase card */
+.iso-purchase-card {
+  margin: 24px 0 32px;
+}
+.iso-purchase-link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.2s, background 0.2s;
+}
+.iso-purchase-link:hover {
+  border-color: rgba(227, 0, 15, 0.4);
+  background: var(--vp-c-bg-soft);
+}
+.iso-purchase-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.iso-purchase-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+.iso-purchase-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+.iso-purchase-details {
+  font-size: 13px;
+  color: var(--vp-c-text-3);
+}
+.iso-purchase-arrow {
+  flex-shrink: 0;
+  color: var(--vp-c-text-3);
+  transition: color 0.2s, transform 0.15s;
+}
+.iso-purchase-link:hover .iso-purchase-arrow {
+  color: #E3000F;
+  transform: translate(2px, -2px);
+}
+
+/* Zero out VitePress default first-h2 margin inside doc content */
 .vp-doc > div:first-child > h2:first-child,
 .vp-doc > h2:first-child {
-  margin-top: 0;
+  margin-top: 0 !important;
+  border-top: none !important;
+  padding-top: 0 !important;
+}
+
+/* Dark mode: light-only logos get a white background */
+.dark .flavor-logo-light {
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px;
 }
 
 /* ==========================================================================

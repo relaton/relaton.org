@@ -41,7 +41,7 @@ function formatDate(date: string): string {
 .blog-index {
   max-width: 768px;
   margin: 0 auto;
-  padding: 0 24px 64px;
+  padding: 0 0 64px;
 }
 
 .blog-list {

@@ -35,7 +35,7 @@
             v-if="flavor.logo"
             :src="flavor.logo"
             :alt="flavor.label"
-            class="flavor-logo"
+            :class="['flavor-logo', { 'flavor-logo-light': flavor.logoVariant === 'light' }]"
             loading="lazy"
           />
           <span v-else class="flavor-logo-placeholder">

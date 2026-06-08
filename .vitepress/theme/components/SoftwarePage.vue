@@ -46,6 +46,10 @@
       </div>
     </section>
 
+    <section v-if="renderedContent" class="sp-section">
+      <div class="sp-content" v-html="renderedContent"></div>
+    </section>
+
     <section class="sp-section">
       <h2 class="sp-section-title">Links</h2>
       <div class="sp-link-grid">
@@ -83,7 +87,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, onMounted, computed } from 'vue'
+import MarkdownIt from 'markdown-it'
 import type { SoftwareGem } from '../../data/types'
 import { flavors } from '../../data/flavors'
 
@@ -104,6 +109,28 @@ const quickStartCode = computed(() => {
 # Fetch a bibliographic item
 bib = ${module}::Bibliography.get("ISO 690:2010")
 puts bib.to_xml`
+})
+
+const rawContent = ref('')
+const md = new MarkdownIt({ html: true, linkify: true, typographer: true })
+
+const renderedContent = computed(() => {
+  if (!rawContent.value) return ''
+  const html = md.render(rawContent.value)
+  return html
+})
+
+onMounted(async () => {
+  if (!props.gem?.id) return
+  try {
+    const res = await fetch(`/software/content/${props.gem.id}.md`)
+    if (res.ok) {
+      const text = await res.text()
+      rawContent.value = text.replace(/^---[\s\S]*?---\n*/, '')
+    }
+  } catch {
+    rawContent.value = ''
+  }
 })
 
 async function copy(text: string) {
@@ -359,5 +386,62 @@ async function copy(text: string) {
   .sp-hero-actions { width: 100%; }
   .sp-action-btn { flex: 1; justify-content: center; }
   .sp-link-grid { grid-template-columns: 1fr; }
+}
+
+.sp-content { line-height: 1.7; }
+.sp-content :deep(h2) {
+  margin-top: 48px;
+  margin-bottom: 16px;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+.sp-content :deep(h3) {
+  margin-top: 32px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.sp-content :deep(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+.sp-content :deep(th),
+.sp-content :deep(td) {
+  padding: 10px 14px;
+  border: 1px solid var(--vp-c-divider);
+  text-align: left;
+}
+.sp-content :deep(th) {
+  background: var(--vp-c-bg-soft);
+  font-weight: 600;
+  font-size: 13px;
+}
+.sp-content :deep(code) {
+  background: var(--vp-c-bg-soft);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.88em;
+}
+.sp-content :deep(pre) {
+  background: var(--vp-c-bg-soft);
+  padding: 16px 20px;
+  border-radius: 10px;
+  overflow-x: auto;
+  border: 1px solid var(--vp-c-divider);
+}
+.sp-content :deep(pre code) {
+  background: none;
+  padding: 0;
+}
+.sp-content :deep(blockquote) {
+  border-left: 3px solid #1F6CF1;
+  padding-left: 16px;
+  color: var(--vp-c-text-2);
+  margin: 16px 0;
 }
 </style>

@@ -1,19 +1,77 @@
 ---
 title: Relaton YAML
-description: Structure for encoding `bibitem` as YAML objects.
-
-feature_with_priority: 6
-
-external_links:
-  - url: https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc
+description: Specification for encoding BibliographicItem as YAML objects
 ---
 
-The following structure is in place for encoding `bibitem` as YAML objects. The structure has not yet been generalised to `bibdata/ext`, the flavour-specific extensions of Relaton.
+# Introduction
+
+Relaton YAML is the primary serialization format for the Relaton Information Model. It provides a human-readable, human-writable representation of bibliographic items that can be used for interchange, configuration, and embedding in document authoring workflows.
+
+Relaton YAML is used by:
+
+- **Metanorma** for representing bibliographic entries in documents
+- **relaton-cli** for import/export operations
+- **Relaton flavor gems** for storing and retrieving bibliographic data
+
+This specification defines the YAML encoding of the [Relaton BibliographicItem model](/model/overview), mapping the XML schema defined in [relaton-models](https://github.com/relaton/relaton-models) to YAML objects.
 
 > [!NOTE]
-> Relaton YAML can be used to represent bibliographic entries in Metanorma.
+> The full canonical reference for the Relaton YAML hash structure is maintained in the [relaton-bib documentation](https://github.com/relaton/relaton-bib/blob/master/docs/hash.adoc).
 
-If an element in Relaton XML has attributes, the content of the element is represented in YAML with a `content` key:
+# Scope
+
+This specification defines the YAML serialization of BibliographicItem objects as implemented by the Relaton library. It covers:
+
+- The mapping rules from the Relaton XML schema to YAML
+- The representation of all BibliographicItem attributes
+- The handling of cardinality, nesting, and mixed content
+
+This specification does not cover:
+
+- Flavour-specific extensions (`bibdata/ext`), which are defined by individual flavor gems
+- The XML or BibTeX serializations (see [Serializations](/model/serializations))
+- Processing semantics (fetching, caching, rendering)
+
+# Terms and definitions
+
+## YAML serialization
+
+representation of a BibliographicItem using YAML markup, following the rules defined in this specification
+
+## content key
+
+YAML key named `content` that holds the text content of an element that also carries XML attributes
+
+## element cardinality
+
+number of occurrences of a child element within its parent, as defined by the Relaton XML schema
+
+## bibitem
+
+YAML root object representing a single BibliographicItem
+
+## bibdata
+
+bibliographic item with flavour-specific extension data, used for standards document metadata
+
+# Mapping principles
+
+## General
+
+The Relaton YAML serialization follows these principles:
+
+Simplicity::
+YAML structures should be intuitive and minimal. Unnecessary nesting is avoided.
+
+Flexibility in cardinality::
+Elements with cardinality of "many" can be represented as arrays, single hashes, or plain strings interchangeably.
+
+Attribute transparency::
+XML element attributes are promoted to YAML keys at the same level as content.
+
+## XML attributes to YAML keys
+
+When an XML element has both attributes and text content, the content is represented with a `content` key:
 
 ```xml
 <title type="main">Geographic information</title>
@@ -25,7 +83,9 @@ title:
   content: Geographic information
 ```
 
-Any elements with a cardinality of many can be represented as arrays, but they can also be populated by a hash or single element. For example, a Relaton title can have multiple titles, and multiple scripts; so the following are equivalent:
+## Cardinality flexibility
+
+Elements with a cardinality of "many" can be represented as arrays, single hashes, or single strings:
 
 ```yaml
 # Array of hashes
@@ -35,7 +95,7 @@ title:
   - type: title-part
     content: Part 1
 
-# Single Hash
+# Single hash
 title:
   type: main
   content: Geographic information
@@ -49,16 +109,51 @@ language:
 language: en
 ```
 
-In YAML, `on` is a reserved word, and thus cannot be used as a key. `value` is used as a synonym for `on` in dates.
+## Reserved words
 
-The structure below is given in YAML format:
+In YAML, `on` is a reserved word and cannot be used as a key. The key `value` is used as a synonym for `on` in date elements.
+
+# Element reference
+
+## Top-level attributes
+
+A BibliographicItem in YAML is a mapping with the following top-level keys:
+
+| Key | Type | Description |
+|-----|------|-------------|
+| `id` | string | Bibliographic item anchor, used to cross-reference within document |
+| `fetched` | string (date) | Date record was created |
+| `title` | array or hash | Titles with mandatory `type` and `content` |
+| `type` | string | Document type (e.g. `standard`) |
+| `docid` | array or hash | Document identifiers with `type` and `id` |
+| `docnumber` | string | Document number |
+| `edition` | string | Edition number |
+| `language` | array or string | Languages (ISO 639 codes) |
+| `script` | array or string | Scripts (ISO 15924 codes) |
+| `version` | hash | Contains `revision_date` and `draft` |
+| `biblionote` | array or hash | Notes with `type` and `content` |
+| `docstatus` | hash | Document status with `stage`, `substage`, `iteration` |
+| `date` | array or hash | Dates with `type` and `value`/`from`/`to` |
+| `abstract` | array or hash | Abstracts with `content` and optional `language`, `script`, `format` |
+| `contributor` | array | Contributors (organization or person with role) |
+| `copyright` | hash | Copyright with `owner`, `from`, and optional `to` |
+| `link` | array or hash | URIs with `type` and `content` |
+| `relation` | array | Relations to other bibliographic items |
+| `series` | array or hash | Series information |
+| `medium` | hash | Medium with `form`, `size`, and `scale` |
+| `place` | array or hash | Places of publication |
+| `extent` | hash | Extent information with locality |
+| `accesslocation` | array of strings | Access locations |
+| `classification` | array or hash | Classification with `type` and `value` |
+| `validity` | hash | Validity period with `begins`, `ends`, `revision` |
+| `keyword` | array of strings or hashes | Keywords |
+| `license` | string | License identifier |
+
+## Title
+
+Titles contain `type`, `content`, and optional `language`, `script`, and `format`:
 
 ```yaml
-# bibliographic item anchor, used to crossreference within document
-id: ISO/TC211
-# date record was created
-fetched: '2019-06-30'
-# titles are an array, with a mandatory type and content, and optional format, language and script
 title:
   - type: main
     content: Geographic information
@@ -67,42 +162,23 @@ title:
     language: en
     script: Latn
     format: text/plain
-# type of document
-type: standard
-# document identifiers are an array, with a mandatory type and id component
+```
+
+## Document identifiers
+
+Document identifiers contain a mandatory `type` and `id`:
+
+```yaml
 docid:
   type: ISO
   id: TC211
-# document number
-docnumber: '211'
-# edition
-edition: '1'
-# language is an array
-language:
-  - en
-  - fr
-# script is an array
-script:
-  Latn
-# version contains revision date and draft (as array)
-version:
-  revision_date: '2019-04-01'
-  draft: draft
-# note is an array of type and content
-biblionote:
-  type: bibnote
-  content: >
-      Mark set a major league
-      home run record in 1998.
-# document status has stage, and optional substage and iteration
-docstatus:
-  stage:
-    value: '30'
-    abbreviation: CD
-  substage:
-    value: '00'
-  iteration: final
-# date is an array, with mandatory type, and either an "on" value or a "from" and optional "to" value
+```
+
+## Date
+
+Dates are an array with a mandatory `type`, and either a `value` or a `from`/`to` range:
+
+```yaml
 date:
   - type: issued
     value: '2014'
@@ -111,125 +187,51 @@ date:
     to: '2014-05'
   - type: accessed
     value: '2015-05-20'
-# abstract is an array, with content, and optional language, script, format
-abstract:
-  - content: >
-      ISO 19115-1:2014 defines the schema required for ...
-  - content: >
-      L'ISO 19115-1:2014 définit le schéma requis pour ...
-    language: fr
-    script: Latn
-    format: text/plain
-# contributors are an array of entity/role pairs, where entity is either person or organization.
-# The role is an array of type and description; it can be a an array of just string, which are treated
-# as the type.
-# Organisations have attributes name, url, abbreviation, subdivision, contacts, identifiers, logo.
-# Persons have attributes name, affiliation, contacts
-# Person names have attributes abbreviation, surname, completename, initials, forename, additions, prefixes.
-# Initials, forename, additions, prefixes are arrays.
-# Name field values are either strings, or hashes, with content and language and script attributes.
-# The language and script attribute can also be given on the name.
-# Contacts are an array, containing either addresses, or other fields.
-# Addresses are identified as hashes containing a city attribute; they can also contain a street
-# (which is an array), a postcode, a state, and a country. The other contact fields
-# are phones, emails, uris; they can contain a type.
-# Affiliations are an array, and they contains an organization, and an optional description.
-# The affiliation description can be a single string, or a hash of content, language, script, and format.
+```
+
+## Contributor
+
+Contributors are an array of entity/role pairs, where entity is either `person` or `organization`:
+
+```yaml
 contributor:
   - organization:
       name: International Organization for Standardization
       url: www.iso.org
       abbreviation: ISO
-      subdivision: division
-      logo:
-        image:
-          id: logo1
-          src: logo1.png
-          mimetype: image/png
-          filename: logo1.png
-          height: "100%"
-          width: "200"
-          alt: Logo 1
-          title: "Logo #1"
-          longdesc: Logo number 1
     role:
       type: publisher
-      description: Publisher role
   - person:
       name:
         completename:
           content: A. Bierman
           language: en
-      affiliation:
-        - organization:
-            name: IETF
-            abbreviation: IETF
-            identifier:
-              - type: uri
-                id: www.ietf.org
-          description: Affiliation description
-      contact:
-        - address:
-            street:
-              - 8 Street St
-            city: City
-            postcode: '123456'
-            country: Country
-            state: State
-        - phone: '223322'
-          type: mobile
     role: author
-  - organization:
-      name: IETF
-      abbreviation: IETF
-      identifier:
-        - type: uri
-          id: www.ietf.org
-    role:
-      publisher
-  - person:
-      name:
-        abbreviation: AB
-        language: en
-        initial:
-          - A.
-        surname: Bierman
-      affiliation:
-        -  organization:
-               name: IETF
-               abbreviation: IETF
-           description:
-             content: Affiliation description
-             language: en
-             script: Latn
-      identifier:
-        - type: uri
-          id: www.person.com
-    role:
-      author
-# copyright consists of an owner (a hash containing the fields of an organisation),
-# a "from" date, and an optional "to" date
+```
+
+Organization attributes: `name`, `url`, `abbreviation`, `subdivision`, `contacts`, `identifiers`, `logo`.
+
+Person name attributes: `abbreviation`, `surname`, `completename`, `initial`, `forename`, `additions`, `prefixes`.
+
+## Copyright
+
+Copyright consists of an `owner` (organization fields), a `from` date, and an optional `to` date:
+
+```yaml
 copyright:
-   owner:
-     name: International Organization for Standardization
-     abbreviation: ISO
-     url: www.iso.org
-   from: '2014'
-   to: '2020'
-# link is an array of URIs, with a type and content
-link:
-  - type: src
-    content: https://www.iso.org/standard/53798.html
-  - type: obp
-    content: https://www.iso.org/obp/ui/#!iso:std:53798:en
-  - type: rss
-    content: https://www.iso.org/contents/data/standard/05/37/53798.detail.rss
-# relations are an array of type, bibitem, locality, source_locality, and description.
-# bibitem contains any of the attributes of a bibliographic item.
-# locality is an array of locality_stack which is an array of hash of type,
-#   reference_from, and optionally reference_to
-# source_locality is an array of source_locality_stack which is similar to locality_stack
-# description is optional and contains content and optional format, language, ans script.
+  owner:
+    name: International Organization for Standardization
+    abbreviation: ISO
+    url: www.iso.org
+  from: '2014'
+  to: '2020'
+```
+
+## Relation
+
+Relations are an array of `type`, `bibitem`, `locality`, `source_locality`, and optional `description`:
+
+```yaml
 relation:
   - type: updates
     bibitem:
@@ -239,68 +241,134 @@ relation:
         type: page
         reference_from: '7'
         reference_to: '10'
-    source_locality:
-      source_locality_stack:
-        - type: volume
-          reference_from: '1'
-        - type: chapter
-          reference_from: '2'
-  - type: updates
-    bibitem:
-      type: standard
-      formattedref:
-        content: ISO 19115:2003/Cor 1:2006
-        format: text/plain
-    description:
-      content: supersedes
-      format: text/plain
   - type: partOf
     bibitem:
       title:
         type: main
         content: Book title
-        format: text/plain
-# series are an array, containing a title, a type, a formattedref, a place,
-# an organization (string), an abbreviation, a from, a to, a number, and a partnumber.
-# The title is mandatory, and all other fields are optional.
-# The series title, like the titles of bibliographic items, contains a type,
-# content, and optional language, script, and format attributes.
-# The abbreviation and formattedref are either a string,
-# or a hash containing content, language, and script.
+```
+
+## Series
+
+Series contain a `title`, optional `type`, `place`, `organization`, `abbreviation`, `from`, `to`, `number`, and `partnumber`:
+
+```yaml
 series:
   - type: main
     title:
       type: original
       content: ISO/IEC FDIS 10118-3
-      language: en
-      script: Latn
-      format: text/plain
-    place: Serie's place
-    organization: Serie's organization
     abbreviation:
       content: ABVR
-      language: en
-      script: Latn
     from: '2009-02-01'
-    to: '2010-12-20'
     number: serie1234
     partnumber: part5678
-  - title:
-      - content: Series
-        language: en
-        script: Latn
-      - content: Séries
-        language: fr
-        script: Latn
-        format: text/plain
-# medium contains a form, a size, and a scale
+```
+
+# Complete example
+
+The following is a complete Relaton YAML example demonstrating all supported fields:
+
+```yaml
+id: ISO/TC211
+fetched: '2019-06-30'
+title:
+  - type: main
+    content: Geographic information
+  - type: subtitle
+    content: Geographic information subtitle
+    language: en
+    script: Latn
+    format: text/plain
+type: standard
+docid:
+  type: ISO
+  id: TC211
+docnumber: '211'
+edition: '1'
+language:
+  - en
+  - fr
+script:
+  Latn
+version:
+  revision_date: '2019-04-01'
+  draft: draft
+biblionote:
+  type: bibnote
+  content: >
+      Mark set a major league
+      home run record in 1998.
+docstatus:
+  stage:
+    value: '30'
+    abbreviation: CD
+  substage:
+    value: '00'
+  iteration: final
+date:
+  - type: issued
+    value: '2014'
+  - type: published
+    from: '2014-04'
+    to: '2014-05'
+  - type: accessed
+    value: '2015-05-20'
+abstract:
+  - content: >
+      ISO 19115-1:2014 defines the schema required for ...
+  - content: >
+      L'ISO 19115-1:2014 définit le schéma requis pour ...
+    language: fr
+    script: Latn
+    format: text/plain
+contributor:
+  - organization:
+      name: International Organization for Standardization
+      url: www.iso.org
+      abbreviation: ISO
+    role:
+      type: publisher
+  - person:
+      name:
+        completename:
+          content: A. Bierman
+          language: en
+    role: author
+copyright:
+  owner:
+    name: International Organization for Standardization
+    abbreviation: ISO
+    url: www.iso.org
+  from: '2014'
+  to: '2020'
+link:
+  - type: src
+    content: https://www.iso.org/standard/53798.html
+  - type: obp
+    content: https://www.iso.org/obp/ui/#!iso:std:53798:en
+relation:
+  - type: updates
+    bibitem:
+      formattedref: ISO 19115:2003
+    locality:
+      locality_stack:
+        type: page
+        reference_from: '7'
+        reference_to: '10'
+series:
+  - type: main
+    title:
+      type: original
+      content: ISO/IEC FDIS 10118-3
+    abbreviation:
+      content: ABVR
+    number: serie1234
+    partnumber: part5678
 medium:
   form: medium form
   size: medium size
   scale: medium scale
-# place is an array of strings or hashes. Can have name or city, region and country.
-# Name or city is mandatory, region and country are optional.
-# String and hash with name are equivalent.
 place:
   - bib place
   - city: Geneva
@@ -308,31 +376,26 @@ place:
       - name: Region
     country:
       - iso: CH
-        name: Switzelznd
-        recommended: true
-# extent is an array, localities are an array of locality_stack
+        name: Switzerland
 extent:
   locality:
     type: section
     reference_from: '7'
     reference_to: '10'
-# accesslocation is an array of strings
 accesslocation:
   - accesslocation1
   - accesslocation2
-# classification is an array of type and value
 classification:
   type: type
   value: value
-# validity contains a begins date, an ends date, and a revision date
 validity:
   begins: '2010-10-10 12:21'
   ends: '2011-02-03 18:30'
   revision: '2011-03-04 09:00'
-# keyword is an array of strings or hashes of content, language, script, and format
 keyword:
   - Keyword
   - Key Word
-# license is a string
 license: License
 ```
+
+[See this example in other formats &rarr;](/model/serializations)
