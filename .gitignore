@@ -13,3 +13,4 @@ node_modules
 .vitepress/dist
 .vitepress/cache
 
+public/logos/.vitepress/
