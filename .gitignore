@@ -9,4 +9,7 @@ _site
 .jekyll-metadata
 .DS_Store
 Gemfile.lock
+node_modules
+.vitepress/dist
+.vitepress/cache
 

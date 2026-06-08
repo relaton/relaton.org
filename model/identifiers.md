@@ -1,0 +1,70 @@
+---
+title: Identifiers
+description: Identifiers in Relaton
+
+---
+
+## Identifiers {#identifiers}
+
+* Source: ISO 690, 4.9
+* Serialisation: `bibitem/docidentifier`
+
+ISO 690, 4.9 argues that unique international standard identifiers
+must be included in the bibliography. In practice, identifiers are included
+at the discretion of the bibliographer: they are routinely included in
+bibliographic databases, but seldom in references within documents.
+
+The namespace of an identifier is indicated through its type attribute.
+The scope of an identifier is introduced to disambiguate the identifier
+referent, when it is not obvious. So it is introduced where an identifier identifies
+only a component of the item (e.g. a document included in the item),
+or a superset of the item (e.g. a series). It can also be used if the
+identifier identifies a specific instantiation of the document as an entity;
+in terms of the [Functional Requirements for Bibliographic Records](https://www.ifla.org/publications/functional-requirements-for-bibliographic-records), for example,
+an identifier may identify a work, an expression of the work (e.g. an edition),
+a manifestation of the work (e.g. a format), or an item of the manifestation
+(e.g. a single physical copy).
+
+Neither the type nor the scope of the identifier have an associated controlled
+vocabulary, and one is unlikely to be derived. Identifier type should
+follow established practice in the domain; most well-known identifiers
+have a widely used short name or abbreviation.
+
+Invalid or cancelled identifiers should be so identified through the
+identifier scope: the cancellation of the identifier does not impact
+its namespace, but its connection to a referent.
+
+Standards body identifiers for standards (ISO 690, 5.9)
+may be modelled as series numbers or as identifiers ([Series](/model/series)).
+We recommend that the canonical identifier issued for a standard by a
+standards body be encoded as an identifier; other identifiers assigned
+to the same document may be better identified with a series title, as a
+named and numbered grouping of documents.
+
+Identifiers can be expressed as HTTP URIs may be so expressed, without
+changing the identifier type. A DOI for example may be expressed as either
+the DOI proper, or as a doi.org URI.
+
+> *International Journal of Islamic Thought*. e-ISSN 2289-6023.
+> ISSN 2232-1314.
+
+```xml
+<bibitem type="journal">
+  <title>International Journal of Islamic Thought</title>
+  <docidentifier scope="digital" type="e-ISSSN">2289-6023</docidentifier>
+  <docidentifier scope="print" type="ISSSN">2232-1314</docidentifier>
+</bibitem>
+```
+
+> Ahmed al-Kindi & Anke Iman Bouzenita. 2018.
+> The notion of *Sunna*: An eclectic reading in the Ibadhi legacy.
+> *International Journal of Islamic Thought* 14:1-21.
+> https://doi.org/10.24035/ijit.14.2018.001.
+
+```xml
+<bibitem type="article">
+<title>International Journal of Islamic Thought</title>
+<docidentifier scope="journal" type="doi">10.24035/ijit</docidentifier>
+<docidentifier scope="article" type="doi">https://doi.org/10.24035/ijit.14.2018.001</docidentifier>
+</bibitem>
+```

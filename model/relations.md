@@ -1,0 +1,802 @@
+---
+title: Relations
+description: Categories of document relations in Relaton
+
+---
+
+## Document relations {#docrelations}
+
+### General
+
+* Source: ISO 690, 4.3
+* Serialisation: `bibitem/relation`
+
+The model allows specifying relations between bibliographic items,
+with one related item embedded within the other.
+
+### Relation types
+
+`bibitem/relation/@type` gives the base class of the relation
+between two bibliographic items.
+
+The base class of relation types is taken from ISO 690 and
+[Functional Requirements for Bibliographic Records](https://www.ifla.org/publications/functional-requirements-for-bibliographic-records) (FRBR),
+and represents generic bibliographical requirements, particularly
+inclusion in a host item ([host item](#host-item): `includedIn`, `includes`)
+and translation ([translation](#translation): `translatedFrom`, `hasTranslation`).
+
+The class of relation types have been expanded substantially to deal with the
+requirements of standards documents.
+
+In addition, the class has also been designed for extensibility:
+refinements to the base class can be expressed through
+`bibitem/relation/description`, with the understanding that the
+relation described in that element is a subset of the relation
+named in `bibitem/relation/@type`.
+
+Relations can be modelled in a hierarchical fashion, and we attempt
+to do so in the following; but relations are kept in `@type`, rather
+than moved to `description`, if they are commonplace.
+
+The modelling of relation types draws on the four basic classes of
+bibliographic entity modelled in FRBR:
+
+Work
+: a distinct intellectual or artistic creation
+
+Expression
+: a realisation of a Work (e.g. edition, adaptation)
+
+Manifestation
+: the physical embodiment of an Expression (e.g.
+print run; audio vs online vs print)
+
+Item
+: a single exemplar of a Manifestation
+
+All relations in the following are given with their inverse in
+italics and brackets, unless the relation is symmetric.
+
+#### Part-Whole relations
+
+`includes`
+: document A includes document B, through a well-defined
+relation outlined in [host item](#host-item), and with distinct metadata
+(including authorship) and bibliographic record (e.g. Chapter in
+Edited Work, Illustration in Book). (*includedIn*)
+
+  > [!NOTE]
+  > In general, text-based resources have components that can be considered a
+  > different kind of resource (`includes`); components of non-textual resources are
+  > considered to be of the same type as their host (`hasPart`).
+
+`hasPart`
+: document A includes document B, with no distinct metadata
+(other than extent) or bibliographic record, and all items in
+document B share the same authorship or corporate authorship (e.g.
+Chapter, Section, Part, Volume, Issue, Track) (*partOf*)
+
+`merges`
+: document A is the result of merging earlier documents B1, B2, B3...
+(*mergedInto*)
+
+`splits`
+: document A1, A2, A3... is split off from earlier documents
+B (*splitInto*)
+
+#### FRBR Level relations
+
+In the following, document A is typically an Expression, since
+expressions are typically what get their own bibliographic entry in
+catalogues and databases.
+
+Relations in the following are subclassed: this is indicated by
+indentation.
+
+`instanceOf`
+: document B is an instance of document A (e.g. an
+edition, a format, a single copy: agnostic as to whether B is an
+Expression, Manifestation, or Item). (*hasInstance*)
+
+  Instances are often used in the Relaton modelling of standards, since
+  concrete documents (FRBR Expressions) are often lumped together
+  as more abstract entities (typically FRBR Works), particularly for
+  the purposes of citation.
+
+  Different editions of a standard are often lumped together as a single Work; the
+  different editions of a standard are then modelled as instances of the undated
+  standard. Similarly, translations of a standard are often lumped together as a
+  single Work; the distinct language versions are then modelled as instances of
+  the same, language-independent standard.
+
+  > [!NOTE]
+  > This is a generalized relation of the more specific relations
+  > `exemplarOf`, `manifestationOf`, and `expressionOf`.
+
+  `exemplarOf`
+  : document B is an Item of document A: document B is a
+  single physical instance of document A. (*hasExemplar*)
+
+  `manifestationOf`
+  : document B is a Manifestation of document A:
+  document B is an embodiment in a particular medium of the content of document A.
+  (*hasManifestation*)
+
+    > [!NOTE]
+    > This is a generalized relation of the more specific relations
+    > `reproductionOf` and `reprintOf`.
+
+    `reproductionOf`
+    : document B is a Manifestation of the same
+    Expression as document A (reproduction): document B presents the same content as
+    document A, and document B has been created to reproduce document A faithfully.
+    (*hasReproduction*)
+
+      > [!NOTE]
+      > This is a generalized relation of the more specific relation `reprintOf`.
+
+      `reprintOf`
+      : document B is a reproduction of document A, involving
+      a new publisher or distributor and mass dissemination, and no
+      overriding concern with reproducing the source manifestation
+      precisely (not necessarily restricted to print media) (*hasReprint*)
+
+  `expressionOf`
+  : document B is an Expression of document A: document B
+  is a particular realisation of the intellectual or artistic content of the
+  bibliographic item, which is more generically referred to as document A.
+  (*hasExpression*)
+
+    > [!NOTE]
+    > This is a generalized relation of the more specific relations
+    > `translatedFrom`, `arrangementOf`, `abridgementOf`, and `annotationOf`.
+
+    `translatedFrom`
+    : document B is an Expression of document A in a
+    different language than the source Expression of A (translation).
+    This includes dubbed and subtitled versions of a film.
+    (*hasTranslation*)
+
+    `arrangementOf`
+    : document B is an arrangement Expression of document A. Document
+    B has the same intellectual or artistic content as document A, and document B
+    has been created to realise that content through different resources than
+    document A. (*hasArrangement*)
+
+      `arrangementOf` is typically understood to involve the realisation of a musical
+      work with different instruments or voices than the original. This includes
+      adding parts or an accompaniment.
+
+    `abridgementOf`
+    : document B is an abridged Expression of document A. Document B
+    presents a subset of the intellectual or artistic content of document A, but is
+    still intended as a complete work, presenting a shortened version of the source
+    Expression of A. (*hasAbridgement*)
+
+    `annotationOf`
+    : document B is an annotated Expression of document A.
+    Document B incorporates part or all of document A, and which
+    enhances document A with explanatory commentary not present in the source
+    Expression of A (annotation). (*hasAnnotation*)
+
+##### Revision relations
+
+FRBR uses Revision to refer to the updating of the content of a
+source Expression to form a new Expression, in ways that do not
+involve changing language (translation), resources/instrumentation
+(arrangement), or extent (abridgement, annotation). So a Revision
+updates the content of an Expression, but is not a new Abridgement,
+Translation, Arrangement, or Annotation; an Abridgement,
+Translation, Arrangement, or Annotation can be based on a specific
+Revision; and an Abridgement, Translation, Arrangement, or
+Annotation can have multiple Revisions of their own.
+
+Revision includes not only an author updating the content of their
+own work, but a third party updating that content, often after the
+author has deceased (indicated bibliographically as "Revised by") It
+also includes a scholar reconstructing the author's text on the
+basis of available evidence, including previous editions where
+available (indicated bibliographically as "Edited by"; hence we can
+distinguish Cox's, Edmond's, Lobel & Page's and Voigt's editions of
+Sappho, all done in the 20th century). Annotation is most commonly
+seen in the context of such scholarly editions, so `annotationOf`
+should be reserved for cases where the Expression does not provide
+its own version of the textual content of the Work it is annotating.
+This is somewhat rare, and FRBR does not model annotations as
+distinct from revisions.
+
+`draftOf`
+: document B is a draft (unpublished version) or revision of document A.
+It may also be the first, unpublished expression of document A. Document A may
+be a Work or an Expression (e.g. a draft may be specific to an edition or
+translation). Document A may or may not be published. (*hasDraft*)
+
+  `preliminaryDraftOf`
+  : document B is an immediate predecessor draft (unpublished
+  version) to document A, where the content of document B was modified to create
+  document A.
+  (*hasPreliminaryDraft*)
+
+  `revisionDraftOf`
+  : document B is an immediate successor draft (unpublished
+  version) to document A, where the content of document A was modified to create
+  document B. (*hasRevisionDraft*)
+
+`editionOf`
+: document B is a published revision of document A, or the first
+published Expression of document A. Document A is a Work, or else document A is
+an Expression with the same language, instrumentation, and substantially the
+same extent as B (i.e. translations, arrangements, abridgements, annotations can
+have editions; editions cannot have editions). (*hasEdition*)
+
+  `updates`
+  : document B is an edition of the same Work as document A,
+  and is subsequent to document A; A is an Expression.
+  Unlike the `obsoletes` relation,
+  the document B may still remain valid after the document A appears.
+  (However by default in the standards world, it does not.) (*updatedBy*)
+
+  `obsoletes`
+  : document A supersedes document B, being applicable or
+  valid in more or newer domains than document B. (The two documents
+  are not necessarily Expressions of the same Work.) (*obsoletedBy*)
+
+  > [!NOTE]
+  > Documents often have notions of corrections and other minor
+  > adjustments to content, which are not modelled bibliographically as
+  > distinct editions. This distinction or lack of distinction is
+  > captured in Relaton through the `edition` element; the `hasEdition`
+  > relation still applies to such minor variants of the text, whether
+  > they are considered distinct editions or not.
+
+#### Derived relations
+
+In the following, the two related items belong to distinct works,
+but the creation of document B is determined in some way by document A.
+
+`derivedFrom`
+: document A is derived from document B, depending on it
+for at least some of its content; includes
+classes not otherwise specified, such as parodies (*derives*)
+
+  `describes`
+  : document A is a description of document B (*describedBy*).
+
+    > [!NOTE]
+    > This is a generalized relation of the more specific relation `catalogues`.
+
+    `catalogues`
+    : document A is a catalogue including a description of
+    document B, expected to be a bibliographic record (*cataloguedBy*)
+
+  `hasSuccessor`
+  : document A is succeeded by document B in a sequence.
+  Document A has ceased fulfilling some function, and document B has assumed that
+  function in its stead. Typically applies when document A is a periodical publication
+  which has ceased publication, and document B is a new periodical publication,
+  designated as the continuation of document A (i.e. continuation of journal). (*successorOf*)
+
+  `adaptedFrom`
+  : document A is a reworking of document B to make it
+  suitable for a different audience
+  (FRBR Adaptation: includes paraphrase, free translation, musical variations)
+  or medium (FRBR Transformation: includes dramatisation, novelisation, versification,
+  screenplay). In music, an adaptation changes the musical content, whereas an arrangement
+  changes the instrumental and vocal resources of the work. (*hasAdaptation*)
+
+  `adoptedFrom`
+  : document A is adopted in response to document B.
+  Document B has its content derived from document A, and has been adopted in
+  response to it by a distinct authorising body. (*adoptedAs*)
+
+    > [!NOTE]
+    > Typically document B is a national standard body's counterpart to an
+    > international standard. In this case document A and document B have potentially
+    > the same content, but have distinct institutional authorship and application.
+
+    > [!NOTE]
+    > This kind of appropriation of text is not characteristic of literary works.
+
+    > [!NOTE]
+    > This is a generalized relation of the more specific relations `identical`,
+    > `equivalent`, and `nonequivalent`.
+
+    `identical`
+    : document A is adopted from document B, is equivalent to it in
+    force and scope, and is identical to it in content.
+
+    `equivalent`
+    : document A is adopted from document B, and is equivalent to it in
+    force and scope, but has not undergone significant textual change.
+
+    `nonequivalent`
+    : document A is adopted from document B, but is not equivalent
+    to it in force and scope.
+
+  `reviewOf`
+  : document A is a evaluation of document B. (*hasReview*)
+
+  `commentaryOf`
+  : document A is a commentary on document B, but does
+  not include substantial text from document B, unlike `annotationOf`,
+  and so cannot be read independently of document B.
+  (This distinction is a judgement call.) (*hasCommentary*)
+
+The distinction between distinct works and expressions of the same
+work is subtle, and can vary culturally. Its major consequence is
+whether the creator of the derived work is considered a secondary
+author, and the derived work is still attributed to the original
+author (in which case it is an Expression), or a primary author,
+supplanting the original author (in which case it is a new Work).
+The differentiation made in FRBR (3.2.1) is:
+
+> For the purposes of this study variant texts incorporating revisions
+> or updates to an earlier text are viewed simply as expressions of
+> the same work (i.e., the variant texts are not viewed as separate
+> works). Similarly, abridgements or enlargements of an existing text,
+> or the addition of parts or an accompaniment to a musical
+> composition are considered to be different expressions of the same
+> work. Translations from one language to another, musical
+> transcriptions and arrangements, and dubbed or subtitled versions of
+> a film are also considered simply as different expressions of the
+> same original work.
+>
+> By contrast, when the modification of a work involves a significant
+> degree of independent intellectual or artistic effort, the result is
+> viewed, for the purpose of this study, as a new work. Thus
+> paraphrases, rewritings, adaptations for children, parodies, musical
+> variations on a theme and free transcriptions of a musical
+> composition are considered to represent new works. Similarly,
+> adaptations of a work from one literary or art form to another
+> (e.g., dramatizations, adaptations from one medium of the graphic
+> arts to another, etc.) are considered to represent new works.
+> Abstracts, digests and summaries are also considered to represent
+> new works.
+
+#### Other relations
+
+`related`
+: document A is related to document B in an otherwise
+unspecified fashion.
+
+`complementOf`
+: document A is a complement or supplement of document B
+(e.g. concordance, teacher's guide, gloss, addendum, appendix,
+libretto, incidental music), and provides additional
+or contextual information to help understand the document. (*hasComplement*).
+
+`cites`
+: document A references document B (*isCitedIn*)
+
+#### Refinements
+
+The following relations are treated as refinements, and are expressed in
+`bibitem/relation/description`, not `bibitem/relation/type`.
+
+The refinements a relation type can undergo are open-ended, and this list may be
+expanded in the future to encourage interoperability.
+
+`updates`
+
+  `corrects`
+  : document A updates document B, and the change does not
+  affect the intended meaning (*correctedBy*)
+
+  `amends`
+  : document A updates document B, and the change is a minor
+  change to the intended meaning (*amendedBy*)
+
+  `revises`
+  : document A updates document B, and the change is a major
+  change to the intended meaning (*revisedBy*)
+
+`reproductionOf`
+
+  `facsimile`
+  : document A is a reproduction of two-dimensional
+  document B (e.g. book, manuscript), which prioritises visual
+  accuracy.
+
+  `replica`
+  : document A is a reproduction of three-dimensional or
+  pictorial document B (e.g. sculpture, oil painting), which
+  prioritises visual and tactile accuracy.
+
+#### Comparison with other bibliographic relations lists
+
+The Relaton relations are compared with those in
+
+* [FRBR](https://www.ifla.org/publications/functional-requirements-for-bibliographic-records)
+* [BIBFRAME](http://id.loc.gov/ontologies/bibframe-category.html)
+* [BIBO](https://www.dublincore.org/specifications/bibo/bibo/bibo.rdf.xml), and
+* [Dublin Core](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/).
+
+(The directionality of corresponding relations is ignored.)
+
+**Comparing Relaton bibliographic relations with other related schemes**
+
+| Relaton | FRBR | BIBFRAME | BIBO | Dublin Core |
+|---------|------|----------|------|-------------|
+| includes | hasPart (independent) | *partOf, hasSeries, hasSubseries* | | hasPart |
+| hasPart | hasPart (dependent) | partOf | | hasPart |
+| splits | is a reconfiguration of (Item only) | *splitInto, separatedFrom* | | |
+| merges | is a reconfiguration of (Item only) | *mergerOf, absorbed* | | |
+| instanceOf | | | | |
+| exemplarOf | is exemplified by | itemOf | | |
+| manifestationOf | is embodied in | instanceOf | | hasFormat |
+| reproductionOf | *is a reproduction of, is an alternate to* | reproductionOf | reproducedIn | |
+| reprintOf | is a reproduction of | | | |
+| expressionOf | is realised through | expressionOf | | hasVersion |
+| expressionOf (as generalization) | | | *transcriptOf* | |
+| translatedFrom | is a translation of | translationOf | translationOf | |
+| arrangementOf | is an arrangement of | | | |
+| abridgementOf | is an abridgement of | | | |
+| annotationOf | | | | |
+| draftOf | is a revision of | | | |
+| editionOf | is a revision of | | | |
+| updates | is a revision of | | | |
+| derivedFrom | | *derivativeOf, originalVersion* | | source |
+| derivedFrom (as generalization) | *is a summary of, is an imitation of* | | | |
+| describedBy | | | annotates | *description, abstract, tableOfContents* |
+| hasSuccessor | is a successor to | *precededBy, continues, continuesInPart* | | |
+| adaptedFrom | *is an adaptation of, is a transformation of* | | | |
+| adoptedFrom | | | | |
+| reviewOf | | | reviewOf | |
+| commentaryOf | | | | |
+| related | | relatedTo | | relation |
+| related (as generalization) | | *dataSource* | | *conformsTo* |
+| complementOf | *complements, supplements* | *accompanies, supplementTo, indexOf, findingAidOf* | | requires |
+| supersedes | | replacementOf | *affirmedBy (legal), reversedBy (legal), subsequentLegalDecision (legal)* | replaces |
+| cites | | references | cites | references |
+
+> [!NOTE]
+> *Bolded* entries indicate non-identical matches where the
+> meaning of mapped values differ. Some may represent one-to-many or
+> partial matches.
+
+### Localities
+
+The relation between two bibliographic items may not apply to either
+the first ("source") item, or the second ("target") item, in their
+entirety. For that reason, the relation may also specify one more
+more localities in the target item (`localityStack`), and one or
+more localities in the source item (`sourceLocalityStack`), as
+constraining the relation.
+
+For example, the following expresses that Chapter 3 of the first
+edition of *Telescopy* has been superseded by Chapters 4 and 7 of
+the second edition.
+
+```xml
+<bibitem type="book">
+  <title>Telescopy</title>
+  <edition>1</edition>
+  <relation type="obsoletedBy">
+    <bibitem type="book">
+      <title>Telescopy</title>
+      <edition>2</edition>
+    </bibitem>
+    <sourceLocalityStack>
+      <sourceLocality type="chapter">
+        <referenceFrom>3</referenceFrom>
+      </sourceLocality>
+    </sourceLocalityStack>
+    <localityStack>
+      <locality type="chapter">
+        <referenceFrom>4</referenceFrom>
+      </locality>
+      <locality type="chapter">
+        <referenceFrom>7</referenceFrom>
+      </locality>
+    </localityStack>
+  </relation>
+</bibitem>
+```
+
+### Host item {#host-item}
+
+Of the bibliographic types identified in [bibtype](#bibtype),
+`incollection`, `inproceedings`, and `inbook` are all inherently
+related to a host item. Other types also potentially involve
+relations with host items; for example, the relation between a
+record track and a record, or a broadcast segment and a broadcast
+show. The relation between host item and contained item is modelled
+through `includedIn` or `partOf`, depending on whether all included
+items share authorship or corporate authorship.
+
+The relation between any two items optionally includes a locality
+element, which indicates which part of the first item is related to
+the second. (For example, which part of the first item is superseded
+by the second.) The locality in the relation element can be used
+with "includedIn" relations, to indicate the extent of the contained
+item within the host item; but for consistency, it is preferable to
+use the `extent` element in the contained item, which has the same
+meaning.
+
+The expected relations between host and contained items are as follows:
+
+| Host | Contained | Relation |
+|------|-----------|----------|
+| book, booklet, manual, techreport | incollection (if has its own title--autonomous item) | includedIn |
+| book, booklet, manual, techreport | inbook (if it does not have its own title, e.g. numbered chapter, page span) | partOf |
+| journal | article | includedIn |
+| proceedings, conference | inproceedings | includedIn |
+| thesis, standard, patent | inbook | partOf |
+| map | map | partOf (atlas) or includedIn (collection) |
+| electronic resource | electronic resource | partOf (multipart work) or includedIn (collection) |
+| broadcast | broadcast (treated as same corporate author) | partOf |
+| music | music (typically involves same author) | partOf |
+| graphic work | graphic work | partOf (multipart work) or includedIn (collection) |
+| film | film (typically involves same author) | partOf |
+| video | video (typically involves same author) | partOf |
+
+In general: text-based resources have components that can be
+considered a different kind of resource; components of non-textual
+resources are considered to be of the same type as their host.
+
+> Ramsey, J. K., & McGrew, W. C. (2005). Object play in great apes: Studies in nature and captivity.
+> In A. D. Pellegrini & P. K. Smith (Eds.), *The nature of play: Great apes and humans*
+> (pp. 89-112). New York, NY: Guilford Press.
+
+```xml
+<bibitem type="incollection">
+  <title>Object play in great apes: Studies in nature and captivity</title>
+  <date type="published"><on>2005</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Ramsey</surname>
+        <formatted-initials>J. K.</formatted-initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>McGrew</surname>
+        <formatted-initials>W. C.</formatted-initials>
+      </name>
+    </person>
+  </contributor>
+  <relation type="includedIn">
+    <bibitem>
+      <title>The nature of play: Great apes and humans</title>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Pellegrini</surname>
+            <formatted-initials>A. D.</formatted-initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="editor"/>
+        <person>
+          <name>
+            <surname>Smith</surname>
+            <formatted-initials>P. K.</formatted-initials>
+          </name>
+        </person>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization>
+          <name>Guilford Press</name>
+        </organization>
+      </contributor>
+      <place>New York, NY</place>
+    </bibitem>
+  </relation>
+  <extent type="page">
+    <referenceFrom>89</referenceFrom>
+    <referenceTo>112</referenceTo>
+  </extent>
+</bibitem>
+```
+
+> Sigur Rós.
+> Untitled [Vaka]. In: *( )* [compact disc]. Track 1.
+> Mosfellsbær: Sundlaugin, 2002.
+
+```xml
+<bibitem type="music">
+  <title>Untitled</title>
+  <title type="unofficial">Vaka</title>
+  <date type="published"><on>2002</on></date>
+  <contributor>
+    <role type="author">composer</role>
+    <organization><name>Sigur Rós</name></organization>
+  </contributor>
+  <medium>
+    <form>compact disc</form>
+  </medium>
+  <relation type="partOf">
+    <bibitem>
+      <title>( )</title>
+      <contributor>
+        <role type="author">composer</role>
+        <organization><name>Sigur Rós</name></organization>
+      </contributor>
+      <contributor>
+        <role type="publisher"/>
+        <organization><name>Sundlaugin</name></organization>
+      </contributor>
+      <place>Mosfellsbær, Iceland</place>
+    </bibitem>
+  </relation>
+  <extent type="track">
+    <referenceFrom>1</referenceFrom>
+  </extent>
+</bibitem>
+```
+
+### Translation {#translation}
+
+Translations are items derived from an item in a different language.
+Typically in bibliographies, the details of the source item are not
+provided for a translation, outside of the original author, and
+possibly the date of publication and the source language title of
+the original title.
+
+If the information about the source item is limited to these, no
+relation need be invoked in the title:
+
+* the source title can be modelled as an original title variant
+([alt-title](/model/title#alt-title));
+
+* the author differentiated from the translator as creators
+([creator-selection](#creator-selection)); and
+
+* the date of authorship differentiated from the date of translation
+([date](#date): `date[@type="created"]` vs `date[@type="adapted"]`).
+
+However, if any further details of the source item need to be
+provided (e.g.  source language: ISO 690, 4.11), they should
+be modelled through an overt relation between the source item
+and the translation.
+
+> PRUS, Bolesław. 1912 [1895-1896]. *La Faraono* [Faraon]. Translated
+> by Kabe (pseud. of Kazimierz BEIN). 2nd revised edition.
+> Paris: Hachette.
+>
+> Single work representation:
+
+```xml
+<bibitem type="book">
+  <title lang="eo">La Faraono</title>
+  <title type="original" lang="pl">Faraon</title>
+  <date type="created"><from>1895</from><to>1896</to></date>
+  <date type="adapted"><on>1907</on></date>
+  <date type="published"><on>1912</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Prus</surname>
+        <forename>Bolesław</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <completename>Kabe</completename>
+        <note>pseud. of Kazimierz Bein</note>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Hachette</name>
+    </organization>
+  </contributor>
+  <edition>2nd revised edition</edition>
+  <language>eo</language>
+  <place>Paris</place>
+</bibitem>
+```
+
+> Related work representation:
+
+```xml
+<bibitem type="book">
+  <title lang="eo">La Faraono</title>
+  <date type="adapted"><on>1907</on></date>
+  <date type="published"><on>1912</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Prus</surname>
+        <forename>Bolesław</forename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <completename>Kabe</completename>
+        <note>pseud. of Kazimierz Bein</note>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>Hachette</name>
+    </organization>
+  </contributor>
+  <edition>2nd revised edition</edition>
+  <language>eo</language>
+  <relation type="translatedFrom">
+    <title type="original" lang="pl">Faraon</title>
+    <date type="created"><from>1894</from><to>1895</to></date>
+    <date type="published"><from>1895</from><to>1896</to></date>
+    <contributor>
+     <role type="author"/>
+     <person>
+       <name>
+         <surname>Prus</surname>
+         <forename>Bolesław</forename>
+       </name>
+     </person>
+    </contributor>
+    <contributor>
+      <role type="publisher"/>
+      <organization>
+        <name>Tygodnik Ilustrowany</name>
+      </organization>
+    </contributor>
+    <language>pl</language>
+    <place>Warsaw</place>
+  </relation>
+  <place>Paris</place>
+</bibitem>
+```
+
+> Demosthenes. *Speeches 50-59*. Translated from the Greek by
+> Victor BERS. Austin: University of Texas Press, 2003.
+
+```xml
+<bibitem type="book">
+  <title>Speeches 50-59</title>
+  <date type="published"><on>2003</on></date>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <completename>Demosthenes</completename>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="translator"/>
+    <person>
+      <name>
+        <surname>Bers</surname>
+        <formatted-initials>Victor</formatted-initials>
+      </name>
+    </person>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>University of Texas Press</name>
+    </organization>
+  </contributor>
+  <language>en</language>
+  <relation type="translatedFrom">
+    <bibitem>
+      <title>Speeches 50-59</title>
+      <language>grc</language>
+    </bibitem>
+  </relation>
+  <place>Austin</place>
+</bibitem>
+```

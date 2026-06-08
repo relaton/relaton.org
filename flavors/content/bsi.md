@@ -1,0 +1,81 @@
+---
+title: Citation guide for BSI resources
+flavor: British Standards Institution (BSI)
+description: Cite British Standards Institution (BSI) documents
+---
+
+## British Standards
+
+### General
+
+```
+BS {number}
+```
+
+### Adoptions
+
+BS EN
+
+> `BS EN 13445-3:2021`
+
+BS ISO, BS IEC
+
+>
+> ```
+> BS ISO 10976:2023 - TC
+> BS IEC 63190:2023
+> ```
+
+BS EN ISO, BS EN IEC, BS EN ISO/IEC
+
+>
+> ```
+> BS EN ISO 16315:2016
+> BS EN IEC 60904-2:2023 - TC
+> BS EN ISO/IEC 80079-34:2020 - TC
+> ```
+
+
+## Published Documents
+
+### General
+
+```
+PD {number}
+```
+
+### Adoptions
+
+- PD CEN TR
+
+> `PD CEN/TR 17994:2023`
+
+- PD IEC TR
+
+> `PD IEC TR 63434:2023`
+
+- PD ISO PAS, PD ISO TR
+
+>
+> ```
+> PD ISO/PAS 11585:2023
+> PD ISO/TR 18588:2023
+> ```
+
+## Publicly Available Specifications
+
+PAS
+
+> `PAS 2030:2023`
+
+## Flex
+
+> `BSI Flex 1903 v1.0:2023-08`
+
+## Amendments
+
+> `BS 7273-4:2015+A1:2021`
+
+## Expert Commentary
+
+> `BS EN ISO 13485:2016+A11:2021 EC`

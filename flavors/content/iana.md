@@ -1,0 +1,15 @@
+---
+title: Citation guide for IANA resources
+flavor: IANA
+description: Cite IANA registries and registry entries
+---
+
+To cite an IANA document, use the `IANA` prefix and the document identifier:
+
+>
+> ```
+> IANA alto-protocol/address-types
+> IANA babel
+> IANA c-dns/c-dns-address-event-types
+> IANA dhcpv6-parameters/dhcpv6-options-attribute
+> ```

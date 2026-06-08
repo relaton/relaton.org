@@ -1,0 +1,15 @@
+---
+title: Citation guide for CIE standards
+flavor: CIE
+description: Cite CIE standards
+---
+
+## Prefix
+
+The prefix for the CIE standards is `CIE`.
+
+## Copublishers
+
+`ISO` - International Organization for Standardization
+
+> `CIE ISO 11664-5:2016`
