@@ -83,26 +83,3 @@ The code lives across multiple repositories in the [Relaton GitHub organization]
 - Continued expansion of supported organizations (CCSDS, IANA, XSF, etc.)
 
 </div>
-
-<style>
-.about-page {
-  max-width: 864px;
-  margin: 0 auto;
-  padding: 0 24px 64px;
-}
-.about-hero {
-  text-align: center;
-  padding: 48px 0 32px;
-  border-bottom: 1px solid var(--vp-c-divider);
-  margin-bottom: 40px;
-}
-.about-hero h1 {
-  font-size: 36px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.about-subtitle {
-  font-size: 18px;
-  color: var(--vp-c-text-2);
-}
-</style>

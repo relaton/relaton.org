@@ -295,7 +295,56 @@ body {
 }
 
 /* ==========================================================================
-   7. Print Styles
+   7. Page Layout — shared styles for page-header used across index pages
+   ========================================================================== */
+
+.page-header {
+  text-align: center;
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  margin-bottom: 40px;
+}
+.page-header h1 {
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+.page-subtitle {
+  font-size: 17px;
+  color: var(--vp-c-text-2);
+  line-height: 1.5;
+}
+
+.about-page {
+  max-width: 864px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+}
+.about-hero {
+  text-align: center;
+  padding: 48px 0 32px;
+  border-bottom: 1px solid var(--vp-c-divider);
+  margin-bottom: 40px;
+}
+.about-hero h1 {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.about-subtitle {
+  font-size: 18px;
+  color: var(--vp-c-text-2);
+}
+
+/* Remove VitePress default top margin on first content element inside page layout */
+.vp-doc > div:first-child > h2:first-child,
+.vp-doc > h2:first-child {
+  margin-top: 0;
+}
+
+/* ==========================================================================
+   8. Print Styles
    ========================================================================== */
 
 @media print {
