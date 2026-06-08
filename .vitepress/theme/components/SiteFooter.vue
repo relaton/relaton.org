@@ -173,5 +173,11 @@ const year = new Date().getFullYear()
   .footer-grid {
     grid-template-columns: 1fr;
   }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+  .footer-divider { display: none; }
 }
 </style>
