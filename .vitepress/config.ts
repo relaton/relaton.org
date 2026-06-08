@@ -27,9 +27,30 @@ export default defineConfig({
       {
         text: 'Model',
         items: [
-          { text: 'Overview & ISO 690', link: '/model/overview' },
-          { text: 'Contributor', link: '/model/contributor' },
-          { text: 'Relations', link: '/model/relations' },
+          { text: 'The Relaton Model', link: '/model/overview' },
+          { text: 'ISO 690 Foundation', link: '/model/iso-690' },
+          { text: 'Extensions Beyond ISO 690', link: '/model/extensions' },
+          { text: 'Flavor Model Extensions', link: '/model/flavor-models' },
+          {
+            text: 'Entities',
+            items: [
+              { text: 'Bibitem Types', link: '/model/bibtype' },
+              { text: 'Citation', link: '/model/citation' },
+              { text: 'Contributor', link: '/model/contributor' },
+              { text: 'Relations', link: '/model/relations' },
+              { text: 'Title', link: '/model/title' },
+              { text: 'Edition', link: '/model/edition' },
+              { text: 'Production', link: '/model/production' },
+              { text: 'Location', link: '/model/location' },
+              { text: 'Medium', link: '/model/medium' },
+              { text: 'Series', link: '/model/series' },
+              { text: 'Identifiers', link: '/model/identifiers' },
+              { text: 'Numeration', link: '/model/numeration' },
+              { text: 'Additional Info', link: '/model/additional-info' },
+              { text: 'Specific Categories', link: '/model/specific-cats' },
+            ],
+          },
+          { text: 'Serializations', link: '/model/serializations' },
           { text: 'UML Diagrams', link: '/model/diagrams' },
         ],
       },
@@ -38,9 +59,6 @@ export default defineConfig({
         text: 'Specs',
         items: [
           { text: 'Relaton YAML', link: '/specs/relaton-yaml' },
-          { text: 'Relaton Render', link: '/specs/relaton-render' },
-          { text: 'Relaton CLI', link: '/specs/relaton-cli' },
-          { text: 'Relaton Ruby', link: '/specs/relaton-ruby' },
           { text: 'AsciiBib', link: '/specs/asciibib' },
         ],
       },
@@ -52,7 +70,8 @@ export default defineConfig({
 
     sidebar: {
       '/model/': [
-        { text: 'Overview & ISO 690', link: '/model/overview' },
+        { text: 'The Relaton Model', link: '/model/overview' },
+        { text: 'ISO 690 Foundation', link: '/model/iso-690' },
         {
           text: 'Entities',
           items: [
@@ -72,13 +91,11 @@ export default defineConfig({
             { text: 'Specific Categories', link: '/model/specific-cats' },
           ],
         },
+        { text: 'Serializations', link: '/model/serializations' },
         { text: 'UML Diagrams', link: '/model/diagrams' },
       ],
       '/specs/': [
         { text: 'Relaton YAML', link: '/specs/relaton-yaml' },
-        { text: 'Relaton Render', link: '/specs/relaton-render' },
-        { text: 'Relaton CLI', link: '/specs/relaton-cli' },
-        { text: 'Relaton Ruby', link: '/specs/relaton-ruby' },
         { text: 'AsciiBib', link: '/specs/asciibib' },
       ],
     },
@@ -100,5 +117,5 @@ export default defineConfig({
     hostname: 'https://relaton.org',
   },
 
-  srcExclude: ['TODO.refactor/**', 'flavors/content/**'],
+  srcExclude: ['TODO.refactor/**', 'flavors/content/**', 'software/content/**'],
 })

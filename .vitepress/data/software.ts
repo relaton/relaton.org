@@ -26,6 +26,14 @@ export const gems: SoftwareGem[] = [
     category: 'tool',
   },
   {
+    id: 'relaton-render',
+    name: 'relaton-render',
+    displayName: 'Relaton Render',
+    repoUrl: 'https://github.com/metanorma/relaton-render',
+    description: 'Formats bibliographic references in ISO 690, APA, MLA, and custom styles.',
+    category: 'tool',
+  },
+  {
     id: 'relaton-iso',
     name: 'relaton-iso',
     displayName: 'Relaton ISO',

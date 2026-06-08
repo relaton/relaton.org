@@ -1,21 +1,29 @@
 ---
-title: Overview & ISO 690
-description: The Relaton Information Model is the machine-readable implementation of ISO 690 for bibliographic references
+title: The Relaton Information Model
+description: A machine-readable information model for bibliographic references, implementing ISO 690:2021
 ---
 
 # The Relaton Information Model
 
-The Relaton Information Model is a comprehensive data model for bibliographic references and citations. It is based on **ISO 690:2021** — the international standard for bibliographic references and citations to information resources — and extends it to meet the specific needs of standards development organizations.
+The Relaton Information Model is a comprehensive data model for bibliographic references and citations. It is the machine-readable implementation of **ISO 690:2021**, extending the standard to meet the specific needs of standards development organizations and the broader scholarly ecosystem.
 
-## ISO 690 Relationship
+[Learn about ISO 690 and how Relaton implements it &rarr;](/model/iso-690)
 
-ISO 690 defines the conceptual framework for bibliographic references. Relaton provides the concrete information model implementation:
+## Architecture
 
-- Every ISO 690 concept has a corresponding Relaton entity
-- Every ISO 690 data element has a defined field in the Relaton model
-- The model extends ISO 690 for standards-specific needs: document stages, supplements, amendment tracking, and more
+The model is organized around the **BibliographicItem** — the central entity that represents any citable document. A BibliographicItem contains:
 
-### ISO 690 Areas to Relaton Entities
+- **Titles** — in multiple scripts and languages
+- **Contributors** — persons, organizations, and their roles
+- **Identifiers** — document IDs, DOIs, ISBNs, URIs
+- **Production information** — publisher, place, dates
+- **Relations** — links to other documents (replaces, amends, etc.)
+- **Classification** — document type, keywords, subjects
+- **Content details** — edition, medium, series, numeration
+
+## ISO 690 Entity Mapping
+
+ISO 690 defines 14 data element categories. Each maps directly to a Relaton entity:
 
 | ISO 690 Area | Relaton Entity | Description |
 |---|---|---|
@@ -34,17 +42,7 @@ ISO 690 defines the conceptual framework for bibliographic references. Relaton p
 | Additional Info | [Additional Info](/model/additional-info) | Keywords, classification, tags |
 | Resource Type | [Bibitem Types](/model/bibtype) | ISO 690 + BibTeX union types |
 
-## Architecture
-
-The model is organized around the **BibliographicItem** — the central entity that represents any citable document. A BibliographicItem contains:
-
-- **Titles** — in multiple scripts and languages
-- **Contributors** — persons, organizations, and their roles
-- **Identifiers** — document IDs, DOIs, ISBNs, URIs
-- **Production information** — publisher, place, dates
-- **Relations** — links to other documents (replaces, amends, etc.)
-- **Classification** — document type, keywords, subjects
-- **Content details** — edition, medium, series, numeration
+[Full ISO 690 mapping and details &rarr;](/model/iso-690)
 
 ## Key Concepts
 
@@ -54,15 +52,19 @@ Relaton uses a "flavor" architecture where each standards organization has a ded
 
 [View all flavors &rarr;](/flavors/)
 
-### Serialization Formats
+### Serializations
 
-The model supports multiple serialization formats:
+The model supports five serialization formats, each suited to different workflows:
 
-- **Relaton YAML** — primary serialization format
-- **Relaton XML** — XML serialization based on ISO 690
-- **BibTeX** — for integration with LaTeX workflows
-- **AsciiBib** — for embedding in AsciiDoc documents
-- **JSON-LD** — for linked data applications
+| Format | Use Case |
+|---|---|
+| **Relaton YAML** | Primary interchange; human-readable, editable |
+| **Relaton XML** | Canonical serialization; schema-validatable |
+| **BibTeX** | Integration with LaTeX workflows |
+| **AsciiBib** | Embedding in AsciiDoc documents |
+| **JSON-LD** | Linked data and web API applications |
+
+[Serialization details with code examples &rarr;](/model/serializations)
 
 ### Document Relation Types
 

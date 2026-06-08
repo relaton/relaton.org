@@ -42,6 +42,8 @@
       <p>Citation guide content is not yet available for this organization.</p>
     </div>
 
+    <FlavorExtensions v-if="extensionData" :data="extensionData" />
+
     <div class="software-card">
       <div class="software-card-accent"></div>
       <div class="software-card-body">
@@ -81,11 +83,14 @@
 import { computed } from 'vue'
 import type { Flavor } from '../../data/types'
 import { categoryLabel } from '../../data/categories'
+import { flavorExtensions } from '../../data/flavor-extensions'
+import FlavorExtensions from './FlavorExtensions.vue'
 
 const props = defineProps<{ flavor: Flavor; content?: string }>()
 
 const gemName = computed(() => props.flavor?.gem || '')
 const rubygemsUrl = computed(() => `https://rubygems.org/gems/${gemName.value}`)
+const extensionData = computed(() => flavorExtensions[props.flavor?.id])
 
 async function copyInstall() {
   await navigator.clipboard.writeText(`gem install ${gemName.value}`)

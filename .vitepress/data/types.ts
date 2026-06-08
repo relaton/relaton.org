@@ -13,6 +13,39 @@ export interface Flavor {
   sources: FlavorSource[]
   repoUrl: string
   logo?: string
+  logoVariant?: 'light'
+}
+
+export interface FlavorExtensionField {
+  name: string
+  type: string
+  description: string
+  required?: boolean
+  enum?: string[]
+}
+
+export interface FlavorExtensionClass {
+  name: string
+  description: string
+  fields: FlavorExtensionField[]
+}
+
+export interface FlavorExtensionData {
+  id: string
+  name: string
+  description: string
+  inheritsFrom?: string
+  repoUrl: string
+  extensions: FlavorExtensionField[]
+  customClasses: FlavorExtensionClass[]
+  example: {
+    description: string
+    yaml: string
+    json: string
+    xml: string
+    asciibib: string
+    bibSpans: string
+  }
 }
 
 export interface SoftwareGem {

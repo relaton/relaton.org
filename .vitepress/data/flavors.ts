@@ -11,6 +11,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.iso.org', label: 'International Organization for Standardization' }],
     repoUrl: 'https://github.com/relaton/relaton-iso',
     logo: '/logos/iso-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'iec',
@@ -22,6 +23,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.iec.ch', label: 'International Electrotechnical Commission' }],
     repoUrl: 'https://github.com/relaton/relaton-iec',
     logo: '/logos/iec-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'itu',
@@ -43,6 +45,7 @@ export const flavors: Flavor[] = [
     citationGuide: true,
     sources: [{ url: 'https://bib.ietf.org', label: 'Internet Engineering Task Force' }],
     repoUrl: 'https://github.com/relaton/relaton-ietf',
+    logo: '/logos/ietf-logo.svg',
   },
   {
     id: 'ieee',
@@ -109,6 +112,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.electropedia.org', label: 'IEC Electropedia' }],
     repoUrl: 'https://github.com/relaton/relaton-iev',
     logo: '/logos/iec-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'oasis',
@@ -164,6 +168,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.iho.int', label: 'International Hydrographic Organization' }],
     repoUrl: 'https://github.com/relaton/relaton-iho',
     logo: '/logos/iho-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'omg',
@@ -197,6 +202,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://standards.cen.eu', label: 'CEN/CENELEC' }],
     repoUrl: 'https://github.com/relaton/relaton-cen',
     logo: '/logos/cen-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'bsi',
@@ -229,6 +235,7 @@ export const flavors: Flavor[] = [
     citationGuide: true,
     sources: [{ label: 'Chinese National Standards' }],
     repoUrl: 'https://github.com/relaton/relaton-gb',
+    logo: '/logos/gb-logo.svg',
   },
   {
     id: 'calconnect',
@@ -284,6 +291,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.crossref.org/documentation/retrieve-metadata/rest-api/', label: 'Digital Object Identifier' }],
     repoUrl: 'https://github.com/relaton/relaton-doi',
     logo: '/logos/doi-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'isbn',
