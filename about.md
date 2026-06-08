@@ -84,7 +84,7 @@ The code lives across multiple repositories in the [Relaton GitHub organization]
 
 </div>
 
-<style scoped>
+<style>
 .about-page {
   max-width: 864px;
   margin: 0 auto;

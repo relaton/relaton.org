@@ -11,7 +11,7 @@ title: Try the Relaton API
 
 <ApiDemo />
 
-<style scoped>
+<style>
 .page-header {
   text-align: center;
   padding: 48px 0 32px;
