@@ -272,8 +272,9 @@ function formatDate(date: string): string {
 .hero-fade {
   position: absolute;
   bottom: 0;
-  left: 0;
-  right: 0;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
   height: 64px;
   background: linear-gradient(to bottom, transparent, var(--vp-c-bg));
   z-index: 10;

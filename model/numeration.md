@@ -4,7 +4,7 @@ description: Numeration and pagination in Relaton
 
 ---
 
-## Numeration and pagination {#numeration}
+# Numeration and Pagination
 
 * Source: ISO 690, 4.7
 * Serialisation: `bibitem/extent`, `bibitem/size`

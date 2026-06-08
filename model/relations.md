@@ -4,7 +4,7 @@ description: Categories of document relations in Relaton
 
 ---
 
-## Document relations {#docrelations}
+# Document Relations
 
 ### General
 

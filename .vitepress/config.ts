@@ -4,6 +4,7 @@ export default defineConfig({
   title: 'Relaton',
   description: 'The premier bibliographic data model for standards and technical documents',
   lang: 'en-US',
+  ignoreDeadLinks: true,
 
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
@@ -27,29 +28,8 @@ export default defineConfig({
       {
         text: 'Model',
         items: [
-          { text: 'The Relaton Model', link: '/model/overview' },
-          { text: 'ISO 690 Foundation', link: '/model/iso-690' },
-          { text: 'Extensions Beyond ISO 690', link: '/model/extensions' },
-          { text: 'Flavor Model Extensions', link: '/model/flavor-models' },
-          {
-            text: 'Entities',
-            items: [
-              { text: 'Bibitem Types', link: '/model/bibtype' },
-              { text: 'Citation', link: '/model/citation' },
-              { text: 'Contributor', link: '/model/contributor' },
-              { text: 'Relations', link: '/model/relations' },
-              { text: 'Title', link: '/model/title' },
-              { text: 'Edition', link: '/model/edition' },
-              { text: 'Production', link: '/model/production' },
-              { text: 'Location', link: '/model/location' },
-              { text: 'Medium', link: '/model/medium' },
-              { text: 'Series', link: '/model/series' },
-              { text: 'Identifiers', link: '/model/identifiers' },
-              { text: 'Numeration', link: '/model/numeration' },
-              { text: 'Additional Info', link: '/model/additional-info' },
-              { text: 'Specific Categories', link: '/model/specific-cats' },
-            ],
-          },
+          { text: 'The Relaton Model', link: '/model/' },
+          { text: 'ISO 690 Guidelines', link: '/model/iso-690/' },
           { text: 'Serializations', link: '/model/serializations' },
           { text: 'UML Diagrams', link: '/model/diagrams' },
         ],
@@ -60,6 +40,7 @@ export default defineConfig({
         items: [
           { text: 'Relaton YAML', link: '/specs/relaton-yaml' },
           { text: 'AsciiBib', link: '/specs/asciibib' },
+          { text: 'Bibliographic Spans', link: '/specs/bibliographic-spans' },
         ],
       },
       { text: 'Software', link: '/software/' },
@@ -70,25 +51,49 @@ export default defineConfig({
 
     sidebar: {
       '/model/': [
-        { text: 'The Relaton Model', link: '/model/overview' },
-        { text: 'ISO 690 Foundation', link: '/model/iso-690' },
+        { text: 'Model Overview', link: '/model/' },
         {
-          text: 'Entities',
+          text: 'ISO 690 Guidelines',
           items: [
-            { text: 'Bibitem Types', link: '/model/bibtype' },
-            { text: 'Citation', link: '/model/citation' },
+            { text: 'Overview', link: '/model/iso-690/' },
+            { text: 'Principles', link: '/model/iso-690/principles' },
+            { text: 'Resource Types', link: '/model/iso-690/resource-types' },
+            { text: 'Citation Systems', link: '/model/iso-690/citation-systems' },
+          ],
+        },
+        {
+          text: 'Relaton Model',
+          items: [
+            { text: 'Extensions Beyond ISO 690', link: '/model/extensions' },
+            { text: 'Flavor Extensions', link: '/model/flavor-models' },
+          ],
+        },
+        {
+          text: 'Core Entities',
+          items: [
             { text: 'Contributor', link: '/model/contributor' },
             { text: 'Relations', link: '/model/relations' },
+            { text: 'Production', link: '/model/production' },
+            { text: 'Citation', link: '/model/citation' },
+          ],
+        },
+        {
+          text: 'Descriptive Elements',
+          items: [
             { text: 'Title', link: '/model/title' },
             { text: 'Edition', link: '/model/edition' },
-            { text: 'Production', link: '/model/production' },
-            { text: 'Location', link: '/model/location' },
             { text: 'Medium', link: '/model/medium' },
             { text: 'Series', link: '/model/series' },
-            { text: 'Identifiers', link: '/model/identifiers' },
             { text: 'Numeration', link: '/model/numeration' },
+          ],
+        },
+        {
+          text: 'Identification & Access',
+          items: [
+            { text: 'Bibitem Types', link: '/model/bibtype' },
+            { text: 'Identifiers', link: '/model/identifiers' },
+            { text: 'Location', link: '/model/location' },
             { text: 'Additional Info', link: '/model/additional-info' },
-            { text: 'Specific Categories', link: '/model/specific-cats' },
           ],
         },
         { text: 'Serializations', link: '/model/serializations' },
@@ -97,12 +102,8 @@ export default defineConfig({
       '/specs/': [
         { text: 'Relaton YAML', link: '/specs/relaton-yaml' },
         { text: 'AsciiBib', link: '/specs/asciibib' },
+        { text: 'Bibliographic Spans', link: '/specs/bibliographic-spans' },
       ],
-    },
-
-    footer: {
-      message: 'An open source project of <a href="https://www.ribose.com">Ribose</a>',
-      copyright: `Copyright © ${new Date().getFullYear()} Ribose Group Inc.`,
     },
 
     search: {

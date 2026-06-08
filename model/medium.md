@@ -4,7 +4,7 @@ description: Categories of medium in Relaton
 
 ---
 
-## Medium {#medium}
+# Medium
 
 * Source: ISO 690, 4.4, ISO 690, 5.4
 * Serialisation: `bibitem/medium`

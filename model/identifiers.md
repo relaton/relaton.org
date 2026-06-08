@@ -4,7 +4,7 @@ description: Identifiers in Relaton
 
 ---
 
-## Identifiers {#identifiers}
+# Identifiers
 
 * Source: ISO 690, 4.9
 * Serialisation: `bibitem/docidentifier`

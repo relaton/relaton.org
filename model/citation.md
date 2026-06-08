@@ -1,10 +1,10 @@
 ---
-title: Relaton citation model
+title: Citation Model
 description: Citation model for Relaton
 
 ---
 
-## Relaton citation model
+# Citation Model
 
 A citation in Relaton consists of the following components:
 

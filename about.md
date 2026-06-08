@@ -13,11 +13,36 @@ description: The premier bibliographic data model for standards and technical do
 
 ## The Name
 
-**Relaton** derives from the Latin root *relat-* (to carry back, to relate) and the Greek-flavored scientific suffix *-on* (denoting a fundamental unit or entity). A Relaton is thus the elementary unit of bibliographic relation — the atomic particle of scholarly connectivity.
+**Relaton** is a compound of two ancient roots:
+
+- The Latin ***relat-*** — the stem of *referre*, meaning "to carry back, to bring back, to relate." This is the same root that gives us *reference*, *relation*, and *relate*. Every bibliographic citation is an act of *relatio* — carrying a reader back to the original source.
+- The Greek-flavored scientific suffix ***-on*** — used across the sciences to denote a fundamental, indivisible unit or entity. The *electr-on* is the elementary particle of charge; the *phot-on* is the quantum of light. A *Relat-on* is thus the elementary unit of bibliographic relation — the atomic particle of scholarly connectivity.
+
+Together, the name captures the essence of the project: that bibliographic data is not a flat list of metadata fields, but a web of **relationships** between works. Standards cite other standards; documents amend, replace, derive from, and supersede one another. Each such link is a Relaton — and Relaton the project models them all with precision and completeness.
 
 ## The Logo
 
-The Relaton logo features interconnecting circles, representing that bibliographic information is not merely about expressing a work and its metadata, but about the rich web of relationships between them. Standards cite other standards; documents amend, replace, and derive from one another. Relaton exists to model these connections with precision and completeness.
+<div class="logo-showcase">
+  <div class="logo-card logo-card-light">
+    <img src="/logo-light.svg" alt="Relaton logo" class="logo-display" />
+    <span class="logo-card-label">Light background</span>
+  </div>
+  <div class="logo-card logo-card-dark">
+    <img src="/logo-dark.svg" alt="Relaton logo" class="logo-display" />
+    <span class="logo-card-label">Dark background</span>
+  </div>
+</div>
+
+The Relaton logo depicts a **network of four interconnected nodes**, each radiating connections to the others through branching paths. This is not arbitrary decoration — it is a direct visual representation of what Relaton models:
+
+- **The nodes** represent bibliographic entities — standards, papers, datasets, any citable work. Four are shown, but the network extends infinitely in every direction, just as the body of scholarly and technical literature grows without bound.
+- **The connecting paths** represent the 60+ typed relations that Relaton defines between documents: *replaces*, *amends*, *derives from*, *has part*, *obsoletes*, *updates*, and many more. The paths branch and overlap because real-world bibliographic relationships are not one-to-one — a single standard may simultaneously reference, replace, and subsume multiple other works.
+- **The central square** formed where paths intersect represents the Relaton model itself — the structured, machine-readable framework through which all these relationships are expressed and traversed.
+- **The symmetry** of the pattern reflects the model's design principle: every relation has a defined inverse, every connection is bidirectional, and the model treats all bibliographic entities with equal rigor regardless of their source organization.
+
+### The Color
+
+The logo's blue (**#1F6CF0**) is a deliberate choice. Blue is the color of **trust, authority, and permanence** — the same qualities that define the international standards Relaton serves. It is the color of the ISO wordmark, of academic institutions, and of the hyperlinks that connect the web of knowledge. In the context of bibliographic data, blue signifies reliability: when a machine reads a Relaton record, it can trust that every relation, every identifier, every metadata element has been structured with the precision that standards demand.
 
 ## What Relaton Does
 
@@ -37,7 +62,7 @@ Relaton spans five distinct layers:
 | **Auto-Fetch** | Flavor gems that retrieve metadata from 27+ SDO datasets by publication identifier alone |
 | **Rendering** | Formatted citations in ISO&nbsp;690, APA, MLA, and custom styles via relaton-render |
 
-[Explore the model &rarr;](/model/overview)
+[Explore the model &rarr;](/model/)
 
 ## The Problem We Solve
 

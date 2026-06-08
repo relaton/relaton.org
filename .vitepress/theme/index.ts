@@ -11,6 +11,8 @@ import BlogIndex from './components/BlogIndex.vue'
 import BlogByline from './components/BlogByline.vue'
 import ModelDiagram from './components/ModelDiagram.vue'
 import ApiDemo from './components/ApiDemo.vue'
+import SiteFooter from './components/SiteFooter.vue'
+import { h } from 'vue'
 
 export default {
   extends: DefaultTheme,
@@ -24,5 +26,10 @@ export default {
     app.component('BlogByline', BlogByline)
     app.component('ModelDiagram', ModelDiagram)
     app.component('ApiDemo', ApiDemo)
-  }
+  },
+  Layout() {
+    return h(DefaultTheme.Layout, null, {
+      'layout-bottom': () => h(SiteFooter),
+    })
+  },
 } satisfies Theme
