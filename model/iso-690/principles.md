@@ -97,5 +97,3 @@ Human-readable sources should be preferred over machine-readable ones when possi
 If metadata appears in different forms within the same resource, use the most prominent form unless it is obviously wrong (e.g., an incorrect disc label). If metadata differs across multiple cited resources, use the form most commonly used in the language of the publication.
 
 ---
-
-[Back to ISO 690 overview](/model/iso-690/) | [Data Elements &rarr;](/model/iso-690/data-elements)

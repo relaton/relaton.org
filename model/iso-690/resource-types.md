@@ -259,5 +259,3 @@ Relaton's `BibitemType` enumeration provides complete coverage, combining ISO 69
 `article`, `book`, `booklet`, `manual`, `proceedings`, `presentation`, `thesis`, `techReport`, `standard`, `unpublished`, `map`, `electronicResource`, `audiovisual`, `film`, `video`, `broadcast`, `graphicWork`, `music`, `patent`, `inBook`, `inCollection`, `inProceedings`, `journal`, `webResource`, `website`, `dataset`, `archival`, `software`, `socialMedia`, `alert`, `message`, `conversation`, `misc`
 
 The resource type drives rendering decisions — what fields to display, in what order, and with what formatting.
-
-[Back to ISO 690 overview](/model/iso-690/) | [Citation Systems &rarr;](/model/iso-690/citation-systems)

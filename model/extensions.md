@@ -290,5 +290,3 @@ The Relaton model is formally defined in:
 - **[relaton-model-3gpp](https://github.com/relaton/relaton-model-3gpp)** — 3GPP-specific model extensions
 - **[relaton-model-ieee](https://github.com/relaton/relaton-model-ieee)** — IEEE-specific model extensions
 - **[relaton-model-w3c](https://github.com/relaton/relaton-model-w3c)** — W3C-specific model extensions
-
-[View UML diagrams &rarr;](/model/diagrams) | [Flavor model extensions &rarr;](/model/flavor-models)

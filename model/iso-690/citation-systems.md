@@ -172,5 +172,3 @@ Services like the Internet Archive harvest and preserve web resources. Key guida
 **Relaton's approach:** The model supports all four strategies through typed URIs (`uri.citation`, `uri.xml`) and date tracking (`date.accessed`). The auto-fetch mechanism resolves PIDs to retrieve structured metadata.
 
 ---
-
-[Back to ISO 690 overview](/model/iso-690/) | [Extensions beyond ISO 690 &rarr;](/model/extensions)

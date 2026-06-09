@@ -104,7 +104,21 @@
           <h2 class="section-title">{{ d.orgsSection.title }}</h2>
           <p class="section-subtitle">{{ d.orgsSection.subtitle }}</p>
         </div>
-        <FlavorGrid />
+        <div class="org-marquee">
+          <div class="org-marquee-track">
+            <a v-for="flavor in orgLogos" :key="flavor.id" :href="`/flavors/${flavor.id}`" class="org-logo-card" :title="flavor.fullName">
+              <img v-if="flavor.logo" :src="flavor.logo" :alt="flavor.label" class="org-logo-img" />
+              <span v-else class="org-logo-placeholder">{{ flavor.label }}</span>
+            </a>
+            <a v-for="flavor in orgLogos" :key="'dup-' + flavor.id" :href="`/flavors/${flavor.id}`" class="org-logo-card" :title="flavor.fullName">
+              <img v-if="flavor.logo" :src="flavor.logo" :alt="flavor.label" class="org-logo-img" aria-hidden="true" />
+              <span v-else class="org-logo-placeholder" aria-hidden="true">{{ flavor.label }}</span>
+            </a>
+          </div>
+        </div>
+        <div class="section-cta">
+          <a href="/flavors/" class="link-arrow">View all 28 flavors</a>
+        </div>
       </div>
     </section>
 
@@ -177,6 +191,9 @@
 import { ref, computed, onMounted } from 'vue'
 import { data as posts } from '../../posts.data'
 import { homeData as d } from '../../data/home'
+import { flavors } from '../../data/flavors'
+
+const orgLogos = computed(() => flavors.filter(f => f.category !== 'identifier'))
 
 // Count-up animation
 const statsRef = ref<HTMLElement>()
@@ -746,5 +763,54 @@ function formatDate(date: string): string {
   .code-body { padding: 12px 14px; max-height: 200px; }
   .code-body code { font-size: 11px; line-height: 1.5; }
   .layer-title { min-width: 0; }
+}
+
+.org-marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  margin: 0 -24px;
+  padding: 16px 0;
+}
+.org-marquee-track {
+  display: flex;
+  gap: 16px;
+  width: max-content;
+  animation: marquee-scroll 40s linear infinite;
+}
+.org-marquee-track:hover { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.org-logo-card {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 64px;
+  border-radius: 10px;
+  border: 1px solid var(--vp-c-divider);
+  background: var(--vp-c-bg);
+  padding: 12px 16px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  text-decoration: none;
+}
+.org-logo-card:hover {
+  border-color: rgba(31, 108, 241, 0.3);
+  box-shadow: 0 2px 8px rgba(31, 108, 241, 0.08);
+}
+.org-logo-img {
+  max-width: 80px;
+  max-height: 36px;
+  object-fit: contain;
+}
+.org-logo-placeholder {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--vp-c-text-2);
+  text-align: center;
+  line-height: 1.2;
 }
 </style>
