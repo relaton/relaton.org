@@ -46,6 +46,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://bib.ietf.org', label: 'Internet Engineering Task Force' }],
     repoUrl: 'https://github.com/relaton/relaton-ietf',
     logo: '/logos/ietf-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'ieee',
@@ -68,6 +69,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.nist.gov', label: 'National Institute of Standards and Technology' }],
     repoUrl: 'https://github.com/relaton/relaton-nist',
     logo: '/logos/nist-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'bipm',
@@ -79,6 +81,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.bipm.org', label: 'International Bureau of Weights and Measures' }],
     repoUrl: 'https://github.com/relaton/relaton-bipm',
     logo: '/logos/bipm-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: '3gpp',
@@ -90,6 +93,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.3gpp.org', label: '3rd Generation Partnership Project' }],
     repoUrl: 'https://github.com/relaton/relaton-3gpp',
     logo: '/logos/3gpp-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'ogc',
@@ -124,6 +128,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.oasis-open.org/standards/', label: 'OASIS OPEN' }],
     repoUrl: 'https://github.com/relaton/relaton-oasis',
     logo: '/logos/oasis-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'cie',
@@ -146,6 +151,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.w3.org', label: 'World Wide Web Consortium' }],
     repoUrl: 'https://github.com/relaton/relaton-w3c',
     logo: '/logos/w3c-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'ecma',
@@ -157,6 +163,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.ecma-international.org', label: 'Ecma International' }],
     repoUrl: 'https://github.com/relaton/relaton-ecma',
     logo: '/logos/ecma-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'iho',
@@ -180,6 +187,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.omg.org', label: 'Object Management Group' }],
     repoUrl: 'https://github.com/relaton/relaton-omg',
     logo: '/logos/omg-logo.png',
+    logoVariant: 'light',
   },
   {
     id: 'un',
@@ -214,6 +222,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.bsigroup.com', label: 'British Standards Institution' }],
     repoUrl: 'https://github.com/relaton/relaton-bsi',
     logo: '/logos/bsi-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'jis',
@@ -225,6 +234,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://webdesk.jsa.or.jp', label: 'Japanese Standards Association' }],
     repoUrl: 'https://github.com/relaton/relaton-jis',
     logo: '/logos/jis-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'gb',
@@ -247,6 +257,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://www.calconnect.org', label: 'CalConnect' }],
     repoUrl: 'https://github.com/relaton/relaton-calconnect',
     logo: '/logos/calconnect-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'ccsds',
@@ -258,6 +269,7 @@ export const flavors: Flavor[] = [
     sources: [{ url: 'https://public.ccsds.org', label: 'Consultative Committee for Space Data Systems' }],
     repoUrl: 'https://github.com/relaton/relaton-ccsds',
     logo: '/logos/ccsds-logo.svg',
+    logoVariant: 'light',
   },
   {
     id: 'iana',
