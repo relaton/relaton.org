@@ -27,7 +27,7 @@
               <span class="hero-title-accent">{{ d.hero.titleLine2 }}</span><br/>
               {{ d.hero.titleLine3 }}
             </h1>
-            <p class="hero-subtitle" v-html="d.hero.subtitle" />
+            <p class="hero-subtitle">{{ d.hero.subtitle }}</p>
 
             <div class="hero-actions">
               <a :href="d.hero.primaryAction.href" class="btn-primary">
@@ -101,7 +101,7 @@
     </section>
 
     <!-- Supported Organizations -->
-    <section class="section section--alt scroll-reveal">
+    <section class="section scroll-reveal">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">{{ d.orgsSection.title }}</h2>
@@ -120,7 +120,7 @@
           </div>
         </div>
         <div class="section-cta">
-          <a href="/flavors/" class="link-arrow">View all 28 flavors</a>
+          <a href="/flavors/" class="link-arrow">View all {{ counts.flavorCount }} flavors</a>
         </div>
       </div>
     </section>
@@ -193,7 +193,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from 'vue'
 import { data as posts } from '../../posts.data'
-import { homeData as d } from '../../data/home'
+import { homeData as d, counts } from '../../data/home'
 import { flavors } from '../../data/flavors'
 
 const orgLogos = computed(() => flavors.filter(f => f.category !== 'identifier'))
@@ -209,15 +209,16 @@ onMounted(() => {
   const observer = new IntersectionObserver(([entry]) => {
     if (!entry.isIntersecting) return
     observer.disconnect()
-    const { orgs, rels, gems } = d.stats
+    const { flavorCount, gemCount } = counts
+    const stats = { orgs: flavorCount, rels: 60, gems: gemCount }
     const start = performance.now()
     const dur = 1400
     function tick(now: number) {
       const p = Math.min((now - start) / dur, 1)
       const e = 1 - Math.pow(1 - p, 3)
-      orgsDisplay.value = Math.round(orgs * e)
-      relsDisplay.value = Math.round(rels * e)
-      gemsDisplay.value = Math.round(gems * e)
+      orgsDisplay.value = Math.round(stats.orgs * e)
+      relsDisplay.value = Math.round(stats.rels * e)
+      gemsDisplay.value = Math.round(stats.gems * e)
       if (p < 1) requestAnimationFrame(tick)
     }
     requestAnimationFrame(tick)
