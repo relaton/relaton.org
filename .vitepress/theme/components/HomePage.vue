@@ -281,6 +281,7 @@ function formatDate(date: string): string {
   position: absolute;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
 }
 .hero-inner {
   position: relative;
@@ -304,6 +305,7 @@ function formatDate(date: string): string {
   height: 64px;
   background: linear-gradient(to bottom, transparent, var(--vp-c-bg));
   z-index: 10;
+  pointer-events: none;
 }
 
 .hero-symbol {
