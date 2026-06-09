@@ -110,11 +110,11 @@
         <div class="org-marquee">
           <div class="org-marquee-track">
             <a v-for="flavor in orgLogos" :key="flavor.id" :href="`/flavors/${flavor.id}`" class="org-logo-card" :title="flavor.fullName">
-              <img v-if="flavor.logo" :src="flavor.logo" :alt="flavor.label" class="org-logo-img" />
+              <img v-if="flavor.logo" :src="flavor.logo" :alt="flavor.label" :class="['org-logo-img', { 'flavor-logo-light': flavor.logoVariant === 'light' }]" />
               <span v-else class="org-logo-placeholder">{{ flavor.label }}</span>
             </a>
             <a v-for="flavor in orgLogos" :key="'dup-' + flavor.id" :href="`/flavors/${flavor.id}`" class="org-logo-card" :title="flavor.fullName">
-              <img v-if="flavor.logo" :src="flavor.logo" :alt="flavor.label" class="org-logo-img" aria-hidden="true" />
+              <img v-if="flavor.logo" :src="flavor.logo" :alt="flavor.label" :class="['org-logo-img', { 'flavor-logo-light': flavor.logoVariant === 'light' }]" aria-hidden="true" />
               <span v-else class="org-logo-placeholder" aria-hidden="true">{{ flavor.label }}</span>
             </a>
           </div>
