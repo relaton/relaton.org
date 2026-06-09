@@ -140,17 +140,17 @@ defineProps<{
   flex-wrap: wrap;
 }
 .ext-inheritance a {
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
   text-decoration: none;
   font-weight: 500;
 }
 .ext-inherits-label {
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
   font-weight: 500;
 }
 .ext-badge {
   background: var(--vp-c-brand-soft);
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
   font-size: 11px;
   font-weight: 600;
   padding: 2px 8px;
@@ -261,7 +261,7 @@ defineProps<{
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
   font-size: 13px;
   font-weight: 500;
   text-decoration: none;

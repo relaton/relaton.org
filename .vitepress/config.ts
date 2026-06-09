@@ -18,6 +18,8 @@ export default defineConfig({
     ['meta', { name: 'theme-color', content: '#1F6CF1' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'Relaton' }],
+    ['meta', { name: 'twitter:card', content: 'summary' }],
+    ['meta', { name: 'twitter:site', content: '@riboseinc' }],
   ],
 
   themeConfig: {

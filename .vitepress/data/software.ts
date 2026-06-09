@@ -8,6 +8,7 @@ export const gems: SoftwareGem[] = [
     repoUrl: 'https://github.com/metanorma/relaton',
     description: 'Core gem for importing and caching bibliographic references to technical standards.',
     category: 'core',
+    sampleDocId: 'ISO 690:2010',
   },
   {
     id: 'relaton-bib',
@@ -16,6 +17,15 @@ export const gems: SoftwareGem[] = [
     repoUrl: 'https://github.com/relaton/relaton-bib',
     description: 'Implements the BibliographicItem model — the foundation of the Relaton data model.',
     category: 'core',
+    quickStartOverride: `require 'relaton-bib'
+
+item = RelatonBib::BibliographicItem.new(
+  title: [{ content: "Example Standard", language: "en", script: "Latn" }],
+  docid: [{ id: "EX 1:2024", type: "EX" }],
+  date: [{ type: "published", value: "2024" }],
+  type: "standard"
+)
+puts item.to_xml`,
   },
   {
     id: 'relaton-cli',
@@ -24,6 +34,13 @@ export const gems: SoftwareGem[] = [
     repoUrl: 'https://github.com/relaton/relaton-cli',
     description: 'Command-line tools for building, fetching, and converting Relaton bibliographic data.',
     category: 'tool',
+    quickStartOverride: `# Fetch in different formats
+relaton fetch "ISO 690:2010" --format yaml
+relaton fetch "ISO 690:2010" --format xml
+relaton fetch "RFC 8446" --format bibtex
+
+# Fetch and save to file
+relaton fetch "ISO 690:2010" -o iso690.yaml`,
   },
   {
     id: 'relaton-render',
@@ -32,6 +49,11 @@ export const gems: SoftwareGem[] = [
     repoUrl: 'https://github.com/metanorma/relaton-render',
     description: 'Formats bibliographic references in ISO 690, APA, MLA, and custom styles.',
     category: 'tool',
+    quickStartOverride: `require 'relaton-render'
+
+bib = Relaton::Bibliography.get "ISO 690:2010"
+renderer = Relaton::Render::Iso::General.new
+puts renderer.render(bib)`,
   },
   {
     id: 'relaton-iso',
@@ -41,6 +63,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves ISO Standards from iso.org for bibliographic use.',
     category: 'flavor',
     flavorId: 'iso',
+    sampleDocId: 'ISO 690:2010',
   },
   {
     id: 'relaton-iec',
@@ -50,6 +73,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves IEC/CIE Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'iec',
+    sampleDocId: 'IEC 60050-111:2019',
   },
   {
     id: 'relaton-ietf',
@@ -59,6 +83,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves IETF RFC standards.',
     category: 'flavor',
     flavorId: 'ietf',
+    sampleDocId: 'RFC 8446',
   },
   {
     id: 'relaton-ieee',
@@ -68,6 +93,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves IEEE Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'ieee',
+    sampleDocId: 'IEEE 802.1Q',
   },
   {
     id: 'relaton-itu',
@@ -77,6 +103,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves ITU standards.',
     category: 'flavor',
     flavorId: 'itu',
+    sampleDocId: 'ITU-T G.989.2',
   },
   {
     id: 'relaton-nist',
@@ -86,6 +113,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves NIST standards.',
     category: 'flavor',
     flavorId: 'nist',
+    sampleDocId: 'NIST SP 800-188',
   },
   {
     id: 'relaton-bipm',
@@ -95,6 +123,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves BIPM Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'bipm',
+    sampleDocId: 'BIPM SI Brochure',
   },
   {
     id: 'relaton-3gpp',
@@ -104,6 +133,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves 3GPP Standards for bibliographic use.',
     category: 'flavor',
     flavorId: '3gpp',
+    sampleDocId: '3GPP TS 23.501',
   },
   {
     id: 'relaton-ogc',
@@ -113,6 +143,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves OGC Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'ogc',
+    sampleDocId: 'OGC 06-103r4',
   },
   {
     id: 'relaton-iev',
@@ -122,6 +153,7 @@ export const gems: SoftwareGem[] = [
     description: 'Refactors IEV references.',
     category: 'flavor',
     flavorId: 'iev',
+    sampleDocId: 'IEC 60050-102',
   },
   {
     id: 'relaton-oasis',
@@ -131,6 +163,7 @@ export const gems: SoftwareGem[] = [
     description: 'Searches and fetches OASIS OPEN standards.',
     category: 'flavor',
     flavorId: 'oasis',
+    sampleDocId: 'OASIS CAP v1.2',
   },
   {
     id: 'relaton-cie',
@@ -140,6 +173,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves CIE Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'cie',
+    sampleDocId: 'CIE S 017/E:2011',
   },
   {
     id: 'relaton-w3c',
@@ -149,6 +183,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves W3C Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'w3c',
+    sampleDocId: 'W3C REC-json-ld11-20200716',
   },
   {
     id: 'relaton-ecma',
@@ -158,6 +193,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves ECMA Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'ecma',
+    sampleDocId: 'ECMA-262',
   },
   {
     id: 'relaton-iho',
@@ -167,6 +203,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves IHO Standards from iho.int.',
     category: 'flavor',
     flavorId: 'iho',
+    sampleDocId: 'IHO S-57',
   },
   {
     id: 'relaton-omg',
@@ -176,6 +213,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves OMG Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'omg',
+    sampleDocId: 'OMG UML 2.5.1',
   },
   {
     id: 'relaton-un',
@@ -185,6 +223,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves UN Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'un',
+    sampleDocId: 'UN ECE/TRADE/423',
   },
   {
     id: 'relaton-cen',
@@ -194,6 +233,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves CEN Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'cen',
+    sampleDocId: 'EN 206:2013',
   },
   {
     id: 'relaton-bsi',
@@ -203,6 +243,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves BSI Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'bsi',
+    sampleDocId: 'BS 5930:2015',
   },
   {
     id: 'relaton-jis',
@@ -212,6 +253,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves JIS Standards from webdesk.jsa.or.jp.',
     category: 'flavor',
     flavorId: 'jis',
+    sampleDocId: 'JIS B 0175',
   },
   {
     id: 'relaton-gb',
@@ -221,6 +263,7 @@ export const gems: SoftwareGem[] = [
     description: 'Searches and fetches Chinese GB standards.',
     category: 'flavor',
     flavorId: 'gb',
+    sampleDocId: 'GB/T 1.1',
   },
   {
     id: 'relaton-calconnect',
@@ -230,6 +273,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves CalConnect Standards from calconnect.org.',
     category: 'flavor',
     flavorId: 'calconnect',
+    sampleDocId: 'CC/BP 01001:2020',
   },
   {
     id: 'relaton-ccsds',
@@ -239,6 +283,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves CCSDS Standards from ccsds.org.',
     category: 'flavor',
     flavorId: 'ccsds',
+    sampleDocId: 'CCSDS 122.0-B-1',
   },
   {
     id: 'relaton-iana',
@@ -248,6 +293,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves IANA Standards for bibliographic use.',
     category: 'flavor',
     flavorId: 'iana',
+    sampleDocId: 'charset/UTF-8',
   },
   {
     id: 'relaton-xsf',
@@ -257,6 +303,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves XSF Standards from xmpp.org/extensions/.',
     category: 'flavor',
     flavorId: 'xsf',
+    sampleDocId: 'XEP-0045',
   },
   {
     id: 'relaton-doi',
@@ -266,6 +313,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves DOI metadata from Crossref API.',
     category: 'flavor',
     flavorId: 'doi',
+    sampleDocId: 'doi:10.1145/3448147',
   },
   {
     id: 'relaton-isbn',
@@ -275,6 +323,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves ISBN publications from OpenLibrary.',
     category: 'flavor',
     flavorId: 'isbn',
+    sampleDocId: 'ISBN 978-0-12-064481-0',
   },
   {
     id: 'relaton-plateau',
@@ -284,6 +333,7 @@ export const gems: SoftwareGem[] = [
     description: 'Retrieves MLIT PLATEAU publications for bibliographic use.',
     category: 'flavor',
     flavorId: 'plateau',
+    sampleDocId: 'MLIT PLATEAU 2.0',
   },
   {
     id: 'relaton-iso-bib',
@@ -293,5 +343,6 @@ export const gems: SoftwareGem[] = [
     description: 'Implements the IsoBibliographicItem model.',
     category: 'flavor',
     flavorId: 'iso',
+    sampleDocId: 'ISO 690:2010',
   },
 ]

@@ -62,7 +62,7 @@ function formatDate(date: string): string {
   transition: border-color 0.15s, background 0.15s;
 }
 .blog-item:hover {
-  border-color: rgba(31,108,241,0.3);
+  border-color: var(--c-brand-border);
 }
 
 .blog-item-meta {
@@ -90,7 +90,7 @@ function formatDate(date: string): string {
   transition: color 0.15s;
 }
 .blog-item:hover .blog-item-title {
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
 }
 
 .blog-item-desc {
@@ -110,7 +110,7 @@ function formatDate(date: string): string {
   gap: 4px;
   font-size: 13px;
   font-weight: 500;
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
 }
 .blog-item-link svg {
   transition: transform 0.15s;

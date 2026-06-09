@@ -109,12 +109,13 @@ const relatedFlavor = computed(() => {
 })
 
 const quickStartCode = computed(() => {
-  const name = props.gem?.name || 'relaton'
-  const module = name.split('-').map(p => p.charAt(0).toUpperCase() + p.slice(1)).join('')
-  return `require '${name}'
+  if (!props.gem) return ''
+  if (props.gem.quickStartOverride) return props.gem.quickStartOverride
+  const docId = props.gem.sampleDocId || 'ISO 690:2010'
+  return `require 'relaton'
 
 # Fetch a bibliographic item
-bib = ${module}::Bibliography.get("ISO 690:2010")
+bib = Relaton::Bibliography.get "${docId}"
 puts bib.to_xml`
 })
 
@@ -202,7 +203,7 @@ async function copy(text: string) {
   font-weight: 500;
   text-decoration: none;
   transition: all 0.15s;
-  background: #1F6CF1;
+  background: var(--vp-c-brand-1);
   color: #fff;
 }
 .sp-action-btn:hover { background: #1560D8; }
@@ -212,8 +213,8 @@ async function copy(text: string) {
   color: var(--vp-c-text-2);
 }
 .sp-action-btn--outline:hover {
-  border-color: rgba(31,108,241,0.4);
-  color: #1F6CF1;
+  border-color: var(--c-brand-border-strong);
+  color: var(--vp-c-brand-1);
   background: rgba(31,108,241,0.04);
 }
 
@@ -282,7 +283,7 @@ async function copy(text: string) {
   margin-left: auto;
   flex-shrink: 0;
 }
-.sp-copy:hover { color: #1F6CF1; }
+.sp-copy:hover { color: var(--vp-c-brand-1); }
 .sp-copy--corner {
   position: absolute;
   top: 12px;
@@ -309,10 +310,10 @@ async function copy(text: string) {
 }
 .sp-link-card svg {
   flex-shrink: 0;
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
 }
 .sp-link-card:hover {
-  border-color: rgba(31,108,241,0.3);
+  border-color: var(--c-brand-border);
 }
 
 .sp-link-card-label {
@@ -339,12 +340,12 @@ async function copy(text: string) {
   transition: border-color 0.15s;
 }
 .sp-related-card:hover {
-  border-color: rgba(31,108,241,0.3);
+  border-color: var(--c-brand-border);
 }
 
 .sp-related-accent {
   height: 3px;
-  background: linear-gradient(90deg, #21C197, #1F6CF1);
+  background: linear-gradient(90deg, #21C197, var(--vp-c-brand-1));
 }
 
 .sp-related-body {
@@ -364,7 +365,7 @@ async function copy(text: string) {
   height: 32px;
   border-radius: 8px;
   background: rgba(33,193,151,0.08);
-  color: #059669;
+  color: var(--c-success);
   flex-shrink: 0;
 }
 
@@ -375,7 +376,7 @@ async function copy(text: string) {
 }
 .sp-related-card:hover .sp-related-arrow {
   transform: translateX(3px);
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
 }
 
 @media (max-width: 640px) {
@@ -391,7 +392,7 @@ async function copy(text: string) {
 
 .sp-copy-feedback {
   font-size: 11px;
-  color: #059669;
+  color: var(--c-success);
   font-weight: 600;
 }
 .sp-not-found {
@@ -400,7 +401,7 @@ async function copy(text: string) {
   color: var(--vp-c-text-3);
 }
 .sp-back-link {
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
   text-decoration: none;
   font-weight: 500;
 }

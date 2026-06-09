@@ -56,6 +56,8 @@ export interface SoftwareGem {
   description: string
   category: 'core' | 'tool' | 'flavor'
   flavorId?: string
+  sampleDocId?: string
+  quickStartOverride?: string
 }
 
 export interface BlogPost {
