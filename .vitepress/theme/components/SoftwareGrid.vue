@@ -7,6 +7,7 @@
           v-model="search"
           type="text"
           placeholder="Search gems…"
+          aria-label="Search gems"
           class="search-input"
         />
       </div>
@@ -159,16 +160,6 @@ const filteredGems = computed(() => {
   font-family: var(--vp-font-family-mono, monospace);
   color: var(--vp-c-text-1);
 }
-
-.badge {
-  font-size: 10px; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 0.04em;
-  padding: 2px 7px; border-radius: 4px;
-  flex-shrink: 0;
-}
-.badge--core { background: rgba(31,108,241,0.08); color: #1F6CF1; }
-.badge--tool { background: rgba(33,193,151,0.08); color: #059669; }
-.badge--flavor { background: rgba(107,114,128,0.08); color: #6B7280; }
 
 .gem-desc {
   font-size: 13px; line-height: 1.5;

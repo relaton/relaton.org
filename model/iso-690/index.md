@@ -80,8 +80,7 @@ These are the problems Relaton solves.
 ## Explore the Companion Guide
 
 - [Principles](/model/iso-690/principles) — The four principles and seven guidelines for creating accurate references
-- [Data Elements](/model/iso-690/data-elements) — All 14 data element categories with rules and examples
 - [Resource Types](/model/iso-690/resource-types) — Citation guidelines for 16 kinds of information resources
 - [Citation Systems](/model/iso-690/citation-systems) — Five methods for linking in-text citations to references
 
-[Extensions beyond ISO 690 &rarr;](/model/extensions) | [Flavor model extensions &rarr;](/model/flavor-models)
+The 14 ISO 690 data elements are documented as individual model entities — see the sidebar under "Core Entities" and "Descriptive Elements".

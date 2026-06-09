@@ -31,7 +31,10 @@
         <span class="sp-code-prompt">$</span>
         <code>gem install {{ gem.name }}</code>
         <button class="sp-copy" @click="copy(`gem install ${gem.name}`)" title="Copy">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <template v-if="!copied">
+            <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          </template>
+          <span v-else class="sp-copy-feedback">Copied!</span>
         </button>
       </div>
     </section>
@@ -47,7 +50,7 @@
     </section>
 
     <section v-if="renderedContent" class="sp-section">
-      <div class="sp-content" v-html="renderedContent"></div>
+      <div class="rendered-content" v-html="renderedContent"></div>
     </section>
 
     <section class="sp-section">
@@ -83,6 +86,10 @@
         </div>
       </a>
     </section>
+  </div>
+  <div v-else class="sp-not-found">
+    <p>Software gem not found.</p>
+    <a href="/software/" class="sp-back-link">Browse all gems</a>
   </div>
 </template>
 
@@ -133,8 +140,14 @@ onMounted(async () => {
   }
 })
 
+const copied = ref(false)
+let copyTimer: ReturnType<typeof setTimeout>
+
 async function copy(text: string) {
   await navigator.clipboard.writeText(text)
+  copied.value = true
+  clearTimeout(copyTimer)
+  copyTimer = setTimeout(() => { copied.value = false }, 1500)
 }
 </script>
 
@@ -203,20 +216,6 @@ async function copy(text: string) {
   color: #1F6CF1;
   background: rgba(31,108,241,0.04);
 }
-
-.badge {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 3px 9px;
-  border-radius: 4px;
-  margin-bottom: 12px;
-}
-.badge--core { background: rgba(31,108,241,0.08); color: #1F6CF1; }
-.badge--tool { background: rgba(33,193,151,0.08); color: #059669; }
-.badge--flavor { background: rgba(107,114,128,0.08); color: #6B7280; }
 
 .sp-title {
   font-size: 36px;
@@ -388,60 +387,21 @@ async function copy(text: string) {
   .sp-link-grid { grid-template-columns: 1fr; }
 }
 
-.sp-content { line-height: 1.7; }
-.sp-content :deep(h2) {
-  margin-top: 48px;
-  margin-bottom: 16px;
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-.sp-content :deep(h3) {
-  margin-top: 32px;
-  margin-bottom: 12px;
-  font-size: 18px;
+.sp-hero .badge { margin-bottom: 12px; }
+
+.sp-copy-feedback {
+  font-size: 11px;
+  color: #059669;
   font-weight: 600;
 }
-.sp-content :deep(table) {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 16px 0;
-  font-size: 14px;
+.sp-not-found {
+  text-align: center;
+  padding: 96px 24px;
+  color: var(--vp-c-text-3);
 }
-.sp-content :deep(th),
-.sp-content :deep(td) {
-  padding: 10px 14px;
-  border: 1px solid var(--vp-c-divider);
-  text-align: left;
-}
-.sp-content :deep(th) {
-  background: var(--vp-c-bg-soft);
-  font-weight: 600;
-  font-size: 13px;
-}
-.sp-content :deep(code) {
-  background: var(--vp-c-bg-soft);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-size: 0.88em;
-}
-.sp-content :deep(pre) {
-  background: var(--vp-c-bg-soft);
-  padding: 16px 20px;
-  border-radius: 10px;
-  overflow-x: auto;
-  border: 1px solid var(--vp-c-divider);
-}
-.sp-content :deep(pre code) {
-  background: none;
-  padding: 0;
-}
-.sp-content :deep(blockquote) {
-  border-left: 3px solid #1F6CF1;
-  padding-left: 16px;
-  color: var(--vp-c-text-2);
-  margin: 16px 0;
+.sp-back-link {
+  color: #1F6CF1;
+  text-decoration: none;
+  font-weight: 500;
 }
 </style>

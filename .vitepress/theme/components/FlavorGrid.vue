@@ -7,6 +7,7 @@
           v-model="search"
           type="text"
           placeholder="Search organizations…"
+          aria-label="Search organizations"
           class="search-input"
         />
       </div>
@@ -224,22 +225,6 @@ const filteredFlavors = computed(() => {
   color: #1F6CF1;
   font-family: 'Outfit', sans-serif;
 }
-
-.badge {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  padding: 2px 7px;
-  border-radius: 4px;
-}
-.badge--international { background: rgba(31,108,241,0.08); color: #1F6CF1; }
-.badge--regional { background: rgba(234,179,8,0.08); color: #B45309; }
-.badge--national { background: rgba(33,193,151,0.08); color: #059669; }
-.badge--industry { background: rgba(249,115,22,0.08); color: #EA580C; }
-.badge--identifier { background: rgba(139,92,246,0.08); color: #7C3AED; }
-.badge--other { background: rgba(107,114,128,0.08); color: #6B7280; }
 
 .flavor-label {
   font-size: 16px;

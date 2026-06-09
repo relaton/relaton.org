@@ -279,5 +279,3 @@ Three flavors have dedicated formal model repositories with UML diagrams and sch
 | W3C | [relaton-model-w3c](https://github.com/relaton/relaton-model-w3c) | 3 model files, UML diagram |
 
 All use the same extension pattern: a flavor-specific class (e.g., `IeeeBibliographicItem`) inherits from the core `BibliographicItem` and adds domain-specific attributes.
-
-[View UML diagrams &rarr;](/model/diagrams) | [Extensions beyond ISO 690 &rarr;](/model/extensions)

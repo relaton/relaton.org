@@ -4,7 +4,7 @@ export default defineConfig({
   title: 'Relaton',
   description: 'The premier bibliographic data model for standards and technical documents',
   lang: 'en-US',
-  ignoreDeadLinks: true,
+  ignoreDeadLinks: false,
 
   head: [
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
@@ -15,7 +15,7 @@ export default defineConfig({
     ['link', { rel: 'shortcut icon', href: '/favicon.ico' }],
     ['link', { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' }],
     ['link', { rel: 'manifest', href: '/site.webmanifest' }],
-    ['meta', { name: 'theme-color', content: '#1F6CF0' }],
+    ['meta', { name: 'theme-color', content: '#1F6CF1' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:site_name', content: 'Relaton' }],
   ],
@@ -25,6 +25,7 @@ export default defineConfig({
     siteTitle: 'Relaton',
 
     nav: [
+      { text: 'Get Started', link: '/get-started' },
       {
         text: 'Model',
         items: [
