@@ -10,6 +10,7 @@ import SoftwareGrid from './components/SoftwareGrid.vue'
 import BlogIndex from './components/BlogIndex.vue'
 import BlogByline from './components/BlogByline.vue'
 import ModelDiagram from './components/ModelDiagram.vue'
+import GridControls from './components/GridControls.vue'
 import ApiDemo from './components/ApiDemo.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import { h } from 'vue'
@@ -26,6 +27,7 @@ export default {
     app.component('BlogByline', BlogByline)
     app.component('ModelDiagram', ModelDiagram)
     app.component('ApiDemo', ApiDemo)
+    app.component('GridControls', GridControls)
   },
   Layout() {
     return h(DefaultTheme.Layout, null, {

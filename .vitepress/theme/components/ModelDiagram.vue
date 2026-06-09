@@ -32,7 +32,7 @@ defineProps<{ src?: string; alt?: string }>()
   bottom: 10%;
   width: 3px;
   border-radius: 0 3px 3px 0;
-  background: linear-gradient(180deg, #1F6CF1, #21C197);
+  background: linear-gradient(180deg, var(--vp-c-brand-1), var(--c-accent));
   opacity: 0.4;
 }
 

@@ -35,14 +35,14 @@ Together, the name captures the essence of the project: that bibliographic data 
 
 The Relaton logo depicts a **network of four interconnected nodes**, each radiating connections to the others through branching paths. This is not arbitrary decoration — it is a direct visual representation of what Relaton models:
 
+- **The circles and squares** draw on an ancient East Asian principle: *heaven is round, the earth is square* (天圓地方). The circle represents the boundless, the abstract, the ideal form of knowledge — the Platonic category that a standard aspires to. The square represents the concrete, the structured, the grounded instance — a specific document, a particular edition, a tangible artifact. In Relaton, these two shapes coexist because every bibliographic record lives in both worlds: the universal concept of a work and the particular manifestation you hold in your hands. The circles and squares flow into one another because a work can be born from the relationship between other works, just as the ancients understood that heaven and earth give rise to all things through their interplay.
 - **The nodes** represent bibliographic entities — standards, papers, datasets, any citable work. Four are shown, but the network extends infinitely in every direction, just as the body of scholarly and technical literature grows without bound.
 - **The connecting paths** represent the 60+ typed relations that Relaton defines between documents: *replaces*, *amends*, *derives from*, *has part*, *obsoletes*, *updates*, and many more. The paths branch and overlap because real-world bibliographic relationships are not one-to-one — a single standard may simultaneously reference, replace, and subsume multiple other works.
-- **The central square** formed where paths intersect represents the Relaton model itself — the structured, machine-readable framework through which all these relationships are expressed and traversed.
 - **The symmetry** of the pattern reflects the model's design principle: every relation has a defined inverse, every connection is bidirectional, and the model treats all bibliographic entities with equal rigor regardless of their source organization.
 
 ### The Color
 
-The logo's blue (**#1F6CF0**) is a deliberate choice. Blue is the color of **trust, authority, and permanence** — the same qualities that define the international standards Relaton serves. It is the color of the ISO wordmark, of academic institutions, and of the hyperlinks that connect the web of knowledge. In the context of bibliographic data, blue signifies reliability: when a machine reads a Relaton record, it can trust that every relation, every identifier, every metadata element has been structured with the precision that standards demand.
+The logo's blue (**#1F6CF1**) is a deliberate choice. Blue is the color of **trust, authority, and permanence** — the same qualities that define the international standards Relaton serves. It is the color of the ISO wordmark, of academic institutions, and of the hyperlinks that connect the web of knowledge. In the context of bibliographic data, blue signifies reliability: when a machine reads a Relaton record, it can trust that every relation, every identifier, every metadata element has been structured with the precision that standards demand.
 
 ## What Relaton Does
 
@@ -111,10 +111,10 @@ Key adopters of Relaton:
 
 | Component | Purpose | Link |
 |---|---|---|
-| relaton-bib | Core BibliographicItem model | [GitHub](https://github.com/relaton/relaton-bib) |
-| relaton | Cache management and gateway | [GitHub](https://github.com/metanorma/relaton) |
-| relaton-cli | Command-line interface | [GitHub](https://github.com/relaton/relaton-cli) |
-| relaton-render | Reference formatting (ISO 690 styles) | [GitHub](https://github.com/metanorma/relaton-render) |
+| relaton-bib | Core BibliographicItem model | [Software](/software/relaton-bib) |
+| relaton | Cache management and gateway | [Software](/software/relaton) |
+| relaton-cli | Command-line interface | [Software](/software/relaton-cli) |
+| relaton-render | Reference formatting (ISO 690 styles) | [Software](/software/relaton-render) |
 | 29 flavor gems | SDO-specific data retrieval | [Software](/software/) |
 | relaton-models | UML model definitions and schemas | [GitHub](https://github.com/relaton/relaton-models) |
 
@@ -126,13 +126,13 @@ The code lives across multiple repositories in the [Relaton GitHub organization]
 
 ## History
 
-- Initial release as part of the Metanorma ecosystem
-- Separation into standalone gem architecture
-- Addition of flavor gems (ISO, IEC, IETF, IEEE, ITU, NIST, BIPM, etc.)
-- Integration with IETF for RFC bibliographic data
-- Integration with BIPM for SI Brochure and Metrologia references
-- Addition of DOI (Crossref) and ISBN (OpenLibrary) support
-- Formalization of relaton-models with UML and RelaxNG schemas
-- Continued expansion of supported organizations (CCSDS, IANA, XSF, etc.)
+- **2018** — Initial release as part of the [Metanorma](https://www.metanorma.org) ecosystem
+- **2019** — Separated into standalone gem architecture with `relaton`, `relaton-bib`, and per-SDO flavor gems
+- **2020–2021** — Expanded flavor gems: ISO, IEC, IETF, IEEE, ITU, NIST, BIPM, 3GPP, OGC, and more
+- **2022** — [DOI auto-fetch via Crossref](/blog/2022-12-28-relaton-doi.html); relaton-models formalized with UML and RelaxNG schemas
+- **2023** — [NIST support updated](/blog/2023-08-23-nist-cswp-pubid.html) for new PubID scheme; IETF integration for RFC bibliographic data
+- **2024** — [ISBN auto-fetch via OpenLibrary](/blog/2024-01-19-relaton-isbn.html); BIPM integration for SI Brochure and Metrologia references
+- **2025** — Continued expansion: CCSDS, IANA, XSF, Plateau; relaton-render for formatted citations
+- **2026** — [Relaton.org redesigned](/blog/2026-06-08-site-redesign.html) as a comprehensive documentation site
 
 </div>

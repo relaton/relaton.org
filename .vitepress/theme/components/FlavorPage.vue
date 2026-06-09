@@ -154,7 +154,7 @@ async function copyInstall() {
   border: 1px solid var(--vp-c-divider);
   font-size: 22px;
   font-weight: 700;
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
   font-family: 'Outfit', sans-serif;
 }
 
@@ -199,7 +199,7 @@ async function copyInstall() {
   align-items: center;
   gap: 5px;
   font-size: 13px;
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
   text-decoration: none;
   font-weight: 500;
   padding: 4px 10px;
@@ -209,7 +209,7 @@ async function copyInstall() {
 }
 .source-link:hover {
   background: rgba(31,108,241,0.06);
-  border-color: rgba(31,108,241,0.4);
+  border-color: var(--c-brand-border-strong);
 }
 .source-link svg {
   flex-shrink: 0;
@@ -239,12 +239,12 @@ async function copyInstall() {
   transition: border-color 0.15s;
 }
 .software-card:hover {
-  border-color: rgba(31,108,241,0.3);
+  border-color: var(--c-brand-border);
 }
 
 .software-card-accent {
   height: 3px;
-  background: linear-gradient(90deg, #1F6CF1, #21C197);
+  background: linear-gradient(90deg, var(--vp-c-brand-1), #21C197);
 }
 
 .software-card-body {
@@ -259,7 +259,7 @@ async function copyInstall() {
   height: 36px;
   border-radius: 8px;
   background: rgba(31,108,241,0.08);
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
   margin-bottom: 12px;
 }
 
@@ -310,7 +310,7 @@ async function copyInstall() {
   transition: color 0.15s;
 }
 .copy-btn:hover {
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
 }
 
 .software-links {
@@ -324,7 +324,7 @@ async function copyInstall() {
   gap: 6px;
   font-size: 13px;
   font-weight: 500;
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
   text-decoration: none;
   transition: opacity 0.15s;
 }
@@ -346,7 +346,7 @@ async function copyInstall() {
 }
 .copy-feedback {
   font-size: 11px;
-  color: #059669;
+  color: var(--c-success);
   font-weight: 600;
 }
 </style>

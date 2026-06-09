@@ -57,7 +57,10 @@
                   >{{ tab.label }}</button>
                 </div>
                 <button class="code-copy" @click="copyCode" title="Copy">
-                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <template v-if="!codeCopied">
+                    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  </template>
+                  <span v-else class="code-copy-feedback">Copied!</span>
                 </button>
               </div>
               <div class="code-body">
@@ -240,8 +243,14 @@ onMounted(() => {
 const activeTab = ref('yaml')
 const currentCode = computed(() => d.codeExamples[activeTab.value] || '')
 
+const codeCopied = ref(false)
+let codeCopyTimer: ReturnType<typeof setTimeout>
+
 async function copyCode() {
   await navigator.clipboard.writeText(currentCode.value)
+  codeCopied.value = true
+  clearTimeout(codeCopyTimer)
+  codeCopyTimer = setTimeout(() => { codeCopied.value = false }, 1500)
 }
 
 function formatDate(date: string): string {
@@ -312,7 +321,7 @@ function formatDate(date: string): string {
   color: #fff;
 }
 .hero-title-accent {
-  background: linear-gradient(135deg, #1F6CF1 0%, #21C197 100%);
+  background: linear-gradient(135deg, var(--vp-c-brand-1) 0%, #21C197 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -444,6 +453,11 @@ function formatDate(date: string): string {
 .code-copy:hover {
   color: rgba(255,255,255,0.7);
 }
+.code-copy-feedback {
+  font-size: 11px;
+  color: var(--c-success);
+  font-weight: 600;
+}
 
 .code-body {
   padding: 16px 20px;
@@ -514,7 +528,7 @@ function formatDate(date: string): string {
   margin-top: 40px;
 }
 .link-arrow {
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
   font-weight: 500;
   font-size: 14px;
   text-decoration: none;
@@ -563,7 +577,7 @@ function formatDate(date: string): string {
   width: 4px;
   flex-shrink: 0;
 }
-.layer-standard { background: linear-gradient(180deg, #1F6CF1, #4D88F3); }
+.layer-standard { background: linear-gradient(180deg, var(--vp-c-brand-1), #4D88F3); }
 .layer-model { background: linear-gradient(180deg, #008A64, #21C197); }
 .layer-serial { background: linear-gradient(180deg, #21C197, #34D399); }
 .layer-fetch { background: linear-gradient(180deg, #4D88F3, #7EAAF5); }
@@ -615,7 +629,7 @@ function formatDate(date: string): string {
 .eco-accent {
   height: 3px;
 }
-.accent-blue { background: linear-gradient(90deg, #1F6CF1, #4D88F3); }
+.accent-blue { background: linear-gradient(90deg, var(--vp-c-brand-1), #4D88F3); }
 .accent-aqua { background: linear-gradient(90deg, #21C197, #34D399); }
 .accent-green { background: linear-gradient(90deg, #008A64, #21C197); }
 
@@ -669,7 +683,7 @@ function formatDate(date: string): string {
   transition: color 0.15s;
 }
 .blog-card:hover .blog-card-title {
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
 }
 .blog-card-desc {
   font-size: 13px;
@@ -684,7 +698,7 @@ function formatDate(date: string): string {
 .blog-card-link {
   font-size: 13px;
   font-weight: 500;
-  color: #1F6CF1;
+  color: var(--vp-c-brand-1);
 }
 
 /* ── CTA Section ──────────────────────────────────────── */
@@ -812,5 +826,9 @@ function formatDate(date: string): string {
   color: var(--vp-c-text-2);
   text-align: center;
   line-height: 1.2;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .org-marquee-track { animation: none; }
 }
 </style>
