@@ -80,7 +80,7 @@ const examples = apiExamples
 const apiUrl = computed(() => {
   if (!result.value) return ''
   const params = new URLSearchParams()
-  params.set('reference', reference.value)
+  params.set('code', reference.value)
   if (year.value) params.set('year', year.value)
   if (allParts.value) params.set('all_parts', 'true')
   if (keepYear.value) params.set('keep_year', 'true')
@@ -95,7 +95,7 @@ async function fetchData() {
 
   try {
     const params = new URLSearchParams()
-    params.set('reference', reference.value)
+    params.set('code', reference.value)
     if (year.value) params.set('year', year.value)
     if (allParts.value) params.set('all_parts', 'true')
     if (keepYear.value) params.set('keep_year', 'true')

@@ -59,7 +59,7 @@ Relaton spans five distinct layers:
 | **ISO&nbsp;690** | The international standard defining the conceptual framework for bibliographic references |
 | **Information Model** | Relaton's BibliographicItem with 14&nbsp;entities, 60+&nbsp;relation types, and 28+&nbsp;organization flavors |
 | **Serializations** | YAML, XML, BibTeX, AsciiBib, and JSON-LD interchange formats |
-| **Auto-Fetch** | Flavor gems that retrieve metadata from 28+ SDO datasets by publication identifier alone |
+| **Auto-Fetch** | Flavor gems that retrieve metadata from 29 SDO datasets by publication identifier alone |
 | **Rendering** | Formatted citations in ISO&nbsp;690, APA, MLA, and custom styles via relaton-render |
 
 [Explore the model &rarr;](/model/)
@@ -93,7 +93,7 @@ Relaton's flavor architecture enables **automatic retrieval** of bibliographic m
 2. Queries the organization's dataset
 3. Returns a fully structured BibliographicItem
 
-This eliminates the need to manually maintain bibliographic citations. The system maintains indexed datasets covering all 28 supported organizations.
+This eliminates the need to manually maintain bibliographic citations. The system maintains indexed datasets covering all 28 supported flavors.
 
 [View supported organizations &rarr;](/flavors/)
 

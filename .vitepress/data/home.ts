@@ -1,3 +1,12 @@
+import { flavors } from './flavors'
+import { gems } from './software'
+
+const flavorCount = flavors.length
+const orgCount = flavors.filter(f => f.category !== 'identifier').length
+const identifierCount = flavorCount - orgCount
+const gemCount = gems.length
+const flavorGemCount = gems.filter(g => g.category === 'flavor').length
+
 export interface HeroSection {
   titleLine1: string
   titleLine2: string
@@ -5,13 +14,6 @@ export interface HeroSection {
   subtitle: string
   primaryAction: { label: string; href: string }
   secondaryAction: { label: string; href: string }
-}
-
-export interface Feature {
-  title: string
-  desc: string
-  icon: string
-  iconClass: string
 }
 
 export interface EcosystemCategory {
@@ -26,12 +28,6 @@ export interface CodeFormatTab {
   label: string
 }
 
-export interface StatTarget {
-  orgs: number
-  rels: number
-  gems: number
-}
-
 export interface SectionHeader {
   title: string
   subtitle?: string
@@ -39,10 +35,8 @@ export interface SectionHeader {
 
 export interface HomeData {
   hero: HeroSection
-  stats: StatTarget
   codeTabs: CodeFormatTab[]
   codeExamples: Record<string, string>
-  features: Feature[]
   layers: ArchitectureLayer[]
   orgsSection: SectionHeader
   ecosystemSection: SectionHeader
@@ -63,18 +57,18 @@ export interface ArchitectureLayer {
   accentClass: string
 }
 
+export const counts = { flavorCount, orgCount, identifierCount, gemCount, flavorGemCount }
+
 export const homeData: HomeData = {
   hero: {
     titleLine1: 'The Premier',
     titleLine2: 'Bibliographic',
     titleLine3: 'Data Model',
     subtitle:
-      'An interoperable, machine-readable data model for citations — created by the authors of ISO 690:2021, trusted by IETF, BIPM, OIML, and 28 standards organizations.',
+      `An interoperable, machine-readable data model for citations — created by the authors of ISO 690:2021, trusted by IETF, BIPM, OIML, and ${orgCount} standards organizations.`,
     primaryAction: { label: 'Explore the Model', href: '/model/' },
     secondaryAction: { label: 'Get Started', href: '/get-started/' },
   },
-
-  stats: { orgs: 28, rels: 60, gems: 33 },
 
   codeTabs: [
     { id: 'yaml', label: 'YAML' },
@@ -153,49 +147,28 @@ contributor.organization.name::
 edition:: 2`,
   },
 
-  features: [
-    {
-      title: 'Built on ISO 690',
-      desc: 'Every ISO 690 data element maps to a Relaton entity. The model extends the standard for document stages, supplements, and amendment tracking.',
-      icon: '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4"/><path d="M21 12c0 4.97-4.03 9-9 9s-9-4.03-9-9 4.03-9 9-9c1.48 0 2.88.36 4.11.99"/></svg>',
-      iconClass: 'icon-blue',
-    },
-    {
-      title: 'Auto-Fetch by PubID',
-      desc: 'Provide a publication identifier and Relaton retrieves structured metadata from 29 SDO datasets — no manual citation maintenance.',
-      icon: '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>',
-      iconClass: 'icon-aqua',
-    },
-    {
-      title: 'Render Any Style',
-      desc: 'Generate formatted citations in ISO 690, APA, MLA, and custom styles via relaton-render — beyond what BibTeX or CSL can express.',
-      icon: '<svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>',
-      iconClass: 'icon-green',
-    },
-  ],
-
   layers: [
     { number: '01', title: 'ISO 690', desc: 'The international standard for bibliographic references and citations — Relaton is its machine-readable implementation.', link: '/model/iso-690/', accentClass: 'layer-standard' },
     { number: '02', title: 'Information Model', desc: 'BibliographicItem + 14 entities, 60+ relation types — a comprehensive data model covering all ISO 690 data elements.', link: '/model/', accentClass: 'layer-model' },
     { number: '03', title: 'Serializations', desc: 'YAML, XML, BibTeX, AsciiBib, and JSON-LD — the same data in five formats, suited to different workflows.', link: '/model/serializations', accentClass: 'layer-serial' },
-    { number: '04', title: 'Auto-Fetch', desc: '29 flavor gems retrieve metadata from SDO datasets by publication identifier — no manual citation maintenance.', link: '/flavors/', accentClass: 'layer-fetch' },
+    { number: '04', title: 'Auto-Fetch', desc: `${flavorGemCount} flavor gems retrieve metadata from SDO datasets by publication identifier — no manual citation maintenance.`, link: '/flavors/', accentClass: 'layer-fetch' },
     { number: '05', title: 'Rendering', desc: 'Formatted citations in ISO 690, APA, MLA, and custom styles — beyond what BibTeX or CSL can express.', link: '/specs/relaton-render', accentClass: 'layer-render' },
   ],
 
   orgsSection: {
     title: 'Supported Standards Organizations',
-    subtitle: '26 organizations and 2 identifier systems across international, regional, national, and industry bodies.',
+    subtitle: `${orgCount} organizations and ${identifierCount} identifier systems across international, regional, national, and industry bodies.`,
   },
 
   ecosystemSection: {
     title: 'Software Ecosystem',
-    subtitle: '33 Ruby gems covering core libraries, CLI tools, and 29 flavor-specific data retrievers.',
+    subtitle: `${gemCount} Ruby gems covering core libraries, CLI tools, and ${flavorGemCount} flavor-specific data retrievers.`,
   },
 
   ecosystem: [
-    { label: 'Core Libraries', count: '2', desc: 'relaton and relaton-bib — the foundation', accentClass: 'accent-blue' },
-    { label: 'CLI Tools', count: '2', desc: 'relaton-cli and relaton-render — fetch, convert, cite', accentClass: 'accent-aqua' },
-    { label: 'Flavor Gems', count: '29', desc: 'One per standards organization', accentClass: 'accent-green' },
+    { label: 'Core Libraries', count: String(gems.filter(g => g.category === 'core').length), desc: 'relaton and relaton-bib — the foundation', accentClass: 'accent-blue' },
+    { label: 'CLI Tools', count: String(gems.filter(g => g.category === 'tool').length), desc: 'relaton-cli and relaton-render — fetch, convert, cite', accentClass: 'accent-aqua' },
+    { label: 'Flavor Gems', count: String(flavorGemCount), desc: 'One per standards organization', accentClass: 'accent-green' },
   ],
 
   blogSection: {
