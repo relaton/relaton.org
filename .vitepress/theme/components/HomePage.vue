@@ -271,8 +271,7 @@ function formatDate(date: string): string {
 /* ── Hero ─────────────────────────────────────────────── */
 .hero {
   position: relative;
-  overflow-x: hidden;
-  overflow-y: clip;
+  overflow: clip;
   background: linear-gradient(135deg, #1C2126 0%, #152035 40%, #0E2A3A 70%, #0B1F2D 100%);
 }
 .dark .hero {
