@@ -3,6 +3,12 @@ title: Citation guide for W3C publications
 flavor: W3C
 description: Cite W3C standards
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-w3c)
+- [Relaton data](https://github.com/relaton/relaton-data-w3c)
+- [Information model](https://github.com/relaton/relaton-model-w3c)
+
 
 The W3C references have following format:
 

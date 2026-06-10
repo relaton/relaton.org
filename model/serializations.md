@@ -22,7 +22,7 @@ The Relaton Information Model supports five serialization formats, each suited t
 The primary serialization format. Relaton YAML is used in Metanorma documents and by relaton-cli for import/export.
 
 ```yaml
-id: ISO 690:2010
+id: ISO 690:2021
 title:
   - content: Information and documentation
     language: en
@@ -32,7 +32,7 @@ title:
     script: Latn
 type: standard
 docid:
-  id: ISO 690:2010
+  id: ISO 690:2021
   type: ISO
 date:
   - type: published
@@ -56,7 +56,7 @@ The canonical serialization, used for schema validation and as the interchange f
   <title>Information and documentation
     -- Guidelines for bibliographic references
     and citations to information resources</title>
-  <docidentifier type="ISO">ISO 690:2010</docidentifier>
+  <docidentifier type="ISO">ISO 690:2021</docidentifier>
   <date type="published">
     <on>2010</on>
   </date>
@@ -81,7 +81,7 @@ For integration with LaTeX and traditional bibliography management tools.
   title = {Information and documentation
     -- Guidelines for bibliographic references
     and citations to information resources},
-  number = {ISO 690:2010},
+  number = {ISO 690:2021},
   year = {2010},
   edition = {2},
   publisher = {International Organization
@@ -94,12 +94,12 @@ For integration with LaTeX and traditional bibliography management tools.
 A line-oriented format designed for embedding bibliographic entries directly in AsciiDoc documents. Each field is a key-value pair on its own line, using brackets for nested attributes.
 
 ```asciidoc
-id:: ISO 690:2010
+id:: ISO 690:2021
 title:: Information and documentation
   -- Guidelines for bibliographic references
   and citations to information resources
 type:: standard
-docid[number]:: ISO 690:2010
+docid[number]:: ISO 690:2021
 docid[type]:: ISO
 date[published]:: 2010
 contributor[role=publisher]::
@@ -118,7 +118,7 @@ For linked data applications and web APIs. Provides JSON-native access to all mo
 ```json
 {
   "@context": "https://relaton.org/context.jsonld",
-  "id": "ISO 690:2010",
+  "id": "ISO 690:2021",
   "type": "standard",
   "title": [
     {
@@ -129,7 +129,7 @@ For linked data applications and web APIs. Provides JSON-native access to all mo
   ],
   "docid": [
     {
-      "id": "ISO 690:2010",
+      "id": "ISO 690:2021",
       "type": "ISO"
     }
   ],
@@ -163,9 +163,9 @@ relaton yaml2xml references.yaml
 relaton xml2yaml references.xml
 
 # Fetch and convert
-relaton fetch "ISO 690:2010" --format yaml
-relaton fetch "ISO 690:2010" --format xml
-relaton fetch "ISO 690:2010" --format bibtex
+relaton fetch "ISO 690:2021" --format yaml
+relaton fetch "ISO 690:2021" --format xml
+relaton fetch "ISO 690:2021" --format bibtex
 ```
 
 [CLI reference &rarr;](/software/relaton-cli)

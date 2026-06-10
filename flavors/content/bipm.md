@@ -3,6 +3,12 @@ title: Citation guide for BIPM resources
 flavor: BIPM
 description: Cite BIPM Metrologia, SI Brochure, and Outcomes
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-bipm)
+- [Relaton data](https://github.com/relaton/relaton-data-bipm)
+- [Information model](https://github.com/relaton/relaton-model-bipm)
+
 
 ## SI Brochure
 

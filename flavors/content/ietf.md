@@ -3,6 +3,12 @@ title: Citation guide for IETF publications
 flavor: IETF
 description: Cite IETF RFCs, BCPs and Internet-Drafts
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-ietf)
+- [Relaton data](https://github.com/relaton/relaton-data-ietf)
+- [Information model](https://github.com/relaton/relaton-model-ietf)
+
 
 ## RFC: Request for Comments
 

@@ -7,7 +7,7 @@
           id="ref-input"
           v-model="reference"
           type="text"
-          placeholder="e.g. ISO 690:2010"
+          placeholder="e.g. ISO 690"
           class="form-input"
           @keyup.enter="fetchData"
         />
@@ -100,26 +100,33 @@ async function fetchData() {
     if (allParts.value) params.set('all_parts', 'true')
     if (keepYear.value) params.set('keep_year', 'true')
 
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 30000)
+
     const res = await fetch(`${apiBaseUrl}?${params.toString()}`, {
-      signal: AbortSignal.timeout(10000),
+      signal: controller.signal,
     })
+    clearTimeout(timer)
 
     if (res.status === 404) {
       error.value = 'No bibliographic data found for this reference.'
       return
     }
     if (!res.ok) {
-      error.value = 'Server error. Please try again.'
+      error.value = `Server returned ${res.status} ${res.statusText}.`
       return
     }
 
     const text = await res.text()
     result.value = formatXml(text)
   } catch (e: unknown) {
-    if (e instanceof DOMException && e.name === 'TimeoutError') {
+    console.error('API fetch error:', e)
+    if (e instanceof DOMException && e.name === 'AbortError') {
       error.value = 'Request timed out. Please try again.'
+    } else if (e instanceof TypeError) {
+      error.value = `Network error: ${e.message}`
     } else {
-      error.value = 'Unable to reach the Relaton API.'
+      error.value = e instanceof Error ? e.message : 'Unknown error.'
     }
   } finally {
     loading.value = false
@@ -127,15 +134,23 @@ async function fetchData() {
 }
 
 function formatXml(xml: string): string {
-  let formatted = ''
-  let indent = 0
-  const tab = '  '
-  xml.split(/>\s*</).forEach(node => {
-    if (node.match(/^\/\w/)) indent--
-    formatted += tab.repeat(Math.max(0, indent)) + '<' + node + '>\n'
-    if (node.match(/^<?\w[^>]*[^/]/) && !node.startsWith('?')) indent++
-  })
-  return formatted.slice(1, -2)
+  const doc = new DOMParser().parseFromString(xml, 'application/xml')
+  const errorNode = doc.querySelector('parsererror')
+  if (errorNode) return xml
+
+  const ser = new XMLSerializer()
+  const indent = (str: string) => {
+    const lines = str.replace(/></g, '>\n<').split('\n')
+    let level = 0
+    return lines.map(line => {
+      if (line.match(/^<\/\w/)) level--
+      const padded = '  '.repeat(Math.max(0, level)) + line
+      if (line.match(/^<\w[^>]*[^/]>$/) && !line.match(/^<\w[^>]*\/>$/)) level++
+      return padded
+    }).join('\n')
+  }
+
+  return indent(ser.serializeToString(doc.documentElement))
 }
 
 async function copyResult() {

@@ -78,7 +78,7 @@ export const homeData: HomeData = {
   ],
 
   codeExamples: {
-    yaml: `id: ISO 690:2010
+    yaml: `id: ISO 690:2021
 title:
   - content: Information and documentation
     language: en
@@ -88,27 +88,27 @@ title:
     script: Latn
 type: standard
 docid:
-  id: ISO 690:2010
+  id: ISO 690:2021
   type: ISO
 date:
   - type: published
-    value: '2010'
+    value: '2021'
 contributor:
   - organization:
       name: International Organization
         for Standardization
     role:
       - publisher
-edition: "2"`,
+edition: "3"`,
 
-    xml: `<bibitem type="standard" id="ISO690-2010">
+    xml: `<bibitem type="standard" id="ISO690-2021">
   <title>Information and documentation
     -- Guidelines for bibliographic
     references and citations</title>
   <docidentifier type="ISO">
-    ISO 690:2010</docidentifier>
+    ISO 690:2021</docidentifier>
   <date type="published">
-    <on>2010</on>
+    <on>2021</on>
   </date>
   <contributor>
     <role type="publisher"/>
@@ -117,34 +117,34 @@ edition: "2"`,
         for Standardization</name>
     </organization>
   </contributor>
-  <edition>2</edition>
+  <edition>3</edition>
 </bibitem>`,
 
-    bibtex: `@standard{ISO690_2010,
+    bibtex: `@standard{ISO690_2021,
   type = {standard},
   title = {Information and documentation
     -- Guidelines for bibliographic
     references and citations},
-  number = {ISO 690:2010},
-  year = {2010},
-  edition = {2},
+  number = {ISO 690:2021},
+  year = {2021},
+  edition = {3},
   publisher = {International Organization
     for Standardization}
 }`,
 
-    asciibib: `id:: ISO 690:2010
+    asciibib: `id:: ISO 690:2021
 title:: Information and documentation
   -- Guidelines for bibliographic
   references and citations
 type:: standard
-docid[number]:: ISO 690:2010
+docid[number]:: ISO 690:2021
 docid[type]:: ISO
-date[published]:: 2010
+date[published]:: 2021
 contributor[role=publisher]::
 contributor.organization.name::
   International Organization
   for Standardization
-edition:: 2`,
+edition:: 3`,
   },
 
   layers: [

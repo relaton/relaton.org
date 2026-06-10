@@ -3,6 +3,12 @@ title: Citation guide for 3GPP standards
 flavor: 3GPP
 description: Cite 3GPP standards
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-3gpp)
+- [Relaton data](https://github.com/relaton/relaton-data-3gpp)
+- [Information model](https://github.com/relaton/relaton-model-3gpp)
+
 
 ## General
 

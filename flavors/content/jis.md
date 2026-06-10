@@ -3,6 +3,11 @@ title: Citation guide for JIS publications
 flavor: JIS
 description: Cite JIS standards
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-jis)
+- [Information model](https://github.com/relaton/relaton-model-jis)
+
 
 ## Prefix
 

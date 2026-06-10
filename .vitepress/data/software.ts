@@ -8,7 +8,7 @@ export const gems: SoftwareGem[] = [
     repoUrl: 'https://github.com/metanorma/relaton',
     description: 'Core gem for importing and caching bibliographic references to technical standards.',
     category: 'core',
-    sampleDocId: 'ISO 690:2010',
+    sampleDocId: 'ISO 690:2021',
   },
   {
     id: 'relaton-bib',
@@ -35,12 +35,12 @@ puts item.to_xml`,
     description: 'Command-line tools for building, fetching, and converting Relaton bibliographic data.',
     category: 'tool',
     quickStartOverride: `# Fetch in different formats
-relaton fetch "ISO 690:2010" --format yaml
-relaton fetch "ISO 690:2010" --format xml
+relaton fetch "ISO 690:2021" --format yaml
+relaton fetch "ISO 690:2021" --format xml
 relaton fetch "RFC 8446" --format bibtex
 
 # Fetch and save to file
-relaton fetch "ISO 690:2010" -o iso690.yaml`,
+relaton fetch "ISO 690:2021" -o iso690.yaml`,
   },
   {
     id: 'relaton-render',
@@ -51,7 +51,7 @@ relaton fetch "ISO 690:2010" -o iso690.yaml`,
     category: 'tool',
     quickStartOverride: `require 'relaton-render'
 
-bib = Relaton::Bibliography.get "ISO 690:2010"
+bib = Relaton::Bibliography.get "ISO 690:2021"
 renderer = Relaton::Render::Iso::General.new
 puts renderer.render(bib)`,
   },
@@ -63,7 +63,7 @@ puts renderer.render(bib)`,
     description: 'Retrieves ISO Standards from iso.org for bibliographic use.',
     category: 'flavor',
     flavorId: 'iso',
-    sampleDocId: 'ISO 690:2010',
+    sampleDocId: 'ISO 690:2021',
   },
   {
     id: 'relaton-iec',
@@ -336,6 +336,16 @@ puts renderer.render(bib)`,
     sampleDocId: 'MLIT PLATEAU 2.0',
   },
   {
+    id: 'relaton-etsi',
+    name: 'relaton-etsi',
+    displayName: 'Relaton ETSI',
+    repoUrl: 'https://github.com/relaton/relaton-etsi',
+    description: 'Retrieves ETSI Standards for bibliographic use.',
+    category: 'flavor',
+    flavorId: 'etsi',
+    sampleDocId: 'ETSI GS ZSM 012 V1.1.1',
+  },
+  {
     id: 'relaton-iso-bib',
     name: 'relaton-iso-bib',
     displayName: 'Relaton ISO Bib',
@@ -343,6 +353,6 @@ puts renderer.render(bib)`,
     description: 'Implements the IsoBibliographicItem model.',
     category: 'flavor',
     flavorId: 'iso',
-    sampleDocId: 'ISO 690:2010',
+    sampleDocId: 'ISO 690:2021',
   },
 ]

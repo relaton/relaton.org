@@ -3,6 +3,12 @@ title: Citation guide for IEC publications
 flavor: IEC
 description: Cite IEC standards
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-iec)
+- [Relaton data](https://github.com/relaton/relaton-data-iec)
+- [Information model](https://github.com/relaton/relaton-model-iec)
+
 
 ## Prefixes
 

@@ -327,4 +327,16 @@ export const flavors: Flavor[] = [
     repoUrl: 'https://github.com/relaton/relaton-plateau',
     logo: '/logos/plateau-logo.svg',
   },
+  {
+    id: 'etsi',
+    label: 'ETSI',
+    fullName: 'European Telecommunications Standards Institute',
+    category: 'regional',
+    gem: 'relaton-etsi',
+    citationGuide: true,
+    sources: [{ url: 'https://www.etsi.org', label: 'European Telecommunications Standards Institute' }],
+    repoUrl: 'https://github.com/relaton/relaton-etsi',
+    logo: '/logos/etsi-logo.svg',
+    logoVariant: 'light',
+  },
 ]

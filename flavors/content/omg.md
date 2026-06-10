@@ -3,6 +3,11 @@ title: Citation guide for OMG publications
 flavor: OMG
 description: Cite OMG standards
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-omg)
+- [Information model](https://github.com/relaton/relaton-model-omg)
+
 
 ## Prefix
 

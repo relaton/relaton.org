@@ -13,7 +13,7 @@ The identifiers start with the publisher abbreviation `ISO`:
 
 >
 > ```
-> ISO 690:2010
+> ISO 690:2021
 > ```
 
 ## Dated and undated references
@@ -66,7 +66,7 @@ ISO/IEC WD TR 20000-17
 The identifier can include a year and amendment/corrigendum.
 
 ```
-ISO 690:2010/Amd 1:2018
+ISO 690:2021/Amd 1:2018
 ISO/IEC 23003-1:2007/Amd 1:2008/Cor 3:2015
 ```
 

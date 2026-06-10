@@ -3,6 +3,11 @@ title: Citation guide for CalConnect standards
 flavor: CalConnect
 description: Cite CalConnect standards
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-calconnect)
+- [Relaton data](https://github.com/relaton/relaton-data-calconnect)
+
 
 CalConnect standards are available at https://standards.calconnect.org.
 
