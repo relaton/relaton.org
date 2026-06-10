@@ -211,16 +211,16 @@ It may also be the first, unpublished expression of document A. Document A may
 be a Work or an Expression (e.g. a draft may be specific to an edition or
 translation). Document A may or may not be published. (*hasDraft*)
 
-  `preliminaryDraftOf`
+  `predecessorDraftOf`
   : document B is an immediate predecessor draft (unpublished
   version) to document A, where the content of document B was modified to create
   document A.
-  (*hasPreliminaryDraft*)
+  (*hasPredecessorDraft*)
 
-  `revisionDraftOf`
+  `successorDraftOf`
   : document B is an immediate successor draft (unpublished
   version) to document A, where the content of document A was modified to create
-  document B. (*hasRevisionDraft*)
+  document B. (*hasSuccessorDraft*)
 
 `editionOf`
 : document B is a published revision of document A, or the first
