@@ -271,7 +271,8 @@ function formatDate(date: string): string {
 /* ── Hero ─────────────────────────────────────────────── */
 .hero {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: clip;
   background: linear-gradient(135deg, #1C2126 0%, #152035 40%, #0E2A3A 70%, #0B1F2D 100%);
 }
 .dark .hero {
@@ -796,6 +797,10 @@ function formatDate(date: string): string {
   animation: marquee-scroll 40s linear infinite;
 }
 .org-marquee-track:hover { animation-play-state: paused; }
+@media (max-width: 768px) {
+  .org-marquee-track { animation: none; flex-wrap: wrap; width: auto; }
+  .org-marquee { overflow-x: auto; margin: 0 -16px; }
+}
 @keyframes marquee-scroll {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }

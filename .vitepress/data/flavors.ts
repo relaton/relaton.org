@@ -160,7 +160,7 @@ export const flavors: Flavor[] = [
     category: 'international',
     gem: 'relaton-ecma',
     citationGuide: true,
-    sources: [{ url: 'https://www.ecma-international.org', label: 'Ecma International' }],
+    sources: [{ url: 'https://ecma-international.org', label: 'Ecma International' }],
     repoUrl: 'https://github.com/relaton/relaton-ecma',
     logo: '/logos/ecma-logo.svg',
     logoVariant: 'light',
