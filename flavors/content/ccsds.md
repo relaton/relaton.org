@@ -3,6 +3,12 @@ title: Citation guide for CCSDS standards
 flavor: CCSDS
 description: Cite CCSDS standards
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-ccsds)
+- [Relaton data](https://github.com/relaton/relaton-data-ccsds)
+- [Information model](https://github.com/relaton/relaton-model-ccsds)
+
 
 CCSDS standards are available at [CCSDS](https://public.ccsds.org/Publications/AllPubs.aspx).
 

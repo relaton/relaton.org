@@ -113,6 +113,10 @@ export default defineConfig({
       provider: 'local',
     },
 
+    socialLinks: [{ icon: 'github', link: 'https://github.com/relaton' }],
+
+    appearance: 'toggle',
+
     outline: { level: [2, 3], label: 'On this page' },
     lastUpdated: { text: 'Updated at' },
   },

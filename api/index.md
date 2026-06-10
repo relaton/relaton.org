@@ -1,5 +1,6 @@
 ---
-layout: page
+layout: doc
+sidebar: false
 outline: false
 title: Relaton API
 ---
@@ -15,7 +16,7 @@ The Relaton API is in early access. Some queries may return errors or incomplete
 
 ## About the API
 
-The Relaton API provides HTTP access to the same bibliographic data that the Ruby gems fetch locally. Given a publication identifier (e.g., `RFC 8446`, `ISO 690:2010`), it returns a structured XML record with complete metadata — title, contributors, dates, identifiers, relations, and flavor-specific extensions.
+The Relaton API provides HTTP access to the same bibliographic data that the Ruby gems fetch locally. Given a publication identifier (e.g., `RFC 8446`, `ISO 690:2021`), it returns a structured XML record with complete metadata — title, contributors, dates, identifiers, relations, and flavor-specific extensions.
 
 The API is read-only and requires no authentication.
 
@@ -29,7 +30,7 @@ GET https://api.relaton.org/api/v1/document
 
 | Parameter | Type | Description |
 |---|---|---|
-| `code` | string (required) | The publication identifier to look up (e.g., `RFC 8446`, `ISO 690:2010`, `ITU-T G.989.2`) |
+| `code` | string (required) | The publication identifier to look up (e.g., `RFC 8446`, `ISO 690:2021`, `ITU-T G.989.2`) |
 | `year` | string | Year of publication (e.g., `2010`) |
 | `all_parts` | boolean | If `true`, fetches all parts of a multi-part standard (default: `false`) |
 | `keep_year` | boolean | If `true`, keeps the year in the identifier even when a newer edition exists (default: `false`) |

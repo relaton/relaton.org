@@ -29,6 +29,7 @@
   --vp-c-bg-soft: #F8FAFB;
   --vp-c-bg-mute: #F1F4F7;
   --vp-c-bg-alt: #F0F4F8;
+  --vp-c-bg-elv: #FFFFFF;
 
   /* Text */
   --vp-c-text-1: #1C2126;
@@ -49,6 +50,7 @@
   --vp-c-bg-soft: #111820;
   --vp-c-bg-mute: #171F28;
   --vp-c-bg-alt: #0E1319;
+  --vp-c-bg-elv: #151D27;
   --vp-c-text-1: #E8ECF0;
   --vp-c-text-2: #A0AEBE;
   --vp-c-text-3: #5F7082;
@@ -507,6 +509,18 @@ body {
 
 /* Rendered markdown content (used by FlavorPage and SoftwarePage) */
 .rendered-content { line-height: 1.7; }
+
+.rendered-content p {
+  margin: 12px 0;
+}
+
+.rendered-content a {
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  transition: opacity 0.15s;
+}
+.rendered-content a:hover { opacity: 0.8; }
+
 .rendered-content h2 {
   margin-top: 48px;
   margin-bottom: 16px;
@@ -522,6 +536,32 @@ body {
   font-size: 18px;
   font-weight: 600;
 }
+.rendered-content h4 {
+  margin-top: 24px;
+  margin-bottom: 8px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.rendered-content ul {
+  list-style: disc;
+  padding-left: 1.4em;
+  margin: 12px 0;
+}
+.rendered-content ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+  margin: 12px 0;
+}
+.rendered-content li {
+  margin: 4px 0;
+  line-height: 1.6;
+}
+.rendered-content li > ul,
+.rendered-content li > ol {
+  margin: 4px 0;
+}
+
 .rendered-content table {
   width: 100%;
   border-collapse: collapse;
@@ -539,6 +579,7 @@ body {
   font-weight: 600;
   font-size: 13px;
 }
+
 .rendered-content code {
   background: var(--vp-c-bg-soft);
   padding: 2px 6px;
@@ -556,11 +597,35 @@ body {
   background: none;
   padding: 0;
 }
+
 .rendered-content blockquote {
   border-left: 3px solid #1F6CF1;
   padding-left: 16px;
   color: var(--vp-c-text-2);
   margin: 16px 0;
+}
+
+.rendered-content hr {
+  border: none;
+  border-top: 1px solid var(--vp-c-divider);
+  margin: 32px 0;
+}
+
+.rendered-content img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.rendered-content dl {
+  margin: 12px 0;
+}
+.rendered-content dt {
+  font-weight: 600;
+  margin-top: 8px;
+}
+.rendered-content dd {
+  margin-left: 1.4em;
+  color: var(--vp-c-text-2);
 }
 
 @media print {
@@ -597,6 +662,21 @@ body {
 /* ==========================================================================
    10. Scrollbar
    ========================================================================== */
+
+/* Global scrollbar — neutral, not brand-colored */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--vp-c-divider) transparent;
+}
+html::-webkit-scrollbar { width: 8px; height: 8px; }
+html::-webkit-scrollbar-track { background: transparent; }
+html::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 4px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-text-3);
+}
 
 .search-results-scroll::-webkit-scrollbar { width: 6px; }
 .search-results-scroll::-webkit-scrollbar-track { background: transparent; }

@@ -3,6 +3,12 @@ title: Citation guide for NIST publications
 flavor: NIST
 description: Cite NIST standards
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-nist)
+- [Relaton data](https://github.com/relaton/relaton-data-nist)
+- [Information model](https://github.com/relaton/relaton-model-nist)
+
 
 ## Prefixes
 

@@ -111,7 +111,7 @@ const relatedFlavor = computed(() => {
 const quickStartCode = computed(() => {
   if (!props.gem) return ''
   if (props.gem.quickStartOverride) return props.gem.quickStartOverride
-  const docId = props.gem.sampleDocId || 'ISO 690:2010'
+  const docId = props.gem.sampleDocId || 'ISO 690:2021'
   return `require 'relaton'
 
 # Fetch a bibliographic item

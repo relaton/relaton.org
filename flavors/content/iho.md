@@ -3,6 +3,12 @@ title: Citation guide for IHO publications
 flavor: IHO
 description: Cite IHO standards
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-iho)
+- [Relaton data](https://github.com/relaton/relaton-data-iho)
+- [Information model](https://github.com/relaton/relaton-model-iho)
+
 
 ## Prefix
 

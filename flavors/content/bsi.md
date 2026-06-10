@@ -3,6 +3,11 @@ title: Citation guide for BSI resources
 flavor: British Standards Institution (BSI)
 description: Cite British Standards Institution (BSI) documents
 ---
+## Relaton components
+
+- [Relaton implementation](https://github.com/relaton/relaton-bsi)
+- [Information model](https://github.com/relaton/relaton-model-bsi)
+
 
 ## British Standards
 

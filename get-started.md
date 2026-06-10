@@ -33,11 +33,11 @@ Fetch a bibliographic record by its publication identifier:
 ```ruby
 require 'relaton'
 
-bib = Relaton::Bibliography.get "ISO 690:2010"
+bib = Relaton::Bibliography.get "ISO 690:2021"
 puts bib.to_xml
 ```
 
-Relaton recognizes the `ISO 690:2010` identifier, routes the query to the ISO flavor gem, and returns a structured `BibliographicItem` with full metadata — title, dates, contributors, identifiers, relations, and more.
+Relaton recognizes the `ISO 690:2021` identifier, routes the query to the ISO flavor gem, and returns a structured `BibliographicItem` with full metadata — title, dates, contributors, identifiers, relations, and more.
 
 ## Fetch from Other Organizations
 
@@ -65,7 +65,7 @@ Each lookup returns a `BibliographicItem` with the same data model, regardless o
 ## Serialize to Different Formats
 
 ```ruby
-bib = Relaton::Bibliography.get "ISO 690:2010"
+bib = Relaton::Bibliography.get "ISO 690:2021"
 
 # YAML (default)
 puts bib.to_hash.to_yaml
@@ -90,12 +90,12 @@ The `relaton-cli` gem provides command-line access:
 gem install relaton-cli
 
 # Fetch and output in different formats
-relaton fetch "ISO 690:2010" --format yaml
-relaton fetch "ISO 690:2010" --format xml
-relaton fetch "ISO 690:2010" --format bibtex
+relaton fetch "ISO 690:2021" --format yaml
+relaton fetch "ISO 690:2021" --format xml
+relaton fetch "ISO 690:2021" --format bibtex
 
 # Fetch and save to file
-relaton fetch "ISO 690:2010" -o iso690.yaml
+relaton fetch "ISO 690:2021" -o iso690.yaml
 ```
 
 ## Render Citations
@@ -105,7 +105,7 @@ The `relaton-render` gem formats bibliographic items for display:
 ```ruby
 require 'relaton-render'
 
-bib = Relaton::Bibliography.get "ISO 690:2010"
+bib = Relaton::Bibliography.get "ISO 690:2021"
 renderer = Relaton::Render::Iso::General.new
 puts renderer.render(bib)
 ```
