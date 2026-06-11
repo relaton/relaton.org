@@ -16,5 +16,7 @@ node_modules
 public/logos/.vitepress/
 TODO*
 .vscode
+.opencode
+.openpackage
 site.zip
 *.bak
