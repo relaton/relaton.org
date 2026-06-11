@@ -1,25 +1,25 @@
 ---
 title: Specific categories
 description: Conventions specific to bibliographic categories in Relaton
-layout: model-docs
+
 ---
 
-[[specific-categories]]
-== Specific categories of information resource
+## Specific categories of information resource {#specific-categories}
 
-=== Electronic information resources
+### Electronic information resources
 
 * Source: ISO 690, 5.3
 
-System requirements are modelled as a note, prefixed with "`System requirements`:".
+System requirements are modelled as a note, prefixed with "System requirements":.
 
-NOTE: Detailed system requirements are
-less commonly expressed now for software than they were in the 1990s and 2000s.
+::: tip NOTE
+Detailed system requirements are less commonly expressed now for software than they were in the 1990s and 2000s.
+:::
 
 URLs should not be broken at the end of a line: that
 is a rendering requirement, not an information modelling requirement.
 
-As discussed in link:/model/bibtype[Categories of information resource],
+As discussed in [Categories of information resource](/model/bibtype),
 where possible, a more specific category
 should be used than "electronic resource",
 which is properly a description of a medium and not a resource type; monographs and
@@ -28,17 +28,16 @@ journals are now routinely published online.
 The specific type of electronic resource, if not covered by `bibitem/@type` (e.g.
 "book", "dataset"), should be given as `medium/genre`.
 
-.Examples of citing an electronic information resource
-====
-Ubisoft. _Far Cry 5_ [computer game]. 2018. Viewed: 2018-05-10.
-System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
-(minimum); Intel Core i7-4770 @ 3.4 GHz | AMD Ryzen 5 1600 @ 3.2 GHz or equivalent (recommended).
-RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
-VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum);
-NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).
+**Examples of citing an electronic information resource**
 
-[source,xml]
---
+> Ubisoft. *Far Cry 5* [computer game]. 2018. Viewed: 2018-05-10.
+> System requirements: CPU: Intel Core i5-2400 | AMD FX-6300 @ 3.5 GHz or better
+> (minimum); Intel Core i7-4770 @ 3.4 GHz | AMD Ryzen 5 1600 @ 3.2 GHz or equivalent (recommended).
+> RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
+> VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum);
+> NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).
+
+```xml
 <bibitem type="software">
   <title>Far Cry 5</title>
   <date type="published"><on>2018</on></date>
@@ -64,13 +63,11 @@ RAM: 8 GB. OS: Windows 7 SP1, Windows 8.1, Windows 10 (64-bit versions only).
 VIDEO CARD: NVIDIA GeForce GTX 670 | AMD R9 270 (2GB VRAM with Shader Model 5.0 or better) (minimum);
 NVIDIA GeForce GTX 970 or AMD R9 290X (4GB VRAM with Shader Model 5.0 or better) (recommended).</note>
 </bibitem>
---
-====
+```
 
-=== Cartographic material
+### Cartographic material
 
 * Source: ISO 690, 5.4
-
 
 The projection, prime meridian, orientation, and reference systems (such as
 grids and navigational lattices) are given as notes.
@@ -78,14 +75,11 @@ The spectral characteristics of the sensor, details of the satellite systems,
 and the amount of cloud cover are also given as notes.
 Details of the creator's role are given in `bibitem/contributor/role`.
 
+> Berner, L.T., P.S.A. Beck, M.M. Loranty, H.D. Alexander, M.C. Mack, and S.J. Goetz.
+> *Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007*.
+> ORNL DAAC, Oak Ridge, Tennessee, USA. 2016. http://dx.doi.org/10.3334/ORNLDAAC/1321
 
-====
-Berner, L.T., P.S.A. Beck, M.M. Loranty, H.D. Alexander, M.C. Mack, and S.J. Goetz.
-_Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007_.
-ORNL DAAC, Oak Ridge, Tennessee, USA. 2016. http://dx.doi.org/10.3334/ORNLDAAC/1321
-
-[source,xml]
---
+```xml
 <bibitem type="map">
   <title>Siberian Boreal Forest Aboveground Biomass and Fire Scar Maps, Russia, 1969-2007</title>
   <date type="published"><on>2016</on></date>
@@ -134,36 +128,31 @@ Biomass Mapping: WorldView-1 (WV-1), Landsat 5 TM
 Fire Scar Mapping: Landsat 7 ETM+, Landsat 5 TM, Landsat 1–3 MSS</note>
   <place>Oak Ridge, Tennessee, USA</place>
 </bibitem>
---
-====
+```
 
-
-=== Films, videos and broadcasts
+### Films, videos and broadcasts
 
 * Source: ISO 690, 5.5
 
-
 If a single contributor is to be singled out as the creator of a resource, they
-are assigned the `bibitem/contributor/role@type` of "`author`".
+are assigned the `bibitem/contributor/role@type` of "author".
 Otherwise, if the
 resource is treated as a collaborative effort, the various contributors should
-be listed with `bibitem/contributor/role@type` of "`performer`", with their
+be listed with `bibitem/contributor/role@type` of "performer", with their
 contributions differentiated in the `bibitem/contributor/role`.
 
 Programmes within a series have the series modelled as a `bibitem/series`.
 The title of the series is modelled as `bibitem/series/title`, and the title
 of the episode as `bibitem/title`. The transmitting organisation and channel
-are modelled as a contributor of type "`distributor`".
+are modelled as a contributor of type "distributor".
 
 If an audiovisual resource is a contained item, the `bibitem/extent` gives
 its location within the host item; this is typically a timestamp for visual
 material, and a timestamp or a track for audio material.
 
-====
-_The Death of Stalin_. Directed by Armando Iannucci. 2017.
+> *The Death of Stalin*. Directed by Armando Iannucci. 2017.
 
-[source,xml]
---
+```xml
 <bibitem type="film">
   <title>The Death of Stalin</title>
   <date type="published"><on>2017</on></date>
@@ -177,14 +166,11 @@ _The Death of Stalin_. Directed by Armando Iannucci. 2017.
     </person>
   </contributor>
 </bibitem>
---
-====
+```
 
-====
-Armando Iannucci. _The Death of Stalin_. 2017.
+> Armando Iannucci. *The Death of Stalin*. 2017.
 
-[source,xml]
---
+```xml
 <bibitem type="film">
   <title>The Death of Stalin</title>
   <date type="published"><on>2017</on></date>
@@ -198,15 +184,12 @@ Armando Iannucci. _The Death of Stalin_. 2017.
     </person>
   </contributor>
 </bibitem>
---
-====
+```
 
-====
-_Columbo_, Season 7, Episode 5. The Conspirators. Teleplay by Howard Berk.
-NBC. 1978-05-13.
+> *Columbo*, Season 7, Episode 5. The Conspirators. Teleplay by Howard Berk.
+> NBC. 1978-05-13.
 
-[source,xml]
---
+```xml
 <bibitem type="audiovisual">
   <title>The Conspirators</title>
   <date type="transmitted"><on>1978-05-13</on></date>
@@ -231,23 +214,19 @@ NBC. 1978-05-13.
     <partnumber>Episode 5</partnumber>
   </series>
 </bibitem>
---
-====
+```
 
-=== Graphic Works
+### Graphic Works
 
 * Source: ISO 690, 5.6
 
-
 The fuller description of a contributors role under `bibitem/contributor/role`
-allows for Latin role descriptions such as _pinxit_ and _sculpsit_.
+allows for Latin role descriptions such as *pinxit* and *sculpsit*.
 
-====
-_[Tent of Darius]_ C. Le Brun pinxit. S. Gribelin sculpsit.
-[painting]. 1702. At: Musée du Louvre, Inv. 2896.
+> *[Tent of Darius]* C. Le Brun pinxit. S. Gribelin sculpsit.
+> [painting]. 1702. At: Musee du Louvre, Inv. 2896.
 
-[source,xml]
---
+```xml
 <bibitem type="graphical work">
   <title>[Tent of Darius]</title>
   <date type="created"><on>1702</on></date>
@@ -262,12 +241,11 @@ _[Tent of Darius]_ C. Le Brun pinxit. S. Gribelin sculpsit.
   <medium>
     <form>painting</form>
   </medium>
-  <accessLocation>Musée du Louvre, Inv. 2896.</accessLocation>
+  <accessLocation>Musee du Louvre, Inv. 2896.</accessLocation>
 </bibitem>
---
-====
+```
 
-=== Music
+### Music
 
 * Source: ISO 690, 5.7
 * Serialisation: `bibitem/contributor/role`
@@ -276,7 +254,7 @@ Librettists and composers are both contributors of role type "author"; the role
 of composer and librettist needs to be differentiated in the contributor
 role for proper rendering.
 
-The type "`music`" covers both music scores and music recordings, as is done
+The type "music" covers both music scores and music recordings, as is done
 in ISO 690. The two are differentiated in `medium`; following
 the practice in ISO 690, `medium/content` "notated music" is used
 for music scores, while `medium/carrier` is used for recordings
@@ -286,13 +264,10 @@ score is not published), this is not
 good practice, for the same reason that particular editions are required
 for citation of textual works.
 
-====
-ADAMS, John Coolidge. _Nixon in China_. Libretto by Alice GOODMAN. 2004 [1987].
-Vocal score. New York: Boosey & Hawkes.
+> ADAMS, John Coolidge. *Nixon in China*. Libretto by Alice GOODMAN. 2004 [1987].
+> Vocal score. New York: Boosey & Hawkes.
 
-
-[source,xml]
---
+```xml
 <bibitem type="music">
   <title>Nixon in China</title>
   <date type="created"><on>1987</on></date>
@@ -315,16 +290,13 @@ Vocal score. New York: Boosey & Hawkes.
   </medium>
   <place>New York</place>
 </bibitem>
---
-====
+```
 
-====
-ADAMS, John Coolidge. _Nixon in China_. Libretto by Alice GOODMAN. 2009.
-Marin Alsop (Conductor). Colorado Symphony Orchestra. [Audio CD].
-3 CDs. Naxos.
+> ADAMS, John Coolidge. *Nixon in China*. Libretto by Alice GOODMAN. 2009.
+> Marin Alsop (Conductor). Colorado Symphony Orchestra. [Audio CD].
+> 3 CDs. Naxos.
 
-[source,xml]
---
+```xml
 <bibitem type="music">
   <title>Nixon in China</title>
   <date type="created"><on>1987</on></date>
@@ -357,26 +329,20 @@ Marin Alsop (Conductor). Colorado Symphony Orchestra. [Audio CD].
     <referenceTo>3</referenceTo>
   </extent>
 </bibitem>
---
+```
 
-====
-
-
-=== Patents
+### Patents
 
 * Source: ISO 690, 5.8
 
 Patents are encoded similarly to contributions within a serial
 (ISO 690, 5.2), with the series designation for the
 patent preceded by the country name or code. The date of application
-is encoded as a date of type "`issued`".
+is encoded as a date of type "issued".
 
+> Green, Martin Andrew. *Artificial amorphous semiconductors and applications to solar cells*. Australia, [Patent] application number 2005238988. Appl: 2005-04-29.
 
-====
-Green, Martin Andrew. _Artificial amorphous semiconductors and applications to solar cells_. Australia, [Patent] application number 2005238988. Appl: 2005-04-29.
-
-[source,xml]
---
+```xml
 <bibitem type="patent">
   <title>Artificial amorphous semiconductors and applications to solar cells</title>
   <date type="issued"><on>2005-04-29</on></date>
@@ -393,12 +359,11 @@ Green, Martin Andrew. _Artificial amorphous semiconductors and applications to s
     <number>2005238988</number>
   </series>
 </bibitem>
---
-====
+```
 
-=== Archival materials
+### Archival materials
 
-* Source:  ISO 690, 5.10
+* Source: ISO 690, 5.10
 
 The fonds or collection of an archival item is modelled as a series.
 The box and folder number is encoded as an access location. The reference code
@@ -406,11 +371,9 @@ is encoded as an identifier. The archive is encoded as a contributor
 of type "distributor" (since the archive makes the resource available,
 even if to a restricted public).
 
-====
-HICKS, H. D. _Correspondence from Henry Davies Hicks to the Annapolis County electorate_. [1956-10-24]. MS-2-511, Box 15, Folder 9. Henry Davies Hicks fonds. At: Dalhousie University Archives, Halifax, Nova Scotia, Canada.
+> HICKS, H. D. *Correspondence from Henry Davies Hicks to the Annapolis County electorate*. [1956-10-24]. MS-2-511, Box 15, Folder 9. Henry Davies Hicks fonds. At: Dalhousie University Archives, Halifax, Nova Scotia, Canada.
 
-[source,xml]
---
+```xml
 <bibitem type="archival">
   <title>Correspondence from Henry Davies Hicks to the Annapolis County electorate</title>
   <docidentifier type="reference code">MS-2-511</docidentifier>
@@ -438,12 +401,11 @@ HICKS, H. D. _Correspondence from Henry Davies Hicks to the Annapolis County ele
   </series>
   <accessLocation>Box 15, Folder 9</accessLocation>
 </bibitem>
---
-====
+```
 
-=== Datasets
+### Datasets
 
-* Source:  ISO 690, 5.11
+* Source: ISO 690, 5.11
 
 The organisation publishing or producing the dataset is modelled as a publisher;
 the organisation hosting the dataset in a repository is modelled as a distributor.
@@ -452,13 +414,11 @@ Timestamps are modelled as extents; queries wherever possible should be entered 
 Where that is not possible, the description of the necessary query to access the
 required data subset should be presented as an `accessLocation`.
 
-====
-MILBERGER, S. (2002). _Evaluation of violence against women with physical disabilities in Michigan, 2000–2001_ (ICPSR version) [dataset] [data in several file formats and codebook/questionnaire in PDF]. Detroit: Wayne State University [producer]. Ann Arbor, MI: Inter-university Consortium for Political and Social Research [distributor
+> MILBERGER, S. (2002). *Evaluation of violence against women with physical disabilities in Michigan, 2000-2001* (ICPSR version) [dataset] [data in several file formats and codebook/questionnaire in PDF]. Detroit: Wayne State University [producer]. Ann Arbor, MI: Inter-university Consortium for Political and Social Research [distributor
 
-[source,xml]
---
+```xml
 <bibitem type="dataset">
-  <title>Evaluation of violence against women with physical disabilities in Michigan, 2000–2001</title>
+  <title>Evaluation of violence against women with physical disabilities in Michigan, 2000-2001</title>
   <date type="created">2002</date>
   <contributor>
     <role type="editor"/>
@@ -493,14 +453,11 @@ MILBERGER, S. (2002). _Evaluation of violence against women with physical disabi
   </version>
   <note>data in several file formats and codebook/questionnaire in PDF</note>
 </bibitem>
---
-====
+```
 
-====
-LEUPRECHT [et al.]. tas_CNRM-CERFACS-CNRM-CM5_RCP4.5_r1i1p1_CLMcom-CCLM4-8-17, [dataset]. Version 2. [Subset used: January to June 2014]. Vienna, Austria. CCCA Data Centre [distributor], 2016. Available from: https://hdl.handle.net/20.500.11756/93887ecf. [accessed 2017-06-28].
+> LEUPRECHT [et al.]. tas_CNRM-CERFACS-CNRM-CM5_RCP4.5_r1i1p1_CLMcom-CCLM4-8-17, [dataset]. Version 2. [Subset used: January to June 2014]. Vienna, Austria. CCCA Data Centre [distributor], 2016. Available from: https://hdl.handle.net/20.500.11756/93887ecf. [accessed 2017-06-28].
 
-[source,xml]
---
+```xml
 <bibitem type="dataset">
   <title>tas_CNRM-CERFACS-CNRM-CM5_RCP4.5_r1i1p1_CLMcom-CCLM4-8-17</title>
   <docidentifier type="handle">https://hdl.handle.net/20.500.11756/93887ecf</docidentifier>
@@ -535,12 +492,11 @@ LEUPRECHT [et al.]. tas_CNRM-CERFACS-CNRM-CM5_RCP4.5_r1i1p1_CLMcom-CCLM4-8-17, [
     <referenceTo>June 2014</referenceTo>
   </extent>
 </bibitem>
---
-====
+```
 
-=== Social Media
+### Social Media
 
-* Source:  ISO 690, 5.12
+* Source: ISO 690, 5.12
 
 Social media items are typically items of `bibitem/@type` `webresource`,
 although they may not always have an associated exposed URI (particularly
@@ -552,7 +508,7 @@ between individuals, and are cited as personal communications.
 
 A person's real name may be related to the online identity assumed by the
 author of the item, if both are known. The online identity is treated as a
-pseudonym of the real life identity, and is serialised in the same way (link:/model/creator#variantnames[variantnames]).
+pseudonym of the real life identity, and is serialised in the same way ([variant names](/model/contributor#variantnames)).
 
 The particular form of social media communication (e.g. blog post, forum post, tweet,
 message) should be given through `medium/genre`.
@@ -561,13 +517,9 @@ to how the content is to be accessed by an intermediary app. (For example, a twe
 is not just accessed by a web browser, as a web resource; it is accessed and rendered
 by a web browser in the context of Twitter.)
 
+> GATES, B. [BillGates]. (2013, February 26). #Polio is 99% eradicated. Join me & @FCBarcelona as we work to finish the job and #EndPolio. [Tweet]. Available from: https://twitter.com/BillGates/status/306195345845665792. [viewed 2016-07-06T12:30:15+02:00]. See also VIDEO: http://b-gat.es/X75Lvy.
 
-
-====
-GATES, B. [BillGates]. (2013, February 26). #Polio is 99% eradicated. Join me & @FCBarcelona as we work to finish the job and #EndPolio. [Tweet]. Available from: https://twitter.com/BillGates/status/306195345845665792. [viewed 2016-07-06T12:30:15+02:00]. See also VIDEO: http://b-gat.es/X75Lvy.
-
-[source,xml]
---
+```xml
 <bibitem type="social_media">
   <title>#Polio is 99% eradicated. Join me & @FCBarcelona as we work to finish the job and #EndPolio</title>
   <date type="published"><on>2013-02-26</on></date>
@@ -595,7 +547,4 @@ GATES, B. [BillGates]. (2013, February 26). #Polio is 99% eradicated. Join me & 
     </bibitem>
   </relation>
 </bibitem>
---
-====
-
-
+```

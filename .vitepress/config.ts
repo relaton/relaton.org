@@ -94,6 +94,7 @@ export default defineConfig({
           text: 'Identification & Access',
           items: [
             { text: 'Bibitem Types', link: '/model/bibtype' },
+            { text: 'Specific Categories', link: '/model/specific-cats' },
             { text: 'Identifiers', link: '/model/identifiers' },
             { text: 'Location', link: '/model/location' },
             { text: 'Additional Info', link: '/model/additional-info' },
