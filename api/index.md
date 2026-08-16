@@ -10,8 +10,11 @@ title: Relaton API
 <p class="page-subtitle">Fetch structured bibliographic data for standards documents via HTTP.</p>
 </div>
 
-::: warning Early Access
-The Relaton API is in early access. Some queries may return errors or incomplete results. Feedback welcome at the [GitHub repository](https://github.com/relaton/api.relaton.org).
+::: info Version 3.0.0
+The Relaton API now runs entirely on Cloudflare (Workers + D1 + R2) and indexes
+the [relaton-data repositories](https://github.com/relaton) directly — over
+250,000 documents with identifier parsing that matches the pubid gem. Explore
+it at [api.relaton.org](https://api.relaton.org/).
 :::
 
 ## About the API
@@ -72,6 +75,36 @@ The API supports all 28 Relaton flavors — 26 standards organizations plus DOI 
 ISO, IEC, IETF, ITU (T/D/R), NIST, BIPM, 3GPP, IEEE, W3C, CalConnect, OGC, IHO, OASIS, CIE, OMG, UN, GB, CCSDS, IANA, XSF, IEV, DOI, ISBN, and more.
 
 For the full list with data sources, see the [Flavors page](/flavors/).
+
+## OpenAPI and GraphQL
+
+The interface is specified in two complementary ways:
+
+- **OpenAPI 3.1** — machine-readable spec at [api.relaton.org/openapi.json](https://api.relaton.org/openapi.json), interactive reference at [api.relaton.org/docs](https://api.relaton.org/docs).
+- **GraphQL** — query across *all* flavors at once at [api.relaton.org/graphql](https://api.relaton.org/graphql) (GraphiQL playground included). Search by code, title, flavor, year, or document type:
+
+```bash
+curl -s https://api.relaton.org/graphql \
+  -H 'Content-Type: application/json' \
+  -d '{"query":"{ documents(title: \"risk assessment\", first: 5) { edges { node { docid flavor year title } } } }"}'
+```
+
+```json
+{
+  "data": {
+    "documents": {
+      "edges": [
+        { "node": { "docid": "IEC 31010:2019", "flavor": "iso", "year": 2019,
+                     "title": "Risk management - Risk assessment techniques" } }
+      ]
+    }
+  }
+}
+```
+
+The `document(code:)` field resolves a single reference with the same
+identifier semantics as `GET /api/v1/document`, and each result exposes the
+full Relaton XML via its `xml` field.
 
 ## Rate Limits
 
