@@ -5,7 +5,7 @@ description: Formal UML diagrams of the Relaton Information Model
 
 # UML Diagrams
 
-These UML diagrams define the formal structure of the Relaton Information Model. They are maintained in the [relaton-models repository](https://github.com/relaton/relaton-models).
+These UML diagrams define the formal structure of the Relaton Information Model. They are maintained in the [relaton-models repository](https://github.com/relaton/relaton-models) and synced to this site at build time via the [scripts/sync-models.sh](https://github.com/relaton/relaton.org/blob/main/scripts/sync-models.sh) script (git submodule at `vendor/relaton-models`).
 
 ## Core Model
 

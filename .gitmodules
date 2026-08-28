@@ -1,0 +1,3 @@
+[submodule "vendor/relaton-models"]
+	path = vendor/relaton-models
+	url = https://github.com/relaton/relaton-models.git
