@@ -9,7 +9,7 @@ feature_with_priority: 5
 
 spec_source:
   git_repo_url: https://github.com/relaton/relaton-models
-  git_repo_subtree: images
+  git_repo_subtree: relaton/images
   git_repo_branch: main
   build:
     engine: png_diagram_page
