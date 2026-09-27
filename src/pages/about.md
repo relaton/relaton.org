@@ -129,10 +129,10 @@ The code lives across multiple repositories in the [Relaton GitHub organization]
 - **2018** — Initial release as part of the [Metanorma](https://www.metanorma.org) ecosystem
 - **2019** — Separated into standalone gem architecture with `relaton`, `relaton-bib`, and per-SDO flavor gems
 - **2020–2021** — Expanded flavor gems: ISO, IEC, IETF, IEEE, ITU, NIST, BIPM, 3GPP, OGC, and more
-- **2022** — [DOI auto-fetch via Crossref](/blog/2022-12-28-relaton-doi.html); relaton-models formalized with UML and RelaxNG schemas
-- **2023** — [NIST support updated](/blog/2023-08-23-nist-cswp-pubid.html) for new PubID scheme; IETF integration for RFC bibliographic data
-- **2024** — [ISBN auto-fetch via OpenLibrary](/blog/2024-01-19-relaton-isbn.html); BIPM integration for SI Brochure and Metrologia references
+- **2022** — [DOI auto-fetch via Crossref](/blog/2022-12-28-relaton-doi/); relaton-models formalized with UML and RelaxNG schemas
+- **2023** — [NIST support updated](/blog/2023-08-23-nist-cswp-pubid/) for new PubID scheme; IETF integration for RFC bibliographic data
+- **2024** — [ISBN auto-fetch via OpenLibrary](/blog/2024-01-19-relaton-isbn/); BIPM integration for SI Brochure and Metrologia references
 - **2025** — Continued expansion: CCSDS, IANA, XSF, Plateau; relaton-render for formatted citations
-- **2026** — [Relaton.org redesigned](/blog/2026-06-08-site-redesign.html) as a comprehensive documentation site
+- **2026** — [Relaton.org redesigned](/blog/2026-06-08-site-redesign/) as a comprehensive documentation site
 
 </div>
