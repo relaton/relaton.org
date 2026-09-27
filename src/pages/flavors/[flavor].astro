@@ -1,0 +1,28 @@
+---
+import Page from "../../layouts/Page.astro";
+import FlavorPage from "../../components/FlavorPage.vue";
+import { flavors } from "../../data/flavors";
+import { marked } from "marked";
+import fs from "node:fs";
+import path from "node:path";
+
+export function getStaticPaths() {
+  return flavors.map((flavor) => ({ params: { flavor: flavor.id }, props: { flavor } }));
+}
+
+const { flavor } = Astro.props;
+
+let content = "";
+try {
+  const raw = fs
+    .readFileSync(path.resolve("flavors/content", `${flavor.id}.md`), "utf8")
+    .replace(/^---[\s\S]*?---\n*/, "");
+  content = marked.parse(raw, { async: false });
+} catch {
+  content = "";
+}
+---
+
+<Page frontmatter={{ title: `${flavor.label} — Relaton`, description: flavor.fullName }}>
+  <FlavorPage client:load flavor={flavor} content={content} />
+</Page>

@@ -1,0 +1,8 @@
+---
+import Page from "../../layouts/Page.astro";
+import BlogIndex from "../../components/BlogIndex.vue";
+---
+
+<Page frontmatter={{ title: "Blog — Relaton" }}>
+  <BlogIndex client:load />
+</Page>

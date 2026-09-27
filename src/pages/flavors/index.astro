@@ -1,0 +1,12 @@
+---
+import Page from "../../layouts/Page.astro";
+import FlavorGrid from "../../components/FlavorGrid.vue";
+---
+
+<Page frontmatter={{ title: "Citation Guides — Relaton" }}>
+  <div class="page-header">
+    <h1>Citation Guides</h1>
+    <p class="page-subtitle">How to cite documents from each supported standards organization using Relaton.</p>
+  </div>
+  <FlavorGrid client:load />
+</Page>

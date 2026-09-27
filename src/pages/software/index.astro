@@ -1,0 +1,12 @@
+---
+import Page from "../../layouts/Page.astro";
+import SoftwareGrid from "../../components/SoftwareGrid.vue";
+---
+
+<Page frontmatter={{ title: "Software & Libraries — Relaton" }}>
+  <div class="page-header">
+    <h1>Software &amp; Libraries</h1>
+    <p class="page-subtitle">Ruby gems for fetching, caching, and processing bibliographic data from 25+ standards organizations.</p>
+  </div>
+  <SoftwareGrid client:load />
+</Page>

@@ -1,0 +1,38 @@
+---
+import Base from "../layouts/Base.astro";
+import SiteFooter from "../components/SiteFooter.vue";
+---
+
+<Base title="Page not found — Relaton">
+  <div class="nf">
+    <p class="nf-code">404</p>
+    <h1>Page not found</h1>
+    <p>The page you are looking for does not exist or has been moved.</p>
+    <a href="/" class="nf-link">Back to home</a>
+  </div>
+  <SiteFooter />
+</Base>
+
+<style>
+  .nf {
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 96px 24px;
+    text-align: center;
+  }
+  .nf-code {
+    font-size: 64px;
+    font-weight: 700;
+    color: var(--vp-c-brand-1);
+    margin: 0 0 8px;
+    letter-spacing: -0.02em;
+  }
+  .nf h1 { font-size: 24px; margin: 0 0 8px; }
+  .nf p { color: var(--vp-c-text-2); margin: 0 0 24px; }
+  .nf-link {
+    color: var(--vp-c-brand-1);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .nf-link:hover { text-decoration: underline; }
+</style>

@@ -1,0 +1,25 @@
+---
+import Base from "./Base.astro";
+import SiteFooter from "../components/SiteFooter.vue";
+
+interface Props {
+  frontmatter?: { title?: string; description?: string };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Base title={frontmatter?.title ? `${frontmatter.title} — Relaton` : "Relaton"} description={frontmatter?.description}>
+  <div class="vppage">
+    <slot />
+  </div>
+  <SiteFooter />
+</Base>
+
+<style>
+  .vppage {
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 48px 24px 64px;
+  }
+</style>

@@ -1,0 +1,26 @@
+---
+import Page from "./Page.astro";
+import BlogByline from "../components/BlogByline.vue";
+
+interface Props {
+  frontmatter?: { title?: string; description?: string; authors?: string[]; date?: string };
+}
+
+const { frontmatter } = Astro.props;
+---
+
+<Page frontmatter={frontmatter}>
+  <article class="blog-post">
+    <BlogByline authors={frontmatter?.authors} date={frontmatter?.date} />
+    <div class="prose prose-relaton dark:prose-invert max-w-none">
+      <slot />
+    </div>
+  </article>
+</Page>
+
+<style>
+  .blog-post {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+</style>

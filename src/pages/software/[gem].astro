@@ -1,0 +1,28 @@
+---
+import Page from "../../layouts/Page.astro";
+import SoftwarePage from "../../components/SoftwarePage.vue";
+import { gems } from "../../data/software";
+import { marked } from "marked";
+import fs from "node:fs";
+import path from "node:path";
+
+export function getStaticPaths() {
+  return gems.map((gem) => ({ params: { gem: gem.id }, props: { gem } }));
+}
+
+const { gem } = Astro.props;
+
+let content = "";
+try {
+  const raw = fs
+    .readFileSync(path.resolve("software/content", `${gem.id}.md`), "utf8")
+    .replace(/^---[\s\S]*?---\n*/, "");
+  content = marked.parse(raw, { async: false });
+} catch {
+  content = "";
+}
+---
+
+<Page frontmatter={{ title: `${gem.displayName} — Relaton`, description: gem.description }}>
+  <SoftwarePage client:load gem={gem} content={content} />
+</Page>
