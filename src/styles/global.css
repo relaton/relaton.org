@@ -1,0 +1,68 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "./theme.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  font-family: var(--vp-font-family-base);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+}
+
+body {
+  margin: 0;
+}
+
+/* VitePress-style info/tip blocks (converted from ::: containers) */
+.custom-block {
+  border-radius: 8px;
+  padding: 16px 16px 8px;
+  margin: 16px 0;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.custom-block .custom-block-title {
+  font-weight: 700;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.custom-block.info {
+  border: 1px solid var(--c-brand-border);
+  background: var(--vp-c-brand-soft);
+}
+.custom-block.info .custom-block-title { color: var(--vp-c-brand-1); }
+.custom-block.tip {
+  border: 1px solid rgba(33, 193, 151, 0.3);
+  background: rgba(33, 193, 151, 0.08);
+}
+.custom-block.tip .custom-block-title { color: var(--c-accent-dark); }
+.custom-block p { margin: 8px 0; }
+
+/* UML diagram figures (inlined from ModelDiagram) */
+.model-diagram { margin: 24px 0; }
+.model-diagram .diagram-wrap {
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 12px;
+  padding: 24px;
+  overflow-x: auto;
+  position: relative;
+}
+.model-diagram .diagram-wrap::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 3px;
+  border-radius: 0 3px 3px 0;
+  background: linear-gradient(180deg, var(--vp-c-brand-1), var(--c-accent));
+  opacity: 0.4;
+}
+.model-diagram .diagram-img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+}

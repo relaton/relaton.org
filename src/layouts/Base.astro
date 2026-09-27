@@ -1,0 +1,306 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = "Relaton", description = "The premier bibliographic data model for standards and technical documents" } = Astro.props;
+const path = Astro.url.pathname;
+
+const nav: { text: string; link?: string; items?: { text: string; link: string }[] }[] = [
+  { text: "Get Started", link: "/get-started" },
+  {
+    text: "Model",
+    items: [
+      { text: "The Relaton Model", link: "/model/" },
+      { text: "ISO 690 Guidelines", link: "/model/iso-690/" },
+      { text: "Serializations", link: "/model/serializations" },
+      { text: "UML Diagrams", link: "/model/diagrams" },
+    ],
+  },
+  { text: "Flavors", link: "/flavors/" },
+  {
+    text: "Specs",
+    items: [
+      { text: "Relaton YAML", link: "/specs/relaton-yaml" },
+      { text: "AsciiBib", link: "/specs/asciibib" },
+      { text: "Bibliographic Spans", link: "/specs/bibliographic-spans" },
+    ],
+  },
+  { text: "Software", link: "/software/" },
+  { text: "Blog", link: "/blog/" },
+  { text: "API", link: "/api/" },
+  { text: "About", link: "/about" },
+];
+
+const isActive = (link: string) =>
+  link === "/" ? path === "/" : path === link || path === `${link}/`;
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="generator" content={Astro.generator} />
+  <link rel="canonical" href={`https://relaton.org${path}`} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#1F6CF1" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Relaton" />
+  <meta property="og:title" content={title} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@riboseinc" />
+  <script is:inline>
+    (function () {
+      var stored = localStorage.getItem("relaton-theme");
+      var dark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (dark) document.documentElement.classList.add("dark");
+    })();
+  </script>
+</head>
+<body>
+  <header class="site-nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand" aria-label="Relaton home">
+        <img class="nav-logo light-only" src="/logo-light.svg" alt="Relaton" />
+        <img class="nav-logo dark-only" src="/logo-dark.svg" alt="Relaton" />
+        <span class="nav-title">Relaton</span>
+      </a>
+
+      <button class="nav-burger" aria-label="Toggle navigation" aria-expanded="false" data-nav-burger>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+
+      <nav class="nav-menu" data-nav-menu>
+        {nav.map((item) =>
+          item.items ? (
+            <div class="nav-item has-flyout">
+              <button class="nav-link" aria-haspopup="true">
+                {item.text}
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="nav-flyout">
+                {item.items.map((sub) => (
+                  <a href={sub.link} class:list={["flyout-link", { active: isActive(sub.link) }]}>{sub.text}</a>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <a href={item.link} class:list={["nav-link", { active: isActive(item.link!) }]}>{item.text}</a>
+          )
+        )}
+        <div class="nav-actions">
+          <a href="https://github.com/relaton" target="_blank" rel="noopener noreferrer" class="nav-icon" aria-label="GitHub">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.164 6.839 9.49.5.09.682-.218.682-.484 0-.236-.009-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .269.18.579.688.481C19.138 20.161 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
+          </a>
+          <button class="nav-icon" aria-label="Toggle dark mode" data-theme-toggle>
+            <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <slot />
+
+  <script is:inline>
+    (function () {
+      var toggle = document.querySelector("[data-theme-toggle]");
+      toggle.addEventListener("click", function () {
+        var dark = document.documentElement.classList.toggle("dark");
+        localStorage.setItem("relaton-theme", dark ? "dark" : "light");
+      });
+      var burger = document.querySelector("[data-nav-burger]");
+      var menu = document.querySelector("[data-nav-menu]");
+      burger.addEventListener("click", function () {
+        var open = menu.classList.toggle("open");
+        burger.setAttribute("aria-expanded", open);
+      });
+    })();
+  </script>
+</body>
+</html>
+
+<style>
+  .site-nav {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(255, 255, 255, 0.92);
+    border-bottom: 1px solid var(--vp-c-divider);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+  }
+  :global(.dark) .site-nav {
+    background: rgba(11, 15, 19, 0.92);
+  }
+  .nav-inner {
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 0 24px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .nav-logo {
+    height: 30px;
+    width: auto;
+  }
+  .nav-logo.dark-only { display: none; }
+  :global(.dark) .nav-logo.light-only { display: none; }
+  :global(.dark) .nav-logo.dark-only { display: block; }
+  .nav-title {
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+    color: var(--vp-c-text-1);
+  }
+  .nav-brand:hover .nav-title { color: var(--vp-c-brand-1); }
+
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: inherit;
+    color: var(--vp-c-text-2);
+    text-decoration: none;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .nav-link:hover { color: var(--vp-c-text-1); }
+  .nav-link.active { color: var(--vp-c-brand-1); }
+  .nav-link svg { opacity: 0.6; }
+
+  .nav-item.has-flyout { position: relative; }
+  .nav-flyout {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 220px;
+    padding: 8px;
+    background: var(--vp-c-bg-elv);
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    gap: 1px;
+  }
+  .nav-item:hover .nav-flyout,
+  .nav-item:focus-within .nav-flyout {
+    display: flex;
+  }
+  .flyout-link {
+    display: block;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--vp-c-text-2);
+    text-decoration: none;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+  .flyout-link:hover { color: var(--vp-c-text-1); background: var(--vp-c-bg-mute); }
+  .flyout-link.active { color: var(--vp-c-brand-1); }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 8px;
+  }
+  .nav-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: none;
+    background: none;
+    border-radius: 8px;
+    color: var(--vp-c-text-2);
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s;
+  }
+  .nav-icon:hover { color: var(--vp-c-text-1); background: var(--vp-c-bg-mute); }
+  .icon-moon { display: none; }
+  :global(.dark) .icon-sun { display: none; }
+  :global(.dark) .icon-moon { display: block; }
+
+  .nav-burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: none;
+    color: var(--vp-c-text-2);
+    cursor: pointer;
+    border-radius: 8px;
+  }
+
+  @media (max-width: 960px) {
+    .nav-burger { display: inline-flex; }
+    .nav-menu {
+      display: none;
+      position: absolute;
+      top: 55px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      padding: 12px 24px 16px;
+      background: var(--vp-c-bg);
+      border-bottom: 1px solid var(--vp-c-divider);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      gap: 2px;
+    }
+    .nav-menu.open { display: flex; }
+    .nav-link { width: 100%; justify-content: flex-start; }
+    .nav-flyout {
+      display: flex;
+      position: static;
+      min-width: 0;
+      border: none;
+      box-shadow: none;
+      padding: 0 0 0 16px;
+      background: transparent;
+    }
+    .nav-actions { margin-left: 0; margin-top: 8px; }
+  }
+</style>

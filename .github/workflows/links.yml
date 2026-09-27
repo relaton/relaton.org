@@ -15,7 +15,7 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v4
       with:
-        node-version: 20
+        node-version: 22
         cache: npm
 
     - name: Install dependencies
@@ -25,7 +25,7 @@ jobs:
       run: npm run build
 
     - name: Serve built site
-      run: npx vitepress preview --port 4173 &
+      run: npx astro preview --port 4173 &
 
     - name: Wait for server
       run: npx wait-on http://localhost:4173 --timeout 15000
@@ -33,7 +33,7 @@ jobs:
     - name: Link Checker
       uses: lycheeverse/lychee-action@v2
       with:
-        args: --verbose --no-progress --base-url http://localhost:4173 --exclude-file .lycheeignore -- .vitepress/dist/**/*.html
+        args: --verbose --no-progress --base-url http://localhost:4173 --exclude-file .lycheeignore -- dist/**/*.html
         fail: true
       env:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}

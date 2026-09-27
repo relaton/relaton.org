@@ -1,0 +1,258 @@
+---
+import Base from "./Base.astro";
+import SiteFooter from "../components/SiteFooter.vue";
+
+interface SidebarGroup {
+  text?: string;
+  link?: string;
+  items?: { text: string; link: string }[];
+}
+
+interface Props {
+  frontmatter?: { title?: string; description?: string; sidebar?: boolean; outline?: boolean };
+}
+
+const { frontmatter } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, "") + "/";
+const headings = (Astro.props.headings ?? []).filter((h: { depth: number }) => h.depth === 2 || h.depth === 3);
+
+const SIDEBARS: Record<string, SidebarGroup[]> = {
+  "/model/": [
+    { text: "Model Overview", link: "/model/" },
+    {
+      text: "ISO 690 Guidelines",
+      items: [
+        { text: "Overview", link: "/model/iso-690/" },
+        { text: "Principles", link: "/model/iso-690/principles" },
+        { text: "Resource Types", link: "/model/iso-690/resource-types" },
+        { text: "Citation Systems", link: "/model/iso-690/citation-systems" },
+      ],
+    },
+    {
+      text: "Relaton Model",
+      items: [
+        { text: "Extensions Beyond ISO 690", link: "/model/extensions" },
+        { text: "Flavor Extensions", link: "/model/flavor-models" },
+      ],
+    },
+    {
+      text: "Core Entities",
+      items: [
+        { text: "Contributor", link: "/model/contributor" },
+        { text: "Relations", link: "/model/relations" },
+        { text: "Production", link: "/model/production" },
+        { text: "Citation", link: "/model/citation" },
+      ],
+    },
+    {
+      text: "Descriptive Elements",
+      items: [
+        { text: "Title", link: "/model/title" },
+        { text: "Edition", link: "/model/edition" },
+        { text: "Medium", link: "/model/medium" },
+        { text: "Series", link: "/model/series" },
+        { text: "Numeration", link: "/model/numeration" },
+      ],
+    },
+    {
+      text: "Identification & Access",
+      items: [
+        { text: "Bibitem Types", link: "/model/bibtype" },
+        { text: "Specific Categories", link: "/model/specific-cats" },
+        { text: "Identifiers", link: "/model/identifiers" },
+        { text: "Location", link: "/model/location" },
+        { text: "Additional Info", link: "/model/additional-info" },
+      ],
+    },
+    { text: "Serializations", link: "/model/serializations" },
+    { text: "UML Diagrams", link: "/model/diagrams" },
+  ],
+  "/specs/": [
+    { text: "Relaton YAML", link: "/specs/relaton-yaml" },
+    { text: "AsciiBib", link: "/specs/asciibib" },
+    { text: "Bibliographic Spans", link: "/specs/bibliographic-spans" },
+  ],
+};
+
+const section = Object.keys(SIDEBARS).find((prefix) => path.startsWith(prefix)) ?? "";
+const sidebar = frontmatter?.sidebar === false ? [] : (SIDEBARS[section] ?? []);
+const outline = frontmatter?.outline !== false && headings.length > 0;
+
+const isActive = (link: string) => {
+  const norm = link.replace(/\/$/, "") + "/";
+  return path === norm;
+};
+---
+
+<Base title={frontmatter?.title ? `${frontmatter.title} — Relaton` : "Relaton"} description={frontmatter?.description}>
+  <div class="doc-shell">
+    {sidebar.length > 0 && (
+      <aside class="doc-sidebar">
+        <nav>
+          {sidebar.map((group) => (
+            <div class="sidebar-group">
+              {group.link ? (
+                <a href={group.link} class:list={["sidebar-link", { active: isActive(group.link) }]}>{group.text}</a>
+              ) : (
+                <p class="sidebar-title">{group.text}</p>
+              )}
+              {group.items?.map((item) => (
+                <a href={item.link} class:list={["sidebar-link", "sidebar-sub", { active: isActive(item.link) }]}>{item.text}</a>
+              ))}
+            </div>
+          ))}
+        </nav>
+      </aside>
+    )}
+
+    <main class:list={["doc-main", { "has-outline": outline && headings.length > 0 }]}>
+      <div class="doc-content prose prose-relaton dark:prose-invert max-w-none">
+        <slot />
+      </div>
+    </main>
+
+    {outline && headings.length > 0 && (
+      <aside class="doc-outline">
+        <p class="outline-title">On this page</p>
+        <nav>
+          {headings.map((h: { depth: number; slug: string; text: string }) => (
+            <a href={`#${h.slug}`} class:list={["outline-link", { sub: h.depth === 3 }]}>{h.text}</a>
+          ))}
+        </nav>
+      </aside>
+    )}
+  </div>
+  <SiteFooter />
+</Base>
+
+<style>
+  .doc-shell {
+    max-width: 1152px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+    display: grid;
+    grid-template-columns: 272px minmax(0, 1fr);
+    gap: 40px;
+  }
+  .doc-shell:not(:has(.doc-sidebar)) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .doc-shell:has(.doc-outline) {
+    grid-template-columns: 272px minmax(0, 1fr) 200px;
+  }
+
+  .doc-sidebar {
+    position: sticky;
+    top: 87px;
+    align-self: start;
+    max-height: calc(100vh - 103px);
+    overflow-y: auto;
+    font-size: 13.5px;
+    line-height: 1.4;
+  }
+  .sidebar-group { margin-bottom: 20px; }
+  .sidebar-title {
+    margin: 0 0 8px;
+    padding: 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--vp-c-text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .sidebar-link {
+    display: block;
+    padding: 6px 10px;
+    color: var(--vp-c-text-2);
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: color 0.15s;
+  }
+  .sidebar-link:hover { color: var(--vp-c-brand-1); }
+  .sidebar-link.active {
+    color: var(--vp-c-brand-1);
+    background: var(--vp-c-brand-soft);
+  }
+  .sidebar-sub { padding-left: 24px; font-weight: 400; }
+
+  .doc-content {
+    font-size: 15.5px;
+    line-height: 1.7;
+  }
+  .doc-content :is(h1, h2, h3, h4) {
+    font-family: var(--vp-font-family-base);
+    color: var(--vp-c-text-1);
+    scroll-margin-top: 87px;
+  }
+  .doc-content h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; }
+  .doc-content h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-top: 40px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--vp-c-divider);
+  }
+  .doc-content h3 { font-size: 19px; font-weight: 600; margin-top: 28px; }
+  .doc-content a { color: var(--vp-c-brand-1); text-decoration: none; }
+  .doc-content a:hover { text-decoration: underline; }
+  .doc-content :not(pre) > code {
+    font-family: var(--vp-font-family-mono);
+    font-size: 0.875em;
+    color: var(--vp-c-text-1);
+    background: var(--vp-c-bg-mute);
+    padding: 3px 6px;
+    border-radius: 4px;
+  }
+  .doc-content pre {
+    font-family: var(--vp-font-family-mono);
+    font-size: 13px;
+    line-height: 1.7;
+    background: var(--vp-c-bg-soft);
+    border: 1px solid var(--vp-c-divider);
+    border-radius: 8px;
+    padding: 16px 20px;
+    overflow-x: auto;
+  }
+  .doc-content pre code { background: none; padding: 0; font-size: inherit; color: inherit; }
+  .doc-content table { font-size: 14px; display: block; overflow-x: auto; }
+  .doc-content img { border-radius: 8px; margin: 16px auto; }
+
+  .doc-outline {
+    position: sticky;
+    top: 87px;
+    align-self: start;
+    max-height: calc(100vh - 103px);
+    overflow-y: auto;
+    font-size: 13px;
+  }
+  .outline-title {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--vp-c-text-2);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .outline-link {
+    display: block;
+    padding: 4px 0 4px 12px;
+    border-left: 1px solid var(--vp-c-divider);
+    color: var(--vp-c-text-3);
+    text-decoration: none;
+    line-height: 1.45;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .outline-link:hover { color: var(--vp-c-brand-1); }
+  .outline-link.sub { padding-left: 24px; }
+
+  @media (max-width: 1100px) {
+    .doc-shell:has(.doc-outline) { grid-template-columns: 272px minmax(0, 1fr); }
+    .doc-outline { display: none; }
+  }
+  @media (max-width: 960px) {
+    .doc-shell { grid-template-columns: minmax(0, 1fr) !important; }
+    .doc-sidebar { display: none; }
+  }
+</style>
