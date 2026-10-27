@@ -160,7 +160,14 @@ Relaton-Render also supports author-date citation, and it generates any necessar
 letters on dates (e.g. *Jones 1996a* and *Jones 1996b*.)
 
 
-## YAML bibliographic configuration
+## Styles and style configuration
+
+> [!NOTE]
+> Styles are **CitationStyle packs** — one YAML file per style, consumed
+> by the style-free engine. How to write one properly is documented in
+> [Citation Styles](/specs/citation-styles); the section below describes
+> the 1.x-era configuration mechanics, kept for repositories still on
+> that line.
 
 ### General
 
