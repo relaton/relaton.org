@@ -2,28 +2,30 @@
   <div class="api-demo">
     <div class="demo-form">
       <div class="form-row">
-        <label for="ref-input" class="form-label">Reference</label>
+        <label for="ref-input" class="form-label">Document key</label>
         <input
           id="ref-input"
           v-model="reference"
           type="text"
-          placeholder="e.g. ISO 690"
+          placeholder="e.g. RFC 8446"
           class="form-input"
           @keyup.enter="fetchData"
         />
       </div>
       <div class="form-row form-row--inline">
         <div class="form-group">
-          <label for="year-input" class="form-label">Year (optional)</label>
-          <input id="year-input" v-model="year" type="text" class="form-input form-input--short" />
-        </div>
-        <div class="form-checks">
-          <label class="form-check">
-            <input v-model="allParts" type="checkbox" /> All parts
-          </label>
-          <label class="form-check">
-            <input v-model="keepYear" type="checkbox" /> Keep year
-          </label>
+          <span class="form-label">Format</span>
+          <div class="format-switch">
+            <button
+              v-for="f in formats"
+              :key="f.id"
+              type="button"
+              :class="['format-pill', { 'format-pill--active': format === f.id }]"
+              @click="format = f.id"
+            >
+              {{ f.label }}
+            </button>
+          </div>
         </div>
       </div>
       <button class="fetch-btn" :disabled="loading || !reference" @click="fetchData">
@@ -65,51 +67,56 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue'
-import { apiBaseUrl, apiExamples } from '../data/api'
+import { apiDocumentsBase, apiExamples } from '../data/api'
 
 const reference = ref('')
-const year = ref('')
-const allParts = ref(false)
-const keepYear = ref(false)
+const format = ref<'json' | 'xml' | 'yaml'>('json')
 const loading = ref(false)
 const result = ref('')
 const error = ref('')
+
+const formats = [
+  { id: 'json', label: 'JSON' },
+  { id: 'xml', label: 'XML' },
+  { id: 'yaml', label: 'YAML' },
+] as const
+
+const acceptOf = {
+  json: 'application/json',
+  xml: 'application/relaton+xml',
+  yaml: 'application/yaml',
+} as const
 
 const examples = apiExamples
 
 const apiUrl = computed(() => {
   if (!result.value) return ''
-  const params = new URLSearchParams()
-  params.set('code', reference.value)
-  if (year.value) params.set('year', year.value)
-  if (allParts.value) params.set('all_parts', 'true')
-  if (keepYear.value) params.set('keep_year', 'true')
-  return `${apiBaseUrl}?${params.toString()}`
+  return `${apiDocumentsBase}/${encodeURIComponent(reference.value.trim())}`
 })
 
 async function fetchData() {
-  if (!reference.value) return
+  const key = reference.value.trim()
+  if (!key) return
   loading.value = true
   error.value = ''
   result.value = ''
 
   try {
-    const params = new URLSearchParams()
-    params.set('code', reference.value)
-    if (year.value) params.set('year', year.value)
-    if (allParts.value) params.set('all_parts', 'true')
-    if (keepYear.value) params.set('keep_year', 'true')
-
     const controller = new AbortController()
     const timer = setTimeout(() => controller.abort(), 30000)
 
-    const res = await fetch(`${apiBaseUrl}?${params.toString()}`, {
+    const res = await fetch(`${apiDocumentsBase}/${encodeURIComponent(key)}`, {
+      headers: { Accept: acceptOf[format.value] },
       signal: controller.signal,
     })
     clearTimeout(timer)
 
     if (res.status === 404) {
-      error.value = 'No bibliographic data found for this reference.'
+      error.value = 'No bibliographic data found for this key.'
+      return
+    }
+    if (res.status === 406) {
+      error.value = 'No XML serialization is stored for this document — try JSON or YAML.'
       return
     }
     if (!res.ok) {
@@ -118,7 +125,10 @@ async function fetchData() {
     }
 
     const text = await res.text()
-    result.value = formatXml(text)
+    result.value =
+      format.value === 'json' ? JSON.stringify(JSON.parse(text), null, 2)
+      : format.value === 'xml' ? formatXml(text)
+      : text
   } catch (e: unknown) {
     console.error('API fetch error:', e)
     if (e instanceof DOMException && e.name === 'AbortError') {
@@ -210,25 +220,38 @@ async function copyUrl() {
   border-color: var(--vp-c-brand-1);
   box-shadow: 0 0 0 3px var(--vp-c-brand-soft);
 }
-.form-input--short {
-  width: 120px;
-}
-
 .form-group {
   display: flex;
   flex-direction: column;
 }
 
-.form-checks {
-  display: flex;
-  gap: 16px;
+.format-switch {
+  display: inline-flex;
+  gap: 4px;
+  background: var(--vp-c-bg);
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  padding: 3px;
 }
-.form-check {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 14px;
+
+.format-pill {
+  border: none;
+  background: transparent;
+  color: var(--vp-c-text-2);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 6px 16px;
+  border-radius: 6px;
   cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+.format-pill:hover {
+  color: var(--vp-c-text-1);
+}
+.format-pill--active {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-text-1);
 }
 
 .fetch-btn {

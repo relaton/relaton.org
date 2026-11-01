@@ -1,4 +1,10 @@
-export const apiBaseUrl = 'https://api.relaton.org/api/v1/document'
+// The v3 surface (api.relaton.org): one document by canonical key with
+// Accept-based negotiation, the collection with cursor paging, and the
+// model-faithful GraphQL schema.
+export const apiBase = 'https://api.relaton.org'
+export const apiDocumentsBase = `${apiBase}/v3/documents`
+export const apiFlavorsUrl = `${apiBase}/v3/flavors`
+export const apiGraphqlUrl = `${apiBase}/graphql`
 
 // Every example below is verified against the live index.
 export const apiExamples = [

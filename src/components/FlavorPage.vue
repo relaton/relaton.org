@@ -65,6 +65,10 @@
           </button>
         </div>
         <div class="software-links">
+          <a :href="apiQueryUrl" target="_blank" rel="noopener noreferrer" class="software-link">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
+            Query via the API
+          </a>
           <a :href="`/software/${flavor.gem}`" class="software-link">
             <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             Software Details
@@ -97,6 +101,7 @@ const props = defineProps<{ flavor: Flavor; content?: string }>()
 
 const gemName = computed(() => props.flavor?.gem || '')
 const rubygemsUrl = computed(() => `https://rubygems.org/gems/${gemName.value}`)
+const apiQueryUrl = computed(() => `https://api.relaton.org/v3/documents?flavor=${props.flavor?.id}`)
 const extensionData = computed(() => flavorExtensions[props.flavor?.id])
 const copied = ref(false)
 let copyTimer: ReturnType<typeof setTimeout>
