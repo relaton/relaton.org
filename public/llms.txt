@@ -1,0 +1,37 @@
+# Relaton
+
+The open bibliographic index for standards and technical documents — ISO, IEC, ITU, IEEE, NIST, BIPM, OGC, RFC, and 25+ more SDO flavors, one canonical record model (the Relaton model), one public API, one MCP server.
+
+## What is here
+
+- **The Index**: 700,000+ bibliographic records, crawled continuously from the open `relaton-data-*` repositories (CC-BY licensed sources), deduplicated around canonical corpus keys.
+- **The Relaton model**: a unified bibliographic data model (docidentifiers, titles per language, dates, contributors, relations, extents) specified at https://relaton.org/model/ and serialized as YAML/JSON/XML/AsciiBib.
+- **Relations**: the typed citation graph between documents — amends, updates, corrigends, supersedes, obsoletes, adoptedFrom, hasInstance — the machine-readable edition history of every standard.
+
+## Machine access (all public, no auth, CORS open)
+
+- **REST v3**: https://api.relaton.org/api — OpenAPI-served endpoints:
+  - `GET https://api.relaton.org/v3/documents?q=<query>&flavor=<flavor>&year=<year>&limit=<n>` — search titles and identifiers
+  - `GET https://api.relaton.org/v3/resolve?q=<identifier>` — parse any identifier string (e.g. `ISO 9001:2015`) into components plus ranked canonical candidates
+  - `GET https://api.relaton.org/v3/documents/{key}` — the full record (json/xml/yaml)
+  - `GET https://api.relaton.org/v3/documents/{key}/graph?depth=<1-4>` — the relation graph around a document
+  - `GET https://api.relaton.org/v3/documents/{key}/timeline` — classified, date-ordered publication-history events
+  - `GET https://api.relaton.org/v3/citations/{key}/chain` — the edition chain (ancestors + descendants)
+  - `POST https://api.relaton.org/v3/cite` — `{ "key": "...", "style": "iso690|chicago|apa|mla|bibtex|ris|csl-json" }` → a rendered citation
+- **MCP server**: https://mcp.relaton.org/mcp (Streamable HTTP, tools: search, resolve, get_record, get_relations, get_citation_chain, get_timeline, format_citation)
+- **Corpus source repos**: https://github.com/relaton — one `relaton-data-<flavor>` repo per SDO, machine index per repo
+
+## Human access
+
+- Record Explorer: https://relaton.org/records/ — search, record metadata, publication history, copy-ready citations
+- Flavors and citation guides: https://relaton.org/flavors/
+- API documentation: https://relaton.org/api/
+
+## Citation
+
+Cite a standard by its canonical corpus key (the docidentifier, e.g. `ISO 9001:2015`).
+Rendering fidelity lives in the relaton libraries (Ruby: `relaton`, TypeScript: `relaton` npm) and on the `/v3/cite` endpoint; the site's citation bar is generated from the same endpoint.
+
+## Licensing
+
+Index data: CC-BY (per source repository, linked from each record's provenance). Code: BSD-2/MIT per repository under https://github.com/relaton.
