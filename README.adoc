@@ -44,6 +44,32 @@ relaton:
 
 == Development
 
+=== Workers static-assets deployment (relaton.org#112)
+
+The Astro `dist/` output deploys as a Workers static-assets site
+(`wrangler.jsonc`, no `main` script — assets-only worker `relaton-www`):
+
+* Current surface: `https://relaton-www.relaton.workers.dev` (deployed;
+  `.github/workflows/deploy_workers.yml` rebuilds and deploys on push to
+  `main`, using the `CLOUDFLARE_API_TOKEN` / `CLOUDFLARE_ACCOUNT_ID`
+  repo secrets)
+* Cutover pending (owner decision, relaton-api-js#175 D3): www.relaton.org
+  is currently GitHub Pages proxied through Cloudflare. Moving the
+  hostname to the worker means releasing the Pages CNAME and attaching
+  the custom domain route — do not flip while Pages is the canonical
+  surface. GitHub Pages `build_deploy.yml` stays as the fallback until
+  then.
+
+**Search for Agents** (zone AI Search, beta 2026-11-25): enable via the
+one-toggle dashboard switch on the relaton.org zone (owner-side). It
+gives agents a hosted full-text search endpoint over the site; it is
+deliberately complementary to our own https://mcp.relaton.org[mcp.relaton.org]
+server — hosted search = full-text findability, our MCP = structured
+graph + canonical keys + pubid identifier resolution. Verify the toggle
+by querying the hosted endpoint against our content, and confirm
+`sitemap-index.xml` (+ `llms.txt` when #111 lands) is picked up by the
+index.
+
 === Getting started
 
 * Ensure you have reasonable Ruby version
