@@ -1,0 +1,28 @@
+---
+import Base from "../layouts/Base.astro";
+import RecordExplorer from "../components/RecordExplorer.vue";
+---
+<Base
+  title="Record Explorer — Relaton"
+  description="Search the Relaton Index: 700k+ standards records across 33 SDO flavors, with citations in seven styles and full publication histories."
+>
+  <main class="records-page">
+    <div class="page-header">
+      <h1>Record Explorer</h1>
+      <p class="page-subtitle">
+        Search the Relaton Index — titles and identifiers across every flavor.
+        Open a record for its metadata, publication history, and a copy-ready
+        citation in seven styles.
+      </p>
+    </div>
+    <RecordExplorer client:load />
+  </main>
+</Base>
+
+<style>
+  .records-page {
+    max-width: 72rem;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+</style>
