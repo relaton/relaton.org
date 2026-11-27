@@ -68,9 +68,29 @@
         </div>
       </section>
 
-      <section v-if="timeline.length > 0" class="record-history">
-        <h3>Publication history</h3>
-        <ol class="timeline">
+      <section v-if="record" class="record-history">
+        <div class="history-head">
+          <h3>Record story</h3>
+          <div class="view-switch">
+            <button
+              type="button"
+              class="cite-pill"
+              :class="{ 'cite-pill--active': view === 'timeline' }"
+              @click="view = 'timeline'"
+            >
+              Timeline
+            </button>
+            <button
+              type="button"
+              class="cite-pill"
+              :class="{ 'cite-pill--active': view === 'graph' }"
+              @click="view = 'graph'"
+            >
+              Graph
+            </button>
+          </div>
+        </div>
+        <ol v-if="view === 'timeline' && timeline.length > 0" class="timeline">
           <li v-for="(e, i) in timeline" :key="i" class="timeline-row">
             <span class="timeline-year">{{ e.year ?? "—" }}</span>
             <span class="timeline-type">{{ e.type }}</span>
@@ -83,6 +103,10 @@
             </span>
           </li>
         </ol>
+        <p v-else-if="view === 'timeline'" class="history-empty">
+          No relation events stored for this document yet.
+        </p>
+        <RelationGraph v-else :doc-key="selectedKey!" @open="open" />
       </section>
     </div>
   </div>
@@ -90,6 +114,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
+import RelationGraph from "./RelationGraph.vue";
 
 const API = "https://api.relaton.org/v3";
 
@@ -101,6 +126,7 @@ const results = ref<{ key: string; docid: string; title: string | null; flavor: 
 const selectedKey = ref<string | null>(null);
 const record = ref<Record<string, unknown> | null>(null);
 const timeline = ref<{ type: string; direction: string; key: string; docid: string | null; year: number | null; title: string | null }[]>([]);
+const view = ref<"timeline" | "graph">("timeline");
 const style = ref<(typeof styles)[number]>("iso690");
 const citation = ref("");
 const copied = ref(false);
@@ -435,8 +461,24 @@ onMounted(async () => {
 }
 
 .record-history h3 {
-  margin: 0 0 0.75rem;
+  margin: 0;
   font-size: 1.05rem;
+}
+.history-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+.view-switch {
+  display: flex;
+  gap: 0.4rem;
+}
+.history-empty {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  font-size: 0.9rem;
 }
 .timeline {
   list-style: none;
