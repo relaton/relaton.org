@@ -9,5 +9,6 @@
   },
   "observability": {
     "enabled": true
-  }
+  },
+  "routes": [{ "pattern": "www.relaton.org", "custom_domain": true }]
 }
