@@ -39,7 +39,7 @@
     <p class="status-note">
       Per-flavor bulk snapshots with checksums live at
       <a href="https://data.relaton.org/manifest.json">data.relaton.org/manifest.json</a>.
-      The API itself is at <a href="https://api.relaton.org/api">api.relaton.org</a>.
+      The API itself is at <a href="https://api.relaton.org/docs">api.relaton.org/docs</a>.
     </p>
   </div>
 </template>
